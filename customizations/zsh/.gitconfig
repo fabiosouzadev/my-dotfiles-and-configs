@@ -1,3 +1,44 @@
+# Azure 
+Host ssh.dev.azure.com
+    HostName ssh.dev.azure.com
+    PreferredAuthentications publickey
+    IdentitiesOnly yes
+    
+# Github
+Host github.com
+    Hostname ssh.github.com
+    Port 443
+
+# Bitbucket
+Host bitbucket.org
+    Hostname altssh.bitbucket.org 
+    Port 443
+
+#Lembrar senhas 
+Host *
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/id_ed25519
+
+#User
+	
+[color]
+    ui = true
+
+[core]
+    editor = vim
+    default = current
+
+[push]
+    followTags = true
+
+[alias]
+    c = !git add --all && git commit -m
+    s = !git status -s
+    l = !git log --pretty=format:'%C(blue)%hC(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
+    amend = !git add --all && git commit --amend --no-edit
+    count = !git shortlog -s --grep
+
 [pager]
     diff = delta
     log = delta

@@ -13,7 +13,7 @@ This repo was created to help configure a Linux WSL Distro for to be ready to so
 
 ## How To Use
 
-To clone and run this repo, you'll need: <br>
+To clone and run this repo, you'll need: </br>
 
 - [Git](https://git-scm.com)
 

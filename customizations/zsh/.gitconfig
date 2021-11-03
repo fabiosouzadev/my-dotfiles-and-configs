@@ -1,36 +1,14 @@
-# Azure 
-Host ssh.dev.azure.com
-    HostName ssh.dev.azure.com
-    PreferredAuthentications publickey
-    IdentitiesOnly yes
-    
-# Github
-Host github.com
-    Hostname ssh.github.com
-    Port 443
-
-# Bitbucket
-Host bitbucket.org
-    Hostname altssh.bitbucket.org 
-    Port 443
-
-#Lembrar senhas 
-Host *
-    AddKeysToAgent yes
-    UseKeychain yes
-    IdentityFile ~/.ssh/id_ed25519
-
 #User
-	
 [color]
     ui = true
 
 [core]
-    editor = vim
+	editor = vim
     default = current
 
 [push]
     followTags = true
+	default = current
 
 [alias]
     c = !git add --all && git commit -m

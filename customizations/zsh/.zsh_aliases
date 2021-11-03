@@ -169,5 +169,4 @@ fi
 #ALIAS
 alias zshconfig="vim  ~/.zshrc"
 alias hostsconfig="sudo vim /etc/hosts"
-alias fd="/usr/bin/fdfind"
 alias ls="exa"

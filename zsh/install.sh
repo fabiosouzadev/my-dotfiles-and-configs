@@ -23,6 +23,7 @@ if [ $(uname -a | grep -ci Darwin) = 1 ]; then
   brew install glow
   brew install gh
   brew install fzf
+  ./usr/local/opt/fzf/install
   brew install tree
   brew install --cask google-cloud-sdk
   #Install stow
@@ -42,6 +43,7 @@ else
 
   #Install fd
   sudo apt-get install fd-find -y
+  sudo ln -s /usr/bin/fdfind /usr/bin/fd
 
   #Install bat
   sudo apt-get install bat -y

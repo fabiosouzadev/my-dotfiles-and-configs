@@ -200,6 +200,9 @@ load-starter-plugin-list() {
   # nvm is an awesome tool but it can be kind of a pain to install and keep up to date. 
   # This zsh plugin allows you to quickly setup nvm once, save it in your dotfiles, then never worry about it again.
   # https://github.com/lukechilds/zsh-nvm
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  
   export NVM_COMPLETION=true
   export NVM_LAZY_LOAD=true
   export NVM_NO_USE=true

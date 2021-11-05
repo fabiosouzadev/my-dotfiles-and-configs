@@ -26,7 +26,7 @@ if [ -f ../.env ]; then
   
   # WAKATIME
   if [ ! -z "$WAKATIME_API_KEY" ]; then
-    pip install wakatime
+    sudo pip install wakatime
     echo "\nexport WAKATIME_API_KEY=${WAKATIME_API_KEY}" | tee -a $HOME/.zshrc
     echo "\nexport ZSH_WAKATIME_BIN=$(which wakatime)" | tee -a $HOME/.zshrc
     echo "\nexport PATH=\$PATH:$(which wakatime)" | tee -a $HOME/.zshrc
@@ -37,3 +37,5 @@ else
   exit 1
 fi
 
+#echo 'export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+#          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm ' | tee -a $HOME/.zshrc

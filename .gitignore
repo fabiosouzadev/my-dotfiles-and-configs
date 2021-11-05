@@ -1,4 +1,4 @@
 .env
 zsh/glow
-*.deb
-*.zip
+*.deb*
+*.zip*

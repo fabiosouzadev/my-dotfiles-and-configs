@@ -170,3 +170,8 @@ fi
 alias zshconfig="vim  ~/.zshrc"
 alias hostsconfig="sudo vim /etc/hosts"
 alias ls="exa"
+alias lll='exa -alh'
+
+# Pretty print the path
+alias path='echo $PATH | tr -s ":" "\n"'
+

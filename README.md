@@ -33,7 +33,7 @@ $ cd ~/wsl-config/starship
 $ ./install
 
 # Install vim
-$ cd ~/wsl-config/wim
+$ cd ~/wsl-config/vim
 $ ./install
 
 ```

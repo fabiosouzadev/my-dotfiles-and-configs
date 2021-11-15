@@ -5,7 +5,7 @@ git clone https://github.com/jandamm/zgenom.git $HOME/zgenom
 
 # Copy files to $HOME
 cp -a zsh/. $HOME
-
+#stow --target=$HOME zsh
 
 if [ $(uname -a | grep -ci Darwin) = 1 ]; then
   echo "\nexport RUST_BACKTRACE=1" | tee -a $HOME/.zshrc
@@ -31,10 +31,10 @@ if [ -f ../.env ]; then
       echo "\nexport ZSH_WAKATIME_BIN=$(which wakatime-cli)" | tee -a $HOME/.zshrc
     else
       sudo pip install wakatime
-      echo "\nexport ZSH_WAKATIME_BIN=$HOME/.wakatime" | tee -a $HOME/.zshrc
+      echo "\nexport ZSH_WAKATIME_BIN=$(which wakatime)" | tee -a $HOME/.zshrc
     fi
     echo "\nexport WAKATIME_API_KEY=${WAKATIME_API_KEY}" | tee -a $HOME/.zshrc
-    echo "\nexport PATH=\$PATH:$ZSH_WAKATIME_BIN" | tee -a $HOME/.zshrc
+    echo "\nexport PATH=\$PATH:\$ZSH_WAKATIME_BIN" | tee -a $HOME/.zshrc
   fi
   
 else

@@ -1,0 +1,40 @@
+# Taps
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
+tap 'homebrew/bundle'
+tap 'nicoverbruggen/homebrew-cask'
+
+
+# Apps
+brew 'mas' # Mac App Store manager
+brew 'authy'
+brew 'bitwarden'
+brew 'brave-browser'
+brew 'firefox-developer-edition'  
+brew 'firefox-beta'
+brew 'rectangle'
+brew 'skype'
+brew 'slack'
+brew 'stack-stack'
+brew 'spotify'
+brew 'telegram-desktop'
+brew 'toggl-track'
+brew 'transmission'
+brew 'vivaldi'
+brew 'whatsapp'
+brew 'zoom'
+
+
+# Fonts
+
+# Mac App Store
+#mas 'Byword', id: 490192174
+
+# Development
+brew 'docker'
+brew 'fastlane'
+brew 'figma'
+brew 'firebase-admin'
+brew 'firebase-cli'
+brew 'flipper'

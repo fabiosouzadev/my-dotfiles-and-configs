@@ -12,8 +12,8 @@ if [ $(uname -a | grep -ci Darwin) = 1 ]; then
 	brew update
 	brew doctor
 
-  #Install FZF
   brew install fzf
+  brew install fzy
   brew install fd
   brew install bat
   brew install direnv
@@ -26,6 +26,7 @@ if [ $(uname -a | grep -ci Darwin) = 1 ]; then
   ./usr/local/opt/fzf/install
   brew install tree
   brew install --cask google-cloud-sdk
+
   #Install stow
   brew install stow
   

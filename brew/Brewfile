@@ -11,7 +11,6 @@ brew 'mas' # Mac App Store manager
 brew 'authy'
 brew 'bitwarden'
 brew 'brave-browser'
-brew 'firefox-developer-edition'  
 brew 'firefox-beta'
 brew 'rectangle'
 brew 'skype'
@@ -23,13 +22,29 @@ brew 'toggl-track'
 brew 'transmission'
 brew 'vivaldi'
 brew 'whatsapp'
+brew 'iterm'
+brew 'keepingyouawake'
+brew 'whatsapp'
 brew 'zoom'
 
 
 # Fonts
+brew 'font-cascadia-mono' 
+brew 'font-caskaydia-cove-nerd-font'
+brew 'font-fira-code' 
+brew 'font-fira-code-nerd-font'
+brew 'font-hack-nerd-font'
+brew 'font-iosevka'
+brew 'font-iosevka-slab'
+brew 'font-iosevka-nerd-font'
+brew 'font-jetbrains-mono'
+brew 'font-jetbrains-mono-nerd-font'
+brew 'font-victor-mono'
+brew 'font-victor-mono-nerd-font'
+
 
 # Mac App Store
-#mas 'Byword', id: 490192174
+mas 'BatteryHealth', id: 490192174
 
 # Development
 brew 'docker'
@@ -38,3 +53,12 @@ brew 'figma'
 brew 'firebase-admin'
 brew 'firebase-cli'
 brew 'flipper'
+brew 'cyberduck'
+brew 'figma'
+brew 'firefox-developer-edition'
+brew 'genymotion'
+brew 'github'
+brew 'gh'
+brew 'ngrok'
+brew 'now'
+brew 'yarn', args: ['--without-node']

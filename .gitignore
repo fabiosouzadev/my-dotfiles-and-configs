@@ -3,3 +3,4 @@
 zsh/glow
 *.deb*
 *.zip*
+.vscode

@@ -4,28 +4,47 @@
 git clone https://github.com/jandamm/zgenom.git $HOME/zgenom
 
 # Copy files to $HOME
-cp -a zsh/. $HOME
-#stow --target=$HOME zsh
+#cp -a zsh/. $HOME
+stow --target=$HOME dotfiles
+
+
+
+function create_custom_zshrc_configs(){
+  if [ !  -n "$(/bin/ls -A $HOME/.zshrc.d)" ]; then
+    mkdir -p $HOME/.zshrc.d
+  fi  
+}
+
+GITCONFIG_FILE=$HOME/.zshrc.d/00-gitconfig.zsh
+RUST_ENV_FILE=$HOME/.zshrc.d/01-rust.zsh
+WAKATIME_SCRIPT_FILE=$HOME/.zshrc.d/02-wakatime.zsh
 
 if [ $(uname -a | grep -ci Darwin) = 1 ]; then
-  echo "\nexport RUST_BACKTRACE=1" | tee -a $HOME/.zshrc
+  create_custom_zshrc_configs
+  echo "export RUST_BACKTRACE=1" | tee "${RUST_ENV_FILE}"
 fi
 
 
 if [ -f ../.env ]; then
 
   eval $(cat ../.env | sed 's/^/export /')
+  #GIT
+  if [ ! -z "$GIT_NAME" ] || [ ! -z "$GIT_EMAIL" ]; then
+    echo "export GIT_FULL_NAME=\"$GIT_FULL_NAME\"" | tee "$GITCONFIG_FILE"
+    echo "export GIT_EMAIL=\"$GIT_EMAIL\"" | tee -a "$GITCONFIG_FILE"
+  fi
   # WAKATIME
   if [ ! -z "$WAKATIME_API_KEY" ]; then
+    create_custom_zshrc_configs
     if [ $(uname -a | grep -ci Darwin) = 1 ]; then
       brew install wakatime-cli
-      echo "\nexport ZSH_WAKATIME_BIN=$(which wakatime-cli)" | tee -a $HOME/.zshrc
+      echo "export ZSH_WAKATIME_BIN=$(which wakatime-cli)" | tee $WAKATIME_SCRIPT_FILE
     else
       sudo pip install wakatime
-      echo "\nexport ZSH_WAKATIME_BIN=$(which wakatime)" | tee -a $HOME/.zshrc
+      echo "export ZSH_WAKATIME_BIN=$(which wakatime)" | tee -a $WAKATIME_SCRIPT_FILE
     fi
-    echo "\nexport WAKATIME_API_KEY=${WAKATIME_API_KEY}" | tee -a $HOME/.zshrc
-    echo "\nexport PATH=\$PATH:\$ZSH_WAKATIME_BIN" | tee -a $HOME/.zshrc
+    echo "export WAKATIME_API_KEY=${WAKATIME_API_KEY}" | tee -a $WAKATIME_SCRIPT_FILE
+    echo "export PATH=\$PATH:\$ZSH_WAKATIME_BIN" | tee -a $WAKATIME_SCRIPT_FILE
   fi
   
 else
@@ -33,8 +52,8 @@ else
   exit 1
 fi
 
-echo '\nexport ZSHRC=$HOME/.zshrc' | tee -a $HOME/.zshrc
-
-
-#echo 'export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm ' | tee -a $HOME/.zshrc
+function create_custom_zshrc_configs(){
+  if [ !  -n "$(/bin/ls -A ~/.zshrc.d)" ]; then
+    mkdir ~/.zshrc.d
+  fi  
+}

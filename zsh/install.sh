@@ -6,30 +6,25 @@
 
 
 if [ $(uname -a | grep -ci Darwin) = 1 ]; then
-  #Install Brew
-  xcode-select --install
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	brew update
-	brew doctor
-
-  brew install fzf
-  brew install fzy
-  brew install fd
-  brew install bat
-  brew install direnv
-  brew install exa
-  brew install git-delta
-  brew install lazydocker
-  brew install glow
-  brew install gh
-  brew install fzf
-  ./usr/local/opt/fzf/install
-  brew install tree
-  brew install --cask google-cloud-sdk
-
-  #Install stow
-  brew install stow
   
+  # install homebrew if it's missing
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing homebrew"
+    #Install Brew
+    xcode-select --install
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew update
+    brew doctor
+  fi
+
+  if [ ! -f "$HOME/.Brewfile" ]; then
+    ln -sfn $PWD/..brew/.Brewfile $HOME/.Brewfile
+  fi
+    
+  echo "Updating homebrew bundle"
+  export HOMEBREW_BUNDLE_FILE="$HOME/.Brewfile"
+  brew bundle install 
+
 else
   sudo apt update -y
   sudo apt upgrade

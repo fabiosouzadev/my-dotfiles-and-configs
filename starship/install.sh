@@ -1,8 +1,9 @@
 #!/bin/sh
 
-ZSHRC="${HOME}/.zshrc"
+
+STARSHIP_ZSHRC_FILE=$HOME/.zshrc.d/04-starship.zsh
 mkdir -p $HOME/.config && touch $HOME/.config/starship.toml
 
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
-echo '\neval "$(starship init zsh)"' | tee -a "${ZSHRC}"
+echo 'eval "$(starship init zsh)"' | tee  "${STARSHIP_ZSHRC_FILE}"

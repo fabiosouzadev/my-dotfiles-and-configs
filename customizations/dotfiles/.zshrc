@@ -350,7 +350,6 @@ fi
 
 # Make it easy to append your own customizations that override the
 # quickstart's defaults by loading all files from the ~/.zshrc.d directory
-mkdir -p ~/.zshrc.d
 if [ -n "$(/bin/ls -A ~/.zshrc.d)" ]; then
   for dotfile in $(/bin/ls -A ~/.zshrc.d)
   do
@@ -471,3 +470,4 @@ if ! can_haz fzf; then
   echo
   echo "Install instructions can be found at https://github.com/junegunn/fzf/"
 fi
+eval "$(starship init zsh)"

@@ -1,14 +1,24 @@
 #!/bin/sh
+system_type=$(uname -s)
 
-if [ $(uname -a | grep -ci Darwin) = 1 ]; then
-  if test ! $(which brew); then
+if [ "$system_type" = "Darwin" ]; then
+
+  # install homebrew if it's missing
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing homebrew"
     #Install Brew
     xcode-select --install
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"  
-	  brew update
-	  brew doctor
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew update
+    brew doctor
   fi
 
-  brew tap Homebrew/bundle
-  brew bundle  
+  if [ ! -f "$HOME/.Brewfile" ]; then
+    ln -s ./Brewfile $HOME/.Brewfile
+  fi
+    
+  echo "Updating homebrew bundle"
+  export HOMEBREW_BUNDLE_FILE="$HOME/.Brewfile"
+  brew bundle install 
+
 fi

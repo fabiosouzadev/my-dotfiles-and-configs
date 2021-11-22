@@ -470,4 +470,3 @@ if ! can_haz fzf; then
   echo
   echo "Install instructions can be found at https://github.com/junegunn/fzf/"
 fi
-eval "$(starship init zsh)"

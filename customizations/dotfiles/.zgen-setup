@@ -163,7 +163,7 @@ load-starter-plugin-list() {
   zgenom load chrissicool/zsh-256color
 
   # Load more completion files for zsh from the zsh-lovers github repo.
-  zgenom load zsh-users/zsh-completions src
+  zgenom load zsh-users/zsh-completions
 
   # Docker completion
   zgenom load srijanshetty/docker-zsh

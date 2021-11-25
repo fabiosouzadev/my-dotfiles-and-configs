@@ -24,6 +24,8 @@ brew 'gh'
 brew 'tree'
 cask 'google-cloud-sdk'
 brew 'stow'
+brew 'nnn'
+brew 'neofetch'
 
 # Apps
 brew 'mas' # Mac App Store manager

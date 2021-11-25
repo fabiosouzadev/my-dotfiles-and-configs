@@ -16,6 +16,7 @@ create_custom_zshrc_configs(){
 GITCONFIG_FILE=$HOME/.zshrc.d/00-gitconfig.zsh
 RUST_ENV_FILE=$HOME/.zshrc.d/01-rust.zsh
 WAKATIME_SCRIPT_FILE=$HOME/.zshrc.d/02-wakatime.zsh
+NNN_ENV_FILE=$HOME/.zshrc.d/03-nnn.zsh
 
 if [ $(uname -a | grep -ci Darwin) = 1 ]; then
   create_custom_zshrc_configs
@@ -28,9 +29,12 @@ if [ -f ../.env ]; then
   eval $(cat ../.env | sed 's/^/export /')
   #GIT
   if [ ! -z "$GIT_NAME" ] || [ ! -z "$GIT_EMAIL" ]; then
-    echo "export GIT_FULL_NAME=\"$GIT_FULL_NAME\"" | tee "$GITCONFIG_FILE"
-    echo "export GIT_EMAIL=\"$GIT_EMAIL\"" | tee -a "$GITCONFIG_FILE"
-  fi
+    GITCONFIG_FILE="${HOME}/.gitconfig"
+    GITCONFIG_CONF="[user]
+      name  = $GIT_NAME
+      email = $GIT_EMAIL"
+    echo "\n${GITCONFIG_CONF}" | tee -a "${GITCONFIG_FILE}"
+  fi  
   # WAKATIME
   if [ ! -z "$WAKATIME_API_KEY" ]; then
     create_custom_zshrc_configs
@@ -60,3 +64,16 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # To Vim visual multi 
 mkdir -p ~/.vim/pack/plugins/start && \
     git clone https://github.com/mg979/vim-visual-multi ~/.vim/pack/plugins/start/vim-visual-multi
+
+
+#NNN
+NNN_ENV_FILE=$HOME/.zshrc.d/03-nnn.zsh
+
+NNN_PLUGINS_CONFIG="NNN_PLUG_PERSONAL='g:personal/convert2zoom;p:personal/echo'
+NNN_PLUG_WORK='j:work/prettyjson;d:work/foobar'
+NNN_PLUG_INLINE='e:!go run \$nnn*'
+NNN_PLUG_DEFAULT='1:ipinfo;p:preview-tui;o:fzz;b:nbak'
+NNN_PLUG=\"\$NNN_PLUG_PERSONAL;\$NNN_PLUG_WORK;\$NNN_PLUG_DEFAULT;\$NNN_PLUG_INLINE\"
+export NNN_PLUG"
+
+echo "$NNN_PLUGINS_CONFIG" | tee $NNN_ENV_FILE

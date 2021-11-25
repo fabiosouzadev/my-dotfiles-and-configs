@@ -1,7 +1,3 @@
-#User
-[user]
-      name  = $GIT_FULL_NAME
-      email = $GIT_EMAIL
 [color]
     ui = true
 

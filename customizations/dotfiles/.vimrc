@@ -10,6 +10,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'kien/ctrlp.vim'
+Plug 'wakatime/vim-wakatime'
 
 " deoplete
 Plug 'Shougo/deoplete.nvim'

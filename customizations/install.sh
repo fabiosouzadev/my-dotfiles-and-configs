@@ -7,9 +7,7 @@ git clone https://github.com/jandamm/zgenom.git $HOME/zgenom
 #cp -a zsh/. $HOME
 stow --target=$HOME dotfiles
 
-
-
-function create_custom_zshrc_configs(){
+create_custom_zshrc_configs(){
   if [ !  -n "$(/bin/ls -A $HOME/.zshrc.d)" ]; then
     mkdir -p $HOME/.zshrc.d
   fi  
@@ -52,8 +50,13 @@ else
   exit 1
 fi
 
-function create_custom_zshrc_configs(){
-  if [ !  -n "$(/bin/ls -A ~/.zshrc.d)" ]; then
-    mkdir ~/.zshrc.d
-  fi  
-}
+#VIM
+
+#Install Plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+
+# To Vim visual multi 
+mkdir -p ~/.vim/pack/plugins/start && \
+    git clone https://github.com/mg979/vim-visual-multi ~/.vim/pack/plugins/start/vim-visual-multi

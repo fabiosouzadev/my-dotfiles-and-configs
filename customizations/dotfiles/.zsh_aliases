@@ -175,3 +175,7 @@ alias lll='exa -alh'
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
+#Lazygit
+alias lg="lazygit"
+alias ld="lazydocker"
+

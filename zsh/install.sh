@@ -75,6 +75,14 @@ else
   sudo apt update
   sudo apt install gh
 
+  #Install lazygit
+  sudo add-apt-repository ppa:lazygit-team/release
+  sudo apt-get update
+  sudo apt-get install lazygit
+  
+  #Install lazydocker
+  curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | sh
+
   #Customize fonts
   fc-cache -vf ~/.fonts/
 fi

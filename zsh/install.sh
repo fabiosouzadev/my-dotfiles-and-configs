@@ -52,10 +52,12 @@ else
   sudo apt-get install unzip -y
   wget https://github.com/ogham/exa/releases/download/v0.10.0/exa-linux-x86_64-v0.10.0.zip
   sudo unzip exa-linux-x86_64-v0.10.0.zip -d /usr/local
+  sudo rm -rf exa-linux-x86_64-v0.10.0.zip
 
   #Install delta
   wget https://github.com/dandavison/delta/releases/download/0.9.2/git-delta_0.9.2_amd64.deb
   sudo dpkg -i git-delta_0.9.2_amd64.deb
+  sudo rm -rf git-delta_0.9.2_amd64.deb
 
   #Install lazydocker
   curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
@@ -65,9 +67,9 @@ else
 
   #Install glow (.md)
   git clone https://github.com/charmbracelet/glow.git
-  cd glow
-  /usr/bin/go build
-  sudo cp glow /usr/bin/
+  /usr/bin/go glow/build
+  sudo cp glow/glow /usr/bin/
+  sudo rm -r glow
 
   #Instalar GH (Github)
   curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
@@ -81,7 +83,14 @@ else
   sudo apt-get install lazygit
   
   #Install lazydocker
-  curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | sh
+  curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+  
+  #Install nnn
+  sudo apt-get install nnn -y
+  curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | bash
+
+  #Install neofetch
+  sudo apt install neofetch
 
   #Customize fonts
   fc-cache -vf ~/.fonts/

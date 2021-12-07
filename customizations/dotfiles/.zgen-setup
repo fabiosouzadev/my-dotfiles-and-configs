@@ -146,12 +146,20 @@ load-starter-plugin-list() {
     zgenom oh-my-zsh plugins/rbenv
     zgenom oh-my-zsh plugins/react-native
     zgenom oh-my-zsh plugins/yarn
-
-
+    zgenom oh-my-zsh plugins/tmux
+    zgenom oh-my-zsh plugins/npm
+    zgenom oh-my-zsh plugins/npx
+    zgenom oh-my-zsh plugins/nvm
+    zgenom oh-my-zsh plugins/golang
+    
     if [ $(uname -a | grep -ci Darwin) = 1 ]; then
       # Load macOS-specific plugins
       zgenom oh-my-zsh plugins/brew
       zgenom oh-my-zsh plugins/macos
+    fi
+    if [ $(uname -a | grep -ci Linux) = 1 ]; then
+      # Load macOS-specific plugins
+      zgenom oh-my-zsh plugins/ubuntu
     fi
   fi
 

@@ -36,6 +36,8 @@ else
   #Install FZF
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install
+  sudo apt install -y ripgrep
+  sudo apt install -y silversearcher-ag
 
   #Install fd
   sudo apt-get install fd-find -y
@@ -60,16 +62,19 @@ else
   sudo rm -rf git-delta_0.9.2_amd64.deb
 
   #Install lazydocker
-  curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+  curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | sh
+  sudo rm lazydocker
 
   #Instalar Go
   sudo apt install golang -y
 
   #Install glow (.md)
   git clone https://github.com/charmbracelet/glow.git
-  /usr/bin/go glow/build
-  sudo cp glow/glow /usr/bin/
-  sudo rm -r glow
+  cd glow
+  /usr/bin/go build
+  sudo cp glow /usr/bin/
+  cd ..
+  sudo rm -r glow/
 
   #Instalar GH (Github)
   curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg

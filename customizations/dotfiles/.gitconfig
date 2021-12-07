@@ -1,6 +1,9 @@
 [color]
     ui = true
 
+[credential]
+	helper = cache
+
 [core]
 	editor = vim
     default = current
@@ -49,5 +52,6 @@
     line-numbers-left-style = cyan
     line-numbers-right-style = cyan
     line-numbers-minus-style = 124
-    line-numbers-plus-style = 28
+    line-numbers-plus-style = 28  
     line-numbers-style = syntax
+

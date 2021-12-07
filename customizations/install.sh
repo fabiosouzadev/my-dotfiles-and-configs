@@ -5,7 +5,8 @@ git clone https://github.com/jandamm/zgenom.git $HOME/zgenom
 
 # Copy files to $HOME
 #cp -a zsh/. $HOME
-stow --target=$HOME dotfiles
+stow --target=$HOME dotfiles --ignore='.gitconfig' -vvv
+cp -a dotfiles/.gitconfig  $HOME
 
 create_custom_zshrc_configs(){
   if [ !  -n "$(/bin/ls -A $HOME/.zshrc.d)" ]; then
@@ -28,10 +29,10 @@ if [ -f ../.env ]; then
 
   eval $(cat ../.env | sed 's/^/export /')
   #GIT
-  if [ ! -z "$GIT_NAME" ] || [ ! -z "$GIT_EMAIL" ]; then
+  if [ ! -z "$GIT_FULL_NAME" ] || [ ! -z "$GIT_EMAIL" ]; then
     GITCONFIG_FILE="${HOME}/.gitconfig"
     GITCONFIG_CONF="[user]
-      name  = $GIT_NAME
+      name  = $GIT_FULL_NAME
       email = $GIT_EMAIL"
     echo "\n${GITCONFIG_CONF}" | tee -a "${GITCONFIG_FILE}"
   fi  
@@ -61,19 +62,5 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 
-# To Vim visual multi 
-mkdir -p ~/.vim/pack/plugins/start && \
-    git clone https://github.com/mg979/vim-visual-multi ~/.vim/pack/plugins/start/vim-visual-multi
-
-
 #NNN
-NNN_ENV_FILE=$HOME/.zshrc.d/03-nnn.zsh
-
-NNN_PLUGINS_CONFIG="NNN_PLUG_PERSONAL='g:personal/convert2zoom;p:personal/echo'
-NNN_PLUG_WORK='j:work/prettyjson;d:work/foobar'
-NNN_PLUG_INLINE='e:!go run \$nnn*'
-NNN_PLUG_DEFAULT='1:ipinfo;p:preview-tui;o:fzz;b:nbak'
-NNN_PLUG=\"\$NNN_PLUG_PERSONAL;\$NNN_PLUG_WORK;\$NNN_PLUG_DEFAULT;\$NNN_PLUG_INLINE\"
-export NNN_PLUG"
-
-echo "$NNN_PLUGINS_CONFIG" | tee $NNN_ENV_FILE
+echo "export NNN_PLUG='f:finder;p:preview-tui;v:imgview'" | tee $NNN_ENV_FILE

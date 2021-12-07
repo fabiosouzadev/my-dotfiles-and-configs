@@ -26,6 +26,8 @@ cask 'google-cloud-sdk'
 brew 'stow'
 brew 'nnn'
 brew 'neofetch'
+brew 'ripgrep'
+brew 'the_silver_searcher'
 
 # Apps
 brew 'mas' # Mac App Store manager

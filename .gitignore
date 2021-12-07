@@ -4,3 +4,4 @@ zsh/glow
 *.deb*
 *.zip*
 .vscode
+.vimrc.old

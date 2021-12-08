@@ -2,14 +2,15 @@ call plug#begin()
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ryanoasis/vim-devicons'
-Plug 'ghifarit53/tokyonight-vim'
 Plug 'vim-airline/vim-airline'
+Plug 'ghifarit53/tokyonight-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'majutsushi/tagbar'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 set hidden
@@ -18,7 +19,6 @@ set relativenumber
 set nocompatible
 
 let mapleader="\<space>"
-nnoremap <leader>; A;<esc>
 nnoremap <leader>ec :vsplit ~/.vimrc<CR>
 nnoremap <leader>sc :source ~/.vimrc \| :PlugInstall<CR>
 
@@ -30,10 +30,8 @@ nnoremap <c-p> :Files<CR>
 nnoremap <c-f> :Ag<CR>
 
 set termguicolors
-
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
-
 colorscheme tokyonight
 
 
@@ -44,10 +42,7 @@ let g:airline_powerline_fonts = 1
 " tagbar
 nmap <F8> :TagbarToggle<CR>
 
-let g:lightline = {
-      \ 'colorscheme': 'embark',
-      \ }
-let g:embark_terminal_italics = 1
+"let g:airline_theme = 'embark'
 " This is the default option:
 "   - Preview window on the right with 50% width
 "   - CTRL-/ will toggle preview window.

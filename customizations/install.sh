@@ -14,16 +14,16 @@ create_custom_zshrc_configs(){
   fi  
 }
 
-GITCONFIG_FILE=$HOME/.zshrc.d/00-gitconfig.zsh
-RUST_ENV_FILE=$HOME/.zshrc.d/01-rust.zsh
-WAKATIME_SCRIPT_FILE=$HOME/.zshrc.d/02-wakatime.zsh
-NNN_ENV_FILE=$HOME/.zshrc.d/03-nnn.zsh
+RUST_ENV_FILE=$HOME/.zshrc.d/00-rust.zsh
+WAKATIME_SCRIPT_FILE=$HOME/.zshrc.d/01-wakatime.zsh
+NNN_ENV_FILE=$HOME/.zshrc.d/02-nnn.zsh
+
+# create zshrc.d
+create_custom_zshrc_configs
 
 if [ $(uname -a | grep -ci Darwin) = 1 ]; then
-  create_custom_zshrc_configs
   echo "export RUST_BACKTRACE=1" | tee "${RUST_ENV_FILE}"
 fi
-
 
 if [ -f ../.env ]; then
 
@@ -38,7 +38,6 @@ if [ -f ../.env ]; then
   fi  
   # WAKATIME
   if [ ! -z "$WAKATIME_API_KEY" ]; then
-    create_custom_zshrc_configs
     if [ $(uname -a | grep -ci Darwin) = 1 ]; then
       brew install wakatime-cli
       echo "export ZSH_WAKATIME_BIN=$(which wakatime-cli)" | tee $WAKATIME_SCRIPT_FILE

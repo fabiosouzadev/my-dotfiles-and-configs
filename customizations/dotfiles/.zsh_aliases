@@ -74,6 +74,32 @@ if [ -x /usr/local/bin/vim ]; then
 fi
 # Clearly, I really like vim.
 
+## CHECK IF NVIM
+if [ -x /bin/nvim ]; then
+    alias vi="/bin/nvim"
+    alias vim="/bin/nvim"
+    export EDITOR="/bin/nvim"
+fi
+
+if [ -x /usr/bin/nvim ]; then
+    alias vi="/usr/bin/nvim"
+    alias vim="/usr/bin/nvim"
+    export EDITOR="/usr/bin/nvim"
+fi
+
+if [ -x /opt/local/bin/nvim ]; then
+    alias vim="/opt/local/bin/nvim"
+    alias vi="/opt/local/bin/nvim"
+    export EDITOR="/opt/local/bin/nvim"
+fi
+if [ -x /usr/local/bin/nvim ]; then
+    alias vim="/usr/local/bin/nvim"
+    alias vi="/usr/local/bin/nvim"
+    export EDITOR="/usr/local/bin/nvim"
+fi
+
+# Clearly, I also really like nvim.
+
 export VISUAL=${EDITOR}
 
 # Clean up files that have the wrong line endings
@@ -167,8 +193,8 @@ if [ -f ~/.zsh_aliases.local ]; then
 fi
 
 #ALIAS
-alias zshconfig="vim  ~/.zshrc"
-alias hostsconfig="sudo vim /etc/hosts"
+alias zc="${EDITOR}  ~/.zshrc"
+alias hc="sudo ${EDITOR} /etc/hosts"
 alias ls="exa"
 alias lll='exa -alh'
 

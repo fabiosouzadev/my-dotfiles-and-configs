@@ -5,7 +5,7 @@
 	helper = cache
 
 [core]
-	editor = vim
+	editor = nvim
     default = current
 
 [push]

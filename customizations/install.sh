@@ -54,12 +54,24 @@ else
   exit 1
 fi
 
-#VIM
+#VIM/NEOVIM
+
 
 #Install Plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if [ -d "$HOME/.local/share/nvim" ]; then
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        
+  if [ ! -d "$HOME/.config/nvim" ]; then
+    mkdir -p "$HOME/.config/nvim"
+  fi  
 
+  ln -fsv $HOME/.vimrc $HOME/.config/nvim/init.vim
+
+else
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 
 #NNN
 echo "export NNN_PLUG='f:finder;p:preview-tui;v:imgview'" | tee $NNN_ENV_FILE

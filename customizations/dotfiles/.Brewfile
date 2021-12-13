@@ -10,10 +10,13 @@ tap 'jesseduffield/lazydocker/lazydocker'
 
 #Terminal
 brew 'zsh'
+brew 'neovim'
 brew 'fzf'
 brew 'fzy'
-brew 'fd'
+brew 'ripgrep'
+brew 'the_silver_searcher'
 brew 'bat'
+brew 'fd'
 brew 'direnv'
 brew 'exa'
 brew 'git-delta'
@@ -26,8 +29,6 @@ cask 'google-cloud-sdk'
 brew 'stow'
 brew 'nnn'
 brew 'neofetch'
-brew 'ripgrep'
-brew 'the_silver_searcher'
 
 # Apps
 brew 'mas' # Mac App Store manager

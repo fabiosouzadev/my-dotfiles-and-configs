@@ -30,6 +30,11 @@ else
   sudo apt upgrade
   sudo apt install -y zsh
   
+  #Install neovim
+  sudo add-apt-repository ppa:neovim-ppa/unstable
+  sudo apt-get update
+  sudo apt-get install neovim
+
   #Install stow
   sudo apt-get -y install stow  
   
@@ -48,6 +53,7 @@ else
   mkdir -p ~/.local/bin
   sudo ln -s /usr/bin/batcat /usr/bin/bat
 
+  #Install direnv
   sudo apt-get install direnv -y
 
   #EXA
@@ -63,7 +69,7 @@ else
 
   #Install lazydocker
   curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | sh
-  sudo rm lazydocker
+  sudo rm -rf lazydocker
 
   #Instalar Go
   sudo apt install golang -y

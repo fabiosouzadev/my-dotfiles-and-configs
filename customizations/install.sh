@@ -17,6 +17,7 @@ create_custom_zshrc_configs(){
 RUST_ENV_FILE=$HOME/.zshrc.d/00-rust.zsh
 WAKATIME_SCRIPT_FILE=$HOME/.zshrc.d/01-wakatime.zsh
 NNN_ENV_FILE=$HOME/.zshrc.d/02-nnn.zsh
+NVM_ENV_FILE=$HOME/.zshrc.d/03-nvm.zsh
 
 # create zshrc.d
 create_custom_zshrc_configs
@@ -75,3 +76,9 @@ fi
 
 #NNN
 echo "export NNN_PLUG='f:finder;p:preview-tui;v:imgview'" | tee $NNN_ENV_FILE
+
+#NVM
+CONFIG_NVM="export NVM_DIR=\"\$HOME/.nvm\"
+\n[ -s \"\$NVM_DIR/nvm.sh\" ] && \\. \"\$NVM_DIR/nvm.sh\"  # This loads nvm
+\n[ -s \"\$NVM_DIR/bash_completion\" ] && \\. \"\$NVM_DIR/bash_completion\"  # This loads nvm bash_completion"
+echo $CONFIG_NVM | tee $NVM_ENV_FILE 

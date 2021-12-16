@@ -17,7 +17,7 @@ Plug 'christoomey/vim-tmux-navigator'
 " Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale' " Analisador de codigo assincrono
-Plug 'cohama/lexima.vim'  "Auto-pairs  
+Plug 'cohama/lexima.vim'  "Auto-pairs
 Plug 'thaerkh/vim-indentguides'
 call plug#end()
 
@@ -30,10 +30,10 @@ syntax enable
 
 
 let mapleader="\<space>"
-nnoremap <leader>ec :vsplit $MYVIMRC<cr>
+nnoremap <leader>ec :vsplit $MYVIMRC<CR>
 nnoremap <leader>sc :source $MYVIMRC<CR>
-nnoremap <c-p> :Files<cr>
-nnoremap <c-f> :Ag<space>
+nnoremap <c-p> :Files<CR>
+nnoremap <c-f> :Ag<CR>
 nnoremap <silent><leader>b :Buffers<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <F1> :bprevious<CR>

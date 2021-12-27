@@ -4,6 +4,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -29,15 +30,21 @@ filetype plugin indent on
 syntax enable
 
 
-let mapleader="\<space>"
+let mapleader="\<Space>"
 nnoremap <leader>ec :vsplit $MYVIMRC<CR>
 nnoremap <leader>sc :source $MYVIMRC<CR>
-nnoremap <c-p> :Files<CR>
-nnoremap <c-f> :Ag<CR>
 nnoremap <silent><leader>b :Buffers<CR>
-nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <F1> :bprevious<CR>
 nnoremap <F2> :bnext<CR>
+noremap <leader>- :split<cr>
+noremap <leader>\| :vsplit<cr>
+
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+
+nnoremap <c-p> :Files<CR>
+nnoremap <c-f> :Ag<CR>
 
 " airline
 let g:airline#extensions#tmuxline#enabled = 1

@@ -116,5 +116,7 @@ fi
 asdf plugin-add java
 asdf install java temurin-17.0.1+12
 asdf global java temurin-17.0.1+12
-# . ~/.asdf/plugins/java/set-java-home.zsh
+
+echo '. ~/.asdf/plugins/java/set-java-home.zsh' | tee $JAVA_ENV_FILE
+
 

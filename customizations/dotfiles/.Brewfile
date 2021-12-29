@@ -29,6 +29,7 @@ cask 'google-cloud-sdk'
 brew 'stow'
 brew 'nnn'
 brew 'neofetch'
+brew 'asdf'
 
 # Apps
 brew 'mas' # Mac App Store manager

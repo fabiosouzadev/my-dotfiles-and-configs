@@ -151,6 +151,7 @@ load-starter-plugin-list() {
     zgenom oh-my-zsh plugins/npx
     zgenom oh-my-zsh plugins/nvm
     zgenom oh-my-zsh plugins/golang
+    zgenom oh-my-zsh plugins/asdf
     
     if [ $(uname -a | grep -ci Darwin) = 1 ]; then
       # Load macOS-specific plugins

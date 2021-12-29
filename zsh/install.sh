@@ -101,8 +101,12 @@ else
   curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | bash
 
   #Install neofetch
-  sudo apt install neofetch
+  sudo apt install -y neofetch
 
+  #Install asdf
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
+  . $HOME/.asdf/asdf.sh
+  
   #Customize fonts
   fc-cache -vf ~/.fonts/
 fi
@@ -112,5 +116,7 @@ chsh -s /usr/local/bin/zsh
 # Install nmv
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
+# Install kitty
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
 

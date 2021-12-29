@@ -96,17 +96,14 @@ else
   #Install lazydocker
   curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
   
-  #Install nnn
-  sudo apt-get install nnn -y
-  curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | bash
-
   #Install neofetch
   sudo apt install -y neofetch
 
   #Install asdf
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 
-  
+  #Install ranger
+  sudo apt-get install ranger
   #Customize fonts
   fc-cache -vf ~/.fonts/
 fi

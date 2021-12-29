@@ -27,10 +27,10 @@ brew 'gh'
 brew 'tree'
 cask 'google-cloud-sdk'
 brew 'stow'
-brew 'nnn'
 brew 'neofetch'
 brew 'asdf'
 brew 'zsh-completion'
+brew 'ranger'
 
 # Apps
 brew 'mas' # Mac App Store manager

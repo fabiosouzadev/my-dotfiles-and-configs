@@ -16,10 +16,9 @@ create_custom_zshrc_configs(){
 
 RUST_ENV_FILE=$HOME/.zshrc.d/00-rust.zsh
 WAKATIME_SCRIPT_FILE=$HOME/.zshrc.d/01-wakatime.zsh
-NNN_ENV_FILE=$HOME/.zshrc.d/02-nnn.zsh
-NVM_ENV_FILE=$HOME/.zshrc.d/03-nvm.zsh
-BREW_COMP_ENV_FILE=$HOME/.zshrc.d/04-brew-completations.zsh
-JAVA_ENV_FILE=$HOME/.zshrc.d/05-java.zsh
+NVM_ENV_FILE=$HOME/.zshrc.d/02-nvm.zsh
+BREW_COMP_ENV_FILE=$HOME/.zshrc.d/03-brew-completations.zsh
+JAVA_ENV_FILE=$HOME/.zshrc.d/04-java.zsh
 
 
 # create zshrc.d
@@ -76,9 +75,6 @@ else
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
-
-#NNN
-echo "export NNN_PLUG='f:finder;p:preview-tui;v:imgview'" | tee $NNN_ENV_FILE
 
 #NVM
 CONFIG_NVM="export NVM_DIR=\"\$HOME/.nvm\"

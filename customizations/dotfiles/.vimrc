@@ -46,6 +46,8 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 
 nnoremap <c-p> :Files<CR>
 nnoremap <c-f> :Ag<CR>
+" copy text to clipboard
+vnoremap <C-c> "+y<CR>
 
 " airline
 let g:airline#extensions#tmuxline#enabled = 1

@@ -39,6 +39,7 @@ nnoremap <F2> :bnext<CR>
 noremap <C-w>x :split<cr>
 noremap <C-w>v :vsplit<cr>
 " to close panel use C-w c
+" to change tab use gt ou gT
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>

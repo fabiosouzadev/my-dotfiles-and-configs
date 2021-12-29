@@ -30,6 +30,7 @@ brew 'stow'
 brew 'nnn'
 brew 'neofetch'
 brew 'asdf'
+brew 'zsh-completion'
 
 # Apps
 brew 'mas' # Mac App Store manager

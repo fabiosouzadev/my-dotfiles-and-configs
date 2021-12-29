@@ -104,8 +104,8 @@ else
   sudo apt install -y neofetch
 
   #Install asdf
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
-  . $HOME/.asdf/asdf.sh
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+
   
   #Customize fonts
   fc-cache -vf ~/.fonts/

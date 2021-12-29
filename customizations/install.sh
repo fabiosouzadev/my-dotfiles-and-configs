@@ -18,6 +18,9 @@ RUST_ENV_FILE=$HOME/.zshrc.d/00-rust.zsh
 WAKATIME_SCRIPT_FILE=$HOME/.zshrc.d/01-wakatime.zsh
 NNN_ENV_FILE=$HOME/.zshrc.d/02-nnn.zsh
 NVM_ENV_FILE=$HOME/.zshrc.d/03-nvm.zsh
+BREW_COMP_ENV_FILE=$HOME/.zshrc.d/04-brew-completations.zsh
+JAVA_ENV_FILE=$HOME/.zshrc.d/05-java.zsh
+
 
 # create zshrc.d
 create_custom_zshrc_configs
@@ -81,4 +84,37 @@ echo "export NNN_PLUG='f:finder;p:preview-tui;v:imgview'" | tee $NNN_ENV_FILE
 CONFIG_NVM="export NVM_DIR=\"\$HOME/.nvm\"
 \n[ -s \"\$NVM_DIR/nvm.sh\" ] && \\. \"\$NVM_DIR/nvm.sh\"  # This loads nvm
 \n[ -s \"\$NVM_DIR/bash_completion\" ] && \\. \"\$NVM_DIR/bash_completion\"  # This loads nvm bash_completion"
+
 echo $CONFIG_NVM | tee $NVM_ENV_FILE 
+
+
+if [ $(uname -a | grep -ci Darwin) = 1 ]; then
+	CONFIG_BREW_COMPLETATIONS="
+		if type brew &>/dev/null; then
+			FPATH=\$(brew --prefix)/share/zsh-completions:\$FPATH
+		
+			autoload -Uz compinit
+			compinit
+		fi
+	"  
+
+	echo $CONFIG_BREW_COMPLETATIONS | tee $BREW_COMP_ENV_FILE
+else
+
+	CONFIG_BREW_COMPLETATIONS="
+		# append completions to fpath
+		
+		fpath=(\${ASDF_DIR}/completions \$fpath)
+		
+		# initialise completions with ZSH's compinit
+		autoload -Uz compinit && compinit
+	"
+	echo $CONFIG_BREW_COMPLETATIONS | tee $BREW_COMP_ENV_FILE
+fi	
+
+#JAVA
+asdf plugin-add java
+asdf install java temurin-17.0.1+12
+asdf global java temurin-17.0.1+12
+# . ~/.asdf/plugins/java/set-java-home.zsh
+

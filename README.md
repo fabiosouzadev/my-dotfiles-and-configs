@@ -44,6 +44,7 @@ $ ./install
 
 - [Inspiration - Bezerra's personal Ubuntu WSL](https://github.com/pgbezerra/wsl-personal-installer)
 - [Inspiration - ZSH Quickstart Kit](https://github.com/unixorn/zsh-quickstart-kit)
+- [Inspiration - Oh-my-Tmux](https://github.com/gpakosz/.tmux)
 
 ## Contact
 

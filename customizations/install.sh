@@ -5,8 +5,9 @@ git clone https://github.com/jandamm/zgenom.git $HOME/zgenom
 
 # Copy files to $HOME
 #cp -a zsh/. $HOME
-stow --target=$HOME dotfiles --ignore='.gitconfig' -vvv
+stow --target=$HOME dotfiles -vvv
 cp -a dotfiles/.gitconfig  $HOME
+cp -a dotfiles/.config  $HOME
 
 create_custom_zshrc_configs(){
   if [ !  -n "$(/bin/ls -A $HOME/.zshrc.d)" ]; then
@@ -65,11 +66,11 @@ if [ -d "$HOME/.local/share/nvim" ]; then
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
         
-  if [ ! -d "$HOME/.config/nvim" ]; then
-    mkdir -p "$HOME/.config/nvim"
-  fi  
+#  if [ ! -d "$HOME/.config/nvim" ]; then
+#    mkdir -p "$HOME/.config/nvim"
+#  fi  
 
-  ln -fsv $HOME/.vimrc $HOME/.config/nvim/init.vim
+#  ln -fsv $HOME/.vimrc $HOME/.config/nvim/init.vim
 
 else
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

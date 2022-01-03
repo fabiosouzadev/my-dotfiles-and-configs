@@ -1,0 +1,132 @@
+### INSTALLATION NOTES ###:
+# Usage:
+# - Prefix is set to Ctrl-a (make sure you remapped Caps Lock to Ctrl)
+# - All prefixed with Ctrl-a
+#   - Last used window: 
+#   - Last used pane:   
+#   - Vertical split: v 
+#   - Horizontal split: x
+#   - Previous window:  
+#   - Next window:   Ctrl-c
+#   - Choose session:   
+#   - Quick window:     
+#   - Rename window: Ctrl-r
+#   - Rename session R
+
+#   https://github.com/samoshkin/tmux-config/blob/master/tmux/tmux.conf # Inspired by
+#   https://gist.github.com/v-yarotsky/2157908 # Inspired by
+#   https://awesomeopensource.com/project/samoshkin/tmux-config#key-bindings
+
+# ==========================
+# ===  General settings  ===
+# ==========================
+
+# set -g default-terminal "screen-256color"
+set -g default-terminal "xterm-256color" 
+set -g history-limit 100000
+set -g buffer-limit 20
+set -sg escape-time 0
+# set -g display-time 1500
+set -g remain-on-exit off
+set -g repeat-time 300
+setw -g allow-rename off
+setw -g automatic-rename off
+setw -g aggressive-resize on
+set -g base-index 1
+set -g renumber-windows on
+set -g mouse on
+
+# Change prefix key to C-a, easier to type, same to "screen"
+unbind C-b
+set -g prefix C-a
+# ==========================
+
+# Unbind default key bindings, we're going to override
+unbind %    # split-window -h
+unbind '"'  # split-window
+unbind "\$" # rename-session
+unbind ,    # rename-window
+
+# Split panes
+bind v split-window -h -c "#{pane_current_path}"
+bind x split-window -v -c "#{pane_current_path}"
+
+# Rename session and window
+bind C-r command-prompt -I "#{window_name}" "rename-window '%%'"
+bind R command-prompt -I "#{session_name}" "rename-session '%%'"
+
+# Edit configuration and reload
+bind C-e new-window -n 'tmux.conf' "sh -c '\${EDITOR:-vim} ~/.tmux.conf && tmux source ~/.tmux.conf && tmux display \"Config reloaded\"'"
+
+# Reload tmux configuration 
+bind r source-file ~/.tmux.conf \; display "Config reloaded"
+
+# Smart pane switching with awareness of Vim splits.
+#rSee: https://github.com/christoomey/vim-tmux-navigator
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
+bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j'  'select-pane -D'
+bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k'  'select-pane -U'
+bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l'  'select-pane -R'
+tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
+if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
+    "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
+if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
+    "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
+
+bind-key -T copy-mode-vi 'C-h' select-pane -L
+bind-key -T copy-mode-vi 'C-j' select-pane -D
+bind-key -T copy-mode-vi 'C-k' select-pane -U
+bind-key -T copy-mode-vi 'C-l' select-pane -R
+bind-key -T copy-mode-vi 'C-\' select-pane -l
+
+
+# ==================================================
+# === Window monitoring for activity and silence ===
+# ==================================================
+
+# ================================================
+# ===     Copy mode, scroll and clipboard      ===
+# ================================================
+
+# Copy and paste
+bind C-c run "tmux save-buffer - | pbcopy"
+bind C-v run "tmux set-buffer \"$(pbpaste)\"; tmux paste-buffer"
+
+# =====================================
+# ===           Theme               ===
+# =====================================
+
+
+# =====================================
+# ===    Appearence and status bar  ===
+# ======================================
+
+# =====================================
+# ===        Renew environment      ===
+# =====================================
+set -g update-environment \
+  "DISPLAY\
+  SSH_ASKPASS\
+  SSH_AUTH_SOCK\
+  SSH_AGENT_PID\
+  SSH_CONNECTION\
+  SSH_TTY\
+  WINDOWID\
+  XAUTHORITY"
+
+bind '$' run "~/.tmux/renew_env.sh"
+
+# ============================
+# ===       Plugins        ===
+# ============================
+
+
+# ==============================================
+# ===   Nesting local and remote sessions     ===
+# ==============================================
+
+
+
+

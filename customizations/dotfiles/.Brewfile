@@ -31,6 +31,7 @@ brew 'neofetch'
 brew 'asdf'
 brew 'zsh-completion'
 brew 'ranger'
+brew 'reattach-to-user-namespace'
 
 # Apps
 brew 'mas' # Mac App Store manager

@@ -20,7 +20,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale' " Analisador de codigo assincrono
 Plug 'cohama/lexima.vim'  "Auto-pairs
 Plug 'thaerkh/vim-indentguides'
+Plug 'SirVer/ultisnips'
 
+"""" React JS
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'mlaursen/vim-react-snippets'  " for ultisnips
 
 " vim prettier
 " post install (yarn install | npm install) then load plugin only for editing supported files
@@ -28,12 +34,22 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --producti
 
 call plug#end()
 
-set number
 set relativenumber
-set encoding=UTF-8
+set encoding=utf-8
 set autoindent
 filetype plugin indent on
 syntax enable
+set number              " Turn on numbering of lines
+set showmatch           " Show matching brackets.
+set matchtime=5         " Bracket blinking.
+set noshowmode          " Shows vim mode
+set history=5000        " Increase command line history
+set relativenumber      " Show line numbers relative to cursor position, this is useful to move between lines. Disable temp with :set nornu
+
+set tabstop=4                  " ┐
+set softtabstop=4              " │ Set global <TAB> settings
+set shiftwidth=4               " │ http://vimcasts.org/e/2
+set expandtab                  " ┘
 
 
 let mapleader="\<Space>"
@@ -96,12 +112,23 @@ colorscheme tokyonight
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 let g:prettier#autoformat_config_present = 1
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " Configurações do CoC.nvim
+
+"""" coc.nvim
+" Extensions need to be installed at first startup
+" :CocInstall coc-json coc-tsserver
+
+" Enable typescript server
+let g:coc_global_extensions = [
+        \ 'coc-tsserver'
+        \ ]
+
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 
@@ -111,7 +138,7 @@ function! s:check_back_space() abort
 endfunction
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Fim das configurações do CoC.nvim
 
@@ -119,4 +146,16 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 let g:indentguides_spacechar = '|'
 let g:indentguides_tabchar = '|'
 
+"""" vim-tmux-navigator
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
+
+" AutoClose NerdTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" vim-jsx
+let g:vim_jsx_pretty_colorful_config = 1

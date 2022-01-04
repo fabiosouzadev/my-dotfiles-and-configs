@@ -5,9 +5,15 @@ git clone https://github.com/jandamm/zgenom.git $HOME/zgenom
 
 # Copy files to $HOME
 #cp -a zsh/. $HOME
-stow --target=$HOME dotfiles -vvv
+stow dotfiles -t $HOME -vvv
 cp -a dotfiles/.gitconfig  $HOME
-cp -a dotfiles/.config  $HOME
+
+#Link init.vim
+if [ ! -d "$HOME/.config/nvim" ]; then
+  mkdir -p "$HOME/.config/nvim"
+fi  
+  
+stow -d dotfiles/.config -S nvim -t $HOME/.config/nvim -vvv
 
 create_custom_zshrc_configs(){
   if [ !  -n "$(/bin/ls -A $HOME/.zshrc.d)" ]; then

@@ -28,10 +28,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mlaursen/vim-react-snippets'  " for ultisnips
 
-" vim prettier
-" post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
-
 call plug#end()
 
 set relativenumber
@@ -46,10 +42,10 @@ set noshowmode          " Shows vim mode
 set history=5000        " Increase command line history
 set relativenumber      " Show line numbers relative to cursor position, this is useful to move between lines. Disable temp with :set nornu
 
-set tabstop=4                  " ┐
-set softtabstop=4              " │ Set global <TAB> settings
-set shiftwidth=4               " │ http://vimcasts.org/e/2
-set expandtab                  " ┘
+set tabstop=4           " ┐
+set softtabstop=4       " │ Set global <TAB> settings
+set shiftwidth=4        " │ http://vimcasts.org/e/2
+set expandtab           " ┘
 
 
 let mapleader="\<Space>"
@@ -107,13 +103,6 @@ let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
 colorscheme tokyonight
 
-
-" vim prettier
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
-let g:prettier#autoformat_config_present = 1
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-
 " Configurações do CoC.nvim
 
 """" coc.nvim
@@ -122,7 +111,8 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 " Enable typescript server
 let g:coc_global_extensions = [
-        \ 'coc-tsserver'
+        \ 'coc-tsserver',
+        \ 'coc-prettier'
         \ ]
 
 inoremap <silent><expr> <TAB>
@@ -138,12 +128,19 @@ function! s:check_back_space() abort
 endfunction
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" Fim das configurações do CoC.nvim
+
+"coc-prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+
+"Fim das configurações do CoC.nvim
 
 " Indentguides
-let g:indentguides_spacechar = '|'
+let g:indentguides_spacechar = '┆'
 let g:indentguides_tabchar = '|'
 
 """" vim-tmux-navigator
@@ -155,7 +152,7 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
 
 " AutoClose NerdTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " vim-jsx
 let g:vim_jsx_pretty_colorful_config = 1

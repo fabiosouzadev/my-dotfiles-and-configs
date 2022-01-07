@@ -25,8 +25,14 @@ Plug 'SirVer/ultisnips'
 """" React JS
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
-Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mlaursen/vim-react-snippets'  " for ultisnips
+
+"" highlight tsx files.
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'yuezk/vim-js'
+Plug 'ianks/vim-tsx'
+Plug 'maxmellon/vim-jsx-pretty'
+
 
 call plug#end()
 
@@ -41,6 +47,9 @@ set matchtime=5         " Bracket blinking.
 set noshowmode          " Shows vim mode
 set history=5000        " Increase command line history
 set relativenumber      " Show line numbers relative to cursor position, this is useful to move between lines. Disable temp with :set nornu
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
 
 set tabstop=4           " ┐
 set softtabstop=4       " │ Set global <TAB> settings
@@ -112,7 +121,14 @@ colorscheme tokyonight
 " Enable typescript server
 let g:coc_global_extensions = [
         \ 'coc-tsserver',
-        \ 'coc-prettier'
+        \ 'coc-tslint-plugin',
+        \ 'coc-prettier',
+        \ 'coc-emmet',
+        \ 'coc-css',
+        \ 'coc-html',
+        \ 'coc-json',
+        \ 'coc-yank',
+        \ 'coc-blade',
         \ ]
 
 inoremap <silent><expr> <TAB>
@@ -133,8 +149,8 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 "coc-prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+vmap <leader>f  <Plug>(coc-format-selected)<cr>
+nmap <leader>f  <Plug>(coc-format-selected)<cr>
 
 
 "Fim das configurações do CoC.nvim
@@ -154,5 +170,14 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 " AutoClose NerdTree
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" vim javascript
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
 " vim-jsx
 let g:vim_jsx_pretty_colorful_config = 1
+
+" identified as typescript react file, so add following
+au BufNewFile,BufRead *.ts setlocal filetype=typescript
+au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
+

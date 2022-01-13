@@ -1,15 +1,17 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": [
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "json", 
-        "css", 
-        "markdown"
-    ],
-    "tsserver.formatOnType": true,
-    "tsserver.enableJavascript": false,
-    "coc.preferences.formatOnType": true,
-    "eslint.autoFixOnSave": true
+  //test Ale + COC
+  "diagnostic.displayByAle": true,
+  // test Ale + COC
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "css"
+  ],
+  "tsserver.formatOnType": true,
+  "tsserver.enableJavascript": false,
+  "coc.preferences.formatOnType": true,
+  "eslint.autoFixOnSave": true
 }

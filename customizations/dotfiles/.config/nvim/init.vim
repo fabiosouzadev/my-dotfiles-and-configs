@@ -53,7 +53,6 @@ set expandtab                  " ┘
 "---------------------------------------------------------------------
 " JavaScript, Typescript
 autocmd BufNewFile,BufRead *.es6 set filetype=javascript
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
@@ -74,6 +73,9 @@ set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
 
 " }}}
 
+" for test Ale + Coc {{{
+let g:ale_disable_lsp = 1
+" for test Ale + Coc }}}
 
 " Plugins {{{
 " ---------------------------------------------------------------------
@@ -105,8 +107,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 
-"Plug 'dense-analysis/ale'
-"Plug 'maximbaz/lightline-ale'
+Plug 'dense-analysis/ale'
+Plug 'maximbaz/lightline-ale'
 
 """ JS,Typescript
 Plug 'pangloss/vim-javascript'    " JavaScript support
@@ -123,6 +125,7 @@ Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Git
+"Plug 'jreybert/vimagit'
 Plug 'tpope/vim-fugitive'
 
 if has("nvim")
@@ -212,7 +215,7 @@ let g:lightline = {
     \ 'component_function': {
     \   'filetype': 'MyFiletype',
     \   'fileformat': 'MyFileformat',
-    \   'gitbranch': 'FugitiveHead',
+    \   'gitbranch': 'fugitive#statusline()',
     \   'bufferinfo': 'lightline#buffer#bufferinfo',
     \ },
     \ 'tab': {
@@ -326,7 +329,25 @@ let g:nvim_tree_show_icons = {
     \ }
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { 'html', 'javascript', 'typescript', 'tsx', 'css','json' },
+    ensure_installed = {
+        'bash',
+        'css',
+        'dockerfile',
+        'go',
+        'gomod',
+        'graphql',
+        'html',
+        'javascript',
+        'jsdoc',
+        'json',
+        'lua',
+        'python',
+        'rust',
+        'svelte',
+        'tsx',
+        'typescript',
+        'yaml',
+    },
     -- ensure_installed = "all", -- or maintained
     highlight = {
         enable = true,
@@ -433,10 +454,20 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " CoC Configs }}}
 
-" ALE {{{
+" dense-analysis/ale {{{
 " Only run linters named in ale_linters settings.
-"let g:ale_linters_explicit = 1
-"let g:ale_fix_on_save = 1
-"let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
-"let b:ale_linters = ['tsserver']
-" ALE }}}
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+let b:ale_linters = ['tsserver']
+" dense-analysis/ale }}}
+
+" pangloss/vim-javascript {{{
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+" pangloss/vim-javascript }}}
+
+" peitalin/vim-jsx-typescript {{{
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+" peitalin/vim-jsx-typescript }}}

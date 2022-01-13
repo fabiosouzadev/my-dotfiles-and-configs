@@ -1,17 +1,15 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["json", "css", "markdown"],
-  "eslint.autoFixOnSave": true,
-  "eslint.autoFix": true,
-  "tsserver.enableJavascript": false,
-  "languageserver": {
-    "flow": {
-      "command": "flow",
-      "args": ["lsp"],
-      "filetypes": ["javascript", "javascriptreact"],
-      "initializationOptions": {},
-      "requireRootPattern": true,
-      "settings": {},
-      "rootPatterns": [".flowconfig"]
-    }
-  }
+    "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "json", 
+        "css", 
+        "markdown"
+    ],
+    "tsserver.formatOnType": true,
+    "tsserver.enableJavascript": false,
+    "coc.preferences.formatOnType": true,
+    "eslint.autoFixOnSave": true
 }

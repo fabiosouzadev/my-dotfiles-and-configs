@@ -51,11 +51,13 @@ set expandtab                  " ┘
 
 " File types {{{
 "---------------------------------------------------------------------
-" JavaScript
-au BufNewFile,BufRead *.es6 setf javascript
-" TypeScript
-au BufNewFile,BufRead *.tsx setf typescriptreact
-au BufNewFile,BufRead *.ts setlocal filetype=typescript
+" JavaScript, Typescript
+autocmd BufNewFile,BufRead *.es6 set filetype=javascript
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
 " Markdown
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.mdx set filetype=markdown
@@ -96,12 +98,32 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'thaerkh/vim-indentguides'
 
 " Behaviour/tools
-Plug 'sheerun/vim-polyglot'
 Plug 'wakatime/vim-wakatime'
 
-" Auto-completion
+" Auto-completion / Prettier
+Plug 'editorconfig/editorconfig-vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'SirVer/ultisnips'
+
+"Plug 'dense-analysis/ale'
+"Plug 'maximbaz/lightline-ale'
+
+""" JS,Typescript
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+"Plug 'maxmellon/vim-jsx-pretty'  " don't need with vim-polyglot
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'mlaursen/vim-react-snippets' " Snippets from ultisnips
+
+
+Plug 'styled-components/vim-styled-components', {'branch': 'main'}
+Plug 'jparise/vim-graphql'        " GraphQL syntax
+
+"""" COC
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Git
+Plug 'tpope/vim-fugitive'
 
 if has("nvim")
 " Language Server Protocol
@@ -113,6 +135,7 @@ if has("nvim")
 " Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " Plug 'nvim-telescope/telescope-file-browser.nvim'
 " Plug 'sudormrfbin/cheatsheet.nvim'
+Plug 'kyazdani42/nvim-web-devicons'                 " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 " Plug 'ThePrimeagen/harpoon'
 
@@ -123,7 +146,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Behaviour/tools
 " Auto-completion
 " Git
-endif    
+endif
 
 call plug#end()
 
@@ -175,19 +198,21 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 
 " lightline {{{
+set laststatus=2
 let g:lightline = {
     \ 'active': {
-    \   'left':  [ [ 'mode', 'paste' ],
-    \              [ 'readonly', 'relativepath', 'percent', 'modified' ],
-    \            ],
-    \   'right': [ [ ],
-    \              [ 'filetype' ],
-    \              [ 'tagbar' ] ]
+    \   'left': [   [ 'mode', 'paste' ],
+    \               [ 'gitbranch','readonly', 'relativepath', 'percent', 'modified' ],
+    \           ],
+    \   'right': [  [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+    \               [ 'lineinfo' ],
+    \               [ 'filetype' ]
+    \            ]
     \   },
     \ 'component_function': {
     \   'filetype': 'MyFiletype',
     \   'fileformat': 'MyFileformat',
-    \   'gitbranch': 'fugitive#head',
+    \   'gitbranch': 'FugitiveHead',
     \   'bufferinfo': 'lightline#buffer#bufferinfo',
     \ },
     \ 'tab': {
@@ -202,11 +227,21 @@ let g:lightline = {
     \   'buffercurrent': 'lightline#buffer#buffercurrent',
     \   'bufferbefore': 'lightline#buffer#bufferbefore',
     \   'bufferafter': 'lightline#buffer#bufferafter',
+    \   'linter_checking': 'lightline#ale#checking',
+    \   'linter_infos': 'lightline#ale#infos',
+    \   'linter_warnings': 'lightline#ale#warnings',
+    \   'linter_errors': 'lightline#ale#errors',
+    \   'linter_ok': 'lightline#ale#ok',
     \ },
     \ 'component_type': {
     \   'buffercurrent': 'tabsel',
     \   'bufferbefore': 'raw',
     \   'bufferafter': 'raw',
+    \   'linter_checking': 'right',
+    \   'linter_infos': 'right',
+    \   'linter_warnings': 'warning',
+    \   'linter_errors': 'error',
+    \   'linter_ok': 'right',
     \ },
     \ 'component': {
     \   'separator': '',
@@ -281,6 +316,14 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 " vim-tmux-navigator {{{
 
 " nvim-treesitter {{{
+let g:nvim_tree_git_hl = 1
+
+let g:nvim_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 0,
+    \ 'files': 0,
+    \ 'folder_arrows': 0,
+    \ }
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
     ensure_installed = { 'html', 'javascript', 'typescript', 'tsx', 'css','json' },
@@ -294,7 +337,12 @@ require'nvim-treesitter.configs'.setup {
     },
     context_commentstring = {
         enable = true
-    }
+    },
+    git = {
+        enable = true,
+        ignore = true,
+        timeout = 500,
+    },
 }
 EOF
 " }}}
@@ -329,3 +377,66 @@ nnoremap <leader>n :NvimTreeFindFile<CR>
 let g:indentguides_spacechar = '┆'
 let g:indentguides_tabchar = '|'
 " Indentguides {{{
+
+" CoC Configs {{{
+let g:coc_global_extensions = [
+    \ 'coc-tsserver',
+    \ 'coc-tslint-plugin',
+    \ 'coc-prettier',
+    \ 'coc-emmet',
+    \ 'coc-css',
+    \ 'coc-html',
+    \ 'coc-eslint',
+    \ 'coc-yank',
+    \ 'coc-blade',
+    \ 'coc-json'
+    \ ]
+
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+    \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+
+" Add CoC Prettier if prettier is installed
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+    let g:coc_global_extensions += ['coc-prettier']
+endif
+
+" Add CoC ESLint if ESLint is installed
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+    let g:coc_global_extensions += ['coc-eslint']
+endif
+
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" CoC Configs }}}
+
+" ALE {{{
+" Only run linters named in ale_linters settings.
+"let g:ale_linters_explicit = 1
+"let g:ale_fix_on_save = 1
+"let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+"let b:ale_linters = ['tsserver']
+" ALE }}}

@@ -1,63 +1,138 @@
-call plug#begin()
+" Sets {{{
+" ---------------------------------------------------------------------
+set exrc
+set relativenumber
+set nu
+set hlsearch
+set mouse=a
+set hidden
+set splitright
+set splitbelow
+set noerrorbells
+set nowrap
+set formatoptions-=t
+set ignorecase
+set smartcase
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set incsearch
+set termguicolors
+set scrolloff=2
+set noshowmode
+set completeopt=menu,menuone,noselect
+set signcolumn=yes
+set number
+set updatetime=50
+set encoding=UTF-8
+set clipboard+=unnamedplus " Copy paste between vim and everything else
+set nojoinspaces " don't autoinsert two spaces after '.', '?', '!' for join command
+set showcmd " extra info at end of command line
+set wildignore+=*/node_modules/**
+filetype plugin indent on
 
+
+" folding
+
+" attempt to speed-up vim
+set ttyfast
+set lazyredraw
+
+" for demo
+
+set tabstop=4                  " ┐
+set softtabstop=4              " │ Set global <TAB> settings
+set shiftwidth=4               " │ http://vimcasts.org/e/2
+set expandtab                  " ┘
+
+
+" Sets }}}
+
+" File types {{{
+"---------------------------------------------------------------------
+" JavaScript
+au BufNewFile,BufRead *.es6 setf javascript
+" TypeScript
+au BufNewFile,BufRead *.tsx setf typescriptreact
+au BufNewFile,BufRead *.ts setlocal filetype=typescript
+" Markdown
+au BufNewFile,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead *.mdx set filetype=markdown
+" Flow
+au BufNewFile,BufRead *.flow set filetype=javascript
+" Fish
+au BufNewFile,BufRead *.fish set filetype=fish
+
+set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
+
+" autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
+" autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+" autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+
+" }}}
+
+
+" Plugins {{{
+" ---------------------------------------------------------------------
+if has("nvim")
+    let g:plug_home = stdpath('data') . '/plugged'
+endif
+call plug#begin()
+" PlugInstall PlugClean PlugUpdate
+
+" Visual / Themes
+Plug 'itchyny/lightline.vim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
-Plug 'scrooloose/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'wakatime/vim-wakatime'
+
+" Navigation
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'ghifarit53/tokyonight-vim'
-Plug 'christoomey/vim-tmux-navigator'
 
-" Autocomplete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale' " Analisador de codigo assincrono
-Plug 'cohama/lexima.vim'  "Auto-pairs
+" Editing
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'thaerkh/vim-indentguides'
-Plug 'SirVer/ultisnips'
 
-"""" React JS
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'mlaursen/vim-react-snippets'  " for ultisnips
+" Behaviour/tools
+Plug 'sheerun/vim-polyglot'
+Plug 'wakatime/vim-wakatime'
 
-"" highlight tsx files.
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'yuezk/vim-js'
-Plug 'ianks/vim-tsx'
-Plug 'maxmellon/vim-jsx-pretty'
+" Auto-completion
 
+" Git
+
+if has("nvim")
+" Language Server Protocol
+
+" File Management
+" Plug 'nvim-lua/popup.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
+" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+" Plug 'nvim-telescope/telescope-file-browser.nvim'
+" Plug 'sudormrfbin/cheatsheet.nvim'
+Plug 'kyazdani42/nvim-tree.lua'
+" Plug 'ThePrimeagen/harpoon'
+
+" Visual / Themes
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
+" Navigation
+" Editing
+" Behaviour/tools
+" Auto-completion
+" Git
+endif    
 
 call plug#end()
 
-set relativenumber
-set encoding=utf-8
-set autoindent
-filetype plugin indent on
-syntax enable
-set number              " Turn on numbering of lines
-set showmatch           " Show matching brackets.
-set matchtime=5         " Bracket blinking.
-set noshowmode          " Shows vim mode
-set history=5000        " Increase command line history
-set relativenumber      " Show line numbers relative to cursor position, this is useful to move between lines. Disable temp with :set nornu
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
+" Plugins }}}
 
-set tabstop=4           " ┐
-set softtabstop=4       " │ Set global <TAB> settings
-set shiftwidth=4        " │ http://vimcasts.org/e/2
-set expandtab           " ┘
-
-
+" Keybindings {{{
+" ---------------------------------------------------------------------
 let mapleader="\<Space>"
+
 nnoremap <leader>ec :vsplit %<CR>
 nnoremap <leader>sc :source %<CR>
 nnoremap <silent><leader>b :Buffers<CR>
@@ -65,33 +140,24 @@ nnoremap <F1> :bprevious<CR>
 nnoremap <F2> :bnext<CR>
 noremap <C-w>x :split<cr>
 noremap <C-w>v :vsplit<cr>
+
 " to close panel use C-w c
 " to change tab use gt ou gT
 
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
+" Keybindings }}}
 
-nnoremap <c-p> :Files<CR>
-nnoremap <c-f> :Ag<CR>
-" copy text to clipboard
-vnoremap <C-c> "+y<CR>
-
-" airline
-let g:airline#extensions#tmuxline#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
-let g:airline#extensions#tabline#tab_nr_type = 1
-
-" fzf
+" fzf {{{
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
 let g:fzf_preview_window = []
 
 let g:fzf_action = {
-	\ 'ctrl-t': 'tab split',
-	\ 'ctrl-x': 'split',
-	\ 'ctrl-v': 'vsplit' }
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-x': 'split',
+    \ 'ctrl-v': 'vsplit' }
+
+nnoremap <c-p> :Files<CR>
+nnoremap <c-f> :Ag<CR>
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -105,79 +171,161 @@ let g:fzf_tags_command = 'ctags -R'
 "[Commands] --expect expression for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
-
-" tokionight theme
-set termguicolors
-let g:tokyonight_style = 'night' " available: night, storm
-let g:tokyonight_enable_italic = 1
-colorscheme tokyonight
-
-" Configurações do CoC.nvim
-
-"""" coc.nvim
-" Extensions need to be installed at first startup
-" :CocInstall coc-json coc-tsserver
-
-" Enable typescript server
-let g:coc_global_extensions = [
-        \ 'coc-tsserver',
-        \ 'coc-tslint-plugin',
-        \ 'coc-prettier',
-        \ 'coc-emmet',
-        \ 'coc-css',
-        \ 'coc-html',
-        \ 'coc-json',
-        \ 'coc-yank',
-        \ 'coc-blade',
-        \ ]
-
-inoremap <silent><expr> <TAB>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" fzf }}}
 
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+" lightline {{{
+let g:lightline = {
+    \ 'active': {
+    \   'left':  [ [ 'mode', 'paste' ],
+    \              [ 'readonly', 'relativepath', 'percent', 'modified' ],
+    \            ],
+    \   'right': [ [ ],
+    \              [ 'filetype' ],
+    \              [ 'tagbar' ] ]
+    \   },
+    \ 'component_function': {
+    \   'filetype': 'MyFiletype',
+    \   'fileformat': 'MyFileformat',
+    \   'gitbranch': 'fugitive#head',
+    \   'bufferinfo': 'lightline#buffer#bufferinfo',
+    \ },
+    \ 'tab': {
+    \   'active': [ 'filename', 'modified' ],
+    \   'inactive': [ 'filename', 'modified' ],
+    \ },
+    \ 'tabline': {
+    \   'left': [ [ 'tabs' ] ],
+    \   'right': [ [ 'gitbranch' ] ],
+    \ },
+    \ 'component_expand': {
+    \   'buffercurrent': 'lightline#buffer#buffercurrent',
+    \   'bufferbefore': 'lightline#buffer#bufferbefore',
+    \   'bufferafter': 'lightline#buffer#bufferafter',
+    \ },
+    \ 'component_type': {
+    \   'buffercurrent': 'tabsel',
+    \   'bufferbefore': 'raw',
+    \   'bufferafter': 'raw',
+    \ },
+    \ 'component': {
+    \   'separator': '',
+    \   'tagbar': '%{tagbar#currenttag("%s", "", "f")}',
+    \ },
+    \ }
+
+function! MyFiletype() abort
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
 
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-    \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+function! MyFileformat() abort
+    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
 
+" Use auocmd to force lightline update when coc.nvim status changes.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
-"coc-prettier
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-vmap <leader>f  <Plug>(coc-format-selected)<cr>
-nmap <leader>f  <Plug>(coc-format-selected)<cr>
+"""" lightline-buffer
+set showtabline=2  " always show tabline
 
+" lightline-buffer ui settings
+" replace these symbols with ascii characters if your environment does not support unicode
+let g:lightline_buffer_logo = ' '
+let g:lightline_buffer_readonly_icon = ''
+let g:lightline_buffer_modified_icon = ''
+let g:lightline_buffer_git_icon = ' '
+let g:lightline_buffer_ellipsis_icon = '..'
+let g:lightline_buffer_expand_left_icon = '◀ '
+let g:lightline_buffer_expand_right_icon = ' ▶'
+let g:lightline_buffer_active_buffer_left_icon = ''
+let g:lightline_buffer_active_buffer_right_icon = ''
+let g:lightline_buffer_separator_icon = '  '
+ 
+" lightline-buffer function settings
+let g:lightline_buffer_show_bufnr = 0
+let g:lightline_buffer_rotate = 0
+let g:lightline_buffer_fname_mod = ':t'
+let g:lightline_buffer_excludes = ['vimfiler']
+ 
+let g:lightline_buffer_maxflen = 30
+let g:lightline_buffer_maxfextlen = 3
+let g:lightline_buffer_minflen = 16
+let g:lightline_buffer_minfextlen = 3
+let g:lightline_buffer_reservelen = 20
+" lightline }}}
+ 
+" tokyonight theme {{{
+let g:tokyonight_style = "night" " storm, night or day
+let g:tokyonight_italic_functions = 1
+let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
 
-"Fim das configurações do CoC.nvim
+" Change the hint color to the 'orange' color, and make the 'error' color bright red
+let g:tokyonight_colors = {
+    \ 'hint': 'orange',
+    \ 'error': '#ff0000'
+    \ }
 
-" Indentguides
-let g:indentguides_spacechar = '┆'
-let g:indentguides_tabchar = '|'
+" Load the colorscheme
+colorscheme tokyonight
 
-"""" vim-tmux-navigator
+" lightline
+let g:lightline = {'colorscheme': 'tokyonight'}
+" tokyonight theme }}}
+
+" vim-tmux-navigator }}}
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+" vim-tmux-navigator {{{
 
+" nvim-treesitter {{{
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = { 'html', 'javascript', 'typescript', 'tsx', 'css','json' },
+    -- ensure_installed = "all", -- or maintained
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = true
+    },
+    indent = {
+        enable = false
+    },
+    context_commentstring = {
+        enable = true
+    }
+}
+EOF
+" }}}
 
-" AutoClose NerdTree
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" yazdani42/nvim-tree.lua {{{
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ]
+let g:nvim_tree_gitignore = 1
+"let g:nvim_tree_auto_close = 1
+"let g:nvim_tree_auto_ignore_ft = [ 'startify', 'dashboard' ]
+let g:nvim_tree_quit_on_open = 1
+let g:nvim_tree_indent_markers = 1
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_highlight_opened_files = 1
+let g:nvim_tree_group_empty = 1
+"let g:nvim_tree_lsp_diagnostics = 1
 
-" vim javascript
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-let g:javascript_plugin_flow = 1
-" vim-jsx
-let g:vim_jsx_pretty_colorful_config = 1
+lua << EOF
+require'nvim-tree'.setup {
+    auto_close = true,
+    -- lsp_diagnostics = true,
+    ignore_ft_on_setup  = { 'startify', 'dashboard' },
+}
+EOF
 
-" identified as typescript react file, so add following
-au BufNewFile,BufRead *.ts setlocal filetype=typescript
-au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
+nnoremap <C-t> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+" yazdani42/nvim-tree.lua }}}
+"
 
+" Indentguides }}}
+let g:indentguides_spacechar = '┆'
+let g:indentguides_tabchar = '|'
+" Indentguides {{{

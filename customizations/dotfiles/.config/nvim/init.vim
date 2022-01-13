@@ -127,23 +127,26 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Git
 "Plug 'jreybert/vimagit'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+
 
 if has("nvim")
 " Language Server Protocol
 
 " File Management
-" Plug 'nvim-lua/popup.nvim'
-" Plug 'nvim-lua/plenary.nvim'
-" Plug 'nvim-telescope/telescope.nvim'
-" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-" Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 " Plug 'sudormrfbin/cheatsheet.nvim'
 Plug 'kyazdani42/nvim-web-devicons'                 " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 " Plug 'ThePrimeagen/harpoon'
 
 " Visual / Themes
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Navigation
 " Editing
 " Behaviour/tools
@@ -278,20 +281,20 @@ let g:lightline_buffer_expand_right_icon = ' ▶'
 let g:lightline_buffer_active_buffer_left_icon = ''
 let g:lightline_buffer_active_buffer_right_icon = ''
 let g:lightline_buffer_separator_icon = '  '
- 
+
 " lightline-buffer function settings
 let g:lightline_buffer_show_bufnr = 0
 let g:lightline_buffer_rotate = 0
 let g:lightline_buffer_fname_mod = ':t'
 let g:lightline_buffer_excludes = ['vimfiler']
- 
+
 let g:lightline_buffer_maxflen = 30
 let g:lightline_buffer_maxfextlen = 3
 let g:lightline_buffer_minflen = 16
 let g:lightline_buffer_minfextlen = 3
 let g:lightline_buffer_reservelen = 20
 " lightline }}}
- 
+
 " tokyonight theme {{{
 let g:tokyonight_style = "night" " storm, night or day
 let g:tokyonight_italic_functions = 1
@@ -332,6 +335,7 @@ require'nvim-treesitter.configs'.setup {
     ensure_installed = {
         'bash',
         'css',
+        'scss',
         'dockerfile',
         'go',
         'gomod',
@@ -347,6 +351,7 @@ require'nvim-treesitter.configs'.setup {
         'tsx',
         'typescript',
         'yaml',
+        'php',
     },
     -- ensure_installed = "all", -- or maintained
     highlight = {
@@ -413,6 +418,9 @@ let g:coc_global_extensions = [
     \ 'coc-json'
     \ ]
 
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
@@ -449,17 +457,31 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <leader>do <Plug>(coc-codeaction)
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>s :<C-u>CocList -I symbols<cr>
 " CoC Configs }}}
 
 " dense-analysis/ale {{{
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
+nnoremap <leader>af :ALEFix<cr>
+
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
-let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
-let b:ale_linters = ['tsserver']
+let g:ale_fixers = {
+    \   'javascript': ['prettier', 'eslint'],
+    \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \}
+let g:ale_linters = {
+    \   'javascript': ['eslint'],
+    \}
 " dense-analysis/ale }}}
 
 " pangloss/vim-javascript {{{
@@ -471,3 +493,10 @@ let g:javascript_plugin_flow = 1
 " peitalin/vim-jsx-typescript {{{
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 " peitalin/vim-jsx-typescript }}}
+
+" nvim-telescope/telescope.nvim {{{
+nnoremap <silent> ;f <cmd>Telescope find_files<cr>
+nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
+nnoremap <silent> \\ <cmd>Telescope buffers<cr>
+nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
+" nvim-telescope/telescope.nvim }}}

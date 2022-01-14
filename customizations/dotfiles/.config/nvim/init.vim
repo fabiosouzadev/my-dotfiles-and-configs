@@ -86,9 +86,11 @@ call plug#begin()
 " PlugInstall PlugClean PlugUpdate
 
 " Visual / Themes
-Plug 'itchyny/lightline.vim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'akinsho/bufferline.nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'ryanoasis/vim-devicons'
+
 
 " Navigation
 Plug 'christoomey/vim-tmux-navigator'
@@ -109,7 +111,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 
 Plug 'dense-analysis/ale'
-Plug 'maximbaz/lightline-ale'
+"Plug 'maximbaz/lightline-ale'
 
 """ JS,Typescript
 Plug 'pangloss/vim-javascript'    " JavaScript support
@@ -209,99 +211,50 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 " fzf }}}
 
+" nvim-lualine/lualine.nvim {{{
+lua << END
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'horizon',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+END
 
-" lightline {{{
-set laststatus=2
-let g:lightline = {
-    \ 'active': {
-    \   'left': [   [ 'mode', 'paste' ],
-    \               [ 'gitbranch','readonly', 'relativepath', 'percent', 'modified' ],
-    \           ],
-    \   'right': [  [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
-    \               [ 'lineinfo' ],
-    \               [ 'filetype' ]
-    \            ]
-    \   },
-    \ 'component_function': {
-    \   'filetype': 'MyFiletype',
-    \   'fileformat': 'MyFileformat',
-    \   'gitbranch': 'FugitiveHead',
-    \   'bufferinfo': 'lightline#buffer#bufferinfo',
-    \ },
-    \ 'tab': {
-    \   'active': [ 'filename', 'modified' ],
-    \   'inactive': [ 'filename', 'modified' ],
-    \ },
-    \ 'tabline': {
-    \   'left': [ [ 'tabs' ] ],
-    \   'right': [ [ 'gitbranch' ] ],
-    \ },
-    \ 'component_expand': {
-    \   'buffercurrent': 'lightline#buffer#buffercurrent',
-    \   'bufferbefore': 'lightline#buffer#bufferbefore',
-    \   'bufferafter': 'lightline#buffer#bufferafter',
-    \   'linter_checking': 'lightline#ale#checking',
-    \   'linter_infos': 'lightline#ale#infos',
-    \   'linter_warnings': 'lightline#ale#warnings',
-    \   'linter_errors': 'lightline#ale#errors',
-    \   'linter_ok': 'lightline#ale#ok',
-    \ },
-    \ 'component_type': {
-    \   'buffercurrent': 'tabsel',
-    \   'bufferbefore': 'raw',
-    \   'bufferafter': 'raw',
-    \   'linter_checking': 'right',
-    \   'linter_infos': 'right',
-    \   'linter_warnings': 'warning',
-    \   'linter_errors': 'error',
-    \   'linter_ok': 'right',
-    \ },
-    \ 'component': {
-    \   'separator': '',
-    \   'tagbar': '%{tagbar#currenttag("%s", "", "f")}',
-    \ },
-    \ }
+" nvim-lualine/lualine.nvim }}}
 
-function! MyFiletype() abort
-    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-endfunction
+" akinsho/bufferline.nvim {{{
+lua << EOF
+require("bufferline").setup{}
+EOF
 
-function! MyFileformat() abort
-    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-endfunction
+nnoremap <silent>[b :BufferLineCycleNext<CR>
+nnoremap <silent>b] :BufferLineCyclePrev<CR>
 
-" Use auocmd to force lightline update when coc.nvim status changes.
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-
-"""" lightline-buffer
-set showtabline=2  " always show tabline
-
-" lightline-buffer ui settings
-" replace these symbols with ascii characters if your environment does not support unicode
-let g:lightline_buffer_logo = ' '
-let g:lightline_buffer_readonly_icon = ''
-let g:lightline_buffer_modified_icon = ''
-let g:lightline_buffer_git_icon = ' '
-let g:lightline_buffer_ellipsis_icon = '..'
-let g:lightline_buffer_expand_left_icon = '◀ '
-let g:lightline_buffer_expand_right_icon = ' ▶'
-let g:lightline_buffer_active_buffer_left_icon = ''
-let g:lightline_buffer_active_buffer_right_icon = ''
-let g:lightline_buffer_separator_icon = '  '
-
-" lightline-buffer function settings
-let g:lightline_buffer_show_bufnr = 0
-let g:lightline_buffer_rotate = 0
-let g:lightline_buffer_fname_mod = ':t'
-let g:lightline_buffer_excludes = ['vimfiler']
-
-let g:lightline_buffer_maxflen = 30
-let g:lightline_buffer_maxfextlen = 3
-let g:lightline_buffer_minflen = 16
-let g:lightline_buffer_minfextlen = 3
-let g:lightline_buffer_reservelen = 20
-" lightline }}}
-
+" akinsho/bufferline.nvim }}}
+"
 " tokyonight theme {{{
 let g:tokyonight_style = "night" " storm, night or day
 let g:tokyonight_italic_functions = 1
@@ -316,8 +269,6 @@ let g:tokyonight_colors = {
 " Load the colorscheme
 colorscheme tokyonight
 
-" lightline
-let g:lightline = {'colorscheme': 'tokyonight'}
 " tokyonight theme }}}
 
 " vim-tmux-navigator }}}

@@ -70,6 +70,7 @@ noremap <C-w>v :vsplit<cr>
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 nnoremap <c-p> :Files<CR>
 nnoremap <c-f> :Ag<CR>

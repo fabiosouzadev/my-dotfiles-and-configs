@@ -116,7 +116,7 @@ Plug 'leafgarland/typescript-vim' " TypeScript syntax
 "Plug 'maxmellon/vim-jsx-pretty'  " don't need with vim-polyglot
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'mlaursen/vim-react-snippets' " Snippets from ultisnips
-
+Plug 'honza/vim-snippets'
 
 Plug 'styled-components/vim-styled-components', {'branch': 'main'}
 Plug 'jparise/vim-graphql'        " GraphQL syntax
@@ -160,6 +160,12 @@ call plug#end()
 
 " Keybindings {{{
 " ---------------------------------------------------------------------
+" disable arrow keys cause im NOOB
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
 let mapleader="\<Space>"
 
 nnoremap <leader>ec :vsplit %<CR>
@@ -218,7 +224,7 @@ let g:lightline = {
     \ 'component_function': {
     \   'filetype': 'MyFiletype',
     \   'fileformat': 'MyFileformat',
-    \   'gitbranch': 'fugitive#statusline()',
+    \   'gitbranch': 'FugitiveHead',
     \   'bufferinfo': 'lightline#buffer#bufferinfo',
     \ },
     \ 'tab': {

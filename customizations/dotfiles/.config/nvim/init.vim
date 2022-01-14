@@ -98,6 +98,7 @@ Plug 'junegunn/fzf.vim'
 " Editing
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'thaerkh/vim-indentguides'
+Plug 'vim-scripts/tComment'   "Comment easily with gcc
 
 " Behaviour/tools
 Plug 'wakatime/vim-wakatime'
@@ -115,7 +116,7 @@ Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 "Plug 'maxmellon/vim-jsx-pretty'  " don't need with vim-polyglot
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'mlaursen/vim-react-snippets' " Snippets from ultisnips
+Plug 'justinj/vim-react-snippets'
 Plug 'honza/vim-snippets'
 
 Plug 'styled-components/vim-styled-components', {'branch': 'main'}

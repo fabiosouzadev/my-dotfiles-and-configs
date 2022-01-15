@@ -172,9 +172,6 @@ let mapleader="\<Space>"
 
 nnoremap <leader>ec :vsplit %<CR>
 nnoremap <leader>sc :source %<CR>
-nnoremap <silent><leader>b :Buffers<CR>
-nnoremap <F1> :bprevious<CR>
-nnoremap <F2> :bnext<CR>
 noremap <C-w>x :split<cr>
 noremap <C-w>v :vsplit<cr>
 
@@ -193,8 +190,11 @@ let g:fzf_action = {
     \ 'ctrl-x': 'split',
     \ 'ctrl-v': 'vsplit' }
 
-nnoremap <c-p> :Files<CR>
-nnoremap <c-f> :Ag<CR>
+nnoremap <silent><leader>b :Buffers<CR>
+nnoremap <silent><leader>fi :Files<CR>
+nnoremap <silent><leader>ag :Ag<CR>
+" nnoremap <silent><leader>rg :Rg<CR>
+nnoremap <silent><leader>h: :History<CR>
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1

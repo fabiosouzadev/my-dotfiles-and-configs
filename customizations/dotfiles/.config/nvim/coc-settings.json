@@ -14,7 +14,14 @@
     "html"
   ],
   "tsserver.formatOnType": true,
-  "tsserver.enableJavascript": false,
+  "tsserver.enableJavascript": true,
   "coc.preferences.formatOnType": true,
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+  "emmet.includeLanguages": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html"
+  ]
 }

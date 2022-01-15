@@ -6,7 +6,7 @@
 
 
 if [ $(uname -a | grep -ci Darwin) = 1 ]; then
-  
+
   # install homebrew if it's missing
   if ! command -v brew >/dev/null 2>&1; then
     echo "Installing homebrew"
@@ -20,36 +20,35 @@ if [ $(uname -a | grep -ci Darwin) = 1 ]; then
   if [ ! -f "$HOME/.Brewfile" ]; then
     ln -sfn $PWD/..brew/.Brewfile $HOME/.Brewfile
   fi
-    
+
   echo "Updating homebrew bundle"
   export HOMEBREW_BUNDLE_FILE="$HOME/.Brewfile"
-  brew bundle install 
+  brew bundle install
 
 else
   sudo apt update -y
   sudo apt upgrade
   sudo apt install -y zsh
-  
+
   #Install neovim
   sudo add-apt-repository ppa:neovim-ppa/unstable
   sudo apt-get update
   sudo apt-get install neovim
 
   #Install stow
-  sudo apt-get -y install stow  
-  
+  sudo apt-get -y install stow
+
   #Install FZF
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install
-  sudo apt install -y ripgrep
   sudo apt install -y silversearcher-ag
 
   #Install fd
   sudo apt-get install fd-find -y
   sudo ln -s /usr/bin/fdfind /usr/bin/fd
 
-  #Install bat
-  sudo apt-get install bat -y
+  #Install bat and ripgrep
+  sudo apt install -o -y Dpkg::Options::="--force-overwrite" bat ripgrep
   mkdir -p ~/.local/bin
   sudo ln -s /usr/bin/batcat /usr/bin/bat
 
@@ -92,10 +91,10 @@ else
   sudo add-apt-repository ppa:lazygit-team/release
   sudo apt-get update
   sudo apt-get install lazygit
-  
+
   #Install lazydocker
   curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
-  
+
   #Install neofetch
   sudo apt install -y neofetch
 
@@ -115,5 +114,3 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
 # Install kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-
-

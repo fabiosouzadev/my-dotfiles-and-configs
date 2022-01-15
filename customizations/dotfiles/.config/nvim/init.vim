@@ -191,9 +191,10 @@ let g:fzf_action = {
     \ 'ctrl-v': 'vsplit' }
 
 nnoremap <silent><leader>b :Buffers<CR>
+nnoremap <silent><leader>co :Commits<CR>
 nnoremap <silent><leader>fi :Files<CR>
 nnoremap <silent><leader>ag :Ag<CR>
-" nnoremap <silent><leader>rg :Rg<CR>
+nnoremap <silent><leader>rg :Rg<CR>
 nnoremap <silent><leader>h: :History<CR>
 
 " [Buffers] Jump to the existing window if possible

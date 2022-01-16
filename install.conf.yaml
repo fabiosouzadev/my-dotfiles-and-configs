@@ -12,26 +12,25 @@
     command: "sudo chsh -s $(which zsh)"      
 - clean: ['~']
 - link:
-  ~/.zgen-setup: zsh/zgen-setup
-  ~/.zsh_aliases: zsh/zsh_aliases
-  ~/.zsh_functions: zsh/zsh_functions
-  ~/.zshrc: zsh/zshrc
-  ~/.zshrc.d/02-nvm.zsh: zsh/zshrc.d/02-nvm.zsh
-  ~/.zshrc.d/03-brew-completations.zsh: 
-    if: '[ `uname` = Darwin ]'
-    path: zsh/zshrc.d/03-brew-completations.zsh
-  ~/.zshrc.d/04-java.zsh: zsh/zshrc.d/04-java.zsh
-  ~/.zshrc.d/05-rust.zsh: zsh/zshrc.d/05-rust.zsh    
-  ~/.gitconfig: git/gitconfig
-  ~/.tmux.conf: tmux/.tmux.conf
-  ~/.config/nvim: config/nvim
-  ~/.asdfrc: asdf/asdfrc
+    ~/.zgen-setup: zsh/zgen-setup
+    ~/.zsh_aliases: zsh/zsh_aliases
+    ~/.zsh_functions: zsh/zsh_functions
+    ~/.zshrc: zsh/zshrc
+    ~/.zshrc.d/02-nvm.zsh: zsh/zshrc.d/02-nvm.zsh
+    ~/.zshrc.d/03-brew-completations.zsh: 
+      if: '[ `uname` = Darwin ]'
+      path: zsh/zshrc.d/03-brew-completations.zsh
+    ~/.zshrc.d/04-java.zsh: zsh/zshrc.d/04-java.zsh
+    ~/.zshrc.d/05-rust.zsh: zsh/zshrc.d/05-rust.zsh    
+    ~/.gitconfig: git/gitconfig
+    ~/.tmux.conf: tmux/.tmux.conf
+    ~/.config/nvim: config/nvim
+    ~/.asdfrc: asdf/asdfrc
 - git:
-  '~/zgenom':
-    url: 'https://github.com/jandamm/zgenom.git'
-    description: 'Clone zgenom' 
+    '~/zgenom':
+      url: 'https://github.com/jandamm/zgenom.git'
+      description: 'Clone zgenom' 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
   - description: Installing vim-plug
     command: "[ -f ~/.vim/autoload/plug.vim ] || curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   - description: Installing vim plugins
@@ -42,7 +41,7 @@
 # Starship
 - shell:
   - description: Installing Starship
-  - command: "sh -c $(curl -fsSL https://starship.rs/install.sh)"
+    command: "sh -c $(curl -fsSL https://starship.rs/install.sh)"
 - link:
-  ~/.zshrc.d/10-starship.zsh: zsh/zshrc.d/10-starship.zsh
-  ~/.config/starship.toml: config/starship.toml
+    ~/.zshrc.d/10-starship.zsh: zsh/zshrc.d/10-starship.zsh
+    ~/.config/starship.toml: config/starship.toml

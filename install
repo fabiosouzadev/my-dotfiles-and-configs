@@ -5,7 +5,8 @@ set -e
 CONFIG="install.conf.yaml"
 ASDF_CONFIG="asdf/asdf.conf.yaml"
 BREW_CONFIG="brew/brew.conf.yaml"
-PACKAGES_CONFIG="packages.conf.yaml"
+PACKAGES_CONFIG="packages/packages.conf.yaml"
+
 DOTBOT_DIR="dotbot"
 
 DOTBOT_BIN="bin/dotbot"
@@ -16,14 +17,14 @@ git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
 if [ $(uname -a | grep -ci Darwin) = 1 ]; then
-  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir dotbot-brewfile -c "${BREW_CONFIG}" "${@}"
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -p dotbot-brewfile/brewfile.py -c "${BREW_CONFIG}" "${@}"
 else
-  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir dotbot_plugin_aptget dotbot-git -c "${PACKAGES_CONFIG}" "${@}"
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -p dotbot-git/git.py -c "${PACKAGES_CONFIG}" "${@}"
 fi
 
 #asdf 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir dotbot-asdf -c "${ASDF_CONFIG}" "${@}"
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -p dotbot-asdf/asdf.py -c "${ASDF_CONFIG}" "${@}"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir dotbot-git -c "${CONFIG}" "${@}"
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -p dotbot-git/git.py -c "${CONFIG}" "${@}"
 
 

@@ -1,0 +1,10 @@
+# This apply to all commands that come after setting the defaults.
+- defaults:
+    brewfile:
+      stdout: false
+      stderr: false
+      include: ['tap', 'brew', 'cask', 'mas']
+
+- brewfile:
+    # This accepts the same options as `brew bundle` command:
+    file: brew/Brewfile

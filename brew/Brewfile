@@ -26,7 +26,6 @@ brew 'glow'
 brew 'gh'
 brew 'tree'
 cask 'google-cloud-sdk'
-brew 'stow'
 brew 'neofetch'
 brew 'asdf'
 brew 'zsh-completion'
@@ -58,6 +57,7 @@ cask 'iterm2'
 cask 'keepingyouawake'
 cask 'whatsapp'
 cask 'zoom'
+cask 'kitty'
 
 
 # Fonts

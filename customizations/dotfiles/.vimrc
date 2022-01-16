@@ -1,1 +1,0 @@
-/home/fabiosouzadev/dotfiles/customizations/dotfiles/.config/nvim/init.vim

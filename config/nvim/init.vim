@@ -86,11 +86,9 @@ call plug#begin()
 " PlugInstall PlugClean PlugUpdate
 
 " Visual / Themes
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'akinsho/bufferline.nvim'
+Plug 'itchyny/lightline.vim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-
+Plug 'ryanoasis/vim-devicons'
 
 " Navigation
 Plug 'christoomey/vim-tmux-navigator'
@@ -100,7 +98,6 @@ Plug 'junegunn/fzf.vim'
 " Editing
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'thaerkh/vim-indentguides'
-Plug 'vim-scripts/tComment'   "Comment easily with gcc
 
 " Behaviour/tools
 Plug 'wakatime/vim-wakatime'
@@ -111,14 +108,14 @@ Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 
 Plug 'dense-analysis/ale'
-"Plug 'maximbaz/lightline-ale'
+Plug 'maximbaz/lightline-ale'
 
 """ JS,Typescript
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 "Plug 'maxmellon/vim-jsx-pretty'  " don't need with vim-polyglot
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'justinj/vim-react-snippets'
+Plug 'mlaursen/vim-react-snippets' " Snippets from ultisnips
 Plug 'honza/vim-snippets'
 
 Plug 'styled-components/vim-styled-components', {'branch': 'main'}
@@ -138,13 +135,14 @@ if has("nvim")
 " Language Server Protocol
 
 " File Management
-Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 " Plug 'sudormrfbin/cheatsheet.nvim'
+Plug 'kyazdani43/nvim-web-devicons'                 " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 " Plug 'ThePrimeagen/harpoon'
 
 " Visual / Themes
@@ -172,6 +170,9 @@ let mapleader="\<Space>"
 
 nnoremap <leader>ec :vsplit %<CR>
 nnoremap <leader>sc :source %<CR>
+nnoremap <silent><leader>b :Buffers<CR>
+nnoremap <F1> :bprevious<CR>
+nnoremap <F2> :bnext<CR>
 noremap <C-w>x :split<cr>
 noremap <C-w>v :vsplit<cr>
 
@@ -190,12 +191,8 @@ let g:fzf_action = {
     \ 'ctrl-x': 'split',
     \ 'ctrl-v': 'vsplit' }
 
-nnoremap <silent><leader>b :Buffers<CR>
-nnoremap <silent><leader>co :Commits<CR>
-nnoremap <silent><leader>fi :Files<CR>
-nnoremap <silent><leader>ag :Ag<CR>
-nnoremap <silent><leader>rg :Rg<CR>
-nnoremap <silent><leader>h: :History<CR>
+nnoremap <c-p> :Files<CR>
+nnoremap <c-f> :Ag<CR>
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -211,49 +208,99 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 " fzf }}}
 
-" nvim-lualine/lualine.nvim {{{
-lua << END
-require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    theme = 'horizon',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
-    disabled_filetypes = {},
-    always_divide_middle = true,
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = {}
-}
-END
 
-" nvim-lualine/lualine.nvim }}}
+" lightline {{{
+set laststatus=2
+let g:lightline = {
+    \ 'active': {
+    \   'left': [   [ 'mode', 'paste' ],
+    \               [ 'gitbranch','readonly', 'relativepath', 'percent', 'modified' ],
+    \           ],
+    \   'right': [  [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+    \               [ 'lineinfo' ],
+    \               [ 'filetype' ]
+    \            ]
+    \   },
+    \ 'component_function': {
+    \   'filetype': 'MyFiletype',
+    \   'fileformat': 'MyFileformat',
+    \   'gitbranch': 'FugitiveHead',
+    \   'bufferinfo': 'lightline#buffer#bufferinfo',
+    \ },
+    \ 'tab': {
+    \   'active': [ 'filename', 'modified' ],
+    \   'inactive': [ 'filename', 'modified' ],
+    \ },
+    \ 'tabline': {
+    \   'left': [ [ 'tabs' ] ],
+    \   'right': [ [ 'gitbranch' ] ],
+    \ },
+    \ 'component_expand': {
+    \   'buffercurrent': 'lightline#buffer#buffercurrent',
+    \   'bufferbefore': 'lightline#buffer#bufferbefore',
+    \   'bufferafter': 'lightline#buffer#bufferafter',
+    \   'linter_checking': 'lightline#ale#checking',
+    \   'linter_infos': 'lightline#ale#infos',
+    \   'linter_warnings': 'lightline#ale#warnings',
+    \   'linter_errors': 'lightline#ale#errors',
+    \   'linter_ok': 'lightline#ale#ok',
+    \ },
+    \ 'component_type': {
+    \   'buffercurrent': 'tabsel',
+    \   'bufferbefore': 'raw',
+    \   'bufferafter': 'raw',
+    \   'linter_checking': 'right',
+    \   'linter_infos': 'right',
+    \   'linter_warnings': 'warning',
+    \   'linter_errors': 'error',
+    \   'linter_ok': 'right',
+    \ },
+    \ 'component': {
+    \   'separator': '',
+    \   'tagbar': '%{tagbar#currenttag("%s", "", "f")}',
+    \ },
+    \ }
 
-" akinsho/bufferline.nvim {{{
-lua << EOF
-require("bufferline").setup{}
-EOF
+function! MyFiletype() abort
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
 
+function! MyFileformat() abort
+    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
 
+" Use auocmd to force lightline update when coc.nvim status changes.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
-" akinsho/bufferline.nvim }}}
-"
+"""" lightline-buffer
+set showtabline=2  " always show tabline
+
+" lightline-buffer ui settings
+" replace these symbols with ascii characters if your environment does not support unicode
+let g:lightline_buffer_logo = ' '
+let g:lightline_buffer_readonly_icon = ''
+let g:lightline_buffer_modified_icon = ''
+let g:lightline_buffer_git_icon = ' '
+let g:lightline_buffer_ellipsis_icon = '..'
+let g:lightline_buffer_expand_left_icon = '◀ '
+let g:lightline_buffer_expand_right_icon = ' ▶'
+let g:lightline_buffer_active_buffer_left_icon = ''
+let g:lightline_buffer_active_buffer_right_icon = ''
+let g:lightline_buffer_separator_icon = '  '
+
+" lightline-buffer function settings
+let g:lightline_buffer_show_bufnr = 0
+let g:lightline_buffer_rotate = 0
+let g:lightline_buffer_fname_mod = ':t'
+let g:lightline_buffer_excludes = ['vimfiler']
+
+let g:lightline_buffer_maxflen = 30
+let g:lightline_buffer_maxfextlen = 3
+let g:lightline_buffer_minflen = 16
+let g:lightline_buffer_minfextlen = 3
+let g:lightline_buffer_reservelen = 20
+" lightline }}}
+
 " tokyonight theme {{{
 let g:tokyonight_style = "night" " storm, night or day
 let g:tokyonight_italic_functions = 1
@@ -268,6 +315,8 @@ let g:tokyonight_colors = {
 " Load the colorscheme
 colorscheme tokyonight
 
+" lightline
+let g:lightline = {'colorscheme': 'tokyonight'}
 " tokyonight theme }}}
 
 " vim-tmux-navigator }}}
@@ -278,151 +327,83 @@ nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 " vim-tmux-navigator {{{
 
-" nvim-treesitter/nvim-treesitter {{{
-" nvim-treesitter/nvim-treesitter :}}}
+" nvim-treesitter {{{
+let g:nvim_tree_git_hl = 1
 
-
-" yazdani42/nvim-tree.lua {{{
-
-let g:nvim_tree_quit_on_open = 1 "0 by default, closes the tree when you open a file
-let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
-let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-let g:nvim_tree_highlight_opened_files = 1 "0 by default, will enable folder and file icon highlight for opened files/directories.
-let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
-let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
-let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
-let g:nvim_tree_disable_window_picker = 1 "0 by default, will disable the window picker.
-let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
-let g:nvim_tree_symlink_arrow = ' >> ' " defaults to ' ➛ '. used as a separator between symlinks' source and target.
-let g:nvim_tree_respect_buf_cwd = 1 "0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
-let g:nvim_tree_create_in_closed_folder = 0 "1 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
-let g:nvim_tree_refresh_wait = 500 "1000 by default, control how often the tree can be refreshed, 1000 means the tree can be refresh once per 1000ms.
-let g:nvim_tree_window_picker_exclude = {
-    \   'filetype': [
-    \     'notify',
-    \     'packer',
-    \     'qf'
-    \   ],
-    \   'buftype': [
-    \     'terminal'
-    \   ]
-    \ }
-" Dictionary of buffer option names mapped to a list of option values that
-" indicates to the window picker that the buffer's window should not be
-" selectable.
-let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
 let g:nvim_tree_show_icons = {
     \ 'git': 1,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
+    \ 'folders': 0,
+    \ 'files': 0,
+    \ 'folder_arrows': 0,
     \ }
-"If 0, do not show the icons for one of 'git' 'folder' and 'files'
-"1 by default, notice that if 'files' is 1, it will only display
-"if nvim-web-devicons is installed and on your runtimepath.
-"if folder is 1, you can also tell folder_arrows 1 to show small arrows next to the folder icons.
-"but this will not work when you set indent_markers (because of UI conflict)
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = {
+        'bash',
+        'css',
+        'scss',
+        'dockerfile',
+        'go',
+        'gomod',
+        'graphql',
+        'html',
+        'javascript',
+        'jsdoc',
+        'json',
+        'lua',
+        'python',
+        'rust',
+        'svelte',
+        'tsx',
+        'typescript',
+        'yaml',
+        'php',
+    },
+    -- ensure_installed = "all", -- or maintained
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = true
+    },
+    indent = {
+        enable = false
+    },
+    context_commentstring = {
+        enable = true
+    },
+    git = {
+        enable = true,
+        ignore = true,
+        timeout = 500,
+    },
+}
+EOF
+" }}}
 
-" default will show icon by default if no icon is provided
-" default shows no icon by default
-let g:nvim_tree_icons = {
-    \ 'default': '',
-    \ 'symlink': '',
-    \ 'git': {
-    \   'unstaged': "✗",
-    \   'staged': "✓",
-    \   'unmerged': "",
-    \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': "",
-    \   'ignored': "◌"
-    \   },
-    \ 'folder': {
-    \   'arrow_open': "",
-    \   'arrow_closed': "",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
-    \   }
-    \ }
+" yazdani42/nvim-tree.lua {{{
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ]
+let g:nvim_tree_gitignore = 1
+"let g:nvim_tree_auto_close = 1
+"let g:nvim_tree_auto_ignore_ft = [ 'startify', 'dashboard' ]
+let g:nvim_tree_quit_on_open = 1
+let g:nvim_tree_indent_markers = 1
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_highlight_opened_files = 1
+let g:nvim_tree_group_empty = 1
+"let g:nvim_tree_lsp_diagnostics = 1
 
-highlight NvimTreeFolderIcon guibg=blue
+lua << EOF
+require'nvim-tree'.setup {
+    auto_close = true,
+    -- lsp_diagnostics = true,
+    ignore_ft_on_setup  = { 'startify', 'dashboard' },
+}
+EOF
 
 nnoremap <C-t> :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
-lua << EOF
--- following options are the default
--- each of these are documented in `:help nvim-tree.OPTION_NAME`
-require'nvim-tree'.setup {
-  disable_netrw       = true,
-  hijack_netrw        = true,
-  open_on_setup       = false,
-  ignore_ft_on_setup  = {},
-  auto_close          = false,
-  open_on_tab         = false,
-  hijack_cursor       = false,
-  update_cwd          = false,
-  update_to_buf_dir   = {
-    enable = true,
-    auto_open = true,
-  },
-  diagnostics = {
-    enable = false,
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    }
-  },
-  update_focused_file = {
-    enable      = false,
-    update_cwd  = false,
-    ignore_list = {}
-  },
-  system_open = {
-    cmd  = nil,
-    args = {}
-  },
-  filters = {
-    dotfiles = false,
-    custom = {}
-  },
-  git = {
-    enable = true,
-    ignore = true,
-    timeout = 500,
-  },
-  view = {
-    width = 30,
-    height = 30,
-    hide_root_folder = false,
-    side = 'left',
-    auto_resize = false,
-    mappings = {
-      custom_only = false,
-      list = {}
-    },
-    number = false,
-    relativenumber = false,
-    signcolumn = "yes"
-  },
-  trash = {
-    cmd = "trash",
-    require_confirm = true
-  }
-}
-
-EOF
-
-
-
 " yazdani42/nvim-tree.lua }}}
-
+"
 
 " Indentguides }}}
 let g:indentguides_spacechar = '┆'
@@ -430,19 +411,6 @@ let g:indentguides_tabchar = '|'
 " Indentguides {{{
 
 " CoC Configs {{{
-let g:coc_global_extensions = [
-    \ 'coc-tsserver',
-    \ 'coc-tslint-plugin',
-    \ 'coc-prettier',
-    \ 'coc-emmet',
-    \ 'coc-css',
-    \ 'coc-html',
-    \ 'coc-eslint',
-    \ 'coc-yank',
-    \ 'coc-blade',
-    \ 'coc-json'
-    \ ]
-
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 

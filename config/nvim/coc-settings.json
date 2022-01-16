@@ -1,7 +1,5 @@
 {
-  //test Ale + COC
   "diagnostic.displayByAle": true,
-  // test Ale + COC
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "javascriptreact",

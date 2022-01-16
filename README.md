@@ -6,8 +6,9 @@
 
 ## Features
 
-This repo was created to help configure a Linux WSL Distro for to be ready to software develop!!!
+This repo was born to help configure a Linux WSL Distro for to be ready to software develop!!!
 
+- [Dotbot](https://github.com/anishathalye/dotbot)
 - [Zsh](https://www.zsh.org/)
 - [Starship](https://starship.rs/)
 
@@ -19,21 +20,7 @@ To clone and run this repo, you'll need: </br>
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/fabiosouzadev/wsl-configs ~/wsl-config
-
-# Install dependencies
-$ cd ~/wsl-config
-
-# Install zsh
-$ cd ~/wsl-config/zsh-and-dependencies
-$ ./install
-
-# Install startship
-$ cd ~/wsl-config/starship
-$ ./install
-
-# Install vim
-$ cd ~/wsl-config/vim
+$ git clone https://github.com/fabiosouzadev/dotfiles ~/.dotfiles
 $ ./install
 
 ```

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -e
+
+CONFIG="install.conf.yaml"
+ASDF_CONFIG="asdf/asdf.conf.yaml"
+BREW_CONFIG="brew/brew.conf.yaml"
+PACKAGES_CONFIG="packages.conf.yaml"
+DOTBOT_DIR="dotbot"
+
+DOTBOT_BIN="bin/dotbot"
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+cd "${BASEDIR}"
+git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+git submodule update --init --recursive "${DOTBOT_DIR}"
+
+if [ $(uname -a | grep -ci Darwin) = 1 ]; then
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir dotbot-brewfile -c "${BREW_CONFIG}" "${@}"
+else
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir dotbot_plugin_aptget dotbot-git -c "${PACKAGES_CONFIG}" "${@}"
+fi
+
+#asdf 
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir dotbot-asdf -c "${ASDF_CONFIG}" "${@}"
+
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir dotbot-git -c "${CONFIG}" "${@}"
+
+

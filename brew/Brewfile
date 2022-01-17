@@ -31,6 +31,7 @@ brew 'asdf'
 brew 'zsh-completion'
 brew 'ranger'
 brew 'reattach-to-user-namespace'
+brew 'wakatime-cli'
 
 # Apps
 brew 'mas' # Mac App Store manager

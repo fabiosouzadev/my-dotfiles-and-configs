@@ -1,6 +1,3 @@
-[user]
-    name  = Fabio Souza
-    email = fabiovanderlei.developer@gmail.com
 [color]
     ui = true
 
@@ -57,3 +54,6 @@
     line-numbers-minus-style = 124
     line-numbers-plus-style = 28  
     line-numbers-style = syntax
+
+[include]
+  path = ~/.gitconfig.local

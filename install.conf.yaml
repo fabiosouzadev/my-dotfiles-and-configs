@@ -1,3 +1,8 @@
+- shell:
+  - description: Validating .env
+    command: ./configs.sh
+    stdout: true
+    stderr: true
 - defaults:
     link:
       relink: true
@@ -13,7 +18,7 @@
 # NVM
 - git:
     '~/.nvm':
-      url: 'git clone https://github.com/nvm-sh/nvm.git'
+      url: 'https://github.com/nvm-sh/nvm.git'
       description: 'Clone nvm'  
 - link:
     ~/.zgen-setup: zsh-quickstart-kit/zsh/.zgen-setup

@@ -55,3 +55,6 @@ cd ~/glow
 /usr/bin/go build
 sudo cp glow /usr/bin/
 sudo rm -r -f ~/glow
+
+#WAKATIME
+sudo pip install wakatime

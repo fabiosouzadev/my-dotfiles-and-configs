@@ -11,3 +11,6 @@
 [submodule "dotbot-git"]
 	path = dotbot-git
 	url = https://github.com/DrDynamic/dotbot-git.git
+[submodule "zsh-quickstart-kit"]
+	path = zsh-quickstart-kit
+	url = https://github.com/unixorn/zsh-quickstart-kit

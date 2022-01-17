@@ -2,7 +2,6 @@
     link:
       create: true
       relink: true
-      force: true
 - shell:
   - description: Validating sudo credentials
     command: "sudo --validate"
@@ -11,19 +10,21 @@
   - description: Making zsh the default shell
     command: "sudo chsh -s $(which zsh)"      
 - clean: ['~']
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
 - link:
-    ~/.zgen-setup: zsh/zgen-setup
-    ~/.zsh_aliases: zsh/zsh_aliases
-    ~/.zsh_functions: zsh/zsh_functions
-    ~/.zshrc: zsh/zshrc
-    ~/.zshrc.d/02-nvm.zsh: zsh/zshrc.d/02-nvm.zsh
-    ~/.zshrc.d/03-brew-completations.zsh: 
+    ~/.zgen-setup: zsh-quickstart-kit/zsh/.zgen-setup
+    ~/.zsh_aliases: zsh-quickstart-kit/zsh/.zsh_aliases
+    ~/.zsh_functions: zsh-quickstart-kit/zsh/.zsh_functions
+    ~/.zshrc: zsh-quickstart-kit/zsh/.zshrc
+    ~/.zshrc.d/002-nvm.zsh: zshrc.d/002-nvm.zsh
+    ~/.zshrc.d/003-brew-completations.zsh: 
       if: '[ `uname` = Darwin ]'
-      path: zsh/zshrc.d/03-brew-completations.zsh
-    ~/.zshrc.d/04-java.zsh: zsh/zshrc.d/04-java.zsh
-    ~/.zshrc.d/05-rust.zsh: zsh/zshrc.d/05-rust.zsh    
-    ~/.gitconfig: git/gitconfig
-    ~/.tmux.conf: tmux/tmux.conf
+      path: zshrc.d/003-brew-completations.zsh
+    ~/.zshrc.d/004-java.zsh: zshrc.d/004-java.zsh
+    ~/.zshrc.d/005-rust.zsh: zshrc.d/005-rust.zsh    
+    ~/.gitconfig:
+    ~/.tmux.conf: tmux/
     ~/.config/nvim: config/nvim
     ~/.asdfrc: asdf/asdfrc
 - git:

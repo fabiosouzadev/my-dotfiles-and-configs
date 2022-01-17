@@ -15,6 +15,7 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
+git submodule update --init --recursive zsh-quickstart-kit
 
 #dependencies
 if [ $(uname -a | grep -ci Darwin) = 1 ]; then

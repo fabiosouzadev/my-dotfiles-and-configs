@@ -1,7 +1,5 @@
 .DS_Store
 .env
-zsh/glow
 *.deb*
 *.zip*
 .vscode
-.vimrc.old

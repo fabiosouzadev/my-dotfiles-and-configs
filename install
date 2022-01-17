@@ -16,6 +16,7 @@ cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
+#dependencies
 if [ $(uname -a | grep -ci Darwin) = 1 ]; then
   "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -p dotbot-brewfile/brewfile.py -c "${BREW_CONFIG}" "${@}"
 else

@@ -31,12 +31,17 @@
       url: 'https://github.com/jandamm/zgenom.git'
       description: 'Clone zgenom' 
 - shell:
+# NVM
+  - description: Install nvm
+    command: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash"
+# VIM-PLUG
   - description: Installing vim-plug
     command: "[ -f ~/.vim/autoload/plug.vim ] || curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   - description: Installing vim plugins
     command: "vim +PlugInstall +qa"
+
 - create:
-    - ~/Projects
+  - ~/Projects
 
 # Starship
 - shell:

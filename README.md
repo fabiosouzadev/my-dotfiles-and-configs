@@ -8,8 +8,9 @@
 
 This repo was born to help configure a Linux WSL Distro for to be ready to software develop!!!
 
-- [Dotbot](https://github.com/anishathalye/dotbot)
 - [Zsh](https://www.zsh.org/)
+- [Dotbot](https://github.com/anishathalye/dotbot)
+- [Zsh Quickstart Kit](https://github.com/unixorn/zsh-quickstart-kit)
 - [Starship](https://starship.rs/)
 
 ## How To Use
@@ -22,7 +23,10 @@ To clone and run this repo, you'll need: </br>
 # Clone this repository
 $ git clone https://github.com/fabiosouzadev/dotfiles ~/.dotfiles
 $ ./install
-
+or
+$ ./install-profile <profile> [linux,osx,win10]
+or
+$ ./install-standalone <configs...>
 ```
 
 ## Acknowledgements

@@ -1,0 +1,8 @@
+- link:
+    ~/.gitconfig:
+- shell:
+  - description: Validating .env
+    command: ./scripts/configs.sh
+    stderr: true
+    stdout: true
+

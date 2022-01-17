@@ -1,21 +1,12 @@
-- clean:
-    ~/:
-      force: true
-    ~/.config:
-      recursive: true
 - shell:
   - description: Validating sudo credentials
     command: "sudo --validate"
   - description: Create ~/.local/bin
     command: "[ -x ~/.local/bin ] || mkdir -p ~/.local/bin"     
   - description: Installing packages
-    command: "./packages/packages.sh"
-    stdout: false
+    command: "./scripts/packages.sh"
+    stdout: true
     stderr: true
 - shell: 
   - description: Customize fonts
     command: "fc-cache -vf ~/.fonts/"
-- git:    
-    '~/.asdf':
-      url: 'https://github.com/asdf-vm/asdf.git'
-      description: 'Clone asdf'   

@@ -1,12 +1,6 @@
-- defaults:
-    link:
-      relink: true
-      create: true
-      force: true
-- clean: ['~', '~/.config']
 - shell:
   - description: Validating .env
-    command: ./configs.sh
+    command: ./scripts/configs.sh
     stdout: true
     stderr: true
   - description: Validating sudo credentials
@@ -16,11 +10,6 @@
   - description: Making zsh the default shell
     command: "sudo chsh -s $(which zsh)"      
   - [git submodule update --init --recursive, Installing submodules]
-# NVM
-- git:
-    '~/.nvm':
-      url: 'https://github.com/nvm-sh/nvm.git'
-      description: 'Clone nvm'  
 - link:
     ~/.zgen-setup: zsh-quickstart-kit/zsh/.zgen-setup
     ~/.zsh_aliases: zsh-quickstart-kit/zsh/.zsh_aliases
@@ -34,28 +23,9 @@
     ~/.zshrc.d/004-java.zsh: zshrc.d/004-java.zsh
     ~/.zshrc.d/005-rust.zsh: zshrc.d/005-rust.zsh
     ~/.zsh-quickstart-local-plugins:    
-    ~/.gitconfig:
-    ~/.tmux.conf: tmux/
-    ~/.config/nvim: config/nvim
-    ~/.asdfrc: asdf/asdfrc
 - git:
     '~/zgenom':
       url: 'https://github.com/jandamm/zgenom.git'
       description: 'Clone zgenom' 
-- shell:
-# VIM-PLUG
-  - description: Installing vim-plug
-    command: "[ -f ~/.local/share/nvim ] || curl -fLo \"${XDG_DATA_HOME:-$HOME/.local/share}\"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-  - description: Installing vim plugins
-    command: "vim +PlugInstall +qa"
 
-- create:
-  - ~/Projects
 
-# Starship
-- shell:
-  - description: Installing Starship
-    command: "sh -c $(curl -fsSL https://starship.rs/install.sh)"
-- link:
-    ~/.zshrc.d/100-starship.zsh: zshrc.d/100-starship.zsh
-    ~/.config/starship.toml: config/starship.toml

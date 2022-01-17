@@ -1,0 +1,8 @@
+packages.ubuntu.conf
+git.conf
+nvm.conf
+zsh.conf
+asdf.conf
+tmux.conf
+nvim.conf
+starship.conf

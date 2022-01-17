@@ -1,0 +1,5 @@
+# NVM
+- git:
+    '~/.nvm':
+      url: 'https://github.com/nvm-sh/nvm.git'
+      description: 'Clone nvm'  

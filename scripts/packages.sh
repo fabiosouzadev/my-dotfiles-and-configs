@@ -57,4 +57,4 @@ sudo cp glow /usr/bin/
 sudo rm -r -f ~/glow
 
 #WAKATIME
-sudo pip install wakatime
+#sudo pip install wakatime

@@ -24,7 +24,7 @@ To clone and run this repo, you'll need: </br>
 $ git clone https://github.com/fabiosouzadev/dotfiles ~/.dotfiles
 $ ./install
 or
-$ ./install-profile <profile> [linux,osx,win10]
+$ ./install-profile <profile> [ubuntu,osx,win10]
 or
 $ ./install-standalone <configs...>
 ```

@@ -15,7 +15,6 @@ sudo apt-get install -y neovim
 
 #Install FZF
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
 
 #Install fd
 sudo apt-get install fd-find -y

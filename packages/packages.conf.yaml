@@ -1,3 +1,8 @@
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
 - shell:
   - description: Validating sudo credentials
     command: "sudo --validate"
@@ -7,15 +12,9 @@
     command: "./packages/packages.sh"
     stdout: false
     stderr: true
-# INSTALL FZF
-- git:
-      '~/.fzf':
-        url: 'https://github.com/junegunn/fzf'
-        description: 'Clone fzf'
 - shell: 
   - description: Customize fonts
     command: "fc-cache -vf ~/.fonts/"
-
 - git:    
     '~/.asdf':
       url: 'https://github.com/asdf-vm/asdf.git'

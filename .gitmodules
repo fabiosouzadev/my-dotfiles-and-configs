@@ -1,16 +1,3 @@
-[submodule "dotbot"]
-	path = meta/dotbot
-	url = https://github.com/anishathalye/dotbot
-	ignore = dirty
-[submodule "dotbot-asdf"]
-	path = meta/dotbot-asdf
-	url = https://github.com/sobolevn/dotbot-asdf.git
-[submodule "dotbot-brewfile"]
-	path = meta/dotbot-brewfile
-	url = https://github.com/sobolevn/dotbot-brewfile.git
-[submodule "dotbot-git"]
-	path = meta/dotbot-git
-	url = https://github.com/DrDynamic/dotbot-git.git
 [submodule "zsh-quickstart-kit"]
 	path = zsh-quickstart-kit
 	url = https://github.com/unixorn/zsh-quickstart-kit

@@ -4,7 +4,7 @@
 [submodule "meta/dotbot"]
 	path = meta/dotbot
 	url = https://github.com/anishathalye/dotbot
-	ignore = dirt
+	ignore = dirty
 [submodule "meta/dotbot-asdf"]
 	path = meta/dotbot-asdf
 	url = https://github.com/sobolevn/dotbot-asdf.git

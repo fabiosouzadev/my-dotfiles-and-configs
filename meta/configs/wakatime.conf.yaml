@@ -1,8 +1,6 @@
-- link:
-    ~/.gitconfig:
 - shell:
   - description: Validating .env
-    command: ./scripts/git.sh
+    command: ./scripts/wakatime.sh
     stderr: true
     stdout: true
 

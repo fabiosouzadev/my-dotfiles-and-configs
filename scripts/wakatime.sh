@@ -6,14 +6,6 @@ if [ -f .env ]; then
 
   eval $(cat .env | sed 's/^/export /')
   
-  #GIT
-  if [ ! -z "$GIT_FULL_NAME" ] || [ ! -z "$GIT_EMAIL" ]; then
-    GITCONFIG_CONF="[user]
-      name  = $GIT_FULL_NAME
-      email = $GIT_EMAIL"
-    echo "${GITCONFIG_CONF}" | tee -a "${GITCONFIG_FILE}"
-  fi
-
   # WAKATIME
   if [ ! -z "$WAKATIME_API_KEY" ]; then
     if [ $(uname -a | grep -ci Darwin) = 1 ]; then

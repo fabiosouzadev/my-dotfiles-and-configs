@@ -6,3 +6,4 @@ asdf.conf
 tmux.conf
 nvim.conf
 starship.conf
+wakatime.conf

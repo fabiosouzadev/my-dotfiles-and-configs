@@ -1,8 +1,4 @@
 - shell:
-  - description: Validating .env
-    command: ./scripts/configs.sh
-    stdout: true
-    stderr: true
   - description: Validating sudo credentials
     command: "sudo --validate"
   - description: Adding zsh to list of acceptable shells

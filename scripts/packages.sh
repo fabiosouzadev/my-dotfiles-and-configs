@@ -1,12 +1,14 @@
 #!/bin/sh
 
-sudo apt-get install -y zsh \
+sudo apt-get install -y \
+      zsh \
       golang \
       unzip \
       direnv \
       neofetch \
       silversearcher-ag \
-      ranger
+      ranger \
+      tmux
 
 #Install neovim
 sudo add-apt-repository ppa:neovim-ppa/unstable
@@ -57,4 +59,4 @@ sudo cp glow /usr/bin/
 sudo rm -r -f ~/glow
 
 #WAKATIME
-sudo pip install wakatime
+#sudo pip install wakatime

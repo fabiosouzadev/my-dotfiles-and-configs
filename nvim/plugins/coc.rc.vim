@@ -9,5 +9,6 @@ let g:coc_global_extensions = [
     \ 'coc-eslint',
     \ 'coc-yank',
     \ 'coc-blade',
-    \ 'coc-json'
+    \ 'coc-json',
+    \ 'coc-vimlsp'
     \ ]

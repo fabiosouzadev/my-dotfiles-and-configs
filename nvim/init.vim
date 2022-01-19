@@ -141,7 +141,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 " Plug 'sudormrfbin/cheatsheet.nvim'
-Plug 'kyazdani43/nvim-web-devicons'                 " for file icons
+Plug 'kyazdani42/nvim-web-devicons'                 " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 " Plug 'ThePrimeagen/harpoon'
 
@@ -183,16 +183,33 @@ noremap <C-w>v :vsplit<cr>
 
 " fzf {{{
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
-let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
-let g:fzf_preview_window = []
+"let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
+"let g:fzf_preview_window = []
 
 let g:fzf_action = {
     \ 'ctrl-t': 'tab split',
     \ 'ctrl-x': 'split',
     \ 'ctrl-v': 'vsplit' }
 
-nnoremap <c-p> :Files<CR>
-nnoremap <c-f> :Ag<CR>
+"nnoremap <c-p> :Files<CR>
+"nnoremap <c-f> :Ag<CR>
+
+"nnoremap <leader><leader> :GFiles<CR>
+"nnoremap <leader>fi       :Files<CR>
+"nnoremap <leader>C        :Colors<CR>
+"nnoremap <leader><CR>     :Buffers<CR>
+"nnoremap <leader>fl       :Lines<CR>
+"nnoremap <leader>ag       :Ag! <C-R><C-W><CR>
+"nnoremap <leader>m        :History<CR>
+
+nmap <silent><Leader>fi :Files<CR>
+nmap <Leader>ag :Ag<CR>
+nmap <Leader>rg :Rg<CR>
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>h :History<CR>
+nmap <Leader>T :Tags<CR>
+nmap <Leader>L :Lines<CR>
+
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -328,14 +345,7 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 " vim-tmux-navigator {{{
 
 " nvim-treesitter {{{
-let g:nvim_tree_git_hl = 1
 
-let g:nvim_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 0,
-    \ 'files': 0,
-    \ 'folder_arrows': 0,
-    \ }
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
@@ -391,6 +401,15 @@ let g:nvim_tree_highlight_opened_files = 1
 let g:nvim_tree_group_empty = 1
 "let g:nvim_tree_lsp_diagnostics = 1
 
+let g:nvim_tree_git_hl = 1
+
+let g:nvim_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ 'folder_arrows': 1,
+    \ }
+
 lua << EOF
 require'nvim-tree'.setup {
     auto_close = true,
@@ -431,14 +450,14 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 
 " Add CoC Prettier if prettier is installed
-if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-    let g:coc_global_extensions += ['coc-prettier']
-endif
+"if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+"    let g:coc_global_extensions += ['coc-prettier']
+"endif
 
 " Add CoC ESLint if ESLint is installed
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-    let g:coc_global_extensions += ['coc-eslint']
-endif
+"if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+"    let g:coc_global_extensions += ['coc-eslint']
+"endif
 
 " Remap keys for applying codeAction to the current line.
 nmap <leader>ac  <Plug>(coc-codeaction)

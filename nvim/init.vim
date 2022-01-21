@@ -49,6 +49,9 @@ set expandtab                  " ┘
 
 " Sets }}}
 
+
+" Auto CMD {{{
+
 " File types {{{
 "---------------------------------------------------------------------
 " JavaScript, Typescript
@@ -72,6 +75,24 @@ set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
 " autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
 " }}}
+
+
+" Theme {{{
+"---------------------------------------------------------------------
+" JavaScript, Typescript
+augroup colorscheme_opts
+au!
+au ColorScheme * hi Normal guibg=NONE
+au ColorScheme * hi SignColumn guibg=NONE
+au ColorScheme * hi CursorColumn guibg=#404040
+au ColorScheme * hi CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
+au ColorScheme * hi LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+au ColorScheme * hi FloatBorder guifg=#eeeeee
+augroup END
+" CursorColumn }}}
+
+
+" Auto CMD }}}
 
 " for test Ale + Coc {{{
 let g:ale_disable_lsp = 1

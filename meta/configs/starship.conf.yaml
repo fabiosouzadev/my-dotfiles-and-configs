@@ -1,7 +1,9 @@
 # Starship
 - shell:
   - description: Installing Starship
-    command: "sh -c $(curl -fsSL https://starship.rs/install.sh)"
+    command: "sh -c \"$(curl -fsSL https://starship.rs/install.sh)\""
+    stderr: true
+    stdout: true
 - link:
     ~/.zshrc.d/100-starship.zsh: zshrc.d/100-starship.zsh
     ~/.config/starship.toml: starship.toml

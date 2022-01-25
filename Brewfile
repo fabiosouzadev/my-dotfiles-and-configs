@@ -5,7 +5,7 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
 tap 'nicoverbruggen/homebrew-cask'
 tap 'homebrew/core'
-tap 'jesseduffield/lazydocker/lazydocker'
+tap 'jesseduffield/lazydocker'
 
 
 #Terminal
@@ -31,6 +31,7 @@ brew 'zsh-completion'
 brew 'ranger'
 brew 'reattach-to-user-namespace'
 brew 'wakatime-cli'
+brew 'tmux'
 
 # Apps
 brew 'mas' # Mac App Store manager
@@ -75,13 +76,6 @@ cask 'font-victor-mono'
 cask 'font-victor-mono-nerd-font'
 
 
-# Mac App Store
-mas "Battery Health", id: 490192174
-mas "ColorSlurp", id: 1287239339
-mas "Memory Diag", id: 748212890
-mas "Speedtest", id: 1153157709
-mas "Xcode", id: 497799835
-
 # Development
 cask 'docker'
 brew 'fastlane'
@@ -98,4 +92,12 @@ brew 'gh'
 cask 'ngrok'
 cask 'now'
 cask 'sublime-text'
-brew 'yarn', args: ['without-node']
+#brew 'yarn', args: ['without-node']
+
+# Mac App Store
+mas "Battery Health", id: 490192174
+mas "ColorSlurp", id: 1287239339
+mas "Memory Diag", id: 748212890
+mas "Speedtest", id: 1153157709
+mas "Xcode", id: 497799835
+

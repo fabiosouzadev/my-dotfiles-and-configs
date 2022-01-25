@@ -98,6 +98,8 @@ zgenom load peterhurford/git-it-on.zsh
 # in a repository securely by encrypting them with gnupg.
 zgenom load StackExchange/blackbox
 
+
+
 if [[ ! -f ~/.zsh-quickstart-no-omz ]]; then
   # Load some oh-my-zsh plugins
   zgenom oh-my-zsh plugins/pip
@@ -126,7 +128,6 @@ if [[ ! -f ~/.zsh-quickstart-no-omz ]]; then
   zgenom oh-my-zsh plugins/yarn
   zgenom oh-my-zsh plugins/tmux
   zgenom oh-my-zsh plugins/npm
-  zgenom oh-my-zsh plugins/npx
   zgenom oh-my-zsh plugins/nvm
   zgenom oh-my-zsh plugins/golang
   zgenom oh-my-zsh plugins/asdf

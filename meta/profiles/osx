@@ -1,4 +1,8 @@
 brew.conf
 git.conf
+nvm.conf
+tmux.conf
+nvim.comf
 zsh.conf
+wakatime.conf
 asdf.conf

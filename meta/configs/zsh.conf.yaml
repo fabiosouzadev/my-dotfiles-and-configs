@@ -6,6 +6,11 @@
   - description: Making zsh the default shell
     command: "sudo chsh -s $(which zsh)"      
   - [git submodule update --init --recursive, Installing submodules]
+  - description: 'Clone zgenom' 
+    command: 'git clone https://github.com/jandamm/zgenom.git ~/zgenom'
+    stdout: true
+    stderr: true
+
 - link:
     ~/.zgen-setup: zsh-quickstart-kit/zsh/.zgen-setup
     ~/.zsh_aliases: zsh-quickstart-kit/zsh/.zsh_aliases
@@ -18,10 +23,5 @@
       path: zshrc.d/003-brew-completations.zsh
     ~/.zshrc.d/004-java.zsh: zshrc.d/004-java.zsh
     ~/.zshrc.d/005-rust.zsh: zshrc.d/005-rust.zsh
-    ~/.zsh-quickstart-local-plugins:    
-- git:
-    '~/zgenom':
-      url: 'https://github.com/jandamm/zgenom.git'
-      description: 'Clone zgenom' 
-
-
+    ~/.zsh-quickstart-local-plugins:
+  

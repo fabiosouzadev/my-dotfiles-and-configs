@@ -3,4 +3,3 @@
     command: ./scripts/wakatime.sh
     stderr: true
     stdout: true
-

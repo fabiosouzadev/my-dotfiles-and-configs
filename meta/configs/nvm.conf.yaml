@@ -1,11 +1,8 @@
-# NVM
-- git:
-    '~/.nvm':
-      url: 'https://github.com/nvm-sh/nvm.git'
-      description: 'Clone nvm'
-
 - shell:
+  - description: Clone nvm 
+    command: 'git clone https://github.com/nvm-sh/nvm.git ~/.nvm'
+    stderr: true
   - description: Install node 
-    command: "./scripts/nodelts.install.sh"
+    command: "./scripts/npm.install.sh"
     stderr: true
     stdout: true

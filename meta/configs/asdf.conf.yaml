@@ -1,7 +1,7 @@
-- git:    
-    '~/.asdf':
-      url: 'https://github.com/asdf-vm/asdf.git'
-      description: 'Clone asdf'
+- shell:
+  - description: Clone asdf 
+    command: 'git clone https://github.com/asdf-vm/asdf.git ~/.asdf'
+    stderr: true      
 - link:
     ~/.asdfrc:
 - asdf:

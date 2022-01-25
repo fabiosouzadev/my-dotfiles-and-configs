@@ -1,10 +1,14 @@
 # This apply to all commands that come after setting the defaults.
 - defaults:
     brewfile:
-      stdout: false
-      stderr: false
+      stdout: true
+      stderr: true
       include: ['tap', 'brew', 'cask', 'mas']
 
 - brewfile:
     # This accepts the same options as `brew bundle` command:
     file: Brewfile
+
+- shell:
+    - description:
+      command: "$(brew --prefix)/opt/fzf/install"

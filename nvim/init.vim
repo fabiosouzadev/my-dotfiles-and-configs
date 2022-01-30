@@ -433,7 +433,8 @@ let g:nvim_tree_show_icons = {
 
 lua << EOF
 require'nvim-tree'.setup {
-    auto_close = true,
+    auto_close  = true,
+    open_on_tab = true,
     -- lsp_diagnostics = true,
     ignore_ft_on_setup  = { 'startify', 'dashboard' },
     filters = {
@@ -448,7 +449,7 @@ require'nvim-tree'.setup {
 }
 EOF
 
-nnoremap <C-t> :NvimTreeToggle<CR>
+nnoremap <leader>t :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 " yazdani42/nvim-tree.lua }}}

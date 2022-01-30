@@ -410,9 +410,9 @@ require'nvim-treesitter.configs'.setup {
 EOF
 " }}}
 
-" yazdani42/nvim-tree.lua {{{
-let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ]
-let g:nvim_tree_gitignore = 1
+" kyazdani42/nvim-tree.lua {{{
+" let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ]
+" let g:nvim_tree_gitignore = 1
 "let g:nvim_tree_auto_close = 1
 "let g:nvim_tree_auto_ignore_ft = [ 'startify', 'dashboard' ]
 let g:nvim_tree_quit_on_open = 1
@@ -436,6 +436,15 @@ require'nvim-tree'.setup {
     auto_close = true,
     -- lsp_diagnostics = true,
     ignore_ft_on_setup  = { 'startify', 'dashboard' },
+    filters = {
+    dotfiles = false,
+    custom = {}
+    },
+    git = {
+    enable = true,
+    ignore = true,
+    timeout = 500,
+  },
 }
 EOF
 

@@ -36,3 +36,5 @@ alias path='echo $PATH | tr -s ":" "\n"'
 #Lazygit and Lazydocker
 alias lg="lazygit"
 alias ld="lazydocker"
+
+alias python=/usr/local/bin/python3

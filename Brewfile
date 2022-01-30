@@ -10,6 +10,9 @@ tap 'jesseduffield/lazydocker'
 
 #Terminal
 brew 'zsh'
+brew 'python'
+brew 'python3'
+brew 'pyenv'
 brew 'neovim'
 brew 'fzf'
 brew 'fzy'
@@ -59,12 +62,12 @@ cask 'keepingyouawake'
 cask 'whatsapp'
 cask 'zoom'
 cask 'kitty'
-
+cask 'appcleaner'
 
 # Fonts
-cask 'font-cascadia-mono' 
+cask 'font-cascadia-mono'
 cask 'font-caskaydia-cove-nerd-font'
-cask 'font-fira-code' 
+cask 'font-fira-code'
 cask 'font-fira-code-nerd-font'
 cask 'font-hack-nerd-font'
 cask 'font-iosevka'
@@ -90,7 +93,7 @@ cask 'genymotion'
 cask 'github'
 brew 'gh'
 cask 'ngrok'
-cask 'now'
+#cask 'now'
 cask 'sublime-text'
 #brew 'yarn', args: ['without-node']
 
@@ -100,4 +103,3 @@ mas "ColorSlurp", id: 1287239339
 mas "Memory Diag", id: 748212890
 mas "Speedtest", id: 1153157709
 mas "Xcode", id: 497799835
-

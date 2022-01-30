@@ -4,9 +4,9 @@
   - description: Adding zsh to list of acceptable shells
     command: "[[ \"$(ag $(which zsh) /etc/shells)\" ]] || sudo sh -c \"echo $(which zsh) >> /etc/shells\""
   - description: Making zsh the default shell
-    command: "sudo chsh -s $(which zsh)"      
+    command: "sudo chsh -s $(which zsh)"
   - [git submodule update --init --recursive, Installing submodules]
-  - description: 'Clone zgenom' 
+  - description: 'Clone zgenom'
     command: 'git clone https://github.com/jandamm/zgenom.git ~/zgenom'
     stdout: true
     stderr: true
@@ -18,10 +18,12 @@
     ~/.zshrc: zsh-quickstart-kit/zsh/.zshrc
     ~/.zshrc.d/001-aliases.zsh: zshrc.d/001-aliases.zsh
     ~/.zshrc.d/002-nvm.zsh: zshrc.d/002-nvm.zsh
-    ~/.zshrc.d/003-brew-completations.zsh: 
+    ~/.zshrc.d/003-brew-completations.zsh:
       if: '[ `uname` = Darwin ]'
       path: zshrc.d/003-brew-completations.zsh
     ~/.zshrc.d/004-java.zsh: zshrc.d/004-java.zsh
     ~/.zshrc.d/005-rust.zsh: zshrc.d/005-rust.zsh
+    ~/.zshrc.d/006-pyenv.zsh:
+      if: '[ $(which pyenv) ]'
+      path: zshrc.d/006-pyenv.zsh
     ~/.zsh-quickstart-local-plugins:
-  

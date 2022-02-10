@@ -97,7 +97,7 @@ cask 'ngrok'
 cask 'sublime-text'
 #brew 'yarn', args: ['without-node']
 brew 'carthage'
-cask 'android-commandlinetools'
+cask 'android-sdk'
 cask 'intel-haxm'
 cask 'android-file-transfer'
 brew 'scrcpy'

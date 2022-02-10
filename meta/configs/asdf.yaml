@@ -1,13 +1,18 @@
 - shell:
+  - description: Remove previous asdf folder
+    command: "[ ! -d ~/.asdf ] || sudo rm -rf ~/.asdf "
+    stderr: true
+    stdout: true
   - description: Clone asdf
     command: 'git clone https://github.com/asdf-vm/asdf.git ~/.asdf'
     stderr: true
+    stdout: true
 - link:
     ~/.asdfrc:
 - asdf:
   - plugin: java
     url: https://github.com/halcyon/asdf-java.git
-    global: temurin-11.0.12+12
+    global: adoptopenjdk-8.0.181+13
     versions:
       - temurin-17.0.1+12
       - temurin-11.0.12+7
@@ -17,3 +22,13 @@
     global: 6.5.1
     versions:
       - 6.5.1
+  - plugin: flutter
+    url: https://github.com/oae/asdf-flutter.git
+    global: 2.10.1-stable
+    versions:
+      - 2.10.1-stable
+  - plugin: dart
+    url: https://github.com/patoconnor43/asdf-dart.git
+    global: latest
+    versions:
+      - latest

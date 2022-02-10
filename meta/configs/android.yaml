@@ -1,6 +1,3 @@
-- link:
-    ~/.zshrc.d/007-android.zsh: zshrc.d/007-android.zsh
-
 - shell:
     - description: 'Update android sdk'
       command: scripts/android_sdk_update.sh

@@ -26,4 +26,6 @@
     ~/.zshrc.d/006-pyenv.zsh:
       if: '[ $(which pyenv) ]'
       path: zshrc.d/006-pyenv.zsh
+    ~/.zshrc.d/007-android.zsh: zshrc.d/007-android.zsh
+    ~/.zshrc.d/008-flutter.zsh: zshrc.d/008-flutter.zsh
     ~/.zsh-quickstart-local-plugins:

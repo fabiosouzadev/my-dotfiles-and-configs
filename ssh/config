@@ -8,7 +8,8 @@ Host ssh.dev.azure.com
 Host github.com
   Hostname ssh.github.com
   Port 443
-
+  User git
+  PreferredAuthentications publickey
 # Bitbucket
 Host bitbucket.org
   Hostname altssh.bitbucket.org

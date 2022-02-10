@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export NVM_DIR="$HOME/.nvm" 
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 nvm install --lts
@@ -35,3 +35,4 @@ npm install -g surge
 npm install -g update
 npm install -g vercel
 npm install -g @mockoon/cli
+npm install -g appium

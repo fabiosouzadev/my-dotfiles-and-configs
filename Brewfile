@@ -96,6 +96,13 @@ cask 'ngrok'
 #cask 'now'
 cask 'sublime-text'
 #brew 'yarn', args: ['without-node']
+brew 'carthage'
+cask 'android-commandlinetools'
+cask 'intel-haxm'
+cask 'android-file-transfer'
+brew 'scrcpy'
+cask 'android-studio-preview-canary'
+
 
 # Mac App Store
 mas "Battery Health", id: 490192174

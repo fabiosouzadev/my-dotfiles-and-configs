@@ -89,6 +89,7 @@ cask 'flipper'
 cask 'cyberduck'
 cask 'figma'
 cask 'firefox-developer-edition'
+cask 'google-chrome-canary'
 cask 'genymotion'
 cask 'github'
 brew 'gh'
@@ -102,7 +103,7 @@ cask 'intel-haxm'
 cask 'android-file-transfer'
 brew 'scrcpy'
 cask 'android-studio-preview-canary'
-
+brew 'rbenv'
 
 # Mac App Store
 mas "Battery Health", id: 490192174

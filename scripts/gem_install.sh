@@ -1,1 +1,2 @@
-sudo gem install cocoapods
+gem install cocoapods
+gem install ffi

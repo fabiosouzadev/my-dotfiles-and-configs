@@ -100,10 +100,12 @@ cask 'sublime-text'
 brew 'carthage'
 cask 'android-sdk'
 cask 'intel-haxm'
+cask 'adoptopenjdk8'
 cask 'android-file-transfer'
 brew 'scrcpy'
-cask 'android-studio-preview-canary'
+cask 'android-studio-preview-beta'
 brew 'rbenv'
+brew 'watchman'
 
 # Mac App Store
 mas "Battery Health", id: 490192174

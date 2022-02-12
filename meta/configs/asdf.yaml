@@ -12,10 +12,9 @@
 - asdf:
   - plugin: java
     url: https://github.com/halcyon/asdf-java.git
-    global: adoptopenjdk-8.0.181+13
+    global: temurin-17.0.2+8
     versions:
-      - temurin-17.0.1+12
-      - adoptopenjdk-8.0.181+13
+      - temurin-17.0.2+8
   - plugin: gradle
     url: https://github.com/rfrancis/asdf-gradle.git
     global: 6.5.1

@@ -15,6 +15,7 @@
     global: temurin-17.0.2+8
     versions:
       - temurin-17.0.2+8
+      - temurin-8.0.322+6
   - plugin: gradle
     url: https://github.com/rfrancis/asdf-gradle.git
     global: 6.5.1

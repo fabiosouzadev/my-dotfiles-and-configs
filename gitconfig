@@ -1,8 +1,11 @@
 [color]
     ui = true
 
+[init]
+  defaultBranch = main
+
 [credential]
-	helper = cache
+	helper = osxkeychain
 
 [core]
 	editor = nvim
@@ -52,7 +55,7 @@
     line-numbers-left-style = cyan
     line-numbers-right-style = cyan
     line-numbers-minus-style = 124
-    line-numbers-plus-style = 28  
+    line-numbers-plus-style = 28
     line-numbers-style = syntax
 
 [include]

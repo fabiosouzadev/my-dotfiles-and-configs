@@ -12,8 +12,7 @@ export INTEL_HAXM_HOME=/usr/local/Caskroom/intel-haxm
 
 
 # Added ANDROID STUDIO configs ######
-export STUDIO_JDK="/Applications/Android Studio Preview.app/Contents/jre/Contents/Home"
-#export STUDIO_JDK=/Library/Java/JavaVirtualMachines/temurin-17.0.2+8/Contents/Home
+export STUDIO_JDK="/Applications/Android Studio.app/Contents/jre/Contents/Home"
 export STUDIO_GRADLE_JDK=$STUDIO_JDK
 ### Ended ANDROID STUDIO configs ######
 export PATH="/Applications/Android Studio Preview.app/Contents/jre/Contents/Home/bin:$PATH"

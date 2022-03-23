@@ -36,3 +36,4 @@ npm install -g update
 npm install -g vercel
 npm install -g @mockoon/cli
 npm install -g appium
+npm install -g detox-cli

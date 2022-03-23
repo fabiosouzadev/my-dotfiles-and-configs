@@ -411,7 +411,8 @@ EOF
 " }}}
 
 " kyazdani42/nvim-tree.lua {{{
-" let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ]
+
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ]
 " let g:nvim_tree_gitignore = 1
 "let g:nvim_tree_auto_close = 1
 "let g:nvim_tree_auto_ignore_ft = [ 'startify', 'dashboard' ]
@@ -517,14 +518,25 @@ nnoremap <leader>af :ALEFix<cr>
 
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
+"let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
     \   'javascript': ['prettier', 'eslint'],
+    \   'typescript': ['prettier', 'eslint'],
     \   '*': ['remove_trailing_lines', 'trim_whitespace'],
     \}
 let g:ale_linters = {
     \   'javascript': ['eslint'],
+    \   'typescript': ['eslint'],
     \}
+
+
+"let g:ale_linters = {
+" \   'javascript': ['standard', 'prettier','eslint'],
+" \   'typescript': ['standard', 'prettier','eslint']
+" \ }
+"let g:ale_fixers = {'javascript': ['standard', 'prettier','eslint'],'typescript': ['standard', 'prettier','eslint']}
+
 " dense-analysis/ale }}}
 
 " pangloss/vim-javascript {{{

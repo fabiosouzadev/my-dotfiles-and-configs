@@ -22,7 +22,7 @@ ${ANDROID_PATH_BIN}/sdkmanager --no_https --install "cmdline-tools;latest" --ver
 
 
 ANDROID_SDK_COMPILE_VERSIONS=( "32" )
-ANDROID_SDK_BUILD_TOOLS_VERSIONS=( "32.0.0" "32.1.0-rc1" )
+ANDROID_SDK_BUILD_TOOLS_VERSIONS=( "32.1.0-rc1" )
 ANDROID_SDK_VERSIONS_TO_EMULATE=( "30" )
 
 ${ANDROID_PATH_BIN}/sdkmanager --no_https --install 'extras;intel;Hardware_Accelerated_Execution_Manager' --verbose

@@ -63,6 +63,7 @@ cask 'whatsapp'
 cask 'zoom'
 cask 'kitty'
 cask 'appcleaner'
+cask 'microsoft-teams'
 
 # Fonts
 cask 'font-cascadia-mono'

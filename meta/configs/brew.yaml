@@ -9,6 +9,6 @@
     # This accepts the same options as `brew bundle` command:
     file: Brewfile
 
-- shell:
-    - description:
-      command: "$(brew --prefix)/opt/fzf/install"
+    #- shell:
+    #- description:
+    #  command: "$(brew --prefix)/opt/fzf/install"

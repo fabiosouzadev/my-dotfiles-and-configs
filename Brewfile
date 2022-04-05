@@ -64,6 +64,7 @@ cask 'zoom'
 cask 'kitty'
 cask 'appcleaner'
 cask 'microsoft-teams'
+cask 'visual-studio-code'
 
 # Fonts
 cask 'font-cascadia-mono'

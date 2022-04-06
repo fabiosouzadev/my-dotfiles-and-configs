@@ -64,7 +64,6 @@ cask 'zoom'
 cask 'kitty'
 cask 'appcleaner'
 cask 'microsoft-teams'
-cask 'visual-studio-code'
 
 # Fonts
 cask 'font-cascadia-mono'
@@ -107,6 +106,7 @@ brew 'scrcpy'
 cask 'android-studio'
 brew 'rbenv'
 brew 'watchman'
+cask 'visual-studio-code'
 
 # Mac App Store
 mas "Battery Health", id: 490192174

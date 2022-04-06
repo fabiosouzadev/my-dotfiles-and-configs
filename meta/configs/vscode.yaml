@@ -1,7 +1,13 @@
 - link:
+    ~/.config/Code/User/keybindings.json: vscode/keybindings.json
+    ~/.config/Code/User/settings.json: vscode/settings.json
+    ~/.config/Code - Insiders/User/keybindings.json: vscode/keybindings.json
+    ~/.config/Code - Insiders/User/settings.json: vscode/settings.json
+    ~/.config/Code - OSS/User/keybindings.json: vscode/keybindings.json
+    ~/.config/Code - OSS/User/settings.json: vscode/settings.json
     ~/Library/Application Support/Code/User/keybindings.json:
-      if: '[ `uname` == "Darwin" ]'
+      if: '[ `uname` = Darwin ]'
       path: vscode/keybindings.json
     ~/Library/Application Support/Code/User/settings.json:
-      if: '[ `uname` == "Darwin" ]'
+      if: '[ `uname` = Darwin ]'
       path: vscode/settings.json

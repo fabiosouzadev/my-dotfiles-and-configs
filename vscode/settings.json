@@ -1,3 +1,134 @@
 {
+  // WORKBENCH
+  "workbench.colorTheme": "Tokyo Night Storm",
+  "workbench.iconTheme": "vscode-icons",
 
+  // EDITOR
+  //"editor.fontFamily": "FiraCode-Retina",
+  //"editor.fontFamily": "FiraCodeNerdFontComplete-Retina",
+  //"editor.fontFamily": "FiraCode Nerd Font Mono",
+  //"editor.fontFamily": "Victor Mono",
+  //"editor.fontFamily": "FiraCode-Retina",
+  //"editor.fontFamily": "Victor Mono",
+  //"editor.fontFamily": "Iosevka Nerd Font Mono",
+  //"editor.fontFamily": "Hack Nerd Font Mono", #WINDOWS
+  //"editor.fontFamily": "VictorMono Nerd Font Mono", #WINDOWS
+  "editor.fontFamily": "Iosevka Nerd Font Mono",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.lineHeight": 24,
+  "editor.tabSize": 2,
+  "editor.semanticHighlighting.enabled": false,
+  "explorer.compactFolders": false,
+
+  // Aplica um sinal visual na esquerda da linha selecionada
+  "editor.renderLineHighlight": "gutter",
+
+  // Aplica linhas verticais para lembrar de quebrar linha em códigos muito grandes
+  "editor.rulers": [80, 120],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+
+  //exludes fies & folders in search indexing
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/env": true,
+    "**/venv": true
+  },
+  //exludes fies & folders for watcher service
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/env/**": true,
+    "**/venv/**": true,
+    "env-*": true
+  },
+
+  // TERMINAL
+  // Aumenta a fonte do terminal
+  "terminal.integrated.fontFamily": "Hack Nerd Font",
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.defaultProfile.osx": "/bin/zsh",
+  "terminal.integrated.defaultProfile.windows": "",
+  "terminal.integrated.defaultProfile.linux": "zsh",
+
+  // FILES
+  "files.associations": {
+    ".sequelizerc": "javascript",
+    ".stylelintrc": "json",
+    ".prettierrc": "json",
+    "*.tsx": "typescriptreact"
+  },
+
+  // MATERIAL
+  "material-icon-theme.activeIconPack": "nest",
+  "material-icon-theme.folders.associations": {
+    "infra": "app",
+    "entities": "class",
+    "domain": "class",
+    "schemas": "class",
+    "typeorm": "database",
+    "repositories": "mappings",
+    "http": "container",
+    "migrations": "tools",
+    "modules": "components",
+    "implementations": "core",
+    "dtos": "typescript",
+    "fakes": "mock",
+    "websockets": "pipe",
+    "protos": "pipe",
+    "grpc": "pipe",
+    "providers": "include",
+    "subscribers": "messages",
+    "useCases": "controller",
+    "kafka": "scripts",
+    "mappers": "meta",
+    "_shared": "shared",
+    "eslint-config": "tools",
+    "kube": "kubernetes"
+  },
+
+  "material-icon-theme.files.associations": {
+    "ormconfig.json": "database",
+    "tsconfig.json": "tune",
+    "*.proto": "3d",
+    "*.webpack.js": "webpack"
+  },
+
+  // EMMET
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true, // enable tab to expanse emmet tags
+
+  // JAVASCRIPT
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.suggest.autoImports": true,
+
+  //TYPESCRIPT
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.suggest.autoImports": true,
+  "typescript.tsserver.log": "verbose",
+
+  // TABNINE
+  "tabnine.experimentalAutoImports": true,
+
+  //BLADE
+  "blade.format.enable": true, // if you would like to enable blade format
+  "[blade]": {
+    "editor.autoClosingBrackets": "always"
+  },
+
+  "GitLive.Issue tracker integration": "Enabled",
+  "peacock.vslsJoinColor": "#1857a4",
+  "redhat.telemetry.enabled": true,
+  "editor.inlineSuggest.enabled": true
 }

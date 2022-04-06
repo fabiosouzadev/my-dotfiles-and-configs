@@ -1,6 +1,6 @@
 # Install packages
 
- VSCODE_EXTENSIONS=(
+VSCODE_EXTENSIONS=(
 
 # ICONS
 "vscode-icons-team.vscode-icons"
@@ -16,9 +16,6 @@
 "daltonmenezes.aura-theme"
 "wicked-labs.wvsc-serendipity"
 "morgan-codes.morgan-codes-vscode-theme"
-"nopjmp.fairyfloss"
-"max-SS.cyberpunk"
-"ziterz.codesandbox-black-theme"
 
 #LINT
 "dbaeumer.vscode-eslint"

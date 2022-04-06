@@ -1,5 +1,4 @@
 # Install packages
-
 VSCODE_EXTENSIONS=(
 
 # ICONS
@@ -34,7 +33,6 @@ VSCODE_EXTENSIONS=(
 "TeamHub.teamhub"
 "vsls-contrib.gistfs"
 "webyxco.vscode-gitandgithub-pack"
-"lamartire.git-indicators"
 
 #Docker & Kubernetes
 "ms-azuretools.vscode-docker"
@@ -54,8 +52,6 @@ VSCODE_EXTENSIONS=(
 #AI
 "tabnine.tabnine-vscode"
 "GitHub.copilot"
-"quodai-extension.quodai-code-context-extension"
-"kiteco.kite"
 
 #Debugger
 "firefox-devtools.vscode-firefox-debug"

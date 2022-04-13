@@ -70,7 +70,13 @@ use {
 }
 
 -- Editing
+use "lukas-reineke/indent-blankline.nvim"
+
+
 -- Behaviour/tools
+use 'wakatime/vim-wakatime'
+
+
 -- Git
 -- COC
 -- LSP

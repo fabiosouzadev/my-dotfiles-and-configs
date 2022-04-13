@@ -4,4 +4,4 @@
 *.zip*
 .vscode
 Brewfile.lock.json
-/packer_compiled.lua
+packer_compiled.lua

@@ -70,19 +70,12 @@ call plug#begin()
 " PlugInstall PlugClean PlugUpdate
 
 " Visual / Themes
-Plug 'ryanoasis/vim-devicons'
 
 " Navigation
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 
 " Editing
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'thaerkh/vim-indentguides'
 
 " Behaviour/tools
-Plug 'wakatime/vim-wakatime'
 
 " Auto-completion / Prettier
 Plug 'editorconfig/editorconfig-vim'
@@ -118,17 +111,12 @@ if has("nvim")
 
 " File Management
 Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'nvim-telescope/telescope-file-browser.nvim'
 " Plug 'sudormrfbin/cheatsheet.nvim'
-Plug 'kyazdani42/nvim-web-devicons'                 " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
 " Plug 'ThePrimeagen/harpoon'
 
 " Visual / Themes
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 " Navigation
 " Editing
 " Behaviour/tools
@@ -151,11 +139,6 @@ let g:tokyonight_colors = {
     \ 'error': '#ff0000'
     \ }
 
-" Load the colorscheme
-colorscheme tokyonight
-
-" lightline
-let g:lightline = {'colorscheme': 'tokyonight'}
 " tokyonight theme }}}
 
 " vim-tmux-navigator }}}
@@ -165,51 +148,6 @@ nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 " vim-tmux-navigator {{{
-
-" nvim-treesitter {{{
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = {
-        'bash',
-        'css',
-        'scss',
-        'dockerfile',
-        'go',
-        'gomod',
-        'graphql',
-        'html',
-        'javascript',
-        'jsdoc',
-        'json',
-        'lua',
-        'python',
-        'rust',
-        'svelte',
-        'tsx',
-        'typescript',
-        'yaml',
-        'php',
-    },
-    -- ensure_installed = "all", -- or maintained
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = true
-    },
-    indent = {
-        enable = false
-    },
-    context_commentstring = {
-        enable = true
-    },
-    git = {
-        enable = true,
-        ignore = true,
-        timeout = 500,
-    },
-}
-EOF
-" }}}
 
 
 " Indentguides }}}

@@ -49,7 +49,7 @@ use 'wbthomason/packer.nvim'
 use 'folke/tokyonight.nvim'
 use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
 use { 'akinsho/bufferline.nvim', tag = "*", requires = 'kyazdani42/nvim-web-devicons'}
-use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+use { 'romgrk/nvim-treesitter-context', requires = { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'} }
 
 -- Navigation
 -- File Management / Search

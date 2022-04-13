@@ -45,8 +45,8 @@ return packer.startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   
-  -- Core
-  -- Nvim Tree
+ -- Core
+ -- Nvim Tree
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
@@ -54,11 +54,18 @@ return packer.startup(function(use)
     },
     config = function() require'nvim-tree'.setup {} end
   }
-  -- Telescope
+ -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+
+ -- FZF
+  use { 
+    'junegunn/fzf.vim', 
+    requires = { 'junegunn/fzf', run = ':call fzf#install()' } 
+  }
+
 
   -- LSP
 
@@ -69,6 +76,11 @@ return packer.startup(function(use)
    use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+  use {
+    'akinsho/bufferline.nvim', 
+    tag = "*", 
+    requires = 'kyazdani42/nvim-web-devicons'
   }
 
   if packer_bootstrap then

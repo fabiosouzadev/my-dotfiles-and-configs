@@ -74,3 +74,22 @@ keymap("n", ';r',  '<Cmd>lua require "telescope.builtin".live_grep()<CR>', opts)
 keymap("n", ';;', '<Cmd>lua require "telescope.builtin".help_tags()<CR>', opts)
 keymap("n", '\\', '<Cmd>lua require "telescope.builtin".buffers()<CR>',opts)
 keymap("n", ';gs', ':lua require"telescope.builtin".git_status()<CR>',opts)
+
+-- Fzf
+-- nnoremap <c-p> :Files<CR>
+-- nnoremap <c-f> :Ag<CR>
+
+keymap("n", '<C-p>',  ':Files<CR>',opts)
+keymap("n", '<leader>ag', ':Ag<CR>',opts)
+keymap("n", '<leader>rg', ':Rg<CR>',opts)
+keymap("n", '<leader>b', ':Buffers<CR>',opts)
+keymap("n", '<leader>h', ':History<CR>',opts)
+keymap("n", '<leader>t', ':Tags<CR>',opts)
+keymap("n", '<leader>l', ':Lines<CR>',opts)
+
+
+-- Bufferline
+
+keymap("n", '<Tab>',  ':BufferLineCycleNext<CR>', opts)
+keymap("n", '<S-Tab>',  ':BufferLineCycleNext<CR>', opts)
+

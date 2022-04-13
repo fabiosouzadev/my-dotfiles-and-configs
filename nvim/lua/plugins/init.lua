@@ -42,46 +42,41 @@ packer.init {
 }
 
 return packer.startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-  
- -- Core
- -- Nvim Tree
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
-    },
-    config = function() require'nvim-tree'.setup {} end
-  }
- -- Telescope
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
+-- Packer can manage itself
+use 'wbthomason/packer.nvim'
 
- -- FZF
-  use { 
-    'junegunn/fzf.vim', 
-    requires = { 'junegunn/fzf', run = ':call fzf#install()' } 
-  }
+-- Visual / Themes
+use 'folke/tokyonight.nvim'
+use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
+use { 'akinsho/bufferline.nvim', tag = "*", requires = 'kyazdani42/nvim-web-devicons'}
+use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
+-- Navigation
+-- File Management / Search
+use {
+  'kyazdani42/nvim-tree.lua',
+  requires = {
+    'kyazdani42/nvim-web-devicons', -- optional, for file icon
+  },
+  config = function() require'nvim-tree'.setup {} end
+}
+use {
+  'nvim-telescope/telescope.nvim',
+  requires = { {'nvim-lua/plenary.nvim'} }
+}
+use { 
+  'junegunn/fzf.vim', 
+  requires = { 'junegunn/fzf', run = ':call fzf#install()' } 
+}
 
-  -- LSP
-
-  -- Autocompletion and Snippets
-
-   -- Theme/Syntax
-   use 'folke/tokyonight.nvim'
-   use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
-  use {
-    'akinsho/bufferline.nvim', 
-    tag = "*", 
-    requires = 'kyazdani42/nvim-web-devicons'
-  }
+-- Editing
+-- Behaviour/tools
+-- Git
+-- COC
+-- LSP
+-- Autocompletion and Snippets
+-- Prettier and Lint 
+-- JS,Typescript
 
   if packer_bootstrap then
     require('packer').sync()

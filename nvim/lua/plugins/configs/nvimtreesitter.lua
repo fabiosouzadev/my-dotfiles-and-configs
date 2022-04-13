@@ -20,11 +20,18 @@ require'nvim-treesitter.configs'.setup {
     'yaml',
     'php',
   },
-  indent = {
-      enable = false
+  highlight = { 
+    enable = true,
+    additional_vim_regex_highlighting = true
+  }, 
+  incremental_selection = { 
+    enable = true 
+  }, 
+  textobjects = { 
+    enable = true
   },
   context_commentstring = {
-      enable = true
+    enable = true
   },
   git = {
       enable = true,

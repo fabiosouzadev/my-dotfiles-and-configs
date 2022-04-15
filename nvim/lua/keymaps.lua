@@ -69,11 +69,12 @@ keymap("n", "<leader>r", ":NvimTreeRefresh<CR>", opts)
 keymap("n", "<leader>n", ":NvimTreeFindFile<CR>", opts)
 
 -- Telescope
-keymap("n", ';f',  '<Cmd>lua require "telescope.builtin".find_files()<CR>', opts)
-keymap("n", ';r',  '<Cmd>lua require "telescope.builtin".live_grep()<CR>', opts)
-keymap("n", ';;', '<Cmd>lua require "telescope.builtin".help_tags()<CR>', opts)
-keymap("n", '\\', '<Cmd>lua require "telescope.builtin".buffers()<CR>',opts)
-keymap("n", ';gs', ':lua require"telescope.builtin".git_status()<CR>',opts)
+keymap("n", '<leader>ff',  '<Cmd>lua require "telescope.builtin".find_files()<CR>', opts)
+keymap("n", '<leader>fl',  '<Cmd>lua require "telescope.builtin".live_grep()<CR>', opts)
+keymap("n", '<leader>fh', '<Cmd>lua require "telescope.builtin".help_tags()<CR>', opts)
+keymap("n", '<leader>fb', '<Cmd>lua require "telescope.builtin".buffers()<CR>',opts)
+keymap("n", '<leader>fg',  '<Cmd>lua require "telescope.builtin".git_files()<CR>', opts)
+keymap("n", '<leader>ft',  '<Cmd>lua require "telescope.builtin".treesitter()<CR>', opts)
 
 -- Fzf
 -- nnoremap <c-p> :Files<CR>

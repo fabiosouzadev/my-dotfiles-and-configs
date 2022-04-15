@@ -128,32 +128,6 @@ call plug#end()
 
 " Plugins }}}
 
-" tokyonight theme {{{
-let g:tokyonight_style = "night" " storm, night or day
-let g:tokyonight_italic_functions = 1
-let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-
-" Change the hint color to the 'orange' color, and make the 'error' color bright red
-let g:tokyonight_colors = {
-    \ 'hint': 'orange',
-    \ 'error': '#ff0000'
-    \ }
-
-" tokyonight theme }}}
-
-" vim-tmux-navigator }}}
-let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-" vim-tmux-navigator {{{
-
-
-" Indentguides }}}
-let g:indentguides_spacechar = '┆'
-let g:indentguides_tabchar = '|'
-" Indentguides {{{
 
 " CoC Configs {{{
 vmap <leader>f  <Plug>(coc-format-selected)

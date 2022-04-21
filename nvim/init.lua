@@ -1,5 +1,5 @@
+require 'configs.settings'
 require 'plugins'
 require 'plugins.configs'
-require 'settings'
-require 'keymaps'
-require 'colorscheme'
+require 'configs.keymaps'
+require 'configs.colorscheme'

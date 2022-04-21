@@ -1,8 +1,6 @@
-local opt = vim.opt
 local g = vim.g
 
 -- Theme
-opt.termguicolors = true
 
 g.tokyonight_style = "storm" --storm, night or day
 g.tokyonight_italic_functions = true

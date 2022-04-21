@@ -37,3 +37,6 @@ npm install -g vercel
 npm install -g @mockoon/cli
 npm install -g appium
 npm install -g detox-cli
+
+npm install -g vscode-html-language-server
+npm install -g typescript-language-server

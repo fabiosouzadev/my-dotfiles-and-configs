@@ -16,7 +16,6 @@ opt.ttyfast = true
 opt.synmaxcol = 240
 opt.errorbells = false
 opt.showcmd = true
-opt.completeopt = 'menuone,noinsert,noselect'
 opt.wildignore:append {'*/node_modules/**'}
 
 -- Editor
@@ -36,5 +35,17 @@ opt.splitbelow = true
 -- Set the behavior of tab
 opt.tabstop=2              
 opt.softtabstop=2         
-opt.shiftwidth=4             
+opt.shiftwidth=2             
 opt.expandtab=true
+
+-- Themes
+opt.termguicolors = true
+
+
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
+

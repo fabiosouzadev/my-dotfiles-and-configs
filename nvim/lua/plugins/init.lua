@@ -1,6 +1,3 @@
--- https://github.com/ChristianChiarulli/nvim/blob/master/lua/user/plugins.lua
-
--- Plugins   
 local fn = vim.fn
 
 -- Automatically install packer
@@ -43,13 +40,14 @@ packer.init {
 
 return packer.startup(function(use)
 -- Packer can manage itself
-use 'wbthomason/packer.nvim'
+use { 'wbthomason/packer.nvim' }
 
 -- Visual / Themes
-use 'folke/tokyonight.nvim'
+use {'folke/tokyonight.nvim'}
 use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
 use { 'akinsho/bufferline.nvim', tag = "*", requires = 'kyazdani42/nvim-web-devicons'}
 use { 'romgrk/nvim-treesitter-context', requires = { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'} }
+use {'norcalli/nvim-colorizer.lua'}
 
 -- Navigation
 -- File Management / Search
@@ -80,8 +78,24 @@ use 'wakatime/vim-wakatime'
 
 -- Git
 -- COC
+
 -- LSP
--- Autocompletion and Snippets
+use {'neovim/nvim-lspconfig'} -- <C-x><C-o>
+use {'williamboman/nvim-lsp-installer'}
+use {'arkav/lualine-lsp-progress'}
+
+-- Autocompletion
+use {'hrsh7th/nvim-cmp'}
+use {'hrsh7th/cmp-nvim-lsp'}
+use {'hrsh7th/cmp-buffer'}
+use {'hrsh7th/cmp-path'}
+use {'hrsh7th/cmp-cmdline'}
+
+-- Snippets -- for luasnip
+use {'L3MON4D3/LuaSnip'}
+use {'saadparwaiz1/cmp_luasnip'}
+
+
 -- Prettier and Lint 
 -- JS,Typescript
 

@@ -22,6 +22,16 @@ keymap("", "<Space>", "<Nop>", opts)
 g.mapleader = " "
 g.maplocalleader = " "
 
+
+
+-- Para Salvar com 'Ctrl + S' nos modos: Normal, Inserção e Visual
+-- Precisa adicionar a linha: stty -ixon , ao seu ~/.bashrc
+vim.cmd([[ nnoremap <C-s> :w<CR> ]])
+vim.cmd([[ inoremap <C-s> <Esc>:w<CR>l ]])
+vim.cmd([[ vnoremap <C-s> <Esc>:w<CR> ]])
+-- Selecionar tudo com 'Ctrl + A'
+vim.cmd([[ map <C-a> ggVG ]])
+
 -- Edit and Reload Config
 keymap("n","<leader>ec",":vsplit %<CR>",opts)
 keymap("n","<leader>sc",":source %<CR>",opts)
@@ -85,7 +95,7 @@ keymap("n", '<leader>ag', ':Ag<CR>',opts)
 keymap("n", '<leader>rg', ':Rg<CR>',opts)
 keymap("n", '<leader>b', ':Buffers<CR>',opts)
 keymap("n", '<leader>h', ':History<CR>',opts)
-keymap("n", '<leader>t', ':Tags<CR>',opts)
+-- keymap("n", '<leader>tg', ':Tags<CR>',opts)
 keymap("n", '<leader>l', ':Lines<CR>',opts)
 
 

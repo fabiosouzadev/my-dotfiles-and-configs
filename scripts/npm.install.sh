@@ -40,3 +40,4 @@ npm install -g detox-cli
 
 npm install -g vscode-html-language-server
 npm install -g typescript-language-server
+npm install -g emmet-ls

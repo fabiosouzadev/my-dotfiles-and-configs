@@ -91,10 +91,12 @@ use {'hrsh7th/cmp-path'}
 use {'hrsh7th/cmp-cmdline'}
 
 -- Snippets -- for luasnip
--- use {'L3MON4D3/LuaSnip'}
--- use {'saadparwaiz1/cmp_luasnip'}
-use {'hrsh7th/cmp-vsnip'}
-use {'hrsh7th/vim-vsnip'}
+use {'L3MON4D3/LuaSnip'}
+use {'saadparwaiz1/cmp_luasnip'}
+
+-- vsnip
+-- use {'hrsh7th/cmp-vsnip'}
+-- use {'hrsh7th/vim-vsnip'}
 
 
 -- Prettier and Lint 

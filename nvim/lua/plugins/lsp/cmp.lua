@@ -86,20 +86,3 @@ vim.opt.completeopt={ "menu","menuone","noselect","noinsert"}
       { name = 'cmdline' }
     })
   })
-
--- nvim-cmp supports additional completion capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
--- Enable the following language servers
-local servers = require 'plugins.lsp.language-servers'
-for _, lsp in ipairs(servers) do
-  require('lspconfig')[lsp].setup {
-    --on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
-    }
-  }
-end

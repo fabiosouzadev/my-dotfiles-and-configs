@@ -57,7 +57,14 @@ use {
 
 -- Visual / Themes
 use {'folke/tokyonight.nvim'}
-use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
+use { 
+  'nvim-lualine/lualine.nvim', 
+  wants = {'tokyonight.nvim', 'lualine-lsp-progress'},
+  config = function()
+    require("plugins.lualine")
+  end,  
+  requires = { 'kyazdani42/nvim-web-devicons', opt = true } 
+}
 use { 'akinsho/bufferline.nvim', tag = "*", requires = 'kyazdani42/nvim-web-devicons'}
 use { 'romgrk/nvim-treesitter-context', requires = { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'} }
 use {'norcalli/nvim-colorizer.lua'}
@@ -98,12 +105,14 @@ use {
   config = function()
     require("plugins.lsp").setup()
   end,
-  wants = { "cmp-nvim-lsp", "nvim-lsp-installer", "lsp_signature.nvim"}, -- <C-x><C-o>
+  wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp"}, -- <C-x><C-o>
   requires = {
     "williamboman/nvim-lsp-installer",
     "ray-x/lsp_signature.nvim",
   }
 }
+
+use {'arkav/lualine-lsp-progress'}
 
 -- Autocompletion
 use {

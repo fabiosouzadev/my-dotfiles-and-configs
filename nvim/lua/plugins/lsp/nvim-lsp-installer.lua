@@ -17,7 +17,7 @@ function M.setup(servers, options)
         server:install()
       end
     else
-      utils.error(server)
+      print("Installing " .. server)
     end
   end
 end

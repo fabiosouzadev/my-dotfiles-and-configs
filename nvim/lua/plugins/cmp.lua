@@ -50,11 +50,12 @@ vim.opt.completeopt={ "menu","menuone","noselect","noinsert"}
       end, { "i", "s" }),
     }),
     sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      -- { name = 'vsnip' }, -- For vsnip users.
-      { name = 'luasnip' }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
+      { name = "nvim_lsp" },
+      { name = "treesitter" },
+      { name = "buffer" },
+      { name = "luasnip" },
+      { name = "nvim_lua" },
+      { name = "path" },
     }, {
       { name = 'buffer' },
     })

@@ -5,6 +5,7 @@ local servers = {
   jsonls = {},
   sumneko_lua = {},
   tsserver = {},
+  vimls = {},
 }
 
 return servers

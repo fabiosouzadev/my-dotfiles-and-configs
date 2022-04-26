@@ -117,13 +117,13 @@ use {
   }
 }
 
-use { 
-  'junegunn/fzf.vim',
-  config = function()
-    require('plugins.fzf')
-  end,
-  requires = { 'junegunn/fzf', run = ':call fzf#install()' } 
-}
+-- use { 
+--   'junegunn/fzf.vim',
+--   config = function()
+--     require('plugins.fzf')
+--   end,
+--   requires = { 'junegunn/fzf', run = ':call fzf#install()' } 
+-- }
 
 -- FZF Lua
 use {
@@ -186,6 +186,13 @@ use {
   },
   config = function()
     require("plugins.cmp")
+  end
+}
+
+use { 
+  'windwp/nvim-autopairs', 
+  config = function()
+    require('plugins.nvim-autopairs')
   end
 }
 -- Prettier and Lint 

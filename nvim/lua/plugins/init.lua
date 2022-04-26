@@ -195,6 +195,9 @@ use {
     require('plugins.nvim-autopairs')
   end
 }
+
+use {'onsails/lspkind-nvim'}
+
 -- Prettier and Lint 
 -- JS,Typescript
 

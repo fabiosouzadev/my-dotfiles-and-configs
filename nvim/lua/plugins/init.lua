@@ -57,17 +57,43 @@ use {
 
 -- Visual / Themes
 use {'folke/tokyonight.nvim'}
+
 use { 
-  'nvim-lualine/lualine.nvim', 
+  'nvim-lualine/lualine.nvim',
+  after = "nvim-treesitter",
   wants = {'tokyonight.nvim', 'lualine-lsp-progress'},
   config = function()
     require("plugins.lualine")
   end,  
   requires = { 'kyazdani42/nvim-web-devicons', opt = true } 
 }
-use { 'akinsho/bufferline.nvim', tag = "*", requires = 'kyazdani42/nvim-web-devicons'}
-use { 'romgrk/nvim-treesitter-context', requires = { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'} }
-use {'norcalli/nvim-colorizer.lua'}
+use { 
+  'akinsho/bufferline.nvim', 
+  tag = "*",
+  config = function()
+    require('plugins.bufferline')
+  end,
+  requires = 'kyazdani42/nvim-web-devicons'
+}
+
+use {
+  'nvim-treesitter/nvim-treesitter',
+  run = ":TSUpdate",
+  config = function()
+    require('plugins.nvim-treesitter')
+  end,
+  requires = {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+  }
+}
+
+
+use {
+  'norcalli/nvim-colorizer.lua',
+  config = function()
+    require('plugins.nvim-colorizer')
+  end
+}
 
 -- Navigation
 -- File Management / Search
@@ -78,18 +104,42 @@ use {
   },
   config = function() require'nvim-tree'.setup {} end
 }
+
 use {
   'nvim-telescope/telescope.nvim',
-  requires = { {'nvim-lua/plenary.nvim'} }
+  config = function() 
+    require('plugins.telescope')
+  end,
+  requires = { 
+    {'nvim-lua/plenary.nvim'},
+    {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  }
 }
-use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
 use { 
-  'junegunn/fzf.vim', 
+  'junegunn/fzf.vim',
+  config = function()
+    require('plugins.fzf')
+  end,
   requires = { 'junegunn/fzf', run = ':call fzf#install()' } 
 }
 
+-- FZF Lua
+use {
+  "ibhagwan/fzf-lua",
+  config = function()
+    require('plugins.fzf-lua')
+  end,
+  requires = { 'kyazdani42/nvim-web-devicons' }
+}
+
 -- Editing
-use "lukas-reineke/indent-blankline.nvim"
+use {
+  "lukas-reineke/indent-blankline.nvim",
+  config = function()
+    require('plugins.indent-blankline')
+  end
+}
 
 
 -- Behaviour/tools
@@ -117,10 +167,7 @@ use {'arkav/lualine-lsp-progress'}
 -- Autocompletion
 use {
   "hrsh7th/nvim-cmp",
-  config = function()
-    require("plugins.lsp.cmp")
-  end,
-  wants = { "LuaSnip" },
+  wants = { "LuaSnip" }, 
   requires = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
@@ -133,7 +180,10 @@ use {
       wants = "friendly-snippets"
     },
     "rafamadriz/friendly-snippets",
-  }
+  },
+  config = function()
+    require("plugins.cmp")
+  end
 }
 -- Prettier and Lint 
 -- JS,Typescript

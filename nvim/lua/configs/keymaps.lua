@@ -89,18 +89,25 @@ keymap("n", '<leader>ft',  '<Cmd>lua require "telescope.builtin".treesitter()<CR
 -- Fzf
 -- nnoremap <c-p> :Files<CR>
 -- nnoremap <c-f> :Ag<CR>
-
-keymap("n", '<C-p>',  ':Files<CR>',opts)
-keymap("n", '<leader>ag', ':Ag<CR>',opts)
-keymap("n", '<leader>rg', ':Rg<CR>',opts)
-keymap("n", '<leader>b', ':Buffers<CR>',opts)
-keymap("n", '<leader>h', ':History<CR>',opts)
+-- keymap("n", '<C-p>',  ':Files<CR>',opts)
+-- keymap("n", '<leader>ag', ':Ag<CR>',opts)
+-- keymap("n", '<leader>rg', ':Rg<CR>',opts)
+-- keymap("n", '<leader>b', ':Buffers<CR>',opts)
+-- keymap("n", '<leader>h', ':History<CR>',opts)
 -- keymap("n", '<leader>tg', ':Tags<CR>',opts)
-keymap("n", '<leader>l', ':Lines<CR>',opts)
+-- keymap("n", '<leader>l', ':Lines<CR>',opts)
+
+-- FZF - lua
+keymap("n", '<C-p>',  '<Cmd>lua require("fzf-lua").files()<CR>',opts)
+keymap("n", '<leader>ag', '<Cmd>lua require("fzf-lua").live_grep()<CR>',opts)
+keymap("n", '<leader>rg', '<Cmd>lua require("fzf-lua").grep_project()<CR>',opts)
+keymap("n", '<leader>b', '<Cmd>lua require("fzf-lua").buffers()<CR>',opts)
+keymap("n", '<leader>h', '<Cmd>lua require("fzf-lua").search_history()<CR>',opts)
+-- keymap("n", '<leader>tg', ':Tags<CR>',opts)
+keymap("n", '<leader>l', '<Cmd>lua require("fzf-lua").lines()<CR>',opts)
 
 
 -- Bufferline
-
 keymap("n", '<Tab>',  ':BufferLineCycleNext<CR>', opts)
 keymap("n", '<S-Tab>',  ':BufferLineCycleNext<CR>', opts)
 

@@ -42,6 +42,19 @@ return packer.startup(function(use)
 -- Packer can manage itself
 use { 'wbthomason/packer.nvim' }
 
+
+-- Keybinding
+use {
+  "folke/which-key.nvim",
+  config = function()
+    require("which-key").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
+
 -- Visual / Themes
 use {'folke/tokyonight.nvim'}
 use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
@@ -82,29 +95,36 @@ use 'wakatime/vim-wakatime'
 -- LSP
 use {
   'neovim/nvim-lspconfig',
+  config = function()
+    require("plugins.lsp").setup()
+  end,
   wants = { "cmp-nvim-lsp", "nvim-lsp-installer"}, -- <C-x><C-o>
   requires = {
-    "williamboman/nvim-lsp-installer"
+    "williamboman/nvim-lsp-installer",
   }
-}  
-use {'williamboman/nvim-lsp-installer'}
+}
 
 -- Autocompletion
-use {'hrsh7th/nvim-cmp'}
-use {'hrsh7th/cmp-nvim-lsp'}
-use {'hrsh7th/cmp-buffer'}
-use {'hrsh7th/cmp-path'}
-use {'hrsh7th/cmp-cmdline'}
-
--- Snippets -- for luasnip
-use {'L3MON4D3/LuaSnip'}
-use {'saadparwaiz1/cmp_luasnip'}
-
--- vsnip
--- use {'hrsh7th/cmp-vsnip'}
--- use {'hrsh7th/vim-vsnip'}
-
-
+use {
+  "hrsh7th/nvim-cmp",
+  config = function()
+    require("plugins.lsp.cmp")
+  end,
+  wants = { "LuaSnip" },
+  requires = {
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "saadparwaiz1/cmp_luasnip",
+    {
+      -- Snippets -- for luasnip
+      "L3MON4D3/LuaSnip",
+      wants = "friendly-snippets"
+    },
+    "rafamadriz/friendly-snippets",
+  }
+}
 -- Prettier and Lint 
 -- JS,Typescript
 

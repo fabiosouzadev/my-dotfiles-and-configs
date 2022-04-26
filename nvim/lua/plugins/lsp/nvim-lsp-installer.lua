@@ -1,11 +1,26 @@
-local lsp_installer = require('nvim-lsp-installer')
--- Include the servers you want to have installed by default below
-local servers = require 'plugins.lsp.language-servers'
+local lsp_installer_servers = require "nvim-lsp-installer.servers"
 
-for _, name in pairs(servers) do
-  local server_is_found, server = lsp_installer.get_server(name)
-  if server_is_found and not server:is_installed() then
-    print("Installing " .. name)
-    server:install()
+local M = {}
+
+function M.setup(servers, options)
+  for server_name, _ in pairs(servers) do
+    local server_available, server = lsp_installer_servers.get_server(server_name)
+
+    if server_available then
+      server:on_ready(function()
+        local opts = vim.tbl_deep_extend("force", options, servers[server.name] or {})
+        server:setup(opts)
+      end)
+
+      if not server:is_installed() then
+        print("Installing " .. server.name)
+        server:install()
+      end
+    else
+      utils.error(server)
+    end
   end
 end
+
+
+return M

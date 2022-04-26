@@ -98,9 +98,10 @@ use {
   config = function()
     require("plugins.lsp").setup()
   end,
-  wants = { "cmp-nvim-lsp", "nvim-lsp-installer"}, -- <C-x><C-o>
+  wants = { "cmp-nvim-lsp", "nvim-lsp-installer", "lsp_signature.nvim"}, -- <C-x><C-o>
   requires = {
     "williamboman/nvim-lsp-installer",
+    "ray-x/lsp_signature.nvim",
   }
 }
 

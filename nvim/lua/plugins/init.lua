@@ -47,11 +47,7 @@ use { 'wbthomason/packer.nvim' }
 use {
   "folke/which-key.nvim",
   config = function()
-    require("which-key").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
+    require('plugins.which-key')
   end
 }
 
@@ -85,6 +81,11 @@ use {
   requires = {
     "nvim-treesitter/nvim-treesitter-textobjects",
   }
+}
+
+use {
+  "RRethy/nvim-treesitter-endwise",
+  wants = "nvim-treesitter",
 }
 
 
@@ -172,6 +173,8 @@ use {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
+    "hrsh7th/cmp-nvim-lua",
+    "ray-x/cmp-treesitter",
     "hrsh7th/cmp-cmdline",
     "saadparwaiz1/cmp_luasnip",
     {

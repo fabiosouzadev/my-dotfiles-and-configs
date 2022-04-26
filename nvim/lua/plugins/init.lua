@@ -80,7 +80,15 @@ use 'wakatime/vim-wakatime'
 -- COC
 
 -- LSP
-use {'neovim/nvim-lspconfig'} -- <C-x><C-o>
+use {
+  'neovim/nvim-lspconfig',
+  wants = { "cmp-nvim-lsp", "nvim-lsp-installer"}, -- <C-x><C-o>
+  requires = {
+    "williamboman/nvim-lsp-installer"
+  }
+}  
+use {'williamboman/nvim-lsp-installer'}
+
 -- Autocompletion
 use {'hrsh7th/nvim-cmp'}
 use {'hrsh7th/cmp-nvim-lsp'}
@@ -97,7 +105,6 @@ use {'saadparwaiz1/cmp_luasnip'}
 -- use {'hrsh7th/vim-vsnip'}
 
 
-use {'williamboman/nvim-lsp-installer'}
 -- Prettier and Lint 
 -- JS,Typescript
 

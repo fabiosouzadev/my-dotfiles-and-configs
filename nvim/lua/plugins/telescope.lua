@@ -1,6 +1,13 @@
 require('telescope').setup{
   defaults = {
     file_ignore_patterns = { "%.git/", "node_modules/", "coverage/", "__pycache__/", "%.o" },
+    layout_config = {
+      width = 0.75,
+      prompt_position = "top",
+      preview_cutoff = 120,
+      horizontal = {mirror = false},
+      vertical = {mirror = false}
+    },
   },
   extensions = {
     fzf = {

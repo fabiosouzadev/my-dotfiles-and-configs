@@ -80,14 +80,9 @@ use {
   end,
   requires = {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    "RRethy/nvim-treesitter-endwise",
   }
 }
-
-use {
-  "RRethy/nvim-treesitter-endwise",
-  wants = "nvim-treesitter",
-}
-
 
 use {
   'norcalli/nvim-colorizer.lua',
@@ -156,10 +151,11 @@ use {
   config = function()
     require("plugins.lsp").setup()
   end,
-  wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp"}, -- <C-x><C-o>
+  -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp"}, -- <C-x><C-o>
   requires = {
     "williamboman/nvim-lsp-installer",
     "ray-x/lsp_signature.nvim",
+    "b0o/schemastore.nvim",
   }
 }
 
@@ -167,25 +163,22 @@ use {'arkav/lualine-lsp-progress'}
 
 -- Autocompletion
 use {
-  "hrsh7th/nvim-cmp",
-  wants = { "LuaSnip" }, 
+  'hrsh7th/nvim-cmp',
   requires = {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-nvim-lua",
-    "ray-x/cmp-treesitter",
-    "hrsh7th/cmp-cmdline",
-    "saadparwaiz1/cmp_luasnip",
-    {
-      -- Snippets -- for luasnip
-      "L3MON4D3/LuaSnip",
-      wants = "friendly-snippets"
-    },
-    "rafamadriz/friendly-snippets",
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/nvim-cmp',
+    'ray-x/cmp-treesitter',
+    'hrsh7th/cmp-nvim-lua',
+    'hrsh7th/cmp-vsnip',
+    'hrsh7th/vim-vsnip',
+    'rafamadriz/friendly-snippets',
+    'onsails/lspkind-nvim',
   },
   config = function()
-    require("plugins.cmp")
+    require('plugins.cmp')
   end
 }
 
@@ -195,8 +188,6 @@ use {
     require('plugins.nvim-autopairs')
   end
 }
-
-use {'onsails/lspkind-nvim'}
 
 -- Prettier and Lint 
 -- JS,Typescript

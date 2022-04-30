@@ -35,6 +35,7 @@ brew 'ranger'
 brew 'reattach-to-user-namespace'
 brew 'wakatime-cli'
 brew 'tmux'
+brew 'semgrep'
 
 # Apps
 brew 'mas' # Mac App Store manager

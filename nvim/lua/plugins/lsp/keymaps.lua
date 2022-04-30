@@ -36,6 +36,12 @@ local function keymappings(client, bufnr)
     s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
     I = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto Implementation" },
     t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" },
+    r = {'<cmd>lua vim.lsp.buf.references()<cr>', "References"},
+    R = {'<cmd>Lspsaga rename<cr>', "Rename"},
+    a = {'<cmd>Lspsaga code_action<cr>', "Code Action"},
+    e = {'<cmd>Lspsaga show_line_diagnostics<cr>', "Show Line Diagnostics"},
+    n = {'<cmd>Lspsaga diagnostic_jump_next<cr>', "Go To Next Diagnostic"},
+    N = {'<cmd>Lspsaga diagnostic_jump_prev<cr>', "Go To Previous Diagnostic"}
   }
   whichkey.register(keymap_l, { buffer = bufnr, prefix = "<leader>" })
   whichkey.register(keymap_g, { buffer = bufnr, prefix = "g" })

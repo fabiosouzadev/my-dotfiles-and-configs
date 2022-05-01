@@ -145,6 +145,13 @@ return packer.startup(function(use)
     end
   }
 
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('plugins.comment')
+    end
+}
+
   -- Behaviour/tools
   use 'wakatime/vim-wakatime'
 

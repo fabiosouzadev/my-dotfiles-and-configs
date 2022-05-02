@@ -109,6 +109,8 @@ cask 'android-studio'
 brew 'rbenv'
 brew 'watchman'
 cask 'visual-studio-code'
+cask 'altair-graphql-client'
+cask 'runjs'
 
 # Mac App Store
 mas "Battery Health", id: 490192174

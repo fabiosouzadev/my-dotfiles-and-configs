@@ -32,11 +32,9 @@ cmp.setup({
       menu = {
         buffer = "[Buf]", 
         nvim_lsp = "[LSP]", 
-        dictionary = "[Dict]", 
         vsnip = "[Vsnip]"},
         treesitter = "[Treesitter]",
         path = "[Path]",
-        nvim_lua = "[Lua]",
     })
   },
   mapping = cmp.mapping.preset.insert({
@@ -56,7 +54,6 @@ cmp.setup({
         fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
       end
     end, { "i", "s" }),
-
     ["<S-Tab>"] = cmp.mapping(function()
       if cmp.visible() then
         cmp.select_prev_item()
@@ -71,7 +68,6 @@ cmp.setup({
     { name = 'treesitter' },
     { name = 'buffer' },
     { name = "path" },
-    { name = "nvim_lua" },
   }, {
     { name = 'buffer' },
   })

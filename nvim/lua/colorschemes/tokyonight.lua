@@ -1,7 +1,6 @@
 local g = vim.g
 
 -- Theme
-
 g.tokyonight_style = "storm" --storm, night or day
 g.tokyonight_italic_functions = true
 g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }

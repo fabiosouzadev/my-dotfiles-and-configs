@@ -14,7 +14,7 @@ require 'configs.bufferline'
 require 'configs.lualine'
 --require "user.toggleterm"
 require 'configs.indent-blankline'
-require 'configs.alpha2'
+require 'configs.alpha-nvim'
 require 'configs.which-key'
 require 'keymaps'
 require 'colorschemes.tokyonight'

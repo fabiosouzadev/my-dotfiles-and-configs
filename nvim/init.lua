@@ -18,4 +18,3 @@ require 'configs.alpha-nvim'
 require 'configs.which-key'
 require 'keymaps'
 require 'colorschemes.tokyonight'
-

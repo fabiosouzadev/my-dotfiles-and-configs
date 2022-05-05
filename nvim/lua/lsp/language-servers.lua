@@ -1,2 +1,2 @@
-local servers = { "html","jsonls", "sumneko_lua","tsserver" }
+local servers = { "emmet_ls","html","jsonls", "sumneko_lua","tsserver" }
 return servers

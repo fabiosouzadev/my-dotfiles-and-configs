@@ -11,7 +11,7 @@ end
 
 
 -- Setup nvim-cmp.
-local cmp = require'cmp'
+local cmp = require 'cmp'
 local lspkind = require('lspkind')
 
 cmp.setup({
@@ -30,11 +30,12 @@ cmp.setup({
       with_text = true,
       maxwidth = 50,
       menu = {
-        buffer = "[Buf]", 
-        nvim_lsp = "[LSP]", 
-        vsnip = "[Vsnip]"},
+        buffer = "[Buf]",
+        nvim_lsp = "[LSP]",
+        vsnip = "[Vsnip]",
         treesitter = "[Treesitter]",
         path = "[Path]",
+      }
     })
   },
   mapping = cmp.mapping.preset.insert({

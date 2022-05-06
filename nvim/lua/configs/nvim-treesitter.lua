@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
   ignore_install = { "" }, -- List of parsers to ignore installing
   autopairs = {
@@ -8,12 +8,12 @@ require'nvim-treesitter.configs'.setup {
     enable = true, -- false will disable the whole extension
     additional_vim_regex_highlighting = true,
   },
-  incremental_selection = { 
-    enable = true 
-  },
-  textobjects = { 
+  incremental_selection = {
     enable = true
-  }, 
+  },
+  textobjects = {
+    enable = true
+  },
   indent = { enable = true, disable = { "yaml" } },
   context_commentstring = {
     enable = true,

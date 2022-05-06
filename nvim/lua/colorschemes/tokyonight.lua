@@ -1,4 +1,8 @@
 local g = vim.g
+local opt = vim.opt
+
+
+opt.termguicolors = true
 
 -- Theme
 g.tokyonight_style = "storm" --storm, night or day

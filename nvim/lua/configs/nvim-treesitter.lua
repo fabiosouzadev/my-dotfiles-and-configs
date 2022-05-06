@@ -6,9 +6,14 @@ require'nvim-treesitter.configs'.setup {
   },
   highlight = {
     enable = true, -- false will disable the whole extension
-    disable = { "" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = true,
   },
+  incremental_selection = { 
+    enable = true 
+  },
+  textobjects = { 
+    enable = true
+  }, 
   indent = { enable = true, disable = { "yaml" } },
   context_commentstring = {
     enable = true,

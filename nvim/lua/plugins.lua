@@ -40,15 +40,15 @@ packer.init {
 
 return packer.startup(function(use)
   use { 'wbthomason/packer.nvim' } -- Packer can manage itself
-  use { 'nvim-lua/popup.nvim' }   -- An implementation of the Popup API from vim in Neovim
+  use { 'nvim-lua/popup.nvim' } -- An implementation of the Popup API from vim in Neovim
   use { 'nvim-lua/plenary.nvim' } -- Useful lua functions used ny lots of plugins
   use { 'windwp/nvim-autopairs' } -- Autopairs, integrates with both cmp and treesitter
   use { 'numToStr/Comment.nvim' }
   use { 'akinsho/toggleterm.nvim' }
-  use { 'goolord/alpha-nvim'}
+  use { 'glepnir/dashboard-nvim' }
   use { 'folke/which-key.nvim' }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use { 'norcalli/nvim-colorizer.lua'}
+  use { 'norcalli/nvim-colorizer.lua' }
   -------------------
   -- Colorschemes --
   -------------------
@@ -58,34 +58,34 @@ return packer.startup(function(use)
   -- Visual / Themes --
   ---------------------
   use { 'kyazdani42/nvim-web-devicons', opt = true }
-  use { 'kyazdani42/nvim-tree.lua'}
-  use { 'akinsho/bufferline.nvim', tag = "*"}
-  use { 'nvim-lualine/lualine.nvim'}
+  use { 'kyazdani42/nvim-tree.lua' }
+  use { 'akinsho/bufferline.nvim', tag = "*" }
+  use { 'nvim-lualine/lualine.nvim' }
   use { 'arkav/lualine-lsp-progress' }
   use { 'lukas-reineke/indent-blankline.nvim' }
 
 
-    -- LSP
-    use { 'neovim/nvim-lspconfig' } -- enable LSP
-    use { 'williamboman/nvim-lsp-installer' } -- simple to use language server installer
-    use { 'tamago324/nlsp-settings.nvim' } -- language server settings defined in json for
-    use { 'jose-elias-alvarez/null-ls.nvim' } -- for formatters and linters
-    use { 'antoinemadec/FixCursorHold.nvim' } -- This is needed to fix lsp doc highlight
-  
+  -- LSP
+  use { 'neovim/nvim-lspconfig' } -- enable LSP
+  use { 'williamboman/nvim-lsp-installer' } -- simple to use language server installer
+  use { 'tamago324/nlsp-settings.nvim' } -- language server settings defined in json for
+  use { 'jose-elias-alvarez/null-ls.nvim' } -- for formatters and linters
+  -- use { 'antoinemadec/FixCursorHold.nvim' } -- This is needed to fix lsp doc highlight
+
 
   -- CMP
-  use { 'hrsh7th/cmp-nvim-lsp'}
+  use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'hrsh7th/cmp-buffer' }
   use { 'hrsh7th/cmp-path' }
-  use { 'hrsh7th/cmp-cmdline'}
+  use { 'hrsh7th/cmp-cmdline' }
   use { 'hrsh7th/nvim-cmp' }
-  
--- snippets
+
+  -- snippets
   use { 'hrsh7th/cmp-vsnip' }
   use { 'hrsh7th/vim-vsnip' }
   use { 'rafamadriz/friendly-snippets' }
 
-  
+
   use { 'onsails/lspkind-nvim' }
   use { 'glepnir/lspsaga.nvim' }
 
@@ -94,9 +94,10 @@ return packer.startup(function(use)
   use "ibhagwan/fzf-lua"
 
   -- Treesitter
-  use { "nvim-treesitter/nvim-treesitter",run = ":TSUpdate" }
+  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
   use { "nvim-treesitter/nvim-treesitter-textobjects" }
   use { "RRethy/nvim-treesitter-endwise" }
+  use { 'romgrk/nvim-treesitter-context' }
 
 
   -- Git

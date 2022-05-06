@@ -41,7 +41,6 @@ opt.expandtab=true
 -- Themes
 opt.termguicolors = true
 
-
 vim.cmd([[
   augroup packer_user_config
     autocmd!

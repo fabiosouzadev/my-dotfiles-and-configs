@@ -30,8 +30,9 @@ cmp.setup({
       with_text = true,
       maxwidth = 50,
       menu = {
-        buffer = "[Buf]",
+        buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
+        nvim_lua = "[LUA]",
         vsnip = "[Vsnip]",
         treesitter = "[Treesitter]",
         path = "[Path]",
@@ -65,6 +66,7 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'nvim_lua'},
     { name = 'vsnip' }, -- For vsnip users.
     { name = 'treesitter' },
     { name = 'buffer' },

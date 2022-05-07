@@ -1,7 +1,7 @@
 local g = vim.g
 local opt = vim.opt
 
-
+-- termguicolors
 opt.termguicolors = true
 
 -- Theme

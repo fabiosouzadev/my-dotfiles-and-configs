@@ -5,5 +5,3 @@ end
 
 require "lsp.nvim-lsp-installer"
 require("lsp.handlers").setup()
-require "lsp.null-ls"
-require 'lsp.lspsaga'

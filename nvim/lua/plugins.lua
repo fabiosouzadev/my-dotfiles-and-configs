@@ -129,10 +129,6 @@ return packer.startup(function(use)
   -- Behaviour/tools
   use {'wakatime/vim-wakatime'}
 
-  -- ToogleTerm
-  use { "akinsho/toggleterm.nvim", config = "require('configs.toggleterm')" }
-  
-
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

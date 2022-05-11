@@ -46,10 +46,11 @@ return packer.startup(function(use)
   ----------------------
   -- Visual / Themes --
   ---------------------
+
+  --  Colorschemes   --
+  use { 'folke/tokyonight.nvim' , config = "require('colorschemes.tokyonight')"  }
+
   use { 'goolord/alpha-nvim' ,requires = { 'kyazdani42/nvim-web-devicons' }, config = "require('configs.alpha-nvim').setup()"}
-  -- use { 'folke/tokyonight.nvim' , config = "require('colorschemes.tokyonight')"  }
-  -- use { 'drewtempelmeyer/palenight.vim' , config = "require('colorschemes.palenight')"  }
-  use { 'kwsp/halcyon-neovim' , config = "require('colorschemes.halcyon')"  }
   use { 'nvim-lualine/lualine.nvim' , wants = { 'tokyonight.nvim', 'lualine-lsp-progress' }, event = 'BufRead', config = "require('configs.lualine')",requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
   use { 'arkav/lualine-lsp-progress' }
   use { 'akinsho/bufferline.nvim' ,requires = 'kyazdani42/nvim-web-devicons',event = "BufWinEnter",config = "require('configs.bufferline')"}

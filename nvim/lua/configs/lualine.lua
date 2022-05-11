@@ -1,7 +1,7 @@
 require('lualine').setup {
   options = {
     -- ... your lualine config
-    theme = 'tokyonight'
+   theme = 'tokyonight'
     -- ... your lualine config
   },
   sections = {

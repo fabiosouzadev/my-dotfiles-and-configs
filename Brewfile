@@ -66,6 +66,8 @@ cask 'kitty'
 cask 'appcleaner'
 cask 'microsoft-teams'
 cask 'visual-studio-code'
+cask 'onedrive'
+cask 'microsoft-outlook'
 
 # Fonts
 cask 'font-cascadia-mono'

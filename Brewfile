@@ -36,6 +36,7 @@ brew 'reattach-to-user-namespace'
 brew 'wakatime-cli'
 brew 'tmux'
 brew 'semgrep'
+cask 'forticlient'
 
 # Apps
 brew 'mas' # Mac App Store manager

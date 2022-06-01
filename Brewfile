@@ -37,6 +37,7 @@ brew 'wakatime-cli'
 brew 'tmux'
 brew 'semgrep'
 cask 'forticlient'
+cask 'microsoft-remote-desktop'
 
 # Apps
 brew 'mas' # Mac App Store manager

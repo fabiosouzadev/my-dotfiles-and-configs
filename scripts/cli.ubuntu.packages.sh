@@ -69,4 +69,4 @@ sudo apt update && sudo apt install -y glow
 curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
 
 #WAKATIME
-sudo $($HOME/.pyenv/shims/pip) install wakatime
+sudo $HOME/.pyenv/shims/pip install wakatime

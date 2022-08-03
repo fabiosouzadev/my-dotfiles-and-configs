@@ -1,10 +1,10 @@
 - shell:
-  - description: Validating sudo credentials
-    command: "sudo --validate"
+  #- description: Validating sudo credentials
+  #  command: "sudo --validate"
   - description: Adding zsh to list of acceptable shells
     command: "[[ \"$(ag $(which zsh) /etc/shells)\" ]] || sudo sh -c \"echo $(which zsh) >> /etc/shells\""
   - description: Making zsh the default shell
-    command: "sudo chsh -s $(which zsh)"
+    command: "[[ \"$(uname)\" == \"Darwin\" ]] && sudo chsh -s $(which zsh) || chsh -s /usr/bin/zsh"
   - [git submodule update --init --recursive, Installing submodules]
   - description: 'Clone zgenom'
     command: 'git clone https://github.com/jandamm/zgenom.git ~/zgenom'
@@ -24,7 +24,7 @@
     ~/.zshrc.d/004-java.zsh: zshrc.d/004-java.zsh
     ~/.zshrc.d/005-rust.zsh: zshrc.d/005-rust.zsh
     ~/.zshrc.d/006-pyenv.zsh:
-      if: '[ $(which pyenv) ]'
+      # if: '[ $(which pyenv) ]'
       path: zshrc.d/006-pyenv.zsh
     ~/.zshrc.d/007-android.zsh: zshrc.d/007-android.zsh
     ~/.zshrc.d/008-flutter.zsh: zshrc.d/008-flutter.zsh

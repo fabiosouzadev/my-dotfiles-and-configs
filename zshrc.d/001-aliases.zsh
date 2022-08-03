@@ -37,9 +37,16 @@ alias path='echo $PATH | tr -s ":" "\n"'
 alias lg="lazygit"
 alias ld="lazydocker"
 
-alias python=/usr/local/bin/python3
 
-
+alias python="$(${HOME}/.pyenv/bin/pyenv which python)"
 
 alias showhidden="defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app"
 alias hidehidden="defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app"
+
+#remove ASAP
+connectVPN(){
+  sudo vpnc /etc/cpnc/vpn-ml.conf
+}
+disconnectVPN(){
+  sudo vpnc-disconnect
+}

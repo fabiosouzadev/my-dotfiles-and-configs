@@ -2,7 +2,7 @@
     ~/.gitconfig:
 - shell:
   - description: Validating .env
-    command: ./scripts/git.sh
+    command: scripts/git.sh
     stderr: true
     stdout: true
 

@@ -10,8 +10,8 @@ tap 'jesseduffield/lazydocker'
 
 #Terminal
 brew 'zsh'
-brew 'python'
-brew 'python3'
+#brew 'python'
+#brew 'python3'
 brew 'pyenv'
 brew 'neovim'
 brew 'fzf'

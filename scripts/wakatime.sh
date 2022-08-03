@@ -1,6 +1,5 @@
 #!/bin/bash +e
 
-GITCONFIG_FILE="${HOME}/.gitconfig.local"
 WAKATIME_ENV_FILE="${HOME}/.zshrc.d/099-wakatime.zsh"
 
 if [ -f .env ]; then

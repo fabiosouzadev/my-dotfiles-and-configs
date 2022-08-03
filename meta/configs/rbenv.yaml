@@ -1,5 +1,5 @@
 - shell:
     - description: 'Install gems'
-      command: scripts/gem_install.sh
+      command: scripts/gem.install.sh
       stdout: true
       stderr: true

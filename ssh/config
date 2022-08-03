@@ -10,12 +10,21 @@ Host github.com
   Port 443
   User git
   PreferredAuthentications publickey
+
 # Bitbucket
 Host bitbucket.org
   Hostname altssh.bitbucket.org
   Port 443
 
+# Private GitLab instance
+Host gitlab.luizalabs.com
+  User git
+  HostName gitlab.luizalabs.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_ed25519_luizalabs
+
 #Lembrar senhas
 Host *
   AddKeysToAgent yes
+  IgnoreUnknown UseKeychain
   UseKeychain yes

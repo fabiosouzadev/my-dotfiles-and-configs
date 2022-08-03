@@ -1,2 +1,12 @@
+# VIM-PLUG
+- shell:
+  - description: Validating sudo credentials
+    command: "sudo --validate"
+  - description: Installing kitty
+    command: "sudo apt-get -y install kitty"
+    stderr: true
+    stdout: true
+
 - link:
     ~/.config/kitty: kitty
+

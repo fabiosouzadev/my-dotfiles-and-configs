@@ -1,5 +1,5 @@
 - shell:
-  - description: Validating .env
+  - description: Installing wakatime
     command: ./scripts/wakatime.sh
     stderr: true
     stdout: true

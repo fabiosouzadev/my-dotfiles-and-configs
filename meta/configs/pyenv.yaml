@@ -1,5 +1,5 @@
 - shell:
   - description: Install global version
-    command: "./scripts/pyenv.sh"
+    command: "./scripts/pyenv.install.sh"
     stderr: true
     stdout: true

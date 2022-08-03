@@ -1,5 +1,9 @@
 # VIM-PLUG
 - shell:
+  - description: Installing packages
+    command: "./scripts/nvim.install.sh"
+    stdout: true
+    stderr: true
   - description: Installing vim-plug
     command: "[ -f ~/.local/share/nvim ] || curl -fLo \"${XDG_DATA_HOME:-$HOME/.local/share}\"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   - description: Installing vim plugins

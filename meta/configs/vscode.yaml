@@ -1,3 +1,12 @@
+- shell:
+  - description: Validating sudo credentials
+    command: "sudo --validate"
+  - description: Installing vscode
+    command: scripts/vscode.install.sh
+    stderr: true
+    stdout: true
+
+
 - link:
     # macos:
     "~/Library/Application Support/Code/User/settings.json":
@@ -20,7 +29,7 @@
       path: vscode/snippets
 
 - shell:
-  - command: 'scripts/vscode.sh'
+  - command: 'scripts/vscode.extensions.sh'
     description: Installing vscode extensions
     stdout: true
     stderr: true

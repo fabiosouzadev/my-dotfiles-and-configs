@@ -4,7 +4,7 @@
   - description: Create ~/.local/bin
     command: "[ -x ~/.local/bin ] || mkdir -p ~/.local/bin"     
   - description: Installing packages
-    command: "./scripts/packages.sh"
+    command: scripts/cli.ubuntu.packages.sh
     stdout: true
     stderr: true
 - shell: 

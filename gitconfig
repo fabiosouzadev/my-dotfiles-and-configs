@@ -2,7 +2,7 @@
     ui = true
 
 [init]
-  defaultBranch = main
+    defaultBranch = main
 
 [credential]
 	helper = osxkeychain
@@ -59,4 +59,16 @@
     line-numbers-style = syntax
 
 [include]
-  path = ~/.gitconfig.local
+    path = ~/.gitconfig.local
+
+[includeIf "gitdir:~/Work/"]
+	path = ~/.gitconfig.work
+
+;[includeIf "gitdir:~/Work/github/"]
+;    path = ~/.gitconfig_github_work
+
+;[includeIf "gitdir:~/Work/gitlab/"]
+;    path = ~/.gitconfig_gitlab
+
+;[includeIf "gitdir:~/Work/bitbucket/"]
+;    path = ~/.gitconfig_bitbucket    

@@ -1,0 +1,35 @@
+- shell:
+  - description: Validating sudo credentials
+    command: "sudo --validate"
+  - description: Installing vscodium
+    command: scripts/vscodium.install.sh
+    stderr: true
+    stdout: true
+
+
+# - link:
+#     # macos:
+#     "~/Library/Application Support/Code/User/settings.json":
+#       if: '[ `uname` = Darwin ]'
+#       path: vscode/settings.json
+#     "~/Library/Application Support/Code/User/keybindings.json":
+#       if: '[ `uname` = Darwin ]'
+#       path: vscode/keybindings.json
+#     "~/Library/Application Support/Code/User/snippets":
+#       if: '[ `uname` = Darwin ]'
+#       path: vscode/snippets
+#     "~/Library/Application Support/Code - Insiders/User/settings.json":
+#       if: '[ `uname` = Darwin ]'
+#       path: vscode/settings.json
+#     "~/Library/Application Support/Code - Insiders/User/keybindings.json":
+#       if: '[ `uname` = Darwin ]'
+#       path: vscode/keybindings.json
+#     "~/Library/Application Support/Code - Insiders/User/snippets":
+#       if: '[ `uname` = Darwin ]'
+#       path: vscode/snippets
+#
+- shell:
+  - command: 'scripts/vscode.extensions.sh'
+    description: Installing vscode extensions
+    stdout: true
+    stderr: true

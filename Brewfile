@@ -36,7 +36,6 @@ brew 'reattach-to-user-namespace'
 brew 'wakatime-cli'
 brew 'tmux'
 brew 'semgrep'
-cask 'forticlient'
 cask 'microsoft-remote-desktop'
 
 # Apps
@@ -66,10 +65,7 @@ cask 'whatsapp'
 cask 'zoom'
 cask 'kitty'
 cask 'appcleaner'
-cask 'microsoft-teams'
 cask 'visual-studio-code'
-cask 'onedrive'
-cask 'microsoft-outlook'
 
 # Fonts
 cask 'font-cascadia-mono'

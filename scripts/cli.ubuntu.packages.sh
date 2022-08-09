@@ -2,6 +2,7 @@
 
 # Add ppa or sources list
 
+#Glow
 echo 'deb [trusted=yes] https://repo.charm.sh/apt/ /' | sudo tee /etc/apt/sources.list.d/charm.list #Glow
 
 #Atualizar sources lists
@@ -9,7 +10,8 @@ sudo apt-get -y update
 
 
 sudo apt-get install -y \
-      make build-essential \
+      make \
+      build-essential \
       libssl-dev \
       zlib1g-dev \
       libbz2-dev \
@@ -66,7 +68,10 @@ sudo ln -fs /usr/bin/fdfind /usr/bin/fd
 sudo apt update && sudo apt install -y glow
 
 #PYENV
-curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+curl https://pyenv.run | bash
+exec $SHELL
 
 #WAKATIME
-sudo $HOME/.pyenv/shims/pip install wakatime
+#sudo $HOME/.pyenv/shims/pip install wakatime
+python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
+

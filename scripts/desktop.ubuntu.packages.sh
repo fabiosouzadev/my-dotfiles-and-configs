@@ -6,20 +6,17 @@
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
-# Sublime Text 3
-sudo curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add
-sudo add-apt-repository "deb https://download.sublimetext.com/ apt/stable/"
-
 #Update sources
 sudo apt-get update
-
-
 
 sudo apt install -y \
     apt-transport-https \
     curl \
     gnome-tweaks \
     snapd \
+    vpnc \
+    network-manager-vpnc \
+    network-manager-vpnc-gnome \
     brave-browser 
 
 sudo snap install \

@@ -29,7 +29,7 @@
 #       path: vscode/snippets
 #
 - shell:
-  - command: 'scripts/vscode.extensions.sh'
-    description: Installing vscode extensions
+  - description: Installing vscode extensions
+    command: 'scripts/vscode.extensions.sh'
     stdout: true
     stderr: true

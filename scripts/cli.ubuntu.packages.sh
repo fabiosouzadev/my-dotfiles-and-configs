@@ -27,6 +27,7 @@ sudo apt-get install -y \
       libxmlsec1-dev \
       libffi-dev \
       liblzma-dev \
+      libpq-dev \
       software-properties-common \
       zsh \
       gh \

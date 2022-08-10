@@ -6,28 +6,28 @@
     stderr: true
     stdout: true
 
+- link:
+    # linux:
+    "~/.config/VSCodium/User/settings.json":
+      if: '[ `uname` = Linux ]'
+      path: vscode/settings.json
+    "~/.config/VSCodium/User/keybindings.json":
+      if: '[ `uname` = Darwin ]'
+      path: vscode/keybindings.json
+    "~/.config/VSCodium/User/snippets":
+      if: '[ `uname` = Darwin ]'
+      path: vscode/snippets
+    # macos:
+    "~/Library/Application Support/VSCodium/User/settings.json":
+      if: '[ `uname` = Darwin ]'
+      path: vscode/settings.json
+    "~/Library/Application Support/VSCodium/User/keybindings.json":
+      if: '[ `uname` = Darwin ]'
+      path: vscode/keybindings.json
+    "~/Library/Application Support/VSCodium/User/snippets":
+      if: '[ `uname` = Darwin ]'
+      path: vscode/snippets
 
-# - link:
-#     # macos:
-#     "~/Library/Application Support/Code/User/settings.json":
-#       if: '[ `uname` = Darwin ]'
-#       path: vscode/settings.json
-#     "~/Library/Application Support/Code/User/keybindings.json":
-#       if: '[ `uname` = Darwin ]'
-#       path: vscode/keybindings.json
-#     "~/Library/Application Support/Code/User/snippets":
-#       if: '[ `uname` = Darwin ]'
-#       path: vscode/snippets
-#     "~/Library/Application Support/Code - Insiders/User/settings.json":
-#       if: '[ `uname` = Darwin ]'
-#       path: vscode/settings.json
-#     "~/Library/Application Support/Code - Insiders/User/keybindings.json":
-#       if: '[ `uname` = Darwin ]'
-#       path: vscode/keybindings.json
-#     "~/Library/Application Support/Code - Insiders/User/snippets":
-#       if: '[ `uname` = Darwin ]'
-#       path: vscode/snippets
-#
 - shell:
   - description: Installing vscode extensions
     command: 'scripts/vscode.extensions.sh'

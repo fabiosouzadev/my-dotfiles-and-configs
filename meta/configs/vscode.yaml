@@ -27,6 +27,16 @@
     "~/Library/Application Support/Code - Insiders/User/snippets":
       if: '[ `uname` = Darwin ]'
       path: vscode/snippets
+    # linux:
+    "~/.config/Code/User/settings.json":
+      if: '[ `uname` = Linux ]'
+      path: vscode/settings.json
+    "~/.config/Code/User/keybindings.json":
+      if: '[ `uname` = Linux ]'
+      path: vscode/keybindings.json
+    "~/.config/Code/User/snippets":
+      if: '[ `uname` = Linux ]'
+      path: vscode/snippets
 
 - shell:
   - command: 'scripts/vscode.extensions.sh'

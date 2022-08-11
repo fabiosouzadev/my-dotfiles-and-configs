@@ -41,7 +41,6 @@ sudo apt-get install -y \
       bat \
       ripgrep \
       exa \
-      delta \
       fzf \
       tmux \
       neovim \
@@ -64,9 +63,8 @@ sudo ln -fs /usr/bin/fdfind /usr/bin/fd
 #curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 #sudo mv lazydocker /usr/local/bin
 
-
-#Install glow (.md)
-sudo apt update && sudo apt install -y glow
+#Install delta
+curl -sLO https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb && sudo dpkg -i git-delta_0.13.0_amd64.deb && sudo rm git-delta_0.13.0_amd64.deb
 
 #PYENV
 curl https://pyenv.run | bash

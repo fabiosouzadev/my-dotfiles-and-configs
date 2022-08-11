@@ -28,8 +28,9 @@
       if: '[ `uname` = Darwin ]'
       path: vscode/snippets
 
-# - shell:
-#   - description: Installing vscode extensions
-#     command: 'scripts/vscode.extensions.sh'
-#     stdout: true
-#     stderr: true
+- shell:
+  - description: Installing vscode extensions
+    command: 'scripts/vscode.extensions.sh'
+    stdout: true
+    stderr: true
+ 

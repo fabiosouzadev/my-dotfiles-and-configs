@@ -13,6 +13,9 @@
   //"editor.fontFamily": "Iosevka Nerd Font Mono",
   //"editor.fontFamily": "Hack Nerd Font Mono", #WINDOWS
   //"editor.fontFamily": "VictorMono Nerd Font Mono", #WINDOWS
+
+  // echo $(kitty +list-fonts --psnames) or fc-list | grep Iosevka (Linux)
+  // fc-list | awk '{$1=""}1' | cut -d: -f1 | sort| uniq (Linux)
   "editor.fontFamily": "Iosevka Nerd Font Mono",
   "editor.fontLigatures": true,
   "editor.fontSize": 14,
@@ -53,7 +56,11 @@
   // Aumenta a fonte do terminal
   "terminal.integrated.fontFamily": "Hack Nerd Font",
   "terminal.integrated.fontSize": 13,
+
+  //OSX
+  "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.defaultProfile.osx": "/bin/zsh",
+
   "terminal.integrated.defaultProfile.windows": "",
   "terminal.integrated.defaultProfile.linux": "zsh",
 

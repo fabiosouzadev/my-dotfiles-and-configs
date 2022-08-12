@@ -4,18 +4,9 @@
   "workbench.iconTheme": "vscode-icons",
 
   // EDITOR
-  //"editor.fontFamily": "FiraCode-Retina",
-  //"editor.fontFamily": "FiraCodeNerdFontComplete-Retina",
-  //"editor.fontFamily": "FiraCode Nerd Font Mono",
-  //"editor.fontFamily": "Victor Mono",
-  //"editor.fontFamily": "FiraCode-Retina",
-  //"editor.fontFamily": "Victor Mono",
-  //"editor.fontFamily": "Iosevka Nerd Font Mono",
-  //"editor.fontFamily": "Hack Nerd Font Mono", #WINDOWS
-  //"editor.fontFamily": "VictorMono Nerd Font Mono", #WINDOWS
-
-  // echo $(kitty +list-fonts --psnames) or fc-list | grep Iosevka (Linux)
-  // fc-list | awk '{$1=""}1' | cut -d: -f1 | sort| uniq (Linux)
+  // $ echo $(kitty +list-fonts --psnames) or fc-list | grep "Iosevka" (Linux)
+  // $ fc-list : file family | awk '{$1=""}1' | cut -d: -f2 | sort| uniq (Linux)
+  // see font book on Mac or $ fc-list : file family | grep \/Library
   "editor.fontFamily": "Iosevka Nerd Font Mono",
   "editor.fontLigatures": true,
   "editor.fontSize": 14,

@@ -5,8 +5,3 @@
     command: scripts/desktop.ubuntu.packages.sh
     stderr: true
     stdout: true
-  - description: Installing apps
-    command: scripts/fonts.ubuntu.sh
-    stderr: true
-    stdout: true
-

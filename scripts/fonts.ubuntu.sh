@@ -9,7 +9,8 @@ FONTS=(
 "Hack"
 "Iosevka"
 "JetBrainsMono"
-"VictorMono" 
+"VictorMono"
+"IBMPlexMono"
 )
 
 

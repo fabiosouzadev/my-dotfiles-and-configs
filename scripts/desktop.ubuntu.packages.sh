@@ -32,6 +32,15 @@ sudo snap install \
     slack
 
 
+#Install toogl
+TOGGL_VERSION="7.5.324"
+wget -O "toggl.deb" "https://github.com/toggl-open-source/toggldesktop/releases/download/v${TOGGL_VERSION}/toggldesktop_${TOGGL_VERSION}_ubuntu1604_amd64.deb"
+sudo dpkg -i "toggl.deb"
+sudo apt-get install -fy
+
+sudo rm toggl.deb
+
+
 #Install kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 # Create a symbolic link to add kitty to PATH (assuming ~/.local/bin is in

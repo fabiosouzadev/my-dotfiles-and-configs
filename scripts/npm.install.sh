@@ -42,7 +42,8 @@ npm install -g vscode-html-language-server
 npm install -g typescript-language-server
 npm install -g eslint-plugin-prettier
 npm install -g eslint_d
-npm install -g @fsouza/prettierd
 npm install -g --save-exact prettier
 npm install -g emmet-ls
 npm install -g editorconfig-checker
+npm install -g pyright
+npm install -g bash-language-server

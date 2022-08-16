@@ -1,5 +1,18 @@
 #!/bin/sh
 
+#Configurar DNS
+CONFIG_DNS="nameserver 200.175.182.139
+nameserver 8.8.8.8
+nameserver 200.221.11.101"
+
+if [ ! -d "/etc/resolvconf/resolv.conf.d/" ];then
+	sudo mkdir -p "/etc/resolvconf/resolv.conf.d/"
+fi
+
+sudo apt-get install -y resolvconf
+echo "${CONFIG_DNS}" | sudo tee -a /etc/resolvconf/resolv.conf.d/head
+sudo resolvconf -u
+
 # Add ppa or sources list
 
 #Glow

@@ -1,7 +1,8 @@
 #!/bin/sh
 
 #Configurar DNS
-CONFIG_DNS="nameserver 200.175.182.139
+CONFIG_DNS="nameserver 212.102.61.80
+nameserver 212.102.61.81
 nameserver 8.8.8.8
 nameserver 200.221.11.101"
 

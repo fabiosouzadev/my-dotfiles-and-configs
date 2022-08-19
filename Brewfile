@@ -66,8 +66,7 @@ cask 'zoom'
 cask 'kitty'
 cask 'appcleaner'
 cask 'visual-studio-code'
-brew 'youtube-dl'
-
+brew 'yt-dlp/taps/yt-dlp' 
 # Fonts
 cask 'font-cascadia-mono'
 cask 'font-caskaydia-cove-nerd-font'

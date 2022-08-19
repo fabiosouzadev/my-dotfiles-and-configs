@@ -40,11 +40,9 @@ sudo dpkg -i "toggl.deb"
 sudo apt-get install -fy
 sudo rm toggl.deb
 
-# Install youtube-dl
-sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
-sudo chmod a+rx /usr/local/bin/youtube-dl
-
-
+# Install yt-dlp
+sudo wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/local/bin/yt-dlp
+sudo chmod a+rx /usr/local/bin/yt-dlp
 #Install kitty
 if [ ! -f ~/.local/bin/kitty ]; then
   curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin

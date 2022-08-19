@@ -5,13 +5,14 @@ SHORTCUTS_DIR="/usr/share/applications"
 PYCHARM_SHORTCUT="[Desktop Entry]
 Version=1.0
 Type=Application
-Name=PyCharm
-Icon=/opt/pycharm-community-2022.2/bin/pycharm.png
+Name=PyCharm Community Edition
+Icon=/opt/pycharm-community-2022.2/bin/pycharm.svg
 Exec=\"/opt/pycharm-community-2022.2/bin/pycharm.sh\" %f
-Comment=The Drive to Develop
+Comment=Python IDE for Professional Developers
 Categories=Development;IDE;
 Terminal=false
-StartupWMClass=jetbrains-pycharm"
+StartupWMClass=jetbrains-pycharm-ce
+StartupNotify=true"
 
 
 wget -v -P $HOME https://download.jetbrains.com/python/pycharm-community-2022.2.tar.gz

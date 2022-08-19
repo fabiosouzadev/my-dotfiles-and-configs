@@ -66,7 +66,7 @@ sudo apt-get install -y \
 
 #Install fd
 #sudo apt-get install fd-find -y
-sudo ln -fs /usr/bin/fdfind /usr/bin/fd
+sudo ln -fvs /usr/bin/fdfind /usr/bin/fd
 
 #Lazygit
 #sudo add-apt-repository ppa:lazygit-team/daily

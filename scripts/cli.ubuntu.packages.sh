@@ -31,6 +31,10 @@ sudo apt-get install -y \
       libbz2-dev \
       libreadline-dev \
       libsqlite3-dev \
+      lsb-release \
+      ca-certificates \
+      apt-transport-https \
+      software-properties-common \
       wget \
       curl \
       llvm \
@@ -61,6 +65,7 @@ sudo apt-get install -y \
       glow
 
 
+
 #Install FZF
 #git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
@@ -87,4 +92,6 @@ exec $SHELL
 #WAKATIME
 #sudo $HOME/.pyenv/shims/pip install wakatime
 python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
+
+#Install docker
 

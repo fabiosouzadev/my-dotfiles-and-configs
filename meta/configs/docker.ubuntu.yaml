@@ -1,0 +1,7 @@
+- shell:
+  - description: Validating sudo credentials
+    command: "sudo --validate"
+  - description: Installing apps
+    command: scripts/docker.ubuntu.sh
+    stderr: true
+    stdout: true

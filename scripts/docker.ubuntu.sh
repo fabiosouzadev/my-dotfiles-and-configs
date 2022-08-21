@@ -6,7 +6,7 @@ sudo apt-get install -y \
       apt-transport-https \
       software-properties-common \
       wget \
-      curl \
+      curl 
 
 
 # Docker

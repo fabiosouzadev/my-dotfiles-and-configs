@@ -60,7 +60,8 @@
     ".sequelizerc": "javascript",
     ".stylelintrc": "json",
     ".prettierrc": "json",
-    "*.tsx": "typescriptreact"
+    "*.tsx": "typescriptreact",
+    "config": "shaderlab"
   },
 
   // MATERIAL

@@ -1,4 +1,3 @@
-# VIM-PLUG
 - shell:
   - description: Installing packages
     command: "./scripts/nvim.install.sh"

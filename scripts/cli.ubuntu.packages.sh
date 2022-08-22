@@ -22,7 +22,6 @@ echo 'deb [trusted=yes] https://repo.charm.sh/apt/ /' | sudo tee /etc/apt/source
 #Atualizar sources lists
 sudo apt-get -y update
 
-
 sudo apt-get install -y \
       make \
       build-essential \
@@ -56,7 +55,6 @@ sudo apt-get install -y \
       silversearcher-ag \
       ranger \
       fd-find \
-      bat \
       ripgrep \
       exa \
       fzf \
@@ -64,13 +62,7 @@ sudo apt-get install -y \
       neovim \
       glow
 
-
-
-#Install FZF
-#git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-
-#Install fd
-#sudo apt-get install fd-find -y
+#Config fd
 sudo ln -fvs /usr/bin/fdfind /usr/bin/fd
 
 #Lazygit

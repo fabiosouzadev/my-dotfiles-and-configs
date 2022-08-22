@@ -1,0 +1,9 @@
+- shell:
+  #- description: Validating sudo credentials
+  #  command: "sudo --validate"
+  - description: Install bat
+    command: "[ `uname` = Linux  ] || sudo apt-get update && sudo apt-get install bat"
+  - description: Create link to bat
+    command: "[ -x ~/.local/bin/bat ] || mkdir -p ~/.local/bin && ln -fs /usr/bin/batcat ~/.local/bin/bat"
+- link:
+    ~/.config/bat: bat

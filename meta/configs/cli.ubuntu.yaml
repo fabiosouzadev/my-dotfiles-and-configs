@@ -2,7 +2,7 @@
   - description: Validating sudo credentials
     command: "sudo --validate"
   - description: Create ~/.local/bin
-    command: "[ -x ~/.local/bin ] || mkdir -p ~/.local/bin"     
+    command: "[ -d ~/.local/bin ] || mkdir -p ~/.local/bin"     
   - description: Installing packages
     command: scripts/cli.ubuntu.packages.sh
     stdout: true

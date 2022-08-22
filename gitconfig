@@ -8,12 +8,29 @@
 	helper = osxkeychain
 
 [core]
-	editor = nvim
+    editor = nvim
     default = current
+    pager = delta
 
 [push]
     followTags = true
 	default = current
+
+; == DELTA ==
+[interactive]
+    diffFilter = delta --color-only
+[add.interactive]
+    useBuiltin = false
+
+[delta]
+    navigate = true
+    light = false  
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+; == DELTA ==
 
 [alias]
     c = !git add --all && git commit -m
@@ -21,42 +38,6 @@
     l = !git log --pretty=format:'%C(blue)%hC(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
     amend = !git add --all && git commit --amend --no-edit
     count = !git shortlog -s --grep
-
-[pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
-
-[interactive]
-    diffFilter = delta --color-only --features=interactive
-
-[delta]
-    features = side-by-side line-numbers decorations
-    syntax-theme = gruvbox
-    side-by-side = true | false | columns > 119
-    whitespace-error-style = 22 reverse
-    plus-style = syntax "#003800"
-    minus-style = syntax "#3f0001"
-
-[delta "interactive"]
-    keep-plus-minus-markers = false
-
-[delta "decorations"]
-    commit-decoration-style = blue ol
-    commit-style = raw
-    file-style = omit
-    hunk-header-decoration-style = blue box
-    hunk-header-file-style = red
-    hunk-header-line-number-style = "#067a00"
-    hunk-header-style = file line-number syntax
-
-[delta "line-numbers"]
-    line-numbers-left-style = cyan
-    line-numbers-right-style = cyan
-    line-numbers-minus-style = 124
-    line-numbers-plus-style = 28
-    line-numbers-style = syntax
 
 [include]
     path = ~/.gitconfig.local

@@ -29,6 +29,7 @@ alias zc="${EDITOR}  ~/.zshrc"
 alias hc="sudo ${EDITOR} /etc/hosts"
 alias ls="exa"
 alias lll='exa -alh'
+alias cat='bat'
 
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
@@ -39,4 +40,6 @@ alias ld="lazydocker"
 
 alias showhidden="defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app"
 alias hidehidden="defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app"
+
+
 

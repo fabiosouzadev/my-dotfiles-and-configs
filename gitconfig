@@ -10,27 +10,10 @@
 [core]
     editor = nvim
     default = current
-    pager = delta
 
 [push]
     followTags = true
 	default = current
-
-; == DELTA ==
-[interactive]
-    diffFilter = delta --color-only
-[add.interactive]
-    useBuiltin = false
-
-[delta]
-    navigate = true
-    light = false  
-[merge]
-    conflictstyle = diff3
-
-[diff]
-    colorMoved = default
-; == DELTA ==
 
 [alias]
     c = !git add --all && git commit -m

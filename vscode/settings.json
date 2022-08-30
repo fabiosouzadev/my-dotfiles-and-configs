@@ -129,5 +129,6 @@
   "GitLive.Issue tracker integration": "Disabled",
   "peacock.vslsJoinColor": "#1857a4",
   "redhat.telemetry.enabled": true,
-  "editor.inlineSuggest.enabled": true
+  "editor.inlineSuggest.enabled": true,
+  "window.zoomLevel": 1
 }

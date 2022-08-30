@@ -78,12 +78,16 @@ sudo ln -fvs /usr/bin/fdfind /usr/bin/fd
 curl -sLO https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb && sudo dpkg -i git-delta_0.13.0_amd64.deb && sudo rm git-delta_0.13.0_amd64.deb
 
 #PYENV
-curl https://pyenv.run | bash
-exec $SHELL
+
+if [ ! -d "$HOME/.pyenv" ];then
+    curl https://pyenv.run | bash
+    exec $SHELL
+fi
+
+#Install K9s
+curl -sS https://webinstall.dev/k9s | sh
 
 #WAKATIME
-#sudo $HOME/.pyenv/shims/pip install wakatime
 python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
 
 #Install docker
-

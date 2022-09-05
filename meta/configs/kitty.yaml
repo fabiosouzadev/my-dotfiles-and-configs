@@ -2,7 +2,7 @@
   - description: Validating sudo credentials
     command: "sudo --validate"
   - description: Installing kitty
-    command: "sudo apt-get -y install kitty"
+    command: "scripts/kitty.install.sh"
     stderr: true
     stdout: true
 

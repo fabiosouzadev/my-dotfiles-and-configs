@@ -44,12 +44,3 @@ sudo rm toggl.deb
 # Install yt-dlp
 sudo wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/local/bin/yt-dlp
 sudo chmod a+rx /usr/local/bin/yt-dlp
-#Install kitty
-if [ ! -f ~/.local/bin/kitty ]; then
-  curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-  ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/
-  cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
-  cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
-  sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
-  sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
-fi

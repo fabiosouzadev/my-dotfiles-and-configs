@@ -16,6 +16,7 @@ sudo apt install -y \
     snapd \
     vpnc \
     caffeine \
+    libqt5webkit5 \
     network-manager-vpnc \
     network-manager-vpnc-gnome \
     brave-browser 

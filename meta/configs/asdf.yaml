@@ -7,6 +7,10 @@
     command: 'git clone https://github.com/asdf-vm/asdf.git ~/.asdf'
     stderr: true
     stdout: true
+  - description: Remove previous asdf folder
+    command: "{{ $SOURCE }}"
+    stderr: true
+    stdout: true
 - link:
     ~/.asdfrc:
 - asdf:

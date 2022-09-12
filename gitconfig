@@ -25,14 +25,14 @@
 [include]
     path = ~/.gitconfig.local
 
-[includeIf "gitdir:~/Work/"]
+[includeIf "gitdir:~/Projects/Work/"]
 	path = ~/.gitconfig.work
 
-;[includeIf "gitdir:~/Work/github/"]
+;[includeIf "gitdir:~/Projects/Work/github/"]
 ;    path = ~/.gitconfig_github_work
 
-;[includeIf "gitdir:~/Work/gitlab/"]
+;[includeIf "gitdir:~/Projects/Work/gitlab/"]
 ;    path = ~/.gitconfig_gitlab
 
-;[includeIf "gitdir:~/Work/bitbucket/"]
+;[includeIf "gitdir:~/Projects/Work/bitbucket/"]
 ;    path = ~/.gitconfig_bitbucket    

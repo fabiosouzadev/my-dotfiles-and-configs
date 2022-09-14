@@ -61,13 +61,11 @@ return packer.startup(function(use)
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate", event = 'BufRead', wants = { "nvim-treesitter-textobjects", "nvim-treesitter-context","nvim-autopairs"  }, requires = "nvim-treesitter/nvim-treesitter-textobjects", { 'romgrk/nvim-treesitter-context', config= "require('configs.nvim-treesitter-context')"}, config = "require('configs.nvim-treesitter')" }
 
-
-
-  
   ----------------------
   --    Keybinding     --
   ---------------------
   use { 'folke/which-key.nvim', event = "BufWinEnter", config = "require('configs.which-key')" }
+  use { 'alexghergh/nvim-tmux-navigation', config = "require('configs.nvim-tmux-navigation')" }
 
   ----------------------
   --    Navigation    --
@@ -81,8 +79,6 @@ return packer.startup(function(use)
   --    Code        --
   ---------------------
   use { 'numToStr/Comment.nvim', config = "require('configs.comment')"} -- gc,gb
-
-  
 
   -- Git
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' }, config = "require('configs.gitsigns')"}

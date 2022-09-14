@@ -106,8 +106,14 @@ keymap("n", '<leader>h', '<Cmd>lua require("fzf-lua").search_history()<CR>',opts
 -- keymap("n", '<leader>tg', ':Tags<CR>',opts)
 keymap("n", '<leader>l', '<Cmd>lua require("fzf-lua").lines()<CR>',opts)
 
-
 -- Bufferline
 keymap("n", '<Tab>',  ':BufferLineCycleNext<CR>', opts)
 keymap("n", '<S-Tab>',  ':BufferLineCycleNext<CR>', opts)
 
+-- nvim-tmux-navigation
+keymap("n", '<C-h>',  '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateLeft<CR>',opts)
+keymap("n", '<C-j>', '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateDown<CR>',opts)
+keymap("n", '<C-k>', '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateUp<CR>',opts)
+keymap("n", '<C-l>', '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateRight<CR>',opts)
+keymap("n", '<C-\\>', '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateLastActive<CR>',opts)
+keymap("n", '<C-Space>', '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateNext<CR>',opts)

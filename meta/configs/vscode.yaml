@@ -40,6 +40,6 @@
 
 - shell:
   -description: Installing vscode extensions
-    command: 'scripts/vscode.extensions.sh'
+    command: 'scripts/vscode.extensions.sh /usr/bin/code'
     stdout: true
     stderr: true

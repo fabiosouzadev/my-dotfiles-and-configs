@@ -1,6 +1,7 @@
 cli.ubuntu
 bat
 docker.ubuntu
+kind
 pyenv
 git
 ssh

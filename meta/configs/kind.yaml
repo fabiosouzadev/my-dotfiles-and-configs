@@ -1,0 +1,7 @@
+- shell:
+  - description: Validating sudo credentials
+    command: "sudo --validate"
+  - description: Install kind
+    command: scripts/kind.install.sh
+    stdout: true
+    stderr: true

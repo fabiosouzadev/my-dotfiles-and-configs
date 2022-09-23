@@ -9,6 +9,8 @@ VSCODE_EXTENSIONS=(
 "arcticicestudio.nord-visual-studio-code"
 "daltonmenezes.aura-theme"
 "wicked-labs.wvsc-serendipity"
+"johnpapa.vscode-peacock"
+
 )
 
 for i in "${VSCODE_EXTENSIONS[@]}"

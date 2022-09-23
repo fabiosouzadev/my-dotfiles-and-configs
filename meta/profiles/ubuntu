@@ -2,6 +2,7 @@ cli.ubuntu
 bat
 docker.ubuntu
 kind
+minikube
 pyenv
 git
 ssh
@@ -17,3 +18,4 @@ fonts.ubuntu
 vscodium
 desktop.ubuntu
 forticlient.ubuntu
+

@@ -126,9 +126,9 @@ if [[ ! -f ~/.zsh-quickstart-no-omz ]]; then
   zgenom oh-my-zsh plugins/gitfast
   zgenom oh-my-zsh plugins/golang
   zgenom oh-my-zsh plugins/kubectl
-  zgenom oh-my-zsh plugins/kubectx
   zgenom oh-my-zsh plugins/laravel
   zgenom oh-my-zsh plugins/microk8s
+  zgenom oh-my-zsh plugins/minikube
   zgenom oh-my-zsh plugins/npm
   zgenom oh-my-zsh plugins/nvm
   zgenom oh-my-zsh plugins/pep8

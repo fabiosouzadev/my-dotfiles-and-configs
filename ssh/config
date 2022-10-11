@@ -23,6 +23,13 @@ Host gitlab.luizalabs.com
   PreferredAuthentications publickey
   IdentityFile ~/.ssh/id_ed25519_luizalabs
 
+# Private GitLab Hubfintech instance
+Host gitlab.hubfintech.com.br
+  User git
+  HostName gitlab.hubfintech.com.br
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_ed25519_luizalabs
+
 #Lembrar senhas
 Host *
   AddKeysToAgent yes

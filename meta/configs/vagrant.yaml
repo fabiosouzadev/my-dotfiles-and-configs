@@ -1,0 +1,7 @@
+- shell:
+  - description: Validating sudo credentials
+    command: "sudo --validate"
+  - description: Install Vagrant
+    command: scripts/vagrant.install.sh
+    stdout: true
+    stderr: true

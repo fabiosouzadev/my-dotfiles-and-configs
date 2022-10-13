@@ -53,7 +53,7 @@ return packer.startup(function(use)
   use { 'goolord/alpha-nvim' ,requires = { 'kyazdani42/nvim-web-devicons' }, config = "require('configs.alpha-nvim').setup()"}
   use { 'nvim-lualine/lualine.nvim' , wants = { 'tokyonight.nvim', 'lualine-lsp-progress' }, event = 'BufRead', config = "require('configs.lualine')",requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
   use { 'arkav/lualine-lsp-progress' }
-  use { 'akinsho/bufferline.nvim' ,requires = 'kyazdani42/nvim-web-devicons',event = "BufWinEnter",config = "require('configs.bufferline')"}
+  use { 'akinsho/bufferline.nvim' , tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons',event = "BufWinEnter",config = "require('configs.bufferline')"}
   use { 'kyazdani42/nvim-tree.lua' ,requires = 'kyazdani42/nvim-web-devicons',cmd = "NvimTreeToggle",config = "require('configs.nvim-tree')", tag = 'nightly'}
   use { 'lukas-reineke/indent-blankline.nvim', config = "require('configs.indent-blankline')" , event = "BufReadPre" }
   use { 'norcalli/nvim-colorizer.lua', config = "require('configs.nvim-colorizer')", event = "BufRead"}

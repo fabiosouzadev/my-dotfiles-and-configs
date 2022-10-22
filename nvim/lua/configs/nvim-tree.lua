@@ -1,5 +1,8 @@
 require'nvim-tree'.setup {
+  diagnostics = {
+    enable = true,
+  },
   filters = {
-    custom = {'.git', 'node_modules', '.cache'}
+    custom = {'.git$', '.gitignore', 'node_modules', '.cache'}
   }
 }

@@ -1,7 +1,0 @@
-- shell:
-  - description: Validating sudo credentials
-    command: "sudo --validate"
-  - description: Install minikube
-    command: scripts/minikube.install.sh
-    stdout: true
-    stderr: true

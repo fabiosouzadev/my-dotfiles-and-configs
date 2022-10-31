@@ -1,7 +1,0 @@
-- shell:
-  - description: Validating sudo credentials
-    command: "sudo --validate"
-  - description: Install argocd-cli
-    command: scripts/argocd-cli.install.sh
-    stdout: true
-    stderr: true

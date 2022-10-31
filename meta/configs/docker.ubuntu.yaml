@@ -1,7 +1,27 @@
 - shell:
   - description: Validating sudo credentials
     command: "sudo --validate"
-  - description: Installing apps
+  - description: Installing docker
     command: scripts/docker.ubuntu.sh
+    stderr: true
+    stdout: true
+  - description: Installing kind
+    command: scripts/kind.install.ubuntu.sh
+    stderr: true
+    stdout: true
+  - description: Installing k9s
+    command: scripts/k9s.install.ubuntu.sh
+    stderr: true
+    stdout: true
+  - description: Installing minikube
+    command: scripts/minikube.install.ubuntu.sh
+    stderr: true
+    stdout: true
+  - description: Installing ArgoCD-cli
+    command: scripts/argocd-cli.install.ubuntu.sh
+    stderr: true
+    stdout: true
+  - description: Installing Lazydocker
+    command: scripts/lazydocker.install.ubuntu.sh
     stderr: true
     stdout: true

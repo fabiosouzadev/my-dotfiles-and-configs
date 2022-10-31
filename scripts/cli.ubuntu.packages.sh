@@ -84,9 +84,6 @@ if [ ! -d "$HOME/.pyenv" ];then
     exec $SHELL
 fi
 
-#Install K9s
-curl -sS https://webinstall.dev/k9s | sh
-
 #WAKATIME
 python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
 

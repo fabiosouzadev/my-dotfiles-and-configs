@@ -37,7 +37,6 @@ brew 'wakatime-cli'
 brew 'tmux'
 brew 'semgrep'
 cask 'microsoft-remote-desktop'
-brew 'k9s'
 
 # Apps
 brew 'mas' # Mac App Store manager

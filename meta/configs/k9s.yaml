@@ -1,0 +1,7 @@
+- shell:
+  - description: Validating sudo credentials
+    command: "sudo --validate"
+  - description: Install k9s
+    command: scripts/k9s.install.sh
+    stdout: true
+    stderr: true

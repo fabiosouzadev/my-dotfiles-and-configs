@@ -59,20 +59,10 @@ sudo apt-get install -y \
       exa \
       fzf \
       tmux \
-      neovim \
       glow
 
 #Config fd
 sudo ln -fvs /usr/bin/fdfind /usr/bin/fd
-
-#Lazygit
-#sudo add-apt-repository ppa:lazygit-team/daily
-#sudo apt-get update
-#sudo apt-get install -y lazygit
-
-#Install lazydocker
-#curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
-#sudo mv lazydocker /usr/local/bin
 
 #Install delta
 curl -sLO https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb && sudo dpkg -i git-delta_0.13.0_amd64.deb && sudo rm git-delta_0.13.0_amd64.deb
@@ -86,5 +76,3 @@ fi
 
 #WAKATIME
 python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
-
-#Install docker

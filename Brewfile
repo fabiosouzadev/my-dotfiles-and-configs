@@ -41,6 +41,8 @@ brew 'k9s'
 brew 'kind'
 brew 'minikube'
 brew 'argocd'
+# Like a ab (ApacheBench)
+brew 'hey'
 
 # Apps
 brew 'mas' # Mac App Store manager

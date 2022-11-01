@@ -59,7 +59,8 @@ sudo apt-get install -y \
       exa \
       fzf \
       tmux \
-      glow
+      glow \
+      apache2-utils
 
 #Config fd
 sudo ln -fvs /usr/bin/fdfind /usr/bin/fd

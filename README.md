@@ -2,8 +2,7 @@
 
 ## Overview
 
-![screenshot](https://asciinema.org/a/zN7mJRpFDmdv8XcD7H5E0WtIb)
-
+[![asciicast](https://asciinema.org/a/zN7mJRpFDmdv8XcD7H5E0WtIb.png)](https://asciinema.org/a/zN7mJRpFDmdv8XcD7H5E0WtIb)
 ## Features
 
 This repo was born to help configure a Linux WSL Distro for to be ready to software develop!!!

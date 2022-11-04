@@ -18,6 +18,8 @@ sudo resolvconf -u
 
 echo 'deb [trusted=yes] https://repo.charm.sh/apt/ /' | sudo tee /etc/apt/sources.list.d/charm.list #Glow
 sudo apt-add-repository -y ppa:zanchey/asciinema #Asciinema
+sudo add-apt-repository -y ppa:peek-developers/stable
+
 
 #Atualizar sources lists
 sudo apt-get -y update
@@ -61,7 +63,8 @@ sudo apt-get install -y \
       tmux \
       glow \
       apache2-utils \
-      asciinema
+      asciinema \
+      peek
 
 #Config fd
 sudo ln -fvs /usr/bin/fdfind /usr/bin/fd

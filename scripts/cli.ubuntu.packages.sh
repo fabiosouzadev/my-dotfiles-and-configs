@@ -16,8 +16,8 @@ sudo resolvconf -u
 
 # Add ppa or sources list
 
-#Glow
 echo 'deb [trusted=yes] https://repo.charm.sh/apt/ /' | sudo tee /etc/apt/sources.list.d/charm.list #Glow
+sudo apt-add-repository -y ppa:zanchey/asciinema #Asciinema
 
 #Atualizar sources lists
 sudo apt-get -y update
@@ -60,7 +60,8 @@ sudo apt-get install -y \
       fzf \
       tmux \
       glow \
-      apache2-utils
+      apache2-utils \
+      asciinema
 
 #Config fd
 sudo ln -fvs /usr/bin/fdfind /usr/bin/fd

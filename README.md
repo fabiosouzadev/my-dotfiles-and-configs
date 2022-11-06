@@ -1,5 +1,3 @@
-<-- OVERVIEW -->
-
 ## Overview
 
 [![asciicast](https://asciinema.org/a/zN7mJRpFDmdv8XcD7H5E0WtIb.png)](https://asciinema.org/a/zN7mJRpFDmdv8XcD7H5E0WtIb)

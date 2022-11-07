@@ -43,7 +43,7 @@ alias showhidden="defaults write com.apple.finder AppleShowAllFiles YES; killall
 alias hidehidden="defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app"
 
 #Hey -> ApacheBench
-if [[ $(uname -a | grep -ci Darwin) = 1 ] && [ -x hey ]]; then
+if [ $(uname -a | grep -ci Darwin) = 1 ] && [ -x hey ]]; then
     alias ab="hey"
 fi
 

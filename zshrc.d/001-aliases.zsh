@@ -27,7 +27,9 @@ fi
 #ALIAS
 alias zc="${EDITOR}  ~/.zshrc"
 alias hc="sudo ${EDITOR} /etc/hosts"
-alias ls="exa"
+alias ls='exa --icons --group-directories-first'
+alias ll='exa -l --icons --no-user --group-directories-first  --time-style long-iso'
+alias la='exa -la --icons --no-user --group-directories-first  --time-style long-iso'
 alias lll='exa -alh'
 alias cat='bat'
 

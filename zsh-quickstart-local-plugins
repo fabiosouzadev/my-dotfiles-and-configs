@@ -16,7 +16,7 @@
 ZGEN_LOADED=()
 ZGEN_COMPLETIONS=()
 
-if [[ ! -f ~/.zsh-quickstart-no-omz ]]; then
+if [[ $(_zqs-get-setting load-omz-plugins true) == 'true' ]]; then
   zgenom oh-my-zsh
 fi
 
@@ -49,7 +49,8 @@ warn-about-prompt-change() {
 
 # If zsh-syntax-highlighting is bundled after zsh-history-substring-search,
 # they break, so get the order right.
-zgenom load zsh-users/zsh-syntax-highlighting
+#zgenom load zsh-users/zsh-syntax-highlighting
+zgenom load zdharma-continuum/fast-syntax-highlighting
 zgenom load zsh-users/zsh-history-substring-search
 
 # Set keystrokes for substring searching
@@ -98,9 +99,7 @@ zgenom load peterhurford/git-it-on.zsh
 # in a repository securely by encrypting them with gnupg.
 zgenom load StackExchange/blackbox
 
-
-
-if [[ ! -f ~/.zsh-quickstart-no-omz ]]; then
+if [[ $(_zqs-get-setting load-omz-plugins true) == 'true' ]]; then
   # Load some oh-my-zsh plugins
   zgenom oh-my-zsh plugins/pip
   zgenom oh-my-zsh plugins/sudo
@@ -112,8 +111,7 @@ if [[ ! -f ~/.zsh-quickstart-no-omz ]]; then
   zgenom oh-my-zsh plugins/python
   zgenom oh-my-zsh plugins/rsync
   zgenom oh-my-zsh plugins/screen
-  zgenom oh-my-zsh plugins/vagrant    
-  
+  zgenom oh-my-zsh plugins/vagrant
   # My oh-my-zsh added plugins
   zgenom oh-my-zsh plugins/asdf
   zgenom oh-my-zsh plugins/celery
@@ -162,6 +160,9 @@ zgenom load zsh-users/zsh-completions src
 # Docker completion
 zgenom load srijanshetty/docker-zsh
 
+# Load tab completions for 1Password's op command line tool if it's installed
+#zgenom load unixorn/1password-op.plugin.zsh
+
 # Load me last
 GENCOMPL_FPATH=$HOME/.zsh/complete
 
@@ -178,14 +179,14 @@ zgenom load zsh-users/zsh-autosuggestions
 # directories.
 zgenom load supercrabtree/k
 
-#if [[ -f ~/.zsh-quickstart-use-bullet-train ]]; then
-#  # Bullet train prompt setup.
-#  zgenom load https://github.com/caiogondim/bullet-train.zsh
-#else
-#  # p10k is faster and what I'm using now, so it is the new default
-#  zgenom load romkatv/powerlevel10k powerlevel10k
-#  warn-about-prompt-change
-#fi
+if [[ -f ~/.zsh-quickstart-use-bullet-train ]]; then
+    # Bullet train prompt setup.
+    zgenom load https://github.com/caiogondim/bullet-train.zsh
+else
+    # p10k is faster and what I'm using now, so it is the new default
+    zgenom load romkatv/powerlevel10k powerlevel10k
+    warn-about-prompt-change
+fi
 
 
 ### MY CUSTOM PLUGINS

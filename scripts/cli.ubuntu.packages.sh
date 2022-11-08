@@ -69,7 +69,8 @@ sudo apt-get install -y \
       cmake \
       ninja-build \
       pkg-config \
-      libgtk-3-dev
+      libgtk-3-dev \
+      kubectx
 
 #Config fd
 sudo ln -fvs /usr/bin/fdfind /usr/bin/fd
@@ -78,7 +79,6 @@ sudo ln -fvs /usr/bin/fdfind /usr/bin/fd
 curl -sLO https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb && sudo dpkg -i git-delta_0.13.0_amd64.deb && sudo rm git-delta_0.13.0_amd64.deb
 
 #PYENV
-
 if [ ! -d "$HOME/.pyenv" ];then
     curl https://pyenv.run | bash
     exec $SHELL

@@ -179,14 +179,14 @@ zgenom load zsh-users/zsh-autosuggestions
 # directories.
 zgenom load supercrabtree/k
 
-if [[ -f ~/.zsh-quickstart-use-bullet-train ]]; then
-    # Bullet train prompt setup.
-    zgenom load https://github.com/caiogondim/bullet-train.zsh
-else
-    # p10k is faster and what I'm using now, so it is the new default
-    zgenom load romkatv/powerlevel10k powerlevel10k
-    warn-about-prompt-change
-fi
+# if [[ -f ~/.zsh-quickstart-use-bullet-train ]]; then
+#     # Bullet train prompt setup.
+#     zgenom load https://github.com/caiogondim/bullet-train.zsh
+# else
+#     # p10k is faster and what I'm using now, so it is the new default
+#     zgenom load romkatv/powerlevel10k powerlevel10k
+#     warn-about-prompt-change
+# fi
 
 
 ### MY CUSTOM PLUGINS

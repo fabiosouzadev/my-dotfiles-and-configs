@@ -25,11 +25,16 @@
     global: 6.5.1
     versions:
       - 6.5.1
+  - plugin: jq
+    url: https://github.com/AZMCode/asdf-jq.git
+    global: latest
+    versions:
+      - latest
   - plugin: flutter
     url: https://github.com/oae/asdf-flutter.git
-    global: 2.10.1-stable
+    global: 3.3.7-stable
     versions:
-      - 2.10.1-stable
+      - 3.3.7-stable
   - plugin: dart
     url: https://github.com/patoconnor43/asdf-dart.git
     global: latest

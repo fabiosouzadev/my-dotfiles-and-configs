@@ -64,7 +64,12 @@ sudo apt-get install -y \
       glow \
       apache2-utils \
       asciinema \
-      peek
+      peek \
+      clang \
+      cmake \
+      ninja-build \
+      pkg-config \
+      libgtk-3-dev
 
 #Config fd
 sudo ln -fvs /usr/bin/fdfind /usr/bin/fd

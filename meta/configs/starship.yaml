@@ -1,5 +1,7 @@
 # Starship
 - shell:
+  - description: Validating sudo credentials
+    command: "sudo --validate"
   - description: Installing Starship
     command: "sh -c \"$(curl -sS https://starship.rs/install.sh)\""
     stderr: true

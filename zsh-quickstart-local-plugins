@@ -177,7 +177,7 @@ zgenom load zsh-users/zsh-autosuggestions
 # k is a zsh script / plugin to make directory listings more readable,
 # adding a bit of color and some git status information on files and
 # directories.
-zgenom load supercrabtree/k
+#zgenom load supercrabtree/k
 
 # if [[ -f ~/.zsh-quickstart-use-bullet-train ]]; then
 #     # Bullet train prompt setup.

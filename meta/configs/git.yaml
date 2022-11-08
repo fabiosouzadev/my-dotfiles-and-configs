@@ -1,5 +1,5 @@
 - link:
-    ~/.gitconfig:
+    ~/.gitconfig: git/gitconfig
 - shell:
   - description: Validating .env
     command: scripts/git.sh

@@ -24,6 +24,6 @@ if [ -f .env ]; then
     echo "${GITCONFIG_WORK_CONF}" | tee "${GITCONFIG_WORK_FILE}"
   fi
 else
-  echo "You need to write a .env file. Use example.env to create it !!!"
+  echo "You need to write a .env file. Use env/example.env to create it !!!"
   exit 1
 fi

@@ -6,4 +6,4 @@
     stdout: true
 - link:
     ~/.zshrc.d/100-starship.zsh: zshrc.d/100-starship.zsh
-    ~/.config/starship.toml: starship.toml
+    ~/.config/starship.toml: starship/starship.toml

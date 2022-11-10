@@ -33,4 +33,4 @@
       if: '[ `uname` = Darwin ]'
       path: zshrc.d/010-fzf.zsh
     ~/.p10k.zsh:  powerlevel10k/p10k.zsh
-    ~/.zsh-quickstart-local-plugins:
+    ~/.zsh-quickstart-local-plugins: zshrc.d/zsh-quickstart-local-plugins

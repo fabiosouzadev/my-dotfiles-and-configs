@@ -25,7 +25,6 @@ sudo add-apt-repository -y ppa:peek-developers/stable
 sudo apt-get -y update
 
 sudo apt-get install -y \
-      make \
       build-essential \
       libssl-dev \
       zlib1g-dev \
@@ -36,8 +35,6 @@ sudo apt-get install -y \
       ca-certificates \
       apt-transport-https \
       software-properties-common \
-      wget \
-      curl \
       llvm \
       libncursesw5-dev \
       xz-utils \

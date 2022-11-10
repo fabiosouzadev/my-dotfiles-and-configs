@@ -1,4 +1,4 @@
-cli.ubuntu
+cli.ubuntu-sudo
 bat
 docker.ubuntu
 kind

@@ -12,10 +12,10 @@
     stderr: true
 
 - link:
-    ~/.zgen-setup: zsh-quickstart-kit/zsh/.zgen-setup
-    ~/.zsh_aliases: zsh-quickstart-kit/zsh/.zsh_aliases
-    ~/.zsh_functions: zsh-quickstart-kit/zsh/.zsh_functions
-    ~/.zshrc: zsh-quickstart-kit/zsh/.zshrc
+    ~/.zgen-setup: meta/zsh-quickstart-kit/zsh/.zgen-setup
+    ~/.zsh_aliases: meta/zsh-quickstart-kit/zsh/.zsh_aliases
+    ~/.zsh_functions: meta/zsh-quickstart-kit/zsh/.zsh_functions
+    ~/.zshrc: meta/zsh-quickstart-kit/zsh/.zshrc
     ~/.zshrc.d/001-aliases.zsh: zshrc.d/001-aliases.zsh
     ~/.zshrc.d/002-nvm.zsh: zshrc.d/002-nvm.zsh
     ~/.zshrc.d/003-brew-completations.zsh:

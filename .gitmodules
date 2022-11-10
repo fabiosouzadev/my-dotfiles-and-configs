@@ -1,5 +1,5 @@
-[submodule "zsh-quickstart-kit"]
-	path = zsh-quickstart-kit
+[submodule "meta/zsh-quickstart-kit"]
+	path = meta/zsh-quickstart-kit
 	url = https://github.com/unixorn/zsh-quickstart-kit
 [submodule "meta/dotbot"]
 	path = meta/dotbot
@@ -14,3 +14,6 @@
 [submodule "meta/dotbot-git"]
 	path = meta/dotbot-git
 	url = https://github.com/DrDynamic/dotbot-git.git
+[submodule "meta/dotbot-plugin-aptget"]
+	path = meta/dotbot-plugin-aptget
+	url = https://github.com/dein0s/dotbot_plugin_aptget.git

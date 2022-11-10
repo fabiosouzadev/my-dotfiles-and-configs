@@ -14,10 +14,8 @@ DOTBOT_BIN="bin/dotbot"
 
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-PLUGINS="-p "${META_DIR}/dotbot-brewfile/brewfile.py" -p "${META_DIR}/dotbot-asdf/asdf.py""
-
-cd "${BASE_DIR}"
-git submodule update --init --recursive zsh-quickstart-kit
+PLUGINS="-p "${META_DIR}/dotbot-brewfile/brewfile.py" -p "${META_DIR}/dotbot-asdf/asdf.py" "
+PLUGINS_WITH_SUDO="-p "${META_DIR}/dotbot-plugin-aptget/aptget.py""
 
 cd "${BASE_DIR}/meta"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
@@ -25,10 +23,13 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 git submodule update --init --recursive dotbot-brewfile
 git submodule update --init --recursive dotbot-asdf
 git submodule update --init --recursive dotbot-git
+git submodule update --init --recursive dotbot-plugin-aptget
+git submodule update --init --recursive zsh-quickstart-kit
 
 cd "${BASE_DIR}"
 
 for config in ${@}; do
+
     # create temporary file
     configFile="$(mktemp)"
     suffix="-sudo"
@@ -37,7 +38,7 @@ for config in ${@}; do
     cmd=("${BASE_DIR}/${META_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" -c "$configFile" $PLUGINS)
 
     if [[ $config == *"sudo"* ]]; then
-        cmd=(sudo "${cmd[@]}")
+        cmd=(sudo "${cmd[@]}" $PLUGINS_WITH_SUDO)
     fi
 
     "${cmd[@]}"

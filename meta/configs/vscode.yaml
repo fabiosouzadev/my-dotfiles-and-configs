@@ -38,8 +38,7 @@
       if: '[ `uname` = Linux ]'
       path: vscode/snippets
 
-- shell:
-  -description: Installing vscode extensions
-    command: 'scripts/vscode.extensions.sh /usr/bin/code'
-    stdout: true
-    stderr: true
+- vscodefile:
+    file: Vscodefile
+    insiders: true
+

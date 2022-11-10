@@ -28,8 +28,6 @@
       if: '[ `uname` = Darwin ]'
       path: vscode/snippets
 
-- shell:
-  - description: Installing vscode extensions
-    command: 'scripts/vscode.extensions.sh /usr/bin/codium'
-    stdout: true
-    stderr: true 
+- vscodefile:
+    file: vscode/vscodefile
+    insiders: true

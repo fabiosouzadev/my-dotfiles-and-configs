@@ -7,13 +7,33 @@
     command: 'git clone https://github.com/asdf-vm/asdf.git ~/.asdf'
     stderr: true
     stdout: true
-  - description: Remove previous asdf folder
+  - description: Source ASDF
     command: "{{ $SOURCE }}"
     stderr: true
     stdout: true
 - link:
-    ~/.asdfrc:asdf/asdfrc
+    ~/.asdfrc: asdf/asdfrc
 - asdf:
+  - plugin: jq
+    url: https://github.com/AZMCode/asdf-jq.git
+    global: latest
+    versions:
+      - latest
+  - plugin: kubectx
+    url: https://github.com/virtualstaticvoid/asdf-kubectx.git
+    global: latest
+    versions:
+      - latest
+  - plugin: argocd
+    url: https://github.com/beardix/asdf-argocd.git
+    global: latest
+    versions:
+      - latest
+  - plugin: dotnet-core
+    url: https://github.com/emersonsoares/asdf-dotnet-core.git 
+    global: latest
+    versions:
+      - latest
   - plugin: java
     url: https://github.com/halcyon/asdf-java.git
     global: temurin-17.0.2+8
@@ -25,11 +45,6 @@
     global: 6.5.1
     versions:
       - 6.5.1
-  - plugin: jq
-    url: https://github.com/AZMCode/asdf-jq.git
-    global: latest
-    versions:
-      - latest
   - plugin: flutter
     url: https://github.com/oae/asdf-flutter.git
     global: 3.3.7-stable
@@ -37,16 +52,6 @@
       - 3.3.7-stable
   - plugin: dart
     url: https://github.com/patoconnor43/asdf-dart.git
-    global: latest
-    versions:
-      - latest
-  - plugin: kubectx
-    url: https://github.com/virtualstaticvoid/asdf-kubectx.git
-    global: latest
-    versions:
-      - latest
-  - plugin: argocd
-    url: https://github.com/beardix/asdf-argocd.git
     global: latest
     versions:
       - latest

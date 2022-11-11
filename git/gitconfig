@@ -12,6 +12,9 @@
     editor = nvim
     default = current
 
+[interactive]
+    diffFilter = delta --color-only
+
 [push]
     followTags = true
 	default = current

@@ -23,18 +23,20 @@ g.mapleader = " "
 g.maplocalleader = " "
 
 
-
--- Para Salvar com 'Ctrl + S' nos modos: Normal, Inserção e Visual
--- Precisa adicionar a linha: stty -ixon , ao seu ~/.bashrc
-vim.cmd([[ nnoremap <C-s> :w<CR> ]])
-vim.cmd([[ inoremap <C-s> <Esc>:w<CR>l ]])
-vim.cmd([[ vnoremap <C-s> <Esc>:w<CR> ]])
--- Selecionar tudo com 'Ctrl + A'
-vim.cmd([[ map <C-a> ggVG ]])
-
 -- Edit and Reload Config
 keymap("n","<leader>ec",":vsplit %<CR>",opts)
 keymap("n","<leader>sc",":source %<CR>",opts)
+
+-- nvim-tmux-navigation
+keymap("n", "<C-h>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateLeft()<CR>',opts)
+keymap("n", "<C-j>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateDown()<CR>',opts)
+keymap("n", "<C-k>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateUp()<CR>',opts)
+keymap("n", "<C-l>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateRight()<CR>',opts)
+keymap("n", "<C-\\>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateLastActive()<CR>',opts)
+keymap("n", "<C-Space>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateNext()<CR>',opts)
+
+-- Selecionar tudo com 'Ctrl + A'
+vim.cmd([[ map <C-a> ggVG ]])
 
 -- Moving
 -- disable arrow keys cause im learning vim ;)
@@ -69,9 +71,9 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 -- keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
----
--- Plugins Keymaps
----
+-----------------------
+-- Plugins Keymaps ----
+-----------------------
 
 -- nvim-tree
 keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
@@ -86,17 +88,6 @@ keymap("n", '<leader>fb', '<Cmd>lua require "telescope.builtin".buffers()<CR>',o
 keymap("n", '<leader>fg',  '<Cmd>lua require "telescope.builtin".git_files()<CR>', opts)
 keymap("n", '<leader>ft',  '<Cmd>lua require "telescope.builtin".treesitter()<CR>', opts)
 
--- Fzf
--- nnoremap <c-p> :Files<CR>
--- nnoremap <c-f> :Ag<CR>
--- keymap("n", '<C-p>',  ':Files<CR>',opts)
--- keymap("n", '<leader>ag', ':Ag<CR>',opts)
--- keymap("n", '<leader>rg', ':Rg<CR>',opts)
--- keymap("n", '<leader>b', ':Buffers<CR>',opts)
--- keymap("n", '<leader>h', ':History<CR>',opts)
--- keymap("n", '<leader>tg', ':Tags<CR>',opts)
--- keymap("n", '<leader>l', ':Lines<CR>',opts)
-
 -- FZF - lua
 keymap("n", '<C-p>',  '<Cmd>lua require("fzf-lua").files()<CR>',opts)
 keymap("n", '<leader>ag', '<Cmd>lua require("fzf-lua").live_grep()<CR>',opts)
@@ -109,12 +100,3 @@ keymap("n", '<leader>l', '<Cmd>lua require("fzf-lua").lines()<CR>',opts)
 -- Bufferline
 keymap("n", '<Tab>',  ':BufferLineCycleNext<CR>', opts)
 keymap("n", '<S-Tab>',  ':BufferLineCycleNext<CR>', opts)
-
-
--- nvim-tmux-navigation
-keymap("n", "<C-h>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateLeft()<CR>',opts)
-keymap("n", "<C-j>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateDown()<CR>',opts)
-keymap("n", "<C-k>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateUp()<CR>',opts)
-keymap("n", "<C-l>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateRight()<CR>',opts)
-keymap("n", "<C-\\>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateLastActive()<CR>',opts)
-keymap("n", "<C-Space>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateNext()<CR>',opts)

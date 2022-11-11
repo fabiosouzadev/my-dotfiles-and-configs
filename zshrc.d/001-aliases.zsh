@@ -49,3 +49,6 @@ if [ $(uname -a | grep -ci Darwin) = 1 ] && [ -x hey ]]; then
     alias ab="hey"
 fi
 
+batdiff() {
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+}

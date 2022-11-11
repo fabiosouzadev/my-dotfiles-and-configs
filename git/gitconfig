@@ -8,6 +8,7 @@
 	helper = osxkeychain
 
 [core]
+    pager = delta
     editor = nvim
     default = current
 
@@ -16,7 +17,9 @@
 	default = current
 
 [delta]
-    side-by-side = true
+    navigate = true 
+    light = false
+    line-numbers = true
     minus-style                   = syntax "#3a273a"
     minus-non-emph-style          = syntax "#3a273a"
     minus-emph-style              = syntax "#6b2e43"
@@ -28,6 +31,9 @@
     plus-empty-line-marker-style  = syntax "#273849"
     line-numbers-plus-style       = "#627259"
     line-numbers-zero-style       = "#3b4261"
+
+[diff]
+    colorMoved = default
 
 [alias]
     c = !git add --all && git commit -m

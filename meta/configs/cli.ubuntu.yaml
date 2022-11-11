@@ -4,17 +4,17 @@
 
 - aptget: [make, wget, curl]
 
-# - shell:
-#   - description: Create ~/.local/bin
-#     command: "[ -d ~/.local/bin ] || mkdir -p ~/.local/bin"     
-#   - description: Installing packages
-#     command: scripts/cli.ubuntu.packages.sh
-#     stdout: true
-#     stderr: true
-#   - description: Installing Lazygit
-#     command: scripts/lazygit.install.ubuntu.sh
-#     stderr: true
-#     stdout: true
-#   - description: Customize fonts
-#     command: "fc-cache -vf ~/.fonts/"
+- shell:
+  - description: Create ~/.local/bin
+    command: "[ -d ~/.local/bin ] || mkdir -p ~/.local/bin"     
+  - description: Installing packages
+    command: scripts/cli.ubuntu.packages.sh
+    stdout: true
+    stderr: true
+  - description: Installing Lazygit
+    command: scripts/lazygit.install.ubuntu.sh
+    stderr: true
+    stdout: true
+  - description: Customize fonts
+    command: "fc-cache -vf ~/.fonts/"
 

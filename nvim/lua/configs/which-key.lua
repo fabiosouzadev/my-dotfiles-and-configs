@@ -1,12 +1,3 @@
--- Keymaps
-local g = vim.g
-
-local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
-
--- Shorten function name
-local keymap = vim.api.nvim_set_keymap
-
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -15,15 +6,17 @@ local keymap = vim.api.nvim_set_keymap
 --   term_mode = "t",
 --   command_mode = "c",
 
---Remap space as leader key
+-- Keymaps
+local g = vim.g
+local opts = { noremap = true, silent = true }
+local keymap = vim.api.nvim_set_keymap
+
+--Remap space as <leader>
 keymap("", "<Space>", "<Nop>", opts)
 g.mapleader = " "
 g.maplocalleader = " "
 
--- Edit and Reload Config
-keymap("n","<leader>ec",":vsplit %<CR>",opts)
-keymap("n","<leader>sc",":source %<CR>",opts)
-
+-- Whichkey
 local wk = require("which-key")
 wk.setup {
   -- your configuration comes here
@@ -38,11 +31,9 @@ wk.setup {
   },
 }
 
-
--- Whichkey
 local mappings = {
     l = {
-        name = "LSP",
+        name = "Lsp",
         i = {":LspInfo<cr>", "Connected Language Servers"},
         I = {'<cmd>LspInstallInfo<cr>', 'Install language server'},
         k = {'<cmd>lua vim.lsp.buf.signature_help()<CR>', "Signature help"},
@@ -92,14 +83,8 @@ local l_mappings = {
         b = {'<Cmd>lua require "telescope.builtin".buffers()<CR>', "Buffers"},
         g = {'<Cmd>lua require "telescope.builtin".git_files()<CR>', "Git Files"},
         t = {'<Cmd>lua require "telescope.builtin".treesitter()<CR>', "Treesitter"},
-        o = {'<Cmd>Telescope oldfiles<CR>', "Recent Files"}
+        o = {'<Cmd>lua require "telescope.builtin".oldfiles()<CR>', "Recent Files"}
     }
--- keymap("n", '<leader>ff',  '<Cmd>lua require "telescope.builtin".find_files()<CR>', opts)
--- keymap("n", '<leader>fl',  '<Cmd>lua require "telescope.builtin".live_grep()<CR>', opts)
--- keymap("n", '<leader>fh', '<Cmd>lua require "telescope.builtin".help_tags()<CR>', opts)
--- keymap("n", '<leader>fb', '<Cmd>lua require "telescope.builtin".buffers()<CR>',opts)
--- keymap("n", '<leader>fg',  '<Cmd>lua require "telescope.builtin".git_files()<CR>', opts)
--- keymap("n", '<leader>ft',  '<Cmd>lua require "telescope.builtin".treesitter()<CR>', opts)
 }
 
 wk.register(mappings, { prefix = ''})

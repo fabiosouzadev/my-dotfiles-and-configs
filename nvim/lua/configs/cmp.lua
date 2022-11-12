@@ -70,7 +70,7 @@ cmp.setup({
     { name = 'vsnip' }, -- For vsnip users.
     { name = 'treesitter' },
     { name = 'buffer' },
-    { name = "path" },
+    { name = 'path' },
   }, {
     { name = 'buffer' },
   })

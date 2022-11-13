@@ -69,7 +69,7 @@ keymap("n", '<leader>rg', '<Cmd>lua require("fzf-lua").grep_project()<CR>',opts)
 keymap("n", '<leader>b', '<Cmd>lua require("fzf-lua").buffers()<CR>',opts)
 keymap("n", '<leader>h', '<Cmd>lua require("fzf-lua").search_history()<CR>',opts)
 -- keymap("n", '<leader>tg', ':Tags<CR>',opts)
-keymap("n", '<leader>l', '<Cmd>lua require("fzf-lua").lines()<CR>',opts)
+-- keymap("n", '<leader>l', '<Cmd>lua require("fzf-lua").lines()<CR>',opts)
 
 -- Whichkey
 local wk = require("which-key")

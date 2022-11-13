@@ -112,7 +112,6 @@ local mappings = {
             N = {'<cmd>Lspsaga diagnostic_jump_prev<cr>', "Go To Previous Diagnostic"}
         },
     },
-    -- not working
     ["<tab>"] = { ":BufferLineCycleNext<CR>", "Next Buffer" },
     ["<s-tab>"] = { ":BufferLineCyclePrev<CR>", "Next Buffer" },
 }

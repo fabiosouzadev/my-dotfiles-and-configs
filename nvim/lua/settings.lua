@@ -33,10 +33,10 @@ opt.splitright = true
 opt.splitbelow = true
 
 -- Set the behavior of tab
-opt.tabstop=4              
-opt.softtabstop=4         
+opt.tabstop=4
+opt.softtabstop=4
 opt.shiftwidth=4
-opt.autoindent=true             
+opt.autoindent=true
 opt.expandtab=true
 
 -- Themes

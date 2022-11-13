@@ -62,7 +62,7 @@ return packer.startup(function(use)
   use { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate", event = 'BufRead', wants = { "nvim-treesitter-textobjects", "nvim-treesitter-context","nvim-autopairs"  }, requires = "nvim-treesitter/nvim-treesitter-textobjects", { 'romgrk/nvim-treesitter-context', config= "require('configs.nvim-treesitter-context')"}, config = "require('configs.nvim-treesitter')" }
 
   ----------------------
-  --    Keybinding     --
+  --   Keybinding   --
   ---------------------
   use { 'folke/which-key.nvim', event = "BufWinEnter", config = "require('configs.which-key')" }
   use { 'alexghergh/nvim-tmux-navigation', config = "require('configs.nvim-tmux-navigation')" }

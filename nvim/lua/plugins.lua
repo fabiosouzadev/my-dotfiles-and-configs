@@ -42,7 +42,6 @@ return packer.startup(function(use)
   -- Packer can manage itself
   use {'wbthomason/packer.nvim'}
 
-
   ----------------------
   -- Visual / Themes --
   ---------------------
@@ -64,16 +63,25 @@ return packer.startup(function(use)
   ----------------------
   --   Keybinding   --
   ---------------------
-  use { 'folke/which-key.nvim', event = "BufWinEnter", config = "require('configs.which-key')" }
+  use { 'folke/which-key.nvim', event = "BufWinEnter", config = "require('keymaps')" }
   use { 'alexghergh/nvim-tmux-navigation', config = "require('configs.nvim-tmux-navigation')" }
 
   ----------------------
   --    Navigation    --
   ---------------------
   -- Telescope
-  use { 'nvim-telescope/telescope.nvim', opt = true, config = "require('configs.telescope')", cmd = { "Telescope" }, module = "telescope", wants = { "plenary.nvim", "telescope-fzf-native.nvim" }, requires = { "nvim-lua/plenary.nvim", { "nvim-telescope/telescope-fzf-native.nvim", run = "make" } } }
-  -- Fzf-lua
-  use { 'ibhagwan/fzf-lua', config= "require('configs.fzf-lua')",event = "BufEnter",wants = 'nvim-web-devicons' ,requires = 'kyazdani42/nvim-web-devicons' }
+  use {
+    'nvim-telescope/telescope.nvim',
+    opt = true,
+    config = "require('configs.telescope')",
+    cmd = { "Telescope" },
+    module = "telescope",
+    wants = { "plenary.nvim", "telescope-fzf-native.nvim" },
+    requires = {
+        "nvim-lua/plenary.nvim",
+        { "nvim-telescope/telescope-fzf-native.nvim", run = "make" } 
+    }
+}
 
   ----------------------
   --    Code        --
@@ -84,7 +92,7 @@ return packer.startup(function(use)
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' }, config = "require('configs.gitsigns')"}
 
   ----------------------
-  --    CMP/Snippets        --
+  -- CMP/Snippets   --
   ---------------------
   use {
     'hrsh7th/nvim-cmp',

@@ -44,9 +44,10 @@ M.setup = function()
   })
 end
 
-local function lsp_highlight_document(client)
+local function lsp_highlight_document(client,bufnr)
   -- Set autocommands conditional on server_capabilities
   -- if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     vim.api.nvim_exec(
       [[
       augroup lsp_document_highlight
@@ -62,7 +63,7 @@ end
 
 
 M.on_attach = function(client, bufnr)
-  lsp_highlight_document(client)
+  lsp_highlight_document(client,bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

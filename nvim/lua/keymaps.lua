@@ -32,13 +32,6 @@ keymap("n", "<C-l>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateR
 keymap("n", "<C-\\>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateLastActive()<CR>',opts)
 keymap("n", "<C-Space>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateNext()<CR>',opts)
 
--- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
-
-
 -- Whichkey
 local wk = require("which-key")
 wk.setup {
@@ -93,7 +86,7 @@ local mappings = {
         r ={ ':NvimTreeRefresh<cr>', "Refresh NvimTree"},
         n ={ ':NvimTreeFindFile<CR>', "Find Files Nvim"},
         b = {":Buffers<CR>","Buffers"}
-    }, 
+    },
     -- Telescope
     f = {
         name = 'Telescope',

@@ -2,7 +2,7 @@
   - description: Validating sudo credentials
     command: "sudo --validate"
 
-- aptget: [make, wget, curl]
+- aptget: [make, wget, curl, xsel]
 
 - shell:
   - description: Create ~/.local/bin

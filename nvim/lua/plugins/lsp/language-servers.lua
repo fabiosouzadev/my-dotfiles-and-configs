@@ -1,4 +1,7 @@
 local servers = {
+    "cssls",
+    "tailwindcss",
+    "sumneko_lua",
     "emmet_ls",
     "html",
     "jsonls",
@@ -11,4 +14,5 @@ local servers = {
     "gopls",
     "cssls",
 }
+
 return servers

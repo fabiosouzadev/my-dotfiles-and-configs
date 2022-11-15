@@ -9,7 +9,6 @@ local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup({
-	debug = false,
 	sources = {
 		-- formatting
 		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
@@ -18,6 +17,12 @@ null_ls.setup({
 		formatting.fixjson,
 		-- diagnostics
 		diagnostics.flake8,
+        diagnostics.eslint_d.with({ -- js/ts linter
+        -- only enable eslint if root has .eslintrc.js (not in youtube nvim video)
+                condition = function(utils)
+                return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
+            end,
+        }),
 		-- code actions
 		-- hover
 	},

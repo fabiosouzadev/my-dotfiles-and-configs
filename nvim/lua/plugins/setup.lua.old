@@ -1,19 +1,22 @@
-local fn = vim.fn
-
 -- Automatically install packer
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system {
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  }
-  print "Installing packer close and reopen Neovim..."
-  vim.cmd [[packadd packer.nvim]]
+local ensure_packer = function() 
+    local fn = vim.fn
+    local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system {
+            "git",
+            "clone",
+            "--depth",
+            "1",
+            "https://github.com/wbthomason/packer.nvim",
+            install_path
+          }
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
 end
+local packer_bootstrap = ensure_packer() -- true if packer was just installed
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd [[
@@ -58,7 +61,13 @@ return packer.startup(function(use)
   use { 'norcalli/nvim-colorizer.lua', config = "require('configs.nvim-colorizer')", event = "BufRead"}
 
   -- Treesitter
-  use { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate", event = 'BufRead', wants = { "nvim-treesitter-textobjects", "nvim-treesitter-context","nvim-autopairs"  }, requires = "nvim-treesitter/nvim-treesitter-textobjects", { 'romgrk/nvim-treesitter-context', config= "require('configs.nvim-treesitter-context')"}, config = "require('configs.nvim-treesitter')" }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ":TSUpdate",
+    event = 'BufRead',
+    wants = { "nvim-autopairs"},
+    config = "require('configs.nvim-treesitter')"
+  }
 
   ----------------------
   --   Keybinding   --
@@ -81,7 +90,7 @@ return packer.startup(function(use)
         "nvim-lua/plenary.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
     }
-}
+  }
 
   ----------------------
   --    Code        --
@@ -123,11 +132,12 @@ return packer.startup(function(use)
     "neovim/nvim-lspconfig", -- enable LSP
     opt = true,
     event = "BufReadPre",
-    wants = { 'plenary.nvim',"nvim-lsp-installer","cmp-nvim-lsp","null-ls.nvim" },
+    wants = { 'plenary.nvim',"mason","mason-lspconfig","cmp-nvim-lsp","null-ls.nvim" },
     config = "require('lsp')",
     requires = {
       "nvim-lua/plenary.nvim",
-      "williamboman/nvim-lsp-installer", -- simple to use language server installer
+      {"williamboman/mason.nvim", config = "require('lsp.mason')"},
+      {"williamboman/mason-lspconfig.nvim", config = "require('lsp.mason-lspconfig-installer')"},
       "tamago324/nlsp-settings.nvim", -- language server settings defined in json for
       {"jose-elias-alvarez/null-ls.nvim",config = "require('lsp.null-ls')"}, -- for formatters and linters
     },

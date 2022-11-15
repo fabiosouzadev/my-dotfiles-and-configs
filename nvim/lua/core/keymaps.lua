@@ -104,7 +104,7 @@ local mappings = {
     ["<c-n>"] = { ":bnext<CR>", "Next Buffer" },
     ["<c-p>"] = { ":bprevious<CR>", "Next Buffer" },
     -- Window 
-    ["<c-w"] = {
+    ["<c-w>"] = {
         name = "Win",
         -- Split
         x = {":split<CR>", 'Split Horrizontal'},

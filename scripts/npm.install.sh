@@ -47,3 +47,4 @@ npm install -g emmet-ls
 npm install -g editorconfig-checker
 npm install -g pyright
 npm install -g bash-language-server
+npm install -g tree-sitter-cli

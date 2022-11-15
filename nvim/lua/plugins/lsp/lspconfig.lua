@@ -33,7 +33,7 @@ end
 
 for _, server in pairs(language_servers) do
 	local opts = {
-		capabilities = cmp_nvim_lsp.default_capabilities()
+		capabilities = capabilities
 	}
 	local has_custom_opts, server_custom_opts = pcall(require, "lsp.settings." .. server)
 	if has_custom_opts then

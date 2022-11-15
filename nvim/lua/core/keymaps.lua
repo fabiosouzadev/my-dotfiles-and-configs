@@ -74,6 +74,9 @@ local mappings = {
                 N = {'<cmd>Lspsaga diagnostic_jump_prev<cr>', "Go To Previous Diagnostic"}
             },
         },
+        g = {
+            f = {'<cmd>Lspsaga lsp_finder<CR>', "Lsp Finder"}
+        },
         -- Configs
         e = {
             c = {':vsplit %<CR>"', "Edit configuration" },

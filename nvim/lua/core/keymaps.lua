@@ -19,7 +19,7 @@ keymap("n","<Left>","<Nop>",opts)
 keymap("n","<Right>","<Nop>",opts)
 
 --Remap space as <leader>
-keymap("", "<Space>", "<Nop>", opts)
+-- keymap("", "<Space>", "<Nop>", opts)
 g.mapleader = " "
 g.maplocalleader = " "
 
@@ -75,7 +75,7 @@ local mappings = {
             },
         },
         g = {
-            f = {'<cmd>Lspsaga lsp_finder<CR>', "Lsp Finder"}
+            f = {'<cmd>Lspsaga lsp_finder<CR>', "lsp_finder"}
         },
         -- Configs
         e = {

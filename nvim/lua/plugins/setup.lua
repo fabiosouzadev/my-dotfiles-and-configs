@@ -56,7 +56,6 @@ return packer.startup(function(use)
   use { 'folke/tokyonight.nvim'}
 
 
-  use { 'goolord/alpha-nvim'}
   use { 'nvim-lualine/lualine.nvim' }
   use { 'arkav/lualine-lsp-progress' } 
   use { 'akinsho/bufferline.nvim' , tag = "v3.*" }

@@ -3,7 +3,6 @@ require 'core.settings'
 require 'core.keymaps'
 require 'colorschemes.tokyonight'
 -- Plugins
---require 'plugins.alpha-nvim'.setup()
 require 'plugins.lualine'
 require 'plugins.bufferline'
 require 'plugins.nvim-tree'

@@ -6,3 +6,5 @@
     stderr: true
 - link:
     ~/.tmux.conf: tmux/tmux.conf
+    ~/.config/tmux/statusline.conf: tmux/statusline.conf
+    ~/.config/tmux/utility.conf: tmux/utility.conf

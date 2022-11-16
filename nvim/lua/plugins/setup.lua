@@ -101,7 +101,7 @@ return packer.startup(function(use)
   -- formatting & linting
   use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
   use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
-  
+
   -- Treesitter
   use {
         'nvim-treesitter/nvim-treesitter',
@@ -111,11 +111,11 @@ return packer.startup(function(use)
         end,
     }
 
-  use { "windwp/nvim-ts-autotag",  after = "nvim-treesitter" }  -- autoclose tags
+  use { "windwp/nvim-ts-autotag"}  -- autoclose tags
   -- use("tpope/vim-surround") -- test after
   use { 'numToStr/Comment.nvim' } -- gc,gb
   use { 'lewis6991/gitsigns.nvim' }
- 
+
   -- Behaviour/tools
   use {'wakatime/vim-wakatime'}
 

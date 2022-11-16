@@ -1,4 +1,3 @@
--- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
 --   visual_mode = "v",
@@ -19,7 +18,6 @@ keymap("n", "<Left>", "<Nop>", opts)
 keymap("n", "<Right>", "<Nop>", opts)
 
 --Remap space as <leader>
--- keymap("", "<Space>", "<Nop>", opts)
 g.mapleader = " "
 g.maplocalleader = " "
 
@@ -41,41 +39,6 @@ wk.setup({
 
 local mappings = {
   ["<leader>"] = {
-    l = {
-      name = "+Lsp",
-      i = { ":LspInfo<cr>", "Connected Language Servers" },
-      I = { "<cmd>LspInstallInfo<cr>", "Install language server" },
-      k = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature help" },
-      K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
-      w = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", "Add workspace folder" },
-      W = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", "Remove workspace folder" },
-      l = {
-        "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>",
-        "List workspace folder",
-      },
-      t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition" },
-      d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
-      D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaration" },
-      r = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
-      R = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-      a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code actions" },
-      e = { "<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>", "Show line diagnostics" },
-      n = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Go to next diagnostic" },
-      N = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Go to previous diagnostic" },
-      f = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format File" },
-      T = { "<cmd> Telescope diagnostics bufnr=0<CR>", "Get Diagnostics" },
-      s = {
-        name = "+Lspsaga",
-        R = { "<cmd>Lspsaga rename<cr>", "Rename" },
-        a = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
-        e = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Show Line Diagnostics" },
-        n = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Go To Next Diagnostic" },
-        N = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go To Previous Diagnostic" },
-      },
-    },
-    g = {
-      f = { "<cmd>Lspsaga lsp_finder<CR>", "lsp_finder" },
-    },
     -- Configs
     e = {
       c = { ':vsplit %<CR>"', "Edit configuration" },
@@ -88,7 +51,39 @@ local mappings = {
     r = { ":NvimTreeRefresh<cr>", "Refresh NvimTree" },
     n = { ":NvimTreeFindFile<CR>", "Find Files Nvim" },
     b = { ":Buffers<CR>", "Buffers" },
+
+    --- LSP --
+    l = {
+      name = "+Lspsaga",
+      c = { "<cmd>Lspsaga code_action<CR>", "Code actions" },
+      d = { "<cmd>Lspsaga peek_definition<CR>", "Line diagnostic" },
+      f = { "<cmd>Lspsaga lsp_finder<CR>", "Lsf Finder" },
+      e = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Show Line Diagnostics" },
+      n = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Go To Next Diagnostic" },
+      N = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go To Previous Diagnostic" },
+      K = { "<cmd>Lspsaga hover_doc<cr>", "Lsp - Hover" },
+      R = { "<cmd>Lspsaga rename<CR>", "Rename" },
+    },
+    --- LSP --
   },
+  --- LSP --
+  g = {
+    name = "Lsp",
+    d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" }, -- or or <cmd>Lspsaga peek_definition<CR>
+    D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaration" },
+    r = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" }, -- or  <Cmd>Lspsaga rename<CR>
+    t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition" },
+    i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "See implementation" },
+    a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code actions" },
+    p = { "<Cmd>Lspsaga peek_definition<CR>", "Lspsaga Preview def" },
+    f = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format File" },
+    R = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" }, -- or <cmd>Lspsaga rename<cr>
+  },
+  K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Lsp - Hover" }, -- or <Cmd>Lspsaga hover_doc<CR>
+  ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Go to next diagnostic" },
+  ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Go to previous diagnostic" },
+  --- LSP --
+
   -- Telescope
   f = {
     name = "Telescope",
@@ -100,24 +95,25 @@ local mappings = {
     t = { '<Cmd>lua require "telescope.builtin".treesitter()<CR>', "Treesitter" },
     o = { '<Cmd>lua require "telescope.builtin".oldfiles()<CR>', "Recent Files" },
   },
+  -- Window
+  s = {
+    name = "Window",
+    -- Split
+    x = { ":split<CR>", "Split Horrizontal" },
+    v = { ":vsplit<CR>", "Split Vertical" },
+    c = { ":close<CR>", "Close Split" },
+    -- Resize
+    j = { ":resize -2<CR>", ":resize -2<CR>" },
+    k = { ":resize +2<CR>", ":resize +2<CR>" },
+    h = { ":vertical resize -2<CR>", ":vertical resize -2<CR>" },
+    l = { ":vertical resize +2<CR>", ":vertical resize +2<CR>" },
+  },
   -- Buffers
   ["<tab>"] = { ":BufferLineCycleNext<CR>", "Next Buffer" },
   ["<s-tab>"] = { ":BufferLineCyclePrev<CR>", "Next Buffer" },
   ["<c-n>"] = { ":bnext<CR>", "Next Buffer" },
   ["<c-p>"] = { ":bprevious<CR>", "Next Buffer" },
-  -- Window
-  ["<c-w>"] = {
-    name = "Win",
-    -- Split
-    x = { ":split<CR>", "Split Horrizontal" },
-    v = { ":vsplit<CR>", "Split Vertical" },
-    -- to close panel use C-w c
-    -- Resize with arrows
-    ["<s-j>"] = { ":resize -2<CR>", ":resize -2<CR>" },
-    ["<s-k>"] = { ":resize +2<CR>", ":resize +2<CR>" },
-    ["<s-h>"] = { ":vertical resize -2<CR>", ":vertical resize -2<CR>" },
-    ["<s-l>"] = { ":vertical resize +2<CR>", ":vertical resize +2<CR>" },
-  },
+  ["<c-a>"] = { "gg<S-v>G", "Select All" },
 }
 
 wk.register(mappings, { prefix = "", noremap = true, silent = true })

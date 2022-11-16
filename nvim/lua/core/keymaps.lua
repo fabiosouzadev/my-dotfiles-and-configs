@@ -69,7 +69,7 @@ local mappings = {
   --- LSP --
   g = {
     name = "Lsp",
-    d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" }, -- or or <cmd>Lspsaga peek_definition<CR>
+    d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" }, -- or or <cmd>Lspsaga peek_definition<CR> -- <C-o> go back
     D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaration" },
     r = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" }, -- or  <Cmd>Lspsaga rename<CR>
     t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition" },
@@ -102,6 +102,7 @@ local mappings = {
     x = { ":split<CR>", "Split Horrizontal" },
     v = { ":vsplit<CR>", "Split Vertical" },
     c = { ":close<CR>", "Close Split" },
+    q = { ":cclose<CR>", "Close gr pane" },
     -- Resize
     j = { ":resize -2<CR>", ":resize -2<CR>" },
     k = { ":resize +2<CR>", ":resize +2<CR>" },
@@ -109,10 +110,9 @@ local mappings = {
     l = { ":vertical resize +2<CR>", ":vertical resize +2<CR>" },
   },
   -- Buffers
-  ["<tab>"] = { ":BufferLineCycleNext<CR>", "Next Buffer" },
-  ["<s-tab>"] = { ":BufferLineCyclePrev<CR>", "Next Buffer" },
-  ["<c-n>"] = { ":bnext<CR>", "Next Buffer" },
-  ["<c-p>"] = { ":bprevious<CR>", "Next Buffer" },
+  ["<tab>"] = { ":bnext<cr>", "Next Buffer" },
+  ["<s-tab>"] = { ":bprevious<cr>", "Previous Buffer" },
+  -- Select All
   ["<c-a>"] = { "gg<S-v>G", "Select All" },
 }
 

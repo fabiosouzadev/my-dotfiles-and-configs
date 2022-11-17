@@ -40,18 +40,26 @@ wk.setup({
 local mappings = {
   ["<leader>"] = {
     -- Configs
-    e = {
-      c = { ':vsplit %<CR>"', "Edit configuration" },
-    },
     s = {
-      c = { ":source %<CR>", "Reload Config" },
+      e = { ':vsplit %<CR>"', "Edit configuration" },
+      r = { ":source %<CR>", "Reload Config" },
     },
     -- nvim-tree
     t = { ":NvimTreeToggle<cr>", "Toggle NvimTree" },
     r = { ":NvimTreeRefresh<cr>", "Refresh NvimTree" },
     n = { ":NvimTreeFindFile<CR>", "Find Files Nvim" },
     b = { ":Buffers<CR>", "Buffers" },
-
+    -- Telescope
+    f = {
+      name = "Telescope",
+      f = { '<Cmd>lua require "telescope.builtin".find_files()<CR>', "Find Files" },
+      g = { '<Cmd>lua require "telescope.builtin".live_grep()<CR>', "Live Grep" },
+      b = { '<Cmd>lua require "telescope.builtin".buffers()<CR>', "Buffers" },
+      h = { '<Cmd>lua require "telescope.builtin".help_tags()<CR>', "Help Tags" },
+      i = { '<Cmd>lua require "telescope.builtin".git_files()<CR>', "Git Files" },
+      t = { '<Cmd>lua require "telescope.builtin".treesitter()<CR>', "Treesitter" },
+      r = { '<Cmd>lua require "telescope.builtin".oldfiles()<CR>', "Recent Files" },
+    },
     --- LSP --
     l = {
       name = "+Lspsaga",
@@ -83,37 +91,30 @@ local mappings = {
   ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Go to next diagnostic" },
   ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Go to previous diagnostic" },
   --- LSP --
-
-  -- Telescope
-  f = {
-    name = "Telescope",
-    f = { '<Cmd>lua require "telescope.builtin".find_files()<CR>', "Find Files" },
-    g = { '<Cmd>lua require "telescope.builtin".live_grep()<CR>', "Live Grep" },
-    b = { '<Cmd>lua require "telescope.builtin".buffers()<CR>', "Buffers" },
-    h = { '<Cmd>lua require "telescope.builtin".help_tags()<CR>', "Help Tags" },
-    i = { '<Cmd>lua require "telescope.builtin".git_files()<CR>', "Git Files" },
-    t = { '<Cmd>lua require "telescope.builtin".treesitter()<CR>', "Treesitter" },
-    o = { '<Cmd>lua require "telescope.builtin".oldfiles()<CR>', "Recent Files" },
-  },
+  -- Buffers
+  ["<tab>"] = { ":bnext<cr>", "Next Buffer" }, -- or <c-^
+  ["<s-tab>"] = { ":bprevious<cr>", "Previous Buffer" },
+  -- Select All
+  ["<c-a>"] = { "gg<S-v>G", "Select All" },
   -- Window
-  s = {
-    name = "Window",
-    -- Split
+  ["<c-w>"] = {
+    name = "+Window",
+    -- Spli
     x = { ":split<CR>", "Split Horrizontal" },
     v = { ":vsplit<CR>", "Split Vertical" },
     c = { ":close<CR>", "Close Split" },
-    q = { ":cclose<CR>", "Close gr pane" },
+    n = { "<C-w>n", "Blank split" },
+    q = { "<C-w>q", "Close gr pane" },
+    o = { "<C-w>o", "Close pane" },
+    w = { "<C-w>w", "swap split" },
+    r = { "<C-w>r", "Rotate Window vert" },
+    s = { "<C-w>s", "Rotate Window h" },
     -- Resize
     j = { ":resize -2<CR>", ":resize -2<CR>" },
     k = { ":resize +2<CR>", ":resize +2<CR>" },
     h = { ":vertical resize -2<CR>", ":vertical resize -2<CR>" },
     l = { ":vertical resize +2<CR>", ":vertical resize +2<CR>" },
   },
-  -- Buffers
-  ["<tab>"] = { ":bnext<cr>", "Next Buffer" },
-  ["<s-tab>"] = { ":bprevious<cr>", "Previous Buffer" },
-  -- Select All
-  ["<c-a>"] = { "gg<S-v>G", "Select All" },
 }
 
 wk.register(mappings, { prefix = "", noremap = true, silent = true })

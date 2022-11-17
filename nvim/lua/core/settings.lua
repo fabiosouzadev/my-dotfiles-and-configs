@@ -3,12 +3,11 @@ local o = vim.o
 
 -- General
 opt.compatible = false
-opt.mouse = 'a'
-opt.clipboard = 'unnamedplus'
+opt.mouse = "a"
+opt.clipboard = "unnamedplus"
 opt.swapfile = false
-opt.undodir = vim.fn.stdpath('data') .. '/undodir'
+opt.undodir = vim.fn.stdpath("data") .. "/undodir"
 opt.backup = false
-opt.showmode = false
 opt.hidden = true
 opt.history = 100
 opt.lazyredraw = true
@@ -16,7 +15,7 @@ opt.ttyfast = true
 opt.synmaxcol = 240
 opt.errorbells = false
 opt.showcmd = true
-opt.wildignore:append {'*/node_modules/**'}
+opt.wildignore:append({ "*/node_modules/**" })
 
 -- Editor
 opt.number = true
@@ -26,18 +25,17 @@ opt.smartindent = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.hlsearch = true
-opt.scrolloff=2
-opt.showmode = false
+opt.scrolloff = 2
 --  opt.signcolumn = 'yes'
 opt.splitright = true
 opt.splitbelow = true
 
 -- Set the behavior of tab
-opt.tabstop=4
-opt.softtabstop=4
-opt.shiftwidth=4
-opt.autoindent=true
-opt.expandtab=true
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
+opt.autoindent = true
+opt.expandtab = true
 
 -- Themes
 opt.termguicolors = true
@@ -48,4 +46,3 @@ vim.cmd([[
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 ]])
-

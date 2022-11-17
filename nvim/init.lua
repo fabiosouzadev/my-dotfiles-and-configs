@@ -1,20 +1,21 @@
-require 'plugins.setup'
-require 'core.settings'
-require 'core.keymaps'
-require 'colorschemes.tokyonight'
+require("plugins")
+require("core.settings")
+require("core.keymaps")
+require("colorschemes.tokyonight")
 -- Plugins
-require 'plugins.lualine'
-require 'plugins.bufferline'
-require 'plugins.nvim-tree'
-require 'plugins.indent-blankline'
-require 'plugins.nvim-colorizer'
-require 'plugins.nvim-tmux-navigation'
-require 'plugins.telescope'
-require 'plugins.nvim-cmp'
-require 'plugins.lsp.mason'
-require 'plugins.lsp.lspsaga'
-require 'plugins.lsp.lspconfig'
-require 'plugins.lsp.null-ls'
-require 'plugins.nvim-treesitter'
-require 'plugins.comment'
-require 'plugins.gitsigns'
+require("plugins.alpha-nvim")
+require("plugins.lualine")
+require("plugins.bufferline")
+require("plugins.nvim-tree")
+require("plugins.indent-blankline")
+require("plugins.nvim-colorizer")
+require("plugins.nvim-tmux-navigation")
+require("plugins.telescope")
+require("plugins.nvim-cmp")
+require("plugins.lsp.mason")
+require("plugins.lsp.lspsaga")
+require("plugins.lsp.lspconfig")
+require("plugins.lsp.null-ls")
+require("plugins.nvim-treesitter")
+require("plugins.comment")
+require("plugins.gitsigns")

@@ -54,7 +54,7 @@ return packer.startup(function(use)
 
   --  Colorschemes   --
   use({ "folke/tokyonight.nvim" })
-
+  use({ "goolord/alpha-nvim" })
   use({ "nvim-lualine/lualine.nvim" })
   use({ "arkav/lualine-lsp-progress" })
   use({ "akinsho/bufferline.nvim", tag = "v3.*" })
@@ -111,7 +111,6 @@ return packer.startup(function(use)
   })
 
   use({ "windwp/nvim-ts-autotag" }) -- autoclose tags
-  -- use("tpope/vim-surround") -- test after
   use({ "numToStr/Comment.nvim" }) -- gc,gb
   use({ "lewis6991/gitsigns.nvim" })
 

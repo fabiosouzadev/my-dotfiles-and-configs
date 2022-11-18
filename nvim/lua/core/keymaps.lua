@@ -22,12 +22,12 @@ g.mapleader = " "
 g.maplocalleader = " "
 
 -- nvim-tmux-navigation
-keymap("n", "<C-h>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateLeft()<CR>', opts)
-keymap("n", "<C-j>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateDown()<CR>', opts)
-keymap("n", "<C-k>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateUp()<CR>', opts)
-keymap("n", "<C-l>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateRight()<CR>', opts)
-keymap("n", "<C-\\>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateLastActive()<CR>', opts)
-keymap("n", "<C-Space>", '<Cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateNext()<CR>', opts)
+keymap("n", "<C-h>", '<cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateLeft()<cr>', opts)
+keymap("n", "<C-j>", '<cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateDown()<cr>', opts)
+keymap("n", "<C-k>", '<cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateUp()<cr>', opts)
+keymap("n", "<C-l>", '<cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateRight()<cr>', opts)
+keymap("n", "<C-\\>", '<cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateLastActive()<cr>', opts)
+keymap("n", "<C-Space>", '<cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateNext()<cr>', opts)
 
 -- Whichkey
 local wk = require("which-key")
@@ -41,55 +41,55 @@ local mappings = {
   ["<leader>"] = {
     -- Configs
     s = {
-      e = { ':vsplit %<CR>"', "Edit configuration" },
-      r = { ":source %<CR>", "Reload Config" },
+      e = { ':vsplit %<cr>"', "Edit configuration" },
+      r = { ":source %<cr>", "Reload Config" },
     },
     -- nvim-tree
     t = { ":NvimTreeToggle<cr>", "Toggle NvimTree" },
     r = { ":NvimTreeRefresh<cr>", "Refresh NvimTree" },
-    n = { ":NvimTreeFindFile<CR>", "Find Files Nvim" },
-    b = { ":Buffers<CR>", "Buffers" },
+    n = { ":NvimTreeFindFile<cr>", "Find Files Nvim" },
+    b = { ":Buffers<cr>", "Buffers" },
     -- Telescope
     f = {
       name = "Telescope",
-      f = { '<Cmd>lua require "telescope.builtin".find_files()<CR>', "Find Files" },
-      g = { '<Cmd>lua require "telescope.builtin".live_grep()<CR>', "Live Grep" },
-      b = { '<Cmd>lua require "telescope.builtin".buffers()<CR>', "Buffers" },
-      h = { '<Cmd>lua require "telescope.builtin".help_tags()<CR>', "Help Tags" },
-      i = { '<Cmd>lua require "telescope.builtin".git_files()<CR>', "Git Files" },
-      t = { '<Cmd>lua require "telescope.builtin".treesitter()<CR>', "Treesitter" },
-      r = { '<Cmd>lua require "telescope.builtin".oldfiles()<CR>', "Recent Files" },
+      f = { '<cmd>lua require "telescope.builtin".find_files()<cr>', "Find Files" },
+      g = { '<cmd>lua require "telescope.builtin".live_grep()<cr>', "Live Grep" },
+      b = { '<cmd>lua require "telescope.builtin".buffers()<cr>', "Buffers" },
+      h = { '<cmd>lua require "telescope.builtin".help_tags()<cr>', "Help Tags" },
+      i = { '<cmd>lua require "telescope.builtin".git_files()<cr>', "Git Files" },
+      t = { '<cmd>lua require "telescope.builtin".treesitter()<cr>', "Treesitter" },
+      r = { '<cmd>lua require "telescope.builtin".oldfiles()<cr>', "Recent Files" },
     },
     --- LSP --
     l = {
       name = "+Lspsaga",
-      c = { "<cmd>Lspsaga code_action<CR>", "Code actions" },
-      d = { "<cmd>Lspsaga peek_definition<CR>", "Line diagnostic" },
-      f = { "<cmd>Lspsaga lsp_finder<CR>", "Lsf Finder" },
+      c = { "<cmd>Lspsaga code_action<cr>", "Code actions" },
+      d = { "<cmd>Lspsaga peek_definition<cr>", "Line diagnostic" },
+      f = { "<cmd>Lspsaga lsp_finder<cr>", "Lsf Finder" },
       e = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Show Line Diagnostics" },
       n = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Go To Next Diagnostic" },
       N = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go To Previous Diagnostic" },
       K = { "<cmd>Lspsaga hover_doc<cr>", "Lsp - Hover" },
-      R = { "<cmd>Lspsaga rename<CR>", "Rename" },
+      R = { "<cmd>Lspsaga rename<cr>", "Rename" },
     },
     --- LSP --
   },
   --- LSP --
   g = {
     name = "Lsp",
-    d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" }, -- or or <cmd>Lspsaga peek_definition<CR> -- <C-o> go back
-    D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaration" },
-    r = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" }, -- or  <Cmd>Lspsaga rename<CR>
-    t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition" },
-    i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "See implementation" },
-    a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code actions" },
-    p = { "<Cmd>Lspsaga peek_definition<CR>", "Lspsaga Preview def" },
-    f = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format File" },
-    R = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" }, -- or <cmd>Lspsaga rename<cr>
+    d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Go to definition" }, -- or or <cmd>Lspsaga peek_definition<cr> -- <C-o> go back
+    D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Go to declaration" },
+    r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" }, -- or  <cmd>Lspsaga rename<cr>
+    t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Type definition" },
+    i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "See implementation" },
+    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code actions" },
+    p = { "<cmd>Lspsaga peek_definition<cr>", "Lspsaga Preview def" },
+    f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format File" },
+    R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" }, -- or <cmd>Lspsaga rename<cr>
   },
-  K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Lsp - Hover" }, -- or <Cmd>Lspsaga hover_doc<CR>
-  ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Go to next diagnostic" },
-  ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Go to previous diagnostic" },
+  K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Lsp - Hover" }, -- or <cmd>Lspsaga hover_doc<cr>
+  ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Go to next diagnostic" },
+  ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go to previous diagnostic" },
   --- LSP --
   -- Buffers
   ["<tab>"] = { ":bnext<cr>", "Next Buffer" }, -- or <c-^
@@ -100,20 +100,19 @@ local mappings = {
   ["<c-w>"] = {
     name = "+Window",
     -- Spli
-    x = { ":split<CR>", "Split Horrizontal" },
-    v = { ":vsplit<CR>", "Split Vertical" },
-    c = { ":close<CR>", "Close Split" },
-    n = { "<C-w>n", "Blank split" },
-    q = { "<C-w>q", "Close gr pane" },
-    o = { "<C-w>o", "Close pane" },
-    w = { "<C-w>w", "swap split" },
-    r = { "<C-w>r", "Rotate Window vert" },
-    s = { "<C-w>s", "Rotate Window h" },
+    s = { ":split<cr>", "Split Horrizontal" },
+    v = { ":vsplit<cr>", "Split Vertical" },
+    c = { ":close<cr>", "Close Split" },
+    n = { "<C-w>n", "Blank split -h " },
+    q = { "<C-w>q", "Close this pane" },
+    o = { "<C-w>o", "Close other panes" },
+    r = { "<C-w>r", "Rotate Pane" },
+    x = { "<C-w>x", "exchange current window with next one" },
     -- Resize
-    j = { ":resize -2<CR>", ":resize -2<CR>" },
-    k = { ":resize +2<CR>", ":resize +2<CR>" },
-    h = { ":vertical resize -2<CR>", ":vertical resize -2<CR>" },
-    l = { ":vertical resize +2<CR>", ":vertical resize +2<CR>" },
+    j = { ":resize -2<cr>", ":resize -2<cr>" },
+    k = { ":resize +2<cr>", ":resize +2<cr>" },
+    h = { ":vertical resize -2<cr>", ":vertical resize -2<cr>" },
+    l = { ":vertical resize +2<cr>", ":vertical resize +2<cr>" },
   },
 }
 

@@ -117,6 +117,8 @@ return packer.startup(function(use)
   -- Behaviour/tools
   use({ "wakatime/vim-wakatime" })
 
+  -- Others
+  use({ "ThePrimeagen/vim-be-good" })
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

@@ -17,8 +17,15 @@ if not mason_null_ls_status then
 end
 
 -- import language-servers plugin safely
-local language_servers_status, language_servers = pcall(require, "plugins.lsp.language-servers")
-if not language_servers_status then
+local lang_servers_lsp_status, lang_servers_lsp = pcall(require, "lang-servers-ensure-installed.ensure_installed_lsp")
+if not lang_servers_lsp_status then
+  return
+end
+
+-- import language-servers plugin safely
+local lang_servers_null_ls_status, lang_servers_null_ls =
+  pcall(require, "lang-servers-ensure-installed.ensure_installed_null_ls")
+if not lang_servers_null_ls_status then
   return
 end
 
@@ -27,21 +34,14 @@ mason.setup()
 
 mason_lspconfig.setup({
   -- list of servers for mason to install
-  ensure_installed = language_servers,
+  ensure_installed = lang_servers_lsp,
   -- auto-install configured servers (with lspconfig)
   automatic_installation = true, -- not the same as ensure_installed
 })
 
 mason_null_ls.setup({
   -- list of formatters & linters for mason to install
-  ensure_installed = {
-    "prettier", -- ts/js formatter
-    "stylua", -- lua formatter
-    "eslint_d", -- ts/js linter
-    "black",
-    "flake8",
-    "fixjson",
-  },
+  ensure_installed = lang_servers_null_ls,
   -- auto-install configured formatters & linters (with null-ls)
   automatic_installation = true,
 })

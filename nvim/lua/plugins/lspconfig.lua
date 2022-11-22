@@ -11,16 +11,16 @@ if not cmp_nvim_lsp_status then
 end
 
 -- import language-servers plugin safely
-local language_servers_status, language_servers = pcall(require, "plugins.lsp.language-servers")
+local language_servers_status, lang_servers = pcall(require, "lang-servers-ensure-installed.ensure_installed_lsp")
 if not language_servers_status then
   return
 end
 
 local signs = {
   { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn",  text = "" },
-  { name = "DiagnosticSignHint",  text = "" },
-  { name = "DiagnosticSignInfo",  text = "" },
+  { name = "DiagnosticSignWarn", text = "" },
+  { name = "DiagnosticSignHint", text = "" },
+  { name = "DiagnosticSignInfo", text = "" },
 }
 
 for _, sign in ipairs(signs) do
@@ -30,11 +30,11 @@ end
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-for _, server in pairs(language_servers) do
+for _, server in pairs(lang_servers) do
   local opts = {
     capabilities = capabilities,
   }
-  local has_custom_opts, server_custom_opts = pcall(require, "lsp.settings." .. server)
+  local has_custom_opts, server_custom_opts = pcall(require, "settings." .. server)
   if has_custom_opts then
     opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
   end

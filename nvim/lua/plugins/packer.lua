@@ -48,16 +48,17 @@ return packer.startup(function(use)
   use({ "nvim-lua/plenary.nvim" }) -- lua functions that many plugins use
   use({ "kyazdani42/nvim-web-devicons" })
   use({ "windwp/nvim-autopairs" })
+
   ----------------------
   -- Visual / Themes --
   ---------------------
 
   --  Colorschemes   --
   use({ "folke/tokyonight.nvim" })
-  --use({"catppuccin/nvim", as = "catppuccin" })
-  --use({ 'rose-pine/neovim', as = 'rose-pine' })
-  
-  -- Visual -- 
+  use({ "catppuccin/nvim", as = "catppuccin" })
+  use({ "rose-pine/neovim", as = "rose-pine" })
+
+  -- Visual --
   use({ "goolord/alpha-nvim" })
   use({ "nvim-lualine/lualine.nvim" })
   use({ "arkav/lualine-lsp-progress" })
@@ -78,13 +79,28 @@ return packer.startup(function(use)
   use({ "nvim-telescope/telescope.nvim", tag = "0.1.0" })
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
+  -- Harpoon
+  use("ThePrimeagen/harpoon")
   ----------------------
   --    Code        --
   ---------------------
+
+  -- configuring lsp servers
+  use({ "neovim/nvim-lspconfig" }) -- easily configure language servers
+  use({ "hrsh7th/cmp-nvim-lsp" }) -- for autocompletion
+  use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
+  -- use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
+  use({ "onsails/lspkind.nvim" }) -- vs-code like icons for autocompletion
+  use({ "folke/trouble.nvim" })
+  -- formatting & linting
+  use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
+  use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+
   -- autocompletion
-  use("hrsh7th/nvim-cmp") -- completion plugin
   use("hrsh7th/cmp-buffer") -- source for text in buffer
   use("hrsh7th/cmp-path") -- source for file system paths
+  use("hrsh7th/nvim-cmp") -- completion plugin
+  use("tzachar/cmp-tabnine", { run = "./install.sh" }) -- ${HOME}/.local/share/nvim/site/pack/packer/start/cmp-tabnine/install.sh
 
   -- snippets
   use("L3MON4D3/LuaSnip") -- snippet engine
@@ -95,16 +111,6 @@ return packer.startup(function(use)
   use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
   use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
 
-  -- configuring lsp servers
-  use("neovim/nvim-lspconfig") -- easily configure language servers
-  use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
-  use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
-  -- use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
-  use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
-  -- formatting & linting
-  use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-  use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
-
   -- Treesitter
   use({
     "nvim-treesitter/nvim-treesitter",
@@ -113,9 +119,10 @@ return packer.startup(function(use)
       ts_update()
     end,
   })
+  use({ "nvim-treesitter/nvim-treesitter-context" })
 
   use({ "windwp/nvim-ts-autotag" }) -- autoclose tags
-  use({ "numToStr/Comment.nvim" }) -- gc,gb
+  use({ "numToStr/Comment.nvim" }) -- gc,gb, gcc
   use({ "lewis6991/gitsigns.nvim" })
 
   -- Behaviour/tools

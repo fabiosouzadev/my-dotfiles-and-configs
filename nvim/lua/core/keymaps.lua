@@ -60,19 +60,38 @@ local mappings = {
       t = { '<cmd>lua require "telescope.builtin".treesitter()<cr>', "Treesitter" },
       r = { '<cmd>lua require "telescope.builtin".oldfiles()<cr>', "Recent Files" },
     },
-    --- LSP --
+    --- Lspsaga --
     l = {
       name = "+Lspsaga",
       c = { "<cmd>Lspsaga code_action<cr>", "Code actions" },
       d = { "<cmd>Lspsaga peek_definition<cr>", "Line diagnostic" },
       f = { "<cmd>Lspsaga lsp_finder<cr>", "Lsf Finder" },
-      e = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Show Line Diagnostics" },
+      s = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Show Line Diagnostics" },
+      s = { "<cmd>Lspsaga show_cursor_diagnostics<cr>", "Show Cursor Diagnostics" },
       n = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Go To Next Diagnostic" },
       N = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go To Previous Diagnostic" },
       K = { "<cmd>Lspsaga hover_doc<cr>", "Lsp - Hover" },
       R = { "<cmd>Lspsaga rename<cr>", "Rename" },
+      o = { "<cmd>LSoutlineToggle<cr>", "Outline" },
     },
-    --- LSP --
+    --- Trouble --
+    x = {
+      name = "+Trouble",
+      x = { "<cmd>TroubleToggle<cr>", "Trouble Toggle" },
+      w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics" },
+      d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Doc diagnostics" },
+      l = { "<cmd>TroubleToggle loclist<cr>", "Loc list" },
+      q = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix" },
+      R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
+    },
+    -- Harpoon --
+    -- nnoremap("<C-h>", function() require("harpoon.ui").nav_file(1) end, silent)
+    a = {
+      function()
+        require("harpoon.mark").add_file()
+      end,
+      "Harpoon mark file",
+    },
   },
   --- LSP --
   g = {
@@ -88,18 +107,34 @@ local mappings = {
     R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" }, -- or <cmd>Lspsaga rename<cr>
   },
   K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Lsp - Hover" }, -- or <cmd>Lspsaga hover_doc<cr>
+
+  --- Lspsaga --
   ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Go to next diagnostic" },
   ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go to previous diagnostic" },
-  --- LSP --
+  ["]e"] = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Go To Next Diagnostic" },
+  ["]e"] = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go To Previous Diagnostic" },
+  -- Open Floaterm
+  ["<A-g>"] = { "<cmd>Lspsaga open_floaterm lazygit<cr>", "Open Lazy Git" },
+
   -- Buffers
   ["<tab>"] = { ":bnext<cr>", "Next Buffer" }, -- or <c-^
   ["<s-tab>"] = { ":bprevious<cr>", "Previous Buffer" },
+
   -- Select All
   ["<c-a>"] = { "gg<S-v>G", "Select All" },
+
+  ["<c-e>"] = {
+    function()
+      require("harpoon.ui").toggle_quick_menu()
+    end,
+    "Harpoon Toogle Menu",
+  },
+
   -- Window
   ["<c-w>"] = {
     name = "+Window",
-    -- Spli
+
+    -- Split
     s = { ":split<cr>", "Split Horrizontal" },
     v = { ":vsplit<cr>", "Split Vertical" },
     c = { ":close<cr>", "Close Split" },
@@ -108,6 +143,7 @@ local mappings = {
     o = { "<C-w>o", "Close other panes" },
     r = { "<C-w>r", "Rotate Pane" },
     x = { "<C-w>x", "exchange current window with next one" },
+
     -- Resize
     j = { ":resize -2<cr>", ":resize -2<cr>" },
     k = { ":resize +2<cr>", ":resize +2<cr>" },
@@ -116,4 +152,9 @@ local mappings = {
   },
 }
 
-wk.register(mappings, { prefix = "", noremap = true, silent = true })
+wk.register(mappings)
+
+-- Close Lspsaga Floaterm
+wk.register({
+  ["<A-g>"] = { "[[<C-\\><C-n><cmd>Lspsaga close_floaterm<CR>]]", "Open Lazy Git" }, -- Floaterm
+}, { mode = "t", silent = true })

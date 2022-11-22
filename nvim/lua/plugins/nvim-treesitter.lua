@@ -1,5 +1,5 @@
 -- import language-servers plugin safely
-local lang_servers_status, language_servers_ensure_installed =pcall(require, "lang-servers-ensure-installed")
+local lang_servers_status, language_servers_ensure_installed = pcall(require, "lang-servers-ensure-installed")
 if not lang_servers_status then
   return
 end

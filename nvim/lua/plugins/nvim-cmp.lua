@@ -16,10 +16,6 @@ if not lspkind_status then
   return
 end
 
--- load vs-code like snippets from plugins (e.g. friendly-snippets)
--- require("luasnip.loaders.from_vscode").lazy_load()
-require("luasnip/loaders/from_vscode").lazy_load()
-
 vim.g.completeopt = "menu,menuone,noselect,noinsert"
 
 local has_words_before = function()
@@ -50,6 +46,7 @@ cmp.setup({
         vsnip = "[Vsnip]",
         luasnip = "[Luasnip]",
         treesitter = "[Treesitter]",
+        cmp_tabnine = "[TabNine]",
         path = "[Path]",
       },
     }),
@@ -78,6 +75,7 @@ cmp.setup({
     end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
+    { name = "cmp_tabnine" },
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "luasnip" }, -- For luasnip users.
@@ -112,4 +110,24 @@ cmp.setup.cmdline(":", {
   }, {
     { name = "cmdline" },
   }),
+})
+
+local snippets_paths = function()
+  local plugins = { "friendly-snippets" }
+  local paths = {}
+  local path
+  local root_path = vim.env.HOME .. "/.vim/plugged/"
+  for _, plug in ipairs(plugins) do
+    path = root_path .. plug
+    if vim.fn.isdirectory(path) ~= 0 then
+      table.insert(paths, path)
+    end
+  end
+  return paths
+end
+
+require("luasnip.loaders.from_vscode").lazy_load({
+  paths = snippets_paths(),
+  include = nil, -- Load all languages
+  exclude = {},
 })

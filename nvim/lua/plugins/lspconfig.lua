@@ -29,7 +29,6 @@ end
 
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
-
 local lsp_language_servers = language_servers.ensure_installed_lsp
 
 for _, server in pairs(lsp_language_servers) do

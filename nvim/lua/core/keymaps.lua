@@ -59,6 +59,14 @@ local mappings = {
       i = { '<cmd>lua require "telescope.builtin".git_files()<cr>', "Git Files" },
       t = { '<cmd>lua require "telescope.builtin".treesitter()<cr>', "Treesitter" },
       r = { '<cmd>lua require "telescope.builtin".oldfiles()<cr>', "Recent Files" },
+      --- :Telescope LSP --
+      l = {
+        name = "Lsp",
+        r = { '<cmd>lua require "telescope.builtin".lsp_references()<cr>', "Lsp references" },
+        d = { '<cmd>lua require "telescope.builtin".lsp_definitions()<cr>', "Lsp definitions" },
+        i = { '<cmd>lua require "telescope.builtin".lsp_implementations()<cr>', "Lsp implementations" },
+        t = { '<cmd>lua require "telescope.builtin".lsp_type_definitions()<cr>', "Lsp type_definition" },
+      },
     },
     --- Lspsaga --
     l = {
@@ -99,12 +107,12 @@ local mappings = {
     d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Go to definition" }, -- or or <cmd>Lspsaga peek_definition<cr> -- <C-o> go back
     D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Go to declaration" },
     r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" }, -- or  <cmd>Lspsaga rename<cr>
+    R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" }, -- or <cmd>Lspsaga rename<cr>
     t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Type definition" },
     i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "See implementation" },
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code actions" },
     p = { "<cmd>Lspsaga peek_definition<cr>", "Lspsaga Preview def" },
     f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format File" },
-    R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" }, -- or <cmd>Lspsaga rename<cr>
   },
   K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Lsp - Hover" }, -- or <cmd>Lspsaga hover_doc<cr>
 

@@ -14,7 +14,6 @@ M.ensure_installed_lsp = {
   "rust_analyzer",
   "gopls",
   "cssls",
-  "vimls",
 }
 
 M.ensure_installed_null_ls = {

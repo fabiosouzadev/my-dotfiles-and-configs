@@ -11,7 +11,7 @@ if not cmp_nvim_lsp_status then
 end
 
 -- import language-servers plugin safely
-local language_servers_status, lang_servers = pcall(require, "lang-servers-ensure-installed.ensure_installed_lsp")
+local language_servers_status, language_servers = pcall(require, "plugins.lang-servers-ensure-installed")
 if not language_servers_status then
   return
 end
@@ -30,7 +30,9 @@ end
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-for _, server in pairs(lang_servers) do
+local lsp_language_servers = language_servers.ensure_installed_lsp
+
+for _, server in pairs(lsp_language_servers) do
   local opts = {
     capabilities = capabilities,
   }

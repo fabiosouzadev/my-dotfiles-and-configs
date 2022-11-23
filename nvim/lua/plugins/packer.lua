@@ -55,7 +55,6 @@ return packer.startup(function(use)
 
   --  Colorschemes   --
   use({ "folke/tokyonight.nvim" })
-  use({ "catppuccin/nvim", as = "catppuccin" })
   use({ "rose-pine/neovim", as = "rose-pine" })
 
   -- Visual --

@@ -75,12 +75,12 @@ cmp.setup({
     end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
-    { name = "cmp_tabnine" },
+    { name = "luasnip" }, -- For luasnip users.
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
-    { name = "luasnip" }, -- For luasnip users.
     { name = "treesitter" },
     { name = "buffer" },
+    { name = "cmp_tabnine" },
     { name = "path" },
   }),
 })

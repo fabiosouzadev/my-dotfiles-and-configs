@@ -1,7 +1,6 @@
 local M = {}
 M.ensure_installed_lsp = {
   "cssls",
-  "tailwindcss",
   "sumneko_lua",
   "emmet_ls",
   "html",
@@ -14,15 +13,20 @@ M.ensure_installed_lsp = {
   "rust_analyzer",
   "gopls",
   "cssls",
+  "volar",
 }
 
 M.ensure_installed_null_ls = {
-  "prettier", -- ts/js formatter
+  -- formatting
+  "prettierd", -- ts/js formatter
   "stylua", -- lua formatter
-  "eslint_d", -- ts/js linter
   "black",
-  "flake8",
   "fixjson",
+  -- diagnostics
+  "flake8",
+  -- code_action
+  "eslint_d", -- ts/js linter
+  -- hover
 }
 
 M.ensure_installed_treesitter = {

@@ -129,9 +129,7 @@ local mappings = {
   ["<tab>"] = { ":bnext<cr>", "Next Buffer" }, -- or <c-^
   ["<s-tab>"] = { ":bprevious<cr>", "Previous Buffer" },
 
-  -- Select All
-  ["<c-a>"] = { "gg<S-v>G", "Select All" },
-
+  -- Harpoon
   ["<c-e>"] = {
     function()
       require("harpoon.ui").toggle_quick_menu()

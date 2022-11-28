@@ -45,16 +45,18 @@ local mappings = {
       r = { ":source %<cr>", "Reload Config" },
     },
     -- nvim-tree
-    t = { ":NvimTreeToggle<cr>", "Toggle NvimTree" },
-    r = { ":NvimTreeRefresh<cr>", "Refresh NvimTree" },
-    n = { ":NvimTreeFindFile<cr>", "Find Files Nvim" },
-    b = { ":Buffers<cr>", "Buffers" },
+    -- t = { ":NvimTreeToggle<cr>", "Toggle NvimTree" },
+    -- r = { ":NvimTreeRefresh<cr>", "Refresh NvimTree" },
+    -- n = { ":NvimTreeFindFile<cr>", "Find Files Nvim" },
+    -- b = { ":Buffers<cr>", "Buffers" },
     -- Telescope
+    t = { '<cmd>lua require "telescope".extensions.file_browser.file_browser()<cr>', "File Browser" }, -- (insert mode: <C-/>, normal mode: ?)
     f = {
       name = "Telescope",
       f = { '<cmd>lua require "telescope.builtin".find_files()<cr>', "Find Files" },
+      b = { '<cmd>lua require "telescope".extensions.file_browser.file_browser()<cr>', "File Browser" }, -- (insert mode: <C-/>, normal mode: ?)
       g = { '<cmd>lua require "telescope.builtin".live_grep()<cr>', "Live Grep" },
-      b = { '<cmd>lua require "telescope.builtin".buffers()<cr>', "Buffers" },
+      u = { '<cmd>lua require "telescope.builtin".buffers()<cr>', "Buffers" },
       h = { '<cmd>lua require "telescope.builtin".help_tags()<cr>', "Help Tags" },
       i = { '<cmd>lua require "telescope.builtin".git_files()<cr>', "Git Files" },
       t = { '<cmd>lua require "telescope.builtin".treesitter()<cr>', "Treesitter" },
@@ -150,6 +152,7 @@ local mappings = {
     o = { "<C-w>o", "Close other panes" },
     r = { "<C-w>r", "Rotate Pane" },
     x = { "<C-w>x", "exchange current window with next one" },
+    d = { ":bdelete", "Buffer Delete" },
 
     -- Resize
     j = { ":resize -2<cr>", ":resize -2<cr>" },

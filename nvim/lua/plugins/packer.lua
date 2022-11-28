@@ -86,20 +86,22 @@ return packer.startup(function(use)
 
   -- configuring lsp servers
   use({ "neovim/nvim-lspconfig" }) -- easily configure language servers
-  use({ "hrsh7th/cmp-nvim-lsp" }) -- for autocompletion
   use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
-  -- use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
   use({ "onsails/lspkind.nvim" }) -- vs-code like icons for autocompletion
   use({ "folke/trouble.nvim" })
+
   -- formatting & linting
   use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
   use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
   -- autocompletion
-  use("hrsh7th/cmp-buffer") -- source for text in buffer
-  use("hrsh7th/cmp-path") -- source for file system paths
-  use("hrsh7th/nvim-cmp") -- completion plugin
-  use("tzachar/cmp-tabnine", { run = "./install.sh" }) -- ${HOME}/.local/share/nvim/site/pack/packer/start/cmp-tabnine/install.sh
+  use({ "hrsh7th/cmp-nvim-lsp" }) -- for autocompletion
+  use({ "ray-x/cmp-treesitter" }) -- for autocompletion
+  use({ "hrsh7th/cmp-buffer" }) -- source for text in buffer
+  use({ "hrsh7th/cmp-path" }) -- source for file system paths
+  use({ "hrsh7th/cmp-cmdline" }) -- source for command line
+  use({ "hrsh7th/nvim-cmp" }) -- completion plugin
+  use({ "tzachar/cmp-tabnine", { run = "./install.sh" } }) -- ${HOME}/.local/share/nvim/site/pack/packer/start/cmp-tabnine/install.sh
 
   -- snippets
   use("L3MON4D3/LuaSnip") -- snippet engine

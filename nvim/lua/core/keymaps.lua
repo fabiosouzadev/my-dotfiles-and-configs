@@ -152,7 +152,7 @@ local mappings = {
     o = { "<C-w>o", "Close other panes" },
     r = { "<C-w>r", "Rotate Pane" },
     x = { "<C-w>x", "exchange current window with next one" },
-    d = { ":bdelete", "Buffer Delete" },
+    d = { ":bdelete<cr>", "Buffer Delete" },
 
     -- Resize
     j = { ":resize -2<cr>", ":resize -2<cr>" },

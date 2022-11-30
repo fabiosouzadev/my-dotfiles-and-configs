@@ -99,7 +99,6 @@ return packer.startup(function(use)
   use({ "ray-x/cmp-treesitter" }) -- for autocompletion
   use({ "hrsh7th/cmp-buffer" }) -- source for text in buffer
   use({ "hrsh7th/cmp-path" }) -- source for file system paths
-  use({ "hrsh7th/cmp-cmdline" }) -- source for command line
   use({ "hrsh7th/nvim-cmp" }) -- completion plugin
   use({ "tzachar/cmp-tabnine", { run = "./install.sh" } }) -- ${HOME}/.local/share/nvim/site/pack/packer/start/cmp-tabnine/install.sh
 

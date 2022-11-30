@@ -42,7 +42,6 @@ cmp.setup({
         nvim_lsp = "[LSP]",
         buffer = "[Buffer]",
         path = "[Path]",
-        cmdline = "[Command]",
       },
     }),
   },
@@ -75,7 +74,6 @@ cmp.setup({
     { name = "treesitter" },
     { name = "buffer" },
     { name = "path" },
-    { name = "cmdline" },
     { name = "cmp_tabnine" },
   }),
 })

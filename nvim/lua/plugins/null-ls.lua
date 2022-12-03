@@ -13,26 +13,7 @@ local completion = null_ls.builtins.completion
 
 local sources = {
   -- formatting
-  formatting.prettierd.with({
-    filetypes = {
-      -- "html",
-      -- "yaml",
-      -- "markdown",
-      "css",
-      "graphql",
-      "html",
-      "javascript",
-      "javascriptreact",
-      "json",
-      "less",
-      "markdown",
-      "scss",
-      "typescript",
-      "typescriptreact",
-      "yaml",
-      "vue",
-    },
-  }),
+  formatting.prettierd,
   formatting.black.with({ extra_args = { "--fast" } }),
   formatting.stylua,
   formatting.fixjson,

@@ -9,6 +9,7 @@ nvm use --lts
 #Extensions Globais
 #======================
 npm install -g yarn
+npm install -g @antfu/ni
 npm install -g npx
 npm install -g tldr
 npm install -g typescript

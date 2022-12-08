@@ -27,12 +27,6 @@ if [ ! -f /usr/local/bin/alacritty ]; then
     gzip -c extra/alacritty.man | sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
     gzip -c extra/alacritty-msg.man | sudo tee /usr/local/share/man/man1/alacritty-msg.1.gz > /dev/null
 
-    #completions
-    if [ ! -d "$HOME/.zsh/complete" ]; then
-        mkdir -p $HOME/.zsh/complete
-    fi
-    cp -v extra/completions/_alacritty $HOME/.zsh/complete
-
     # Default terminal
     sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/alacritty 100
     sudo update-alternatives --config x-terminal-emulator

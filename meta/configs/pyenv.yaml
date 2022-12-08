@@ -1,5 +1,8 @@
 - shell:
-  - description: Install global version
-    command: "./scripts/pyenv.install.sh"
-    stderr: true
-    stdout: true
+    - description: Install pyenv
+      command: '[ -d "$HOME/.pyenv" ] || curl https://pyenv.run | bash'
+    - [pyenv install 3.10.4]
+    - [pyenv install 3.8.15]
+    - [pyenv global 3.10.4]
+    - [exec $SHELL]
+    - [$SOURCE]

@@ -31,5 +31,5 @@ if [ ! -f /usr/local/bin/alacritty ]; then
     sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/alacritty 100
     sudo update-alternatives --config x-terminal-emulator
 
-    sudo rm -r $HOME/.local/src/alacritty 
+    #sudo rm -r $HOME/.local/src/alacritty 
 fi

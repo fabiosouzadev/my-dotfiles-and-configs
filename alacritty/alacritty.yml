@@ -1,0 +1,97 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator
+shell:
+  program: /usr/bin/zsh
+
+env:
+  TERM: xterm-256color
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+# Window dimensions in character columns and lines
+# (changes require restart)
+window:
+  dimensions:
+    columns: 110
+    lines: 33
+
+  # Adds this many blank pixels of padding around the window
+  # Units are physical pixels; this is not DPI aware.
+  # (change requires restart)
+  padding:
+    x: 5
+    y: 5
+
+# When true, bold text is drawn using the bright variant of colors.
+draw_bold_text_with_bright_colors: true
+
+# Font configuration (changes require restart)
+font:
+  size: 14.0
+  normal:
+    family: Iosevka Term
+    style: Regular
+  bold:
+    family: Iosevka Term
+    style: Bold
+  italic:
+    family: Iosevka Term
+    style: Medium Italic
+  bold_italic:
+    family: Iosevka Term
+    style: Bold Italic
+
+  # Offset is the extra space around each character. offset.y can be thought of
+  # as modifying the linespacing, and offset.x as modifying the letter spacing.
+  offset:
+    x: 0
+    y: 0
+
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increase the x offset to move the glyph to
+  # the right, increase the y offset to move the glyph upward.
+  glyph_offset:
+    x: 0
+    y: 0
+
+# Should display the render timer
+debug.render_timer: false
+
+# TokyoNight Alacritty Colors
+# https://github.com/folke/tokyonight.nvim/blob/main/extras/alacritty_tokyonight_night.yml
+colors:
+  name: TokyoNight Storm
+  author: Folke
+  # Default colors
+  primary:
+    background: "0x24283b"
+    foreground: "0xc0caf5"
+
+  # Normal colors
+  normal:
+    black: "0x1D202F"
+    red: "0xf7768e"
+    green: "0x9ece6a"
+    yellow: "0xe0af68"
+    blue: "0x7aa2f7"
+    magenta: "0xbb9af7"
+    cyan: "0x7dcfff"
+    white: "0xa9b1d6"
+
+  # Bright colors
+  bright:
+    black: "0x414868"
+    red: "0xf7768e"
+    green: "0x9ece6a"
+    yellow: "0xe0af68"
+    blue: "0x7aa2f7"
+    magenta: "0xbb9af7"
+    cyan: "0x7dcfff"
+    white: "0xc0caf5"
+
+  indexed_colors:
+    - { index: 16, color: "0xff9e64" }
+    - { index: 17, color: "0xdb4b4b" }
+
+live_config_reload: true

@@ -1,15 +1,15 @@
 - shell:
-  #- description: Validating sudo credentials
-  #  command: "sudo --validate"
-  - description: Adding zsh to list of acceptable shells
-    command: "[[ \"$(ag $(which zsh) /etc/shells)\" ]] || sudo sh -c \"echo $(which zsh) >> /etc/shells\""
-  - description: Making zsh the default shell
-    command: "sudo chsh -s $(which zsh) || chsh -s /usr/bin/zsh"
-  - [git submodule update --init --recursive, Installing submodules]
-  - description: 'Clone zgenom'
-    command: 'git clone https://github.com/jandamm/zgenom.git ~/zgenom'
-    stdout: true
-    stderr: true
+    #- description: Validating sudo credentials
+    #  command: "sudo --validate"
+    - description: Adding zsh to list of acceptable shells
+      command: '[[ "$(ag $(which zsh) /etc/shells)" ]] || sudo sh -c "echo $(which zsh) >> /etc/shells"'
+    - description: Making zsh the default shell
+      command: "sudo chsh -s $(which zsh) || chsh -s /usr/bin/zsh"
+    - [git submodule update --init --recursive, Installing submodules]
+    - description: "Clone zgenom"
+      command: "git clone https://github.com/jandamm/zgenom.git ~/zgenom"
+      stdout: true
+      stderr: true
 
 - link:
     ~/.zgen-setup: meta/zsh-quickstart-kit/zsh/.zgen-setup
@@ -19,7 +19,7 @@
     ~/.zshrc.d/001-aliases.zsh: zshrc.d/001-aliases.zsh
     ~/.zshrc.d/002-nvm.zsh: zshrc.d/002-nvm.zsh
     ~/.zshrc.d/003-brew-completations.zsh:
-      if: '[ `uname` = Darwin ]'
+      if: "[ `uname` = Darwin ]"
       path: zshrc.d/003-brew-completations.zsh
     ~/.zshrc.d/004-java.zsh: zshrc.d/004-java.zsh
     ~/.zshrc.d/005-rust.zsh: zshrc.d/005-rust.zsh
@@ -29,8 +29,9 @@
     ~/.zshrc.d/007-android.zsh: zshrc.d/007-android.zsh
     ~/.zshrc.d/008-flutter.zsh: zshrc.d/008-flutter.zsh
     ~/.zshrc.d/009-webkit.zsh: zshrc.d/009-webkit.zsh
-    ~/.zshrc.d/010-fzf.zsh: 
-      if: '[ `uname` = Darwin ]'
+    ~/.zshrc.d/010-fzf.zsh:
+      if: "[ `uname` = Darwin ]"
       path: zshrc.d/010-fzf.zsh
-    ~/.p10k.zsh:  powerlevel10k/p10k.zsh
+    ~/.zshrc.d/011-alacritty.zsh: zshrc.d/011-alacritty.zsh
+    ~/.p10k.zsh: powerlevel10k/p10k.zsh
     ~/.zsh-quickstart-local-plugins: zshrc.d/zsh-quickstart-local-plugins

@@ -1,0 +1,8 @@
+- shell:
+    - description: Installing Alacritty
+      command: "scripts/alacritty.install.sh"
+      stderr: true
+      stdout: true
+
+- link:
+    ~/.config/alacritty: alacritty

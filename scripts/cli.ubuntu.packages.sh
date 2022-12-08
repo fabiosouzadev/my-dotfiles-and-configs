@@ -1,6 +1,6 @@
-#!/bin/sh
-# Add ppa or sources list
+#!/bin/bash
 
+# Add ppa or sources list
 echo 'deb [trusted=yes] https://repo.charm.sh/apt/ /' | sudo tee /etc/apt/sources.list.d/charm.list #Glow
 sudo apt-add-repository -y ppa:zanchey/asciinema #Asciinema
 sudo add-apt-repository -y ppa:peek-developers/stable
@@ -52,6 +52,10 @@ sudo apt-get install -y \
       ninja-build \
       pkg-config \
       libgtk-3-dev \
+      libfreetype6-dev \
+      libfontconfig1-dev \
+      libxcb-xfixes0-dev \
+      libxkbcommon-dev \
       kubectx
 
 #Config fd

@@ -1,14 +1,14 @@
 - shell:
     - description: Remove previous asdf folder
-      command: '[ ! -d ~/.asdf ] || sudo rm -rf ~/.asdf '
+      command: "[ ! -d ~/.asdf ] || sudo rm -rf ~/.asdf "
       stderr: true
       stdout: true
     - description: Clone asdf
-      command: 'git clone https://github.com/asdf-vm/asdf.git ~/.asdf'
+      command: "git clone https://github.com/asdf-vm/asdf.git ~/.asdf"
       stderr: true
       stdout: true
     - description: Source ASDF
-      command: '{{ $SOURCE }}'
+      command: "{{ $SOURCE }}"
       stderr: true
       stdout: true
 - link:
@@ -60,3 +60,10 @@
       global: latest
       versions:
         - latest
+    - plugin: rust
+      url: https://github.com/code-lever/asdf-rust.git
+      global: latest
+      versions:
+        - latest
+- shell:
+    - [exec $SHELL]

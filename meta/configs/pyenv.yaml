@@ -5,4 +5,3 @@
     - [pyenv install 3.8.15]
     - [pyenv global 3.10.4]
     - [exec $SHELL]
-    - [$SOURCE]

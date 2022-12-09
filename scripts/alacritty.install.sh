@@ -22,14 +22,20 @@ if [ ! -f /usr/local/bin/alacritty ]; then
     sudo desktop-file-install extra/linux/Alacritty.desktop
     sudo update-desktop-database
 
+
     #Install man page
     sudo mkdir -p /usr/local/share/man/man1
     gzip -c extra/alacritty.man | sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
     gzip -c extra/alacritty-msg.man | sudo tee /usr/local/share/man/man1/alacritty-msg.1.gz > /dev/null
+    
+    
+    mkdir -p $HOME/.local/share/alacritty
+    cp alacritty.yml $HOME/.local/share/alacritty/ #copy config default
+    cp extra/completions/_alacritty $HOME/.local/share/alacritty/ #copy completions
 
     # Default terminal
     sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/alacritty 100
     sudo update-alternatives --config x-terminal-emulator
 
-    #sudo rm -r $HOME/.local/src/alacritty 
+    sudo rm -r $HOME/.local/src/alacritty 
 fi

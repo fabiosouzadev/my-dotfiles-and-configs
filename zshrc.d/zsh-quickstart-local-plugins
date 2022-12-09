@@ -166,6 +166,41 @@ zgenom load srijanshetty/docker-zsh
 # Load tab completions for 1Password's op command line tool if it's installed
 #zgenom load unixorn/1password-op.plugin.zsh
 
+### MY CUSTOM PLUGINS
+### https://github.com/fabiosouzadev/dotfiles
+###
+
+
+# forgit This tool is designed to help you use git more efficiently. It's lightweight and easy to use..
+# https://github.com/wfxr/forgit
+# try 'glo' to git log
+# try 'gi' for gitignore
+zgenom load wfxr/forgit
+
+### https://github.com/lukechilds/zsh-nvm
+#  export NVM_COMPLETION=true
+#  export NVM_LAZY_LOAD=true
+#  export NVM_NO_USE=true
+###
+zgenom load lukechilds/zsh-nvm
+
+# Better completion for npm
+# https://github.com/lukechilds/zsh-better-npm-completion
+zgenom load lukechilds/zsh-better-npm-completion
+
+#WAKATIME
+if [[ -z "${WAKATIME_API_KEY}" ]]; then
+  zgenom load sobolevn/wakatime-zsh-plugin
+fi
+
+
+#Alacritty completions
+if [[ -f "/usr/local/bin/alacritty" ]]; then
+    zgenom load $HOME/.local/share/alacritty
+fi
+
+### END MY CUSTOM PLUGINS
+
 # Load me last
 GENCOMPL_FPATH=$HOME/.zsh/complete
 
@@ -190,41 +225,6 @@ zgenom load zsh-users/zsh-autosuggestions
 #     zgenom load romkatv/powerlevel10k powerlevel10k
 #     warn-about-prompt-change
 # fi
-
-
-### MY CUSTOM PLUGINS
-### https://github.com/fabiosouzadev/dotfiles
-###
-
-
-# forgit This tool is designed to help you use git more efficiently. It's lightweight and easy to use..
-# https://github.com/wfxr/forgit
-# try 'glo' to git log
-# try 'gi' for gitignore
-zgenom load wfxr/forgit
-
-# A CLI interface to git that relies heavily on fzf (version 0.21.0 or higher).
-# You can run git add and git reset by selecting or cursoring. You can commit interactively.
-# https://github.com/bigH/git-fuzzy
-# try 'git fuzzy log'
-zgenom load bigH/git-fuzzy
-
-
-### https://github.com/lukechilds/zsh-nvm
-#  export NVM_COMPLETION=true
-#  export NVM_LAZY_LOAD=true
-#  export NVM_NO_USE=true
-###
-zgenom load lukechilds/zsh-nvm
-
-# Better completion for npm
-# https://github.com/lukechilds/zsh-better-npm-completion
-zgenom load lukechilds/zsh-better-npm-completion
-
-#WAKATIME
-if [[ -z "${WAKATIME_API_KEY}" ]]; then
-  zgenom load sobolevn/wakatime-zsh-plugin
-fi
 
 # Save it all to init script
 zgenom save

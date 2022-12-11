@@ -56,7 +56,8 @@ sudo apt-get install -y \
       libfontconfig1-dev \
       libxcb-xfixes0-dev \
       libxkbcommon-dev \
-      kubectx
+      kubectx \
+      rofi
 
 #Config fd
 sudo ln -fvs /usr/bin/fdfind /usr/bin/fd

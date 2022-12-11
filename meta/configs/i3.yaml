@@ -1,3 +1,4 @@
 - link:
-    ~/.config/i3: i3/config
-    ~/.config/regolith2: i3/regolith2
+    ~/.config/i3: i3
+    ~/.config/regolith2: regolith2
+    ~/.config/rofi: rofi

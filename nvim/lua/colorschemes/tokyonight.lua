@@ -12,7 +12,7 @@ g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
 
 require("tokyonight").setup({
   -- use the night style
-  style = "moon",
+  style = "storm",
   sidebars = { "qf", "vista_kind", "terminal", "packer" },
   transparent = false,
   lualine_bold = true,
@@ -31,4 +31,4 @@ require("tokyonight").setup({
   end,
 })
 
-vim.cmd([[colorscheme tokyonight-moon]])
+vim.cmd([[colorscheme tokyonight-storm]])

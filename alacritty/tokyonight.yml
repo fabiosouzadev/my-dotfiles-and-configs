@@ -1,8 +1,5 @@
 # TokyoNight Alacritty Colors
-# https://github.com/folke/tokyonight.nvim/blob/main/extras/alacritty_tokyonight_night.yml
 colors:
-  name: TokyoNight Storm
-  author: Folke
   # Default colors
   primary:
     background: "0x24283b"
@@ -10,7 +7,7 @@ colors:
 
   # Normal colors
   normal:
-    black: "0x1D202F"
+    black: "0x1d202f"
     red: "0xf7768e"
     green: "0x9ece6a"
     yellow: "0xe0af68"

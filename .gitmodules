@@ -14,6 +14,6 @@
 [submodule "meta/dotbot-git"]
 	path = meta/dotbot-git
 	url = https://github.com/DrDynamic/dotbot-git.git
-[submodule "meta/dotbot-plugin-aptget"]
-	path = meta/dotbot-plugin-aptget
+[submodule "meta/dotbot_plugin_aptget"]
+	path = meta/dotbot_plugin_aptget
 	url = https://github.com/dein0s/dotbot_plugin_aptget.git

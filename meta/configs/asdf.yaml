@@ -7,10 +7,7 @@
       command: "git clone https://github.com/asdf-vm/asdf.git ~/.asdf"
       stderr: true
       stdout: true
-    - description: Source ASDF
-      command: "{{ $SOURCE }}"
-      stderr: true
-      stdout: true
+
 - link:
     ~/.asdfrc: asdf/asdfrc
 - asdf:

@@ -1,3 +1,4 @@
+desktop.ubuntu
 cli.ubuntu-sudo
 bat
 docker.ubuntu
@@ -9,14 +10,12 @@ ssh
 nvm
 nvim
 tmux
-starship
 wakatime
 zsh
+starship
 asdf
-kitty
 fonts.ubuntu
 vscodium
-desktop.ubuntu
-forticlient.ubuntu
+kitty
 alacritty
-
+#forticlient.ubuntu

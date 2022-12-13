@@ -3,13 +3,8 @@
     command: "./scripts/nvim.install.sh"
     stdout: true
     stderr: true
-  - description: Installing vim-plug
-    command: "[ -f ~/.local/share/nvim ] || curl -fLo \"${XDG_DATA_HOME:-$HOME/.local/share}\"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-  - description: Installing vim plugins
-    command: "vim +PlugInstall +qa"
-
   - description: Install packer.nvim
-    command: '[ `uname` = Darwin || `uname` = Linux  ] || git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim'
+    command: '[ ! -f $HOME/.local/share/nvim/site/pack/packer ] || git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim'
 
 - link:
     ~/.config/nvim: nvim

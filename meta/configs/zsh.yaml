@@ -1,10 +1,11 @@
 - shell:
-    #- description: Validating sudo credentials
-    #  command: "sudo --validate"
-    - description: Adding zsh to list of acceptable shells
-      command: '[[ "$(ag $(which zsh) /etc/shells)" ]] || sudo sh -c "echo $(which zsh) >> /etc/shells"'
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - [sudo apt-get install -y zsh]
     - description: Making zsh the default shell
       command: "sudo chsh -s $(which zsh) || chsh -s /usr/bin/zsh"
+    - description: Adding zsh to list of acceptable shells
+      command: '[[ "$(ag $(which zsh) /etc/shells)" ]] || sudo sh -c "echo $(which zsh) >> /etc/shells"'
     - [git submodule update --init --recursive, Installing submodules]
     - description: "Clone zgenom"
       command: "git clone https://github.com/jandamm/zgenom.git ~/zgenom"

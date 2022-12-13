@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Add ppa or sources list
-echo 'deb [trusted=yes] https://repo.charm.sh/apt/ /' | sudo tee /etc/apt/sources.list.d/charm.list #Glow
+# echo 'deb [trusted=yes] https://repo.charm.sh/apt/ /' | sudo tee /etc/apt/sources.list.d/charm.list #Glow
 sudo apt-add-repository -y ppa:zanchey/asciinema #Asciinema
 sudo add-apt-repository -y ppa:peek-developers/stable
 
@@ -31,7 +31,7 @@ sudo apt-get install -y \
       libpq-dev \
       software-properties-common \
       zsh \
-      gh \
+#     gh \
       golang \
       unzip \
       direnv \
@@ -43,7 +43,7 @@ sudo apt-get install -y \
       exa \
       fzf \
       tmux \
-      glow \
+ #     glow \
       apache2-utils \
       asciinema \
       peek \

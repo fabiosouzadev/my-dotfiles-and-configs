@@ -17,10 +17,11 @@ if not mason_null_ls_status then
 end
 
 -- import language servers ensure installed plugin safely
-local language_servers_status, language_servers_ensure_installed = pcall(require, "plugins.lang-servers-ensure-installed")
+local language_servers_status, language_servers_ensure_installed =
+  pcall(require, "plugins.lang-servers-ensure-installed")
 if not language_servers_status then
   return
- end
+end
 
 -- enable mason
 mason.setup()

@@ -1,10 +1,10 @@
 desktop.ubuntu
 cli.ubuntu-sudo
 bat
+pyenv
 docker.ubuntu
 kind
 minikube
-pyenv
 git
 ssh
 nvm

@@ -10,12 +10,10 @@ sudo add-apt-repository -y ppa:peek-developers/stable
 sudo apt-get -y update
 
 sudo apt-get install -y \
-
       make \
       wget \
       curl \
       xsel \
-      fzf \
       build-essential \
       libssl-dev \
       zlib1g-dev \
@@ -45,9 +43,7 @@ sudo apt-get install -y \
       silversearcher-ag \
       ranger \
       fd-find \
-      ripgrep \
       fzf \
-      tmux \
  #     glow \
       apache2-utils \
       asciinema \
@@ -64,8 +60,7 @@ sudo apt-get install -y \
       kubectx \
       rofi \
       gcc \
-      clang \
-      make 
+      clang 
 
 #Config fd
 sudo ln -fvs /usr/bin/fdfind /usr/bin/fd

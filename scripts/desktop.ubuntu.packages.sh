@@ -6,8 +6,11 @@ sudo apt install curl
 #Add to sources list
 
 #Brave
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-nightly-archive-keyring.gpg https://brave-browser-apt-nightly.s3.brave.com/brave-browser-nightly-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-nightly-archive-keyring.gpg arch=amd64] https://brave-browser-apt-nightly.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-nightly.list
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-beta-archive-keyring.gpg https://brave-browser-apt-beta.s3.brave.com/brave-browser-beta-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-beta-archive-keyring.gpg arch=amd64] https://brave-browser-apt-beta.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-beta.list
+
+
 
 #Update sources
 sudo apt-get update
@@ -21,7 +24,7 @@ sudo apt install -y \
     libqt5webkit5 \
     network-manager-vpnc \
     network-manager-vpnc-gnome \
-    brave-browser 
+    brave-browser-beta
 
 sudo snap install \
     authy \
@@ -33,8 +36,12 @@ sudo snap install \
     whatsapp-for-linux \
     telegram-desktop \
     vlc \
-    slack
+    slack 
 
+
+sudo snap install --edge ferdium
+sudo snap connect ferdium:camera
+sudo snap connect ferdium:audio-record
 
 #Install toogl
 TOGGL_VERSION="7.5.324"

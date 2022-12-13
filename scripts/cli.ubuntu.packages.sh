@@ -73,16 +73,17 @@ sudo ln -fvs /usr/bin/fdfind /usr/bin/fd
 #Install delta
 curl -sLO https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb && sudo dpkg -i git-delta_0.13.0_amd64.deb && sudo rm git-delta_0.13.0_amd64.deb
 
-#WAKATIME
-python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
-
 #Install exa
 EXA_VERSION=$(curl -s "https://api.github.com/repos/ogham/exa/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
 curl -Lo exa.zip "https://github.com/ogham/exa/releases/latest/download/exa-linux-x86_64-v${EXA_VERSION}.zip"
 sudo unzip -q exa.zip bin/exa -d /usr/local
 rm -rf exa.zip
 
-#FZF
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-cd ~/.fzf
-./install
+#Install ripgrep
+RIPGREP_VERSION=$(curl -s "https://api.github.com/repos/BurntSushi/ripgrep/releases/latest" | grep -Po '"tag_name": "\K[0-9.]+')
+curl -Lo ripgrep.deb "https://github.com/BurntSushi/ripgrep/releases/latest/download/ripgrep_${RIPGREP_VERSION}_amd64.deb"
+sudo apt install -y ./ripgrep.deb
+rm -rf ripgrep.deb
+
+#WAKATIME
+python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"

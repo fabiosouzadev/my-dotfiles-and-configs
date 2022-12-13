@@ -198,6 +198,11 @@ fi
 if [[ -f "/usr/local/bin/alacritty" ]]; then
     zgenom load $HOME/.local/share/alacritty
 fi
+#FZF completions
+if [[ -d "$HOME/.fzf" ]]; then
+    zgenom load $HOME/.fzf/shell/completion.zsh
+    zgenom load $HOME/.fzf/shell/key-bindings.zsh
+fi
 
 ### END MY CUSTOM PLUGINS
 

@@ -10,6 +10,12 @@ sudo add-apt-repository -y ppa:peek-developers/stable
 sudo apt-get -y update
 
 sudo apt-get install -y \
+
+      make \
+      wget \
+      curl \
+      xsel \
+      fzf \
       build-essential \
       libssl-dev \
       zlib1g-dev \
@@ -40,7 +46,6 @@ sudo apt-get install -y \
       ranger \
       fd-find \
       ripgrep \
-      exa \
       fzf \
       tmux \
  #     glow \
@@ -57,7 +62,10 @@ sudo apt-get install -y \
       libxcb-xfixes0-dev \
       libxkbcommon-dev \
       kubectx \
-      rofi
+      rofi \
+      gcc \
+      clang \
+      make 
 
 #Config fd
 sudo ln -fvs /usr/bin/fdfind /usr/bin/fd
@@ -67,3 +75,14 @@ curl -sLO https://github.com/dandavison/delta/releases/download/0.13.0/git-delta
 
 #WAKATIME
 python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
+
+#Install exa
+EXA_VERSION=$(curl -s "https://api.github.com/repos/ogham/exa/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
+curl -Lo exa.zip "https://github.com/ogham/exa/releases/latest/download/exa-linux-x86_64-v${EXA_VERSION}.zip"
+sudo unzip -q exa.zip bin/exa -d /usr/local
+rm -rf exa.zip
+
+#FZF
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+cd ~/.fzf
+./install

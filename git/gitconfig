@@ -48,7 +48,7 @@
 [include]
     path = ~/.gitconfig.local
 
-[includeIf "gitdir:~/Projects/Work/"]
+[includeIf "gitdir:~/Projects/mglu/"]
 	path = ~/.gitconfig.work
 
 ;[includeIf "gitdir:~/Projects/Work/github/"]

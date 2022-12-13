@@ -1,10 +1,6 @@
 - shell:
   - description: Validating sudo credentials
     command: "sudo --validate"
-
-- aptget: [make, wget, curl, xsel]
-
-- shell:
   - description: Create ~/.local/bin
     command: "[ -d ~/.local/bin ] || mkdir -p ~/.local/bin"     
   - description: Installing packages

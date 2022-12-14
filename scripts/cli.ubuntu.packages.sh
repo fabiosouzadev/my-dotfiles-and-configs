@@ -1,9 +1,6 @@
 #!/bin/bash
 
 # Add ppa or sources list
-# echo 'deb [trusted=yes] https://repo.charm.sh/apt/ /' | sudo tee /etc/apt/sources.list.d/charm.list #Glow
-sudo apt-add-repository -y ppa:zanchey/asciinema #Asciinema
-sudo add-apt-repository -y ppa:peek-developers/stable
 
 
 #Atualizar sources lists
@@ -42,21 +39,18 @@ sudo apt-get install -y \
       libfontconfig1-dev \
       libxcb-xfixes0-dev \
       libxkbcommon-dev \
+      libqt5webkit5 \
       zsh \
-#     gh \
       golang \
       unzip \
       direnv \
       neofetch \
       fzf \
+      ripgrep \
       universal-ctags \
       silversearcher-ag \
       ranger \
       fd-find \
- #     glow \
-      asciinema \
-      peek \
-      kubectx \
       xsel \
       rofi 
 
@@ -73,11 +67,10 @@ curl -Lo exa.zip "https://github.com/ogham/exa/releases/latest/download/exa-linu
 sudo unzip -q exa.zip bin/exa -d /usr/local
 rm -rf exa.zip
 
-#Install ripgrep
-RIPGREP_VERSION=$(curl -s "https://api.github.com/repos/BurntSushi/ripgrep/releases/latest" | grep -Po '"tag_name": "\K[0-9.]+')
-curl -Lo ripgrep.deb "https://github.com/BurntSushi/ripgrep/releases/latest/download/ripgrep_${RIPGREP_VERSION}_amd64.deb"
-sudo apt install -y ./ripgrep.deb
-rm -rf ripgrep.deb
-
 #WAKATIME
 python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
+
+#kubectx
+sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+sudo ln -sv /opt/kubectx/kubectx /usr/local/bin/kubectx
+sudo ln -sv /opt/kubectx/kubens /usr/local/bin/kubens

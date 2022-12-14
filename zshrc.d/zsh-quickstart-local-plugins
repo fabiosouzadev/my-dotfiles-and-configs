@@ -198,6 +198,7 @@ fi
 if [[ -f "/usr/local/bin/alacritty" ]]; then
     zgenom load $HOME/.local/share/alacritty
 fi
+
 ### END MY CUSTOM PLUGINS
 
 # Load me last

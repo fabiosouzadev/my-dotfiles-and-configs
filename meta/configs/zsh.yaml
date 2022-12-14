@@ -2,10 +2,11 @@
     - description: Validating sudo credentials
       command: "sudo --validate"
     - [sudo apt-get install -y zsh]
-    - description: Making zsh the default shell
-      command: "sudo chsh -s $(which zsh) || chsh -s /usr/bin/zsh"
     - description: Adding zsh to list of acceptable shells
-      command: '[[ "$(ag $(which zsh) /etc/shells)" ]] || sudo sh -c "echo $(which zsh) >> /etc/shells"'
+      command: '[[ "$(grep "/bin/zsh" /etc/shells)" ]] || sudo sh -c "echo /bin/zsh >> /etc/shells"'
+    - description: Making zsh the default shell
+      command: "sudo chsh -s /bin/zsh $USER || chsh -s /bin/zsh"
+    - [su - $USER]
     - [git submodule update --init --recursive, Installing submodules]
     - description: "Clone zgenom"
       command: "git clone https://github.com/jandamm/zgenom.git ~/zgenom"

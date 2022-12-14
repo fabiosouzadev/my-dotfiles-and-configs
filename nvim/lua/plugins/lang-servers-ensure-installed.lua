@@ -11,7 +11,6 @@ M.ensure_installed_lsp = {
   "bashls",
   "yamlls",
   "rust_analyzer",
-  "gopls",
   "cssls",
   "volar",
 }

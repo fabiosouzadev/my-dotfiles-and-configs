@@ -36,12 +36,18 @@ sudo snap install \
     whatsapp-for-linux \
     telegram-desktop \
     vlc \
-    slack 
+    slack \
+    spotify
 
 
-sudo snap install --edge ferdium
+sudo snap install --edge \
+    ferdium
+
 sudo snap connect ferdium:camera
 sudo snap connect ferdium:audio-record
+
+sudo snap remove snap-store && \
+    sudo snap install snap-store --channel=preview/edge
 
 #Install toogl
 TOGGL_VERSION="7.5.324"

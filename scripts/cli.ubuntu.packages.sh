@@ -45,18 +45,9 @@ sudo apt-get install -y \
       unzip \
       direnv \
       neofetch \
-      fzf \
-      ripgrep \
-      universal-ctags \
-      silversearcher-ag \
       ranger \
-      fd-find \
       xsel \
       rofi 
-
-
-#Config fd
-sudo ln -fvs /usr/bin/fdfind /usr/bin/fd
 
 #Install delta
 curl -sLO https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb && sudo dpkg -i git-delta_0.13.0_amd64.deb && sudo rm git-delta_0.13.0_amd64.deb
@@ -73,4 +64,4 @@ python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakati
 #kubectx
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -sv /opt/kubectx/kubectx /usr/local/bin/kubectx
-sudo ln -sv /opt/kubectx/kubens /usr/local/bin/kubens
+sudo ln -sv /opt/kubectx/kubens /usr/local/bin/kubens

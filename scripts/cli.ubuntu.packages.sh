@@ -11,9 +11,11 @@ sudo apt-get -y update
 
 sudo apt-get install -y \
       make \
+      cmake \
+      gcc \
+      clang \
       wget \
       curl \
-      xsel \
       build-essential \
       libssl-dev \
       zlib1g-dev \
@@ -33,23 +35,6 @@ sudo apt-get install -y \
       libffi-dev \
       liblzma-dev \
       libpq-dev \
-      software-properties-common \
-      zsh \
-#     gh \
-      golang \
-      unzip \
-      direnv \
-      neofetch \
-      silversearcher-ag \
-      ranger \
-      fd-find \
-      fzf \
- #     glow \
-      apache2-utils \
-      asciinema \
-      peek \
-      clang \
-      cmake \
       ninja-build \
       pkg-config \
       libgtk-3-dev \
@@ -57,10 +42,24 @@ sudo apt-get install -y \
       libfontconfig1-dev \
       libxcb-xfixes0-dev \
       libxkbcommon-dev \
+      zsh \
+#     gh \
+      golang \
+      unzip \
+      direnv \
+      neofetch \
+      fzf \
+      universal-ctags \
+      silversearcher-ag \
+      ranger \
+      fd-find \
+ #     glow \
+      asciinema \
+      peek \
       kubectx \
-      rofi \
-      gcc \
-      clang 
+      xsel \
+      rofi 
+
 
 #Config fd
 sudo ln -fvs /usr/bin/fdfind /usr/bin/fd

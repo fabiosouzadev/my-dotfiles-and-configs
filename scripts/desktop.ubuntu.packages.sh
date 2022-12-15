@@ -20,6 +20,7 @@ sudo apt install -y \
     gnome-tweaks \
     snapd \
     vpnc \
+    pavucontrol \
     caffeine \
     libqt5webkit5 \
     network-manager-vpnc \

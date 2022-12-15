@@ -13,6 +13,7 @@ M.ensure_installed_lsp = {
   "rust_analyzer",
   "cssls",
   "volar",
+  "tailwindcss",
 }
 
 M.ensure_installed_null_ls = {

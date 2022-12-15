@@ -52,3 +52,4 @@ npm install -g bash-language-server
 npm install -g tree-sitter-cli
 npm install -g neovim 
 npm install -g vue-language-server
+npm install -g tailwindcss-language-server

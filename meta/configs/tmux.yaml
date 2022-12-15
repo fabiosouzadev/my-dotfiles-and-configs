@@ -1,12 +1,12 @@
 - shell:
-  - description: Validating sudo credentials
-    command: "sudo --validate"
-  - [sudo apt-get install -y tmux]
-  - [git submodule update --init --recursive, Installing submodules]
-  - description: 'Clone TPM'
-    command: 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm'
-    stdout: true
-    stderr: true
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - [sudo apt-get install -y tmux]
+    - [git submodule update --init --recursive, Installing submodules]
+    - description: "Clone TPM"
+      command: "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+      stdout: true
+      stderr: true
 
 - link:
     ~/.tmux.conf: tmux/tmux.conf

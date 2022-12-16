@@ -1,5 +1,5 @@
 desktop.ubuntu
-cli.ubuntu-sudo
+cli.ubuntu
 docker.ubuntu
 k8s.ubuntu
 pyenv

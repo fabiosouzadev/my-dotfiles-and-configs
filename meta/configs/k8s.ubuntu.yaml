@@ -1,26 +1,24 @@
 - shell:
-  - description: Validating sudo credentials
-    command: "sudo --validate"
-  # - description: Installing kind
-  #   command: scripts/kind.install.ubuntu.sh
-  #   stderr: true
-  #   stdout: true
-  # - description: Installing k9s
-  #   command: scripts/k9s.install.ubuntu.sh
-  #   stderr: true
-  #   stdout: true
-  # - description: Installing minikube
-  #   command: scripts/minikube.install.ubuntu.sh
-  #   stderr: true
-  #   stdout: true
-  # - description: Installing ArgoCD-cli
-  #   command: scripts/argocd-cli.install.ubuntu.sh
-  #   stderr: true
-  #   stdout: true
-  - description: Installing kubectx
-    command: |
-      sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
-      sudo ln -sv /opt/kubectx/kubectx /usr/local/bin/kubectx
-      sudo ln -sv /opt/kubectx/kubens /usr/local/bin/kubens
-    stderr: true
-    stdout: true
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Installing kind
+      command: |
+        if [ `uname` = 'Linux' ]; then
+          curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.15.0/kind-linux-amd64
+          chmod +x -v ./kind
+          sudo mv -v ./kind /usr/local/bin/kind
+        fi
+    - description: Installing k9s
+      command: "[ `uname` = 'Linux' ] && curl -sS https://webinstall.dev/k9s | sh"
+    - description: Installing minikube
+      command: |
+        if [[ `uname` == 'Linux' && ! -f /usr/local/bin/minikube  ]]; then
+          curl -Lo $HOME/.local/src/minikube-linux-amd64 https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+          sudo install $HOME/.local/src/minikube-linux-amd64  /usr/local/bin/minikube
+        fi
+    - description: Installing kubectx
+      command: |
+        [ -d /opt/kubectx ]             || sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+        [ -f /usr/local/bin/kubectx ]   || sudo ln -sf /opt/kubectx/kubectx /usr/local/bin/kubectx
+        [ -f /usr/local/bin/kubens ]    || sudo ln -sf /opt/kubectx/kubens /usr/local/bin/kubens
+    - [exec /bin/zsh]

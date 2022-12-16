@@ -3,8 +3,6 @@ cli.ubuntu
 docker.ubuntu
 k8s.ubuntu
 pyenv
-kind
-minikube
 git
 ssh
 nvm

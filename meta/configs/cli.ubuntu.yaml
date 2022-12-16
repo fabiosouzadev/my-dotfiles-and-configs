@@ -1,16 +1,73 @@
 - shell:
-  - description: Validating sudo credentials
-    command: "sudo --validate"
-  - description: Create ~/.local/bin
-    command: "[ -d ~/.local/bin ] || mkdir -p ~/.local/bin"     
-  - description: Installing packages
-    command: scripts/cli.ubuntu.packages.sh
-    stdout: true
-    stderr: true
-  - description: Installing Lazygit
-    command: scripts/lazygit.install.ubuntu.sh
-    stderr: true
-    stdout: true
-  - description: Customize fonts
-    command: "fc-cache -vf ~/.fonts/"
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description:
+      command: "sudo apt-get -y update"
+    - description: Installind packages
+      command: |
+        sudo apt-get install -y \
+        make \
+        cmake \
+        gcc \
+        clang \
+        wget \
+        curl \
+        build-essential \
+        libssl-dev \
+        zlib1g-dev \
+        libbz2-dev \
+        libreadline-dev \
+        libsqlite3-dev \
+        lsb-release \
+        ca-certificates \
+        apt-transport-https \
+        software-properties-common \
+        llvm \
+        libncursesw5-dev \
+        xz-utils \
+        tk-dev \
+        libxml2-dev \
+        libxmlsec1-dev \
+        libffi-dev \
+        liblzma-dev \
+        libpq-dev \
+        ninja-build \
+        pkg-config \
+        libgtk-3-dev \
+        libfreetype6-dev \
+        libfontconfig1-dev \
+        libxcb-xfixes0-dev \
+        libxkbcommon-dev \
+        libqt5webkit5 \
+        zsh \
+        golang \
+        unzip \
+        direnv \
+        neofetch \
+        ranger \
+        xsel \
+        rofi
+    - description: Create ~/.local/bin
+      command: "[ -d ~/.local/bin ] || mkdir -p ~/.local/bin"
+    - description: Install bat
+      command: "[ `uname` = Linux  ] || sudo apt-get update && sudo apt-get -y install bat"
+    - description: Create link to bat
+      command: "[ -x ~/.local/bin/bat ] || mkdir -p ~/.local/bin && ln -fs /usr/bin/batcat ~/.local/bin/bat"
+    - description: Install delta
+      command: |
+        curl -sLo $HOME/.local/src/git-delta_0.13.0_amd64.deb https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb \
+        && sudo dpkg -i $HOME/.local/src/git-delta_0.13.0_amd64.deb \
+        && rm $HOME/.local/src/git-delta_0.13.0_amd64.deb
+    - description: Install exa
+      command: |
+        if [ ! -f /usr/local/bin/exa ]; then
+          EXA_VERSION=$(curl -s "https://api.github.com/repos/ogham/exa/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
+          curl -Lo $HOME/.local/src/exa.zip "https://github.com/ogham/exa/releases/latest/download/exa-linux-x86_64-v${EXA_VERSION}.zip" \
+          && sudo unzip -q $HOME/.local/src/exa.zip bin/exa -d /usr/local \
+          && rm -rf $HOME/.local/src/exa.zip
+        fi
+    - description: Install Wakatime
+      command: python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
 
+- link:
+    ~/.config/bat: bat

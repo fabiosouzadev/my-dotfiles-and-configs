@@ -1,0 +1,26 @@
+- shell:
+  - description: Validating sudo credentials
+    command: "sudo --validate"
+  # - description: Installing kind
+  #   command: scripts/kind.install.ubuntu.sh
+  #   stderr: true
+  #   stdout: true
+  # - description: Installing k9s
+  #   command: scripts/k9s.install.ubuntu.sh
+  #   stderr: true
+  #   stdout: true
+  # - description: Installing minikube
+  #   command: scripts/minikube.install.ubuntu.sh
+  #   stderr: true
+  #   stdout: true
+  # - description: Installing ArgoCD-cli
+  #   command: scripts/argocd-cli.install.ubuntu.sh
+  #   stderr: true
+  #   stdout: true
+  - description: Installing kubectx
+    command: |
+      sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+      sudo ln -sv /opt/kubectx/kubectx /usr/local/bin/kubectx
+      sudo ln -sv /opt/kubectx/kubens /usr/local/bin/kubens
+    stderr: true
+    stdout: true

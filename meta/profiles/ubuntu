@@ -1,7 +1,8 @@
 desktop.ubuntu
 cli.ubuntu-sudo
-pyenv
 docker.ubuntu
+k8s.ubuntu
+pyenv
 kind
 minikube
 git

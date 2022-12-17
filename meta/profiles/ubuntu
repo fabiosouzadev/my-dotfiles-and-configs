@@ -1,6 +1,6 @@
-regolith-desktop
 desktop.ubuntu
 cli.ubuntu
+fzf.ubuntu
 docker.ubuntu
 k8s.ubuntu
 pyenv
@@ -9,12 +9,12 @@ ssh
 nvm
 nvim
 tmux
+fonts.ubuntu
 wakatime
 zsh
 starship
 asdf
-fonts.ubuntu
-vscodium
 kitty
 alacritty
+vscodium
 #forticlient.ubuntu

@@ -49,6 +49,8 @@
           rofi
     - description: Create ~/.local/bin
       command: "[ -d ~/.local/bin ] || mkdir -p ~/.local/bin"
+    - description: Create ~/.local/bin
+      command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
     - description: Install bat
       command: "[ `uname` = Linux  ] && sudo apt-get -y install bat"
     - description: Create link to bat

@@ -1,9 +1,0 @@
-- shell:
-    - description: Validating sudo credentials
-      command: "sudo --validate"
-    - description: Installing apps
-      command: scripts/regolith.install.sh
-      stderr: true
-      stdout: true
-- link:
-    ~/.config/regolith2: regolith2

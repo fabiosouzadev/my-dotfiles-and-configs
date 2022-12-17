@@ -1,0 +1,13 @@
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Regolith Desktop install
+      command: |
+        wget -qO - https://regolith-desktop.org/regolith.key | sudo apt-key add -
+        echo deb "[arch=amd64] https://regolith-desktop.org/release-ubuntu-focal-amd64 focal main" | \
+        sudo tee /etc/apt/sources.list.d/regolith.list 
+        sudo apt update
+        sudo apt install -y regolith-desktop regolith-compositor-picom-glx
+
+- link:
+    ~/.config/regolith2: regolith2

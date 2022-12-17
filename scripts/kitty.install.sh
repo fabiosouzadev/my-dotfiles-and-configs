@@ -8,6 +8,6 @@ if [ ! -f ~/.local/bin/kitty ]; then
   cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
   sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
   sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
-  sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $HOME/.local/bin/kitty 1
-  sudo update-alternatives --set x-terminal-emulator $HOME/.local/bin/kittyx
+  #sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $HOME/.local/bin/kitty 1
+  #sudo update-alternatives --set x-terminal-emulator $HOME/.local/bin/kittyx
 fi

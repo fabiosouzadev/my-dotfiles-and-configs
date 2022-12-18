@@ -4,12 +4,11 @@
     - [sudo apt-get install -y zsh]
     - description: Adding zsh to list of acceptable shells
       command: '[[ "$(grep "/bin/zsh" /etc/shells)" ]] || sudo sh -c "echo /bin/zsh >> /etc/shells"'
-    - description: Making zsh the default shell
-      command: "sudo chsh -s /bin/zsh $USER || chsh -s /bin/zsh"
-    - [su - $USER]
+    # - description: Making zsh the default shell
+    #   command: "chsh -s /bin/zsh"
     - [git submodule update --init --recursive, Installing submodules]
     - description: "Clone zgenom"
-      command: "git clone https://github.com/jandamm/zgenom.git ~/zgenom"
+      command: "[ -d $HOME/zgenom ] || git clone https://github.com/jandamm/zgenom.git $HOME/zgenom"
       stdout: true
       stderr: true
 

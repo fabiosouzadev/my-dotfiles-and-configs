@@ -1,14 +1,11 @@
 - shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
     - description: Install i3-gaps
       command: |
-        sudo add-apt-repository ppa:regolith-linux/release
+        sudo add-apt-repository ppa:kgilmer/speed-ricer
         sudo apt update
-        sudo apt install -y i3-gaps
-      stdout: true
-    - description: Install polybar
-      command: |
-        sudo apt install -y polybar
+        sudo apt install -y i3-gaps polybar
 
-# - link:
-#   ~/.config/i3: i3
-#   ~/.config/rofi: rofi
+- link:
+    ~/.config/i3: i3

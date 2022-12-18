@@ -1,12 +1,14 @@
 - shell:
-  - description: Clone nvm
-    command: '[ -d $HOME/.nvm ] || git clone https://github.com/nvm-sh/nvm.git $HOME/.nvm'
-  - description: Install i3-gaps
-    command: |
-      sudo add-apt-repository ppa:regolith-linux/release
-      sudo apt update
-      sudo apt install i3-gaps
+    - description: Install i3-gaps
+      command: |
+        sudo add-apt-repository ppa:regolith-linux/release
+        sudo apt update
+        sudo apt install -y i3-gaps
+      stdout: true
+    - description: Install polybar
+      command: |
+        sudo apt install -y polybar
 
-- link:
-  #  ~/.config/i3: i3
-  # ~/.config/rofi: rofi
+# - link:
+#   ~/.config/i3: i3
+#   ~/.config/rofi: rofi

@@ -1,6 +1,7 @@
 - defaults:
     shell: 
       stderr: true
+      stdout: false
     link:
       relink: true
       create: true

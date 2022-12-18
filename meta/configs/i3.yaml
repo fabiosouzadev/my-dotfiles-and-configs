@@ -1,3 +1,12 @@
+- shell:
+  - description: Clone nvm
+    command: '[ -d $HOME/.nvm ] || git clone https://github.com/nvm-sh/nvm.git $HOME/.nvm'
+  - description: Install i3-gaps
+    command: |
+      sudo add-apt-repository ppa:regolith-linux/release
+      sudo apt update
+      sudo apt install i3-gaps
+
 - link:
-    ~/.config/i3: i3
-    ~/.config/rofi: rofi
+  #  ~/.config/i3: i3
+  # ~/.config/rofi: rofi

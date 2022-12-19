@@ -202,7 +202,10 @@ exec_always --no-startup-id sh ~/.config/polybar/launch.sh
 exec --no-startup-id feh --bg-scale $HOME/Downloads/Wallpapers/zaki-aby-fisheye-top-0-064.jpg
 
 # Picom
-exec --no-startup-id picom
+exec --no-startup-id picom --experimental-backends --blur-background-fixed -r 12
+
+#Dunst
+exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 # Gaps
 #smart_gaps on

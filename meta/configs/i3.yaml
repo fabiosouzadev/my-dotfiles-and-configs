@@ -5,9 +5,17 @@
       command: |
         sudo add-apt-repository ppa:kgilmer/speed-ricer
         sudo apt update
-        sudo apt install -y i3-gaps polybar picom
+        sudo apt install -y \
+        i3-gaps \
+        polybar \
+        picom \
+        dunst \
+        rofi \
+        nitrogen
 
 - link:
     ~/.config/i3: i3
     ~/.config/polybar: polybar
     ~/.config/picom: picom
+    ~/.config/dunst: dunst
+    ~/.config/rofi: rofi

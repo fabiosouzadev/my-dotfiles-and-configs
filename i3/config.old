@@ -8,19 +8,9 @@
 # ==========================
 
 set $mod Mod4
+# font pango:monospace 8
+font pango:Hack Nerd Font bold 10
 
-font pango:monospace 8
-#font pango:Hack Nerd Font bold 10
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -38,17 +28,18 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec i3-sensible-terminal
+ bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 #start rofi
 bindsym $mod+Shift+w exec rofi -show drun
@@ -151,6 +142,10 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # ===  Assign Programs To Workspaces   ===
 # ========================================
 
+
+
+
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -158,6 +153,10 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+
+# =================
+# ===  Resize   ===
+# =================
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -185,6 +184,11 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+
+
+# ==================
+# ===     Bar    ===
+# ==================
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # bar {
@@ -192,6 +196,19 @@ bindsym $mod+r mode "resize"
 #         position top
 # }
 
+# Disable title bar
+
+# Polybar
+exec_always --no-startup-id sh ~/.config/polybar/launch.sh
+
+# Background
+exec --no-startup-id feh --bg-scale $HOME/Downloads/Wallpapers/zaki-aby-fisheye-top-0-064.jpg
+
+# Picom
+exec --no-startup-id picom --experimental-backends --blur-background-fixed -r 12
+
+#Dunst
+exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 # Gaps
 #smart_gaps on
@@ -202,9 +219,3 @@ gaps outer 5
 
 exec --no-startup-id xrandr --output HDMI-1  --primary
 exec --no-startup-id xrandr --output eDP-1 --right-of HDMI-1 --auto
-# Background
-exec --no-startup-id feh --bg-scale $HOME/Downloads/Wallpapers/zaki-aby-fisheye-top-0-064.jpg
-
-# Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh --config=/home/awais/.config/polybar/config.ini
-

@@ -11,7 +11,8 @@
         picom \
         dunst \
         rofi \
-        nitrogen
+        nitrogen \
+        feh
 
 - link:
     ~/.config/i3: i3

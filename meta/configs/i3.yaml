@@ -13,7 +13,12 @@
         rofi \
         nitrogen \
         feh \
-        blueman 
+        blueman
+    - [
+        wget -qO- https://git.io/papirus-icon-theme-install | sh,
+        Install papirus-icon-theme,
+      ]
+    - [ gsettings set org.gnome.desktop.interface icon-theme 'Papirus' ]
 
 - link:
     ~/.config/i3: i3

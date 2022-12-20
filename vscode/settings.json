@@ -130,5 +130,6 @@
   "peacock.vslsJoinColor": "#1857a4",
   "redhat.telemetry.enabled": true,
   "editor.inlineSuggest.enabled": true,
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "workbench.sideBar.location": "right"
 }

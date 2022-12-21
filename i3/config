@@ -10,7 +10,7 @@
 set $mod Mod4
 
 #font pango:monospace 8
-font pango:Fira Mono NF 8
+font pango:Iosevka NFM 10
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
@@ -195,10 +195,10 @@ exec --no-startup-id xrandr --output HDMI-1  --primary
 exec --no-startup-id xrandr --output eDP-1 --right-of HDMI-1 --auto
 
 # Gaps
-smart_gaps on
-smart_borders on
-#gaps inner 20
-#gaps outer 5
+#smart_gaps on
+#smart_borders on
+gaps inner 5
+gaps outer 5
 
 # Background
 exec --no-startup-id feh --bg-scale $HOME/Downloads/Wallpapers/zaki-aby-fisheye-top-0-064.jpg
@@ -208,7 +208,3 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Compositor
 exec_always --no-startup-id picom
-
-
-
-

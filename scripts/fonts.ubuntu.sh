@@ -29,7 +29,7 @@ fi
 for i in "${FONTS[@]}"
 do
     ### sudo ./install.sh <Font-Name>
-    wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/"$i".zip"
+    wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.0-RC/"$i".zip"
     unzip "$i".zip
 done
 

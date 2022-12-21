@@ -121,7 +121,7 @@ font:
     #   - (Windows) Consolas
     # The `style` can be specified to pick a specific face.
     # family: Fira Code NF
-    family: Iosevka Term
+    family: Iosevka NFM
     style: Regular
 
   # Bold font face
@@ -131,7 +131,7 @@ font:
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
     # The `style` can be specified to pick a specific face.
-    family: Iosevka Term
+    family: Iosevka NFM
     style: Bold
 
   # Italic font face
@@ -141,7 +141,7 @@ font:
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
     # The `style` can be specified to pick a specific face.
-    family: Iosevka Term
+    family: Iosevka NFM
     style: Medium Italic
 
   # Bold italic font face
@@ -151,7 +151,7 @@ font:
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
     # The `style` can be specified to pick a specific face.
-    family: Iosevka Term
+    family: Iosevka NFM
     style: Bold Italic
 
   # Point size

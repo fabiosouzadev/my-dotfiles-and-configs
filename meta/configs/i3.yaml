@@ -37,7 +37,6 @@
         cd $HOME/.local/src/dunst
         make
         sudo make install
-
 - link:
     ~/.config/i3: i3
     ~/.config/polybar: polybar

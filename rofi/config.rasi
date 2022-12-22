@@ -5,6 +5,6 @@ configuration {
   show-icons: true;
   icon-theme: "Papirus";
   font: "JetBrainsMono Nerd Font Medium 10";
-  modi: "window,run,drun,ssh";
+  modi: "window,run,drun,ssh,combi";
   sidebar-mode: true;
 }

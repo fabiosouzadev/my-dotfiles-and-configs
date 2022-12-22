@@ -31,6 +31,7 @@ floating_modifier $mod
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+Return exec brave-browser-beta
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -46,10 +47,10 @@ bindsym $mod+Shift+w exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec "rofi -combi-modi window,drun,run,ssh -modi combi -show combi"
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+ccedilla focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -58,10 +59,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+ccedilla move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -70,7 +71,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+x split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -196,11 +197,13 @@ exec --no-startup-id xrandr --output eDP-1 --right-of HDMI-1 --auto
 # Gaps
 smart_gaps on
 smart_borders on
-#gaps inner 5
-#gaps outer 5
+for_window [class="^.*"] border pixel 4
+gaps inner 5
+gaps outer 5
 
 # Background
 exec --no-startup-id feh --bg-scale $HOME/Downloads/Wallpapers/zaki-aby-fisheye-top-0-064.jpg
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 
 
 # Polybar

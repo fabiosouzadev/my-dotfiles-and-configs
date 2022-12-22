@@ -206,7 +206,8 @@ exec --no-startup-id feh --bg-scale $HOME/Downloads/Wallpapers/zaki-aby-fisheye-
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Compositor
-exec_always --no-startup-id picom
+exec_always --no-startup-id picom --experimental-backends --blur-background-fixed -r 12 
 
 #Dunst
+exec killall -q <notification daemon>
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc

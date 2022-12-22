@@ -43,7 +43,7 @@ bindsym $mod+Shift+q kill
 # installed.
 bindsym $mod+Shift+w exec --no-startup-id i3-dmenu-desktop
 #start rofi
-bindsym $mod+d exec rofi -show combi
+bindsym $mod+d exec "rofi -combi-modi window,drun,run,ssh -modi combi -show combi"
 
 # change focus
 bindsym $mod+j focus left

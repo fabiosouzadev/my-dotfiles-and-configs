@@ -1,25 +1,43 @@
 - shell:
-    - description: Validating sudo credentials
-      command: "sudo --validate"
-    - description: Install i3-gaps
-      command: |
-        sudo add-apt-repository ppa:kgilmer/speed-ricer
-        sudo apt update
-        sudo apt install -y \
-        i3-gaps \
-        polybar \
-        picom \
-        dunst \
-        rofi \
-        nitrogen \
-        feh \
-        blueman
-    - [
-        wget -qO- https://git.io/papirus-icon-theme-install | sh,
-        Install papirus-icon-theme,
-      ]
-    - [ gsettings set org.gnome.desktop.interface icon-theme 'Papirus' ]
-    - description: Install dunst
+    # - description: Validating sudo credentials
+    #   command: "sudo --validate"
+    # - description: Install i3-gaps
+    #   command: |
+    #     sudo add-apt-repository ppa:kgilmer/speed-ricer
+    #     sudo apt update
+    #     sudo apt install -y \
+    #     i3-gaps \
+    #     polybar \
+    #     picom \
+    #     dunst \
+    #     rofi \
+    #     nitrogen \
+    #     feh \
+    #     blueman
+    # - [
+    #     wget -qO- https://git.io/papirus-icon-theme-install | sh,
+    #     Install papirus-icon-theme,
+    #   ]
+    # - [ gsettings set org.gnome.desktop.interface icon-theme 'Papirus' ]
+    # - description: Install dunst
+    #   command: |
+    #     sudo apt install -y \
+    #     libdbus-1-dev \
+    #     libx11-dev \
+    #     libxinerama-dev \
+    #     libxrandr-dev \
+    #     libxss-dev \
+    #     libglib2.0-dev \
+    #     libpango1.0-dev \
+    #     libgtk-3-dev \
+    #     libxdg-basedir-dev \
+    #     libnotify-dev
+    #
+    #     git clone https://github.com/dunst-project/dunst.git $HOME/.local/src/dunst
+    #     cd $HOME/.local/src/dunst
+    #     make
+    #     sudo make install
+    - description: Install rofi
       command: |
         sudo apt install -y \
         libdbus-1-dev \
@@ -32,11 +50,16 @@
         libgtk-3-dev \
         libxdg-basedir-dev \
         libnotify-dev
-
-        git clone https://github.com/dunst-project/dunst.git $HOME/.local/src/dunst
-        cd $HOME/.local/src/dunst
+        
+        git clone --recursive https://github.com/DaveDavenport/rofi $HOME/.local/src/rofi
+        cd $HOME/.local/src/rofi
+        git pull
+        git submodule update --init
+        autoreconf -i
+        mkdir build && cd build
+        ../configure
         make
-        sudo make install
+        make install
       stdout: true
 
 - link:

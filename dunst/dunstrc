@@ -196,10 +196,10 @@
 
     # Recursive icon lookup. You can set a single theme, instead of having to
     # define all lookup paths.
-    enable_recursive_icon_lookup = true
+    #enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
-    icon_theme = "Papirus,Adwaita"
+    #icon_theme = "Papirus,Adwaita"
     # You can also set multiple icon themes, with the leftmost one being used first.
     # icon_theme = "Adwaita, breeze"
 
@@ -232,7 +232,7 @@
     dmenu = /usr/bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
-    browser = /usr/bin/brave-browser-beta
+    browser = /usr/bin/brave-browser-beta --new-tab
 
     # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
@@ -308,29 +308,42 @@
     per_monitor_dpi = false
 
 
+# [urgency_low]
+#     # IMPORTANT: colors have to be defined in quotation marks.
+#     # Otherwise the "#" and following would be interpreted as a comment.
+#     background = "#222222"
+#     foreground = "#888888"
+#     timeout = 10
+#     # Icon for notifications with low urgency, uncomment to enable
+#     #default_icon = /path/to/icon
+#
+# [urgency_normal]
+#     background = "#285577"
+#     foreground = "#ffffff"
+#     timeout = 10
+#     # Icon for notifications with normal urgency, uncomment to enable
+#     #default_icon = /path/to/icon
+#
+# [urgency_critical]
+#     background = "#900000"
+#     foreground = "#ffffff"
+#     frame_color = "#ff0000"
+#     timeout = 0
+#     # Icon for notifications with critical urgency, uncomment to enable
+#     #default_icon = /path/to/icon
+
 [urgency_low]
-    # IMPORTANT: colors have to be defined in quotation marks.
-    # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
-    timeout = 10
-    # Icon for notifications with low urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    background = "#1E1E2E"
+    foreground = "#CDD6F4"
 
 [urgency_normal]
-    background = "#285577"
-    foreground = "#ffffff"
-    timeout = 10
-    # Icon for notifications with normal urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    background = "#1E1E2E"
+    foreground = "#CDD6F4"
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#ffffff"
-    frame_color = "#ff0000"
-    timeout = 0
-    # Icon for notifications with critical urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    background = "#1E1E2E"
+    foreground = "#CDD6F4"
+    frame_color = "#FAB387"
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.

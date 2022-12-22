@@ -33,7 +33,7 @@
     origin = top-right
 
     # Offset from the origin
-    offset = 15x49
+    offset = 10x50
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -60,6 +60,9 @@
     # Set the maximum width for the progress bar
     progress_bar_max_width = 300
 
+    # Corner radius for the progress bar. 0 disables rounded corners.
+    progress_bar_corner_radius = 0
+
 
     # Show how many messages are currently hidden (because of
     # notification_limit).
@@ -68,18 +71,19 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 5
+    transparency = 0
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
+    # If gap_size is greater than 0, this setting will be ignored.
     separator_height = 2
 
     # Padding between text and separator.
-    padding = 6
+    padding = 8
 
     # Horizontal padding.
-    horizontal_padding = 6
+    horizontal_padding = 8
 
     # Padding between text and icon.
     text_icon_padding = 0
@@ -89,7 +93,13 @@
     frame_width = 3
 
     # Defines color of the frame around the notification window.
-    frame_color = "#8EC07C"
+    frame_color = "#aaaaaa"
+
+    # Size of gap to display between notifications - requires a compositor.
+    # If value is greater than 0, separator_height will be ignored and a border
+    # of size frame_width will be drawn around each notification instead.
+    # Click events on gaps do not currently propagate to applications below.
+    gap_size = 0
 
     # Define a color for the separator.
     # possible values are:
@@ -100,22 +110,22 @@
     separator_color = frame
 
     # Sort messages by urgency.
-    sort = no
+    sort = yes
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
     # Set to 0 to disable.
     # A client can set the 'transient' hint to bypass this. See the rules
     # section for how to disable this if necessary
-    idle_threshold = 0
+    # idle_threshold = 120
 
     ### Text ###
 
-    font = Iosevka Term 11
+    font = Monospace 8
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
-    line_height = 3
+    line_height = 0
 
     # Possible values are:
     # full: Allow a small subset of html markup in notifications:
@@ -155,7 +165,7 @@
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
-    alignment = center
+    alignment = left
 
     # Vertical alignment of message text and icon.
     # Possible values are "top", "center" and "bottom".
@@ -164,7 +174,7 @@
     # Show age of message if message is older than show_age_threshold
     # seconds.
     # Set to -1 to disable.
-    show_age_threshold = -1
+    show_age_threshold = 60
 
     # Specify where to make an ellipsis in long lines.
     # Possible values are "start", "middle" and "end".
@@ -177,30 +187,35 @@
     stack_duplicates = true
 
     # Hide the count of stacked notifications with the same content
-    hide_duplicate_count = true
+    hide_duplicate_count = false
 
     # Display indicators for URLs (U) and actions (A).
-    show_indicators = no
-
-    # Split notifications into multiple lines if they don't fit into
-    # geometry.
-    word_wrap = yes
+    show_indicators = yes
 
     ### Icons ###
 
-    # Align icons left/right/off
-    icon_position = off
+    # Recursive icon lookup. You can set a single theme, instead of having to
+    # define all lookup paths.
+    enable_recursive_icon_lookup = true
+
+    # Set icon theme (only used for recursive icon lookup)
+    icon_theme = Adwaita
+    # You can also set multiple icon themes, with the leftmost one being used first.
+    # icon_theme = "Adwaita, breeze"
+
+    # Align icons left/right/top/off
+    icon_position = left
 
     # Scale small icons up to this size, set to 0 to disable. Helpful
     # for e.g. small files or high-dpi screens. In case of conflict,
     # max_icon_size takes precedence over this.
-    min_icon_size = 80
+    min_icon_size = 32
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 80
+    max_icon_size = 128
 
-    # Paths to default icons.
-    icon_path = /usr/share/icons/Paper/16x16/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/:/usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    # Paths to default icons (only neccesary when not using recursive icon lookup)
+    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
     ### History ###
 
@@ -209,7 +224,7 @@
     sticky_history = yes
 
     # Maximum amount of notifications kept in history
-    history_length = 15
+    history_length = 20
 
     ### Misc/Advanced ###
 
@@ -296,29 +311,24 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    frame_color = "#3B7C87"
-    foreground = "#3B7C87"
-    background = "#191311"
-    #background = "#2B313C"
-    timeout = 4
+    background = "#222222"
+    foreground = "#888888"
+    timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_normal]
-    frame_color = "#5B8234"
-    foreground = "#5B8234"
-    background = "#191311"
-    #background = "#2B313C"
-    timeout = 6
+    background = "#285577"
+    foreground = "#ffffff"
+    timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    frame_color = "#B7472A"
-    foreground = "#B7472A"
-    background = "#191311"
-    #background = "#2B313C"
-    timeout = 8
+    background = "#900000"
+    foreground = "#ffffff"
+    frame_color = "#ff0000"
+    timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon
 
@@ -348,12 +358,14 @@
 #    set_category
 #    timeout
 #    urgency
+#    icon_position
 #    skip_display
 #    history_ignore
 #    action_name
 #    word_wrap
 #    ellipsize
 #    alignment
+#    hide_text
 #
 # Shell-like globbing will get expanded.
 #

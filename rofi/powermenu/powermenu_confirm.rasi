@@ -1,6 +1,6 @@
 /* Confirm Dialog */
 
-@import "colors.rasi"
+@import "powermenu_colors.rasi"
 
 * {
     background-color:       @bg;

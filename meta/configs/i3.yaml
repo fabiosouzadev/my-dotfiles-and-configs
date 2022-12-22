@@ -19,6 +19,25 @@
         Install papirus-icon-theme,
       ]
     - [ gsettings set org.gnome.desktop.interface icon-theme 'Papirus' ]
+    - description: Install dunst
+      command: |
+        sudo apt install -y \
+        libdbus-1-dev \
+        libx11-dev \
+        libxinerama-dev \
+        libxrandr-dev \
+        libxss-dev \
+        libglib2.0-dev \
+        libpango1.0-dev \
+        libgtk-3-dev \
+        libxdg-basedir-dev \
+        libnotify-dev
+
+        git clone https://github.com/dunst-project/dunst.git $HOME/.local/src/dunst
+        cd $HOME/.local/src/dunst
+        make
+        sudo make install
+      stdout: true
 
 - link:
     ~/.config/i3: i3

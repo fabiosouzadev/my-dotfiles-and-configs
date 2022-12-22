@@ -188,8 +188,7 @@ bindsym $mod+r mode "resize"
 #         position top
 # }
 
-#Dunst
-exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+
 
 exec --no-startup-id xrandr --output HDMI-1  --primary
 exec --no-startup-id xrandr --output eDP-1 --right-of HDMI-1 --auto
@@ -208,3 +207,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Compositor
 exec_always --no-startup-id picom
+
+#Dunst
+exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc

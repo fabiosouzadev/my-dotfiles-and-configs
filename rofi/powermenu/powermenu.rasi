@@ -19,7 +19,7 @@ configuration {
 	sidebar-mode: 					false;
 }
 
-@import "colors.rasi"
+@import "powermenu_colors.rasi"
 
 window {
     transparency:                   "real";

@@ -1,8 +1,23 @@
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
-    - [sudo apt-get install -y tmux]
-    - [git submodule update --init --recursive, Installing submodules]
+    - description: Build tmux
+      command: |
+        sudo apt install -y \
+        libevent-dev \
+        ncurses-dev \
+        build-essential \
+        bison \
+        pkg-config
+        
+        [ -d $HOME/.local/src/tmux ] || git clone https://github.com/tmux/tmux.git $HOME/.local/src/tmux
+        cd $HOME/.local/src/tmux
+        sh autogen.sh
+        ./configure
+        make && sudo make install
+
+    - description: Fallback tmux
+      command: "[ -x /usr/local/bin/tmux ] || sudo apt-get install -y tmux"
     - description: "Clone TPM"
       command: "[ -d $HOME/.tmux/plugins/tpm ] || git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm"
 

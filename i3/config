@@ -197,9 +197,9 @@ exec --no-startup-id xrandr --output eDP-1 --right-of HDMI-1 --auto
 # Gaps
 smart_gaps on
 smart_borders on
-for_window [class="^.*"] border pixel 4
-gaps inner 5
-gaps outer 5
+for_window [class="^.*"] border pixel 3
+#gaps inner 3
+#gaps outer 3
 
 # Background
 exec --no-startup-id feh --bg-scale $HOME/Downloads/Wallpapers/zaki-aby-fisheye-top-0-064.jpg

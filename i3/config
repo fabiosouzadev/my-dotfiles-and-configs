@@ -9,6 +9,9 @@
 
 set $mod Mod4
 
+exec --no-startup-id xrandr --output HDMI-1  --primary
+exec --no-startup-id xrandr --output eDP-1 --right-of HDMI-1 --auto
+
 #font pango:monospace 8
 font pango:Iosevka Nerd Font 10
 
@@ -191,8 +194,6 @@ bindsym $mod+r mode "resize"
 
 
 
-exec --no-startup-id xrandr --output HDMI-1  --primary
-exec --no-startup-id xrandr --output eDP-1 --right-of HDMI-1 --auto
 
 # Gaps
 smart_gaps on

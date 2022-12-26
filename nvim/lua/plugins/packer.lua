@@ -55,7 +55,7 @@ return packer.startup(function(use)
 
   --  Colorschemes   --
   use({ "folke/tokyonight.nvim" })
-  use({ "rose-pine/neovim", as = "rose-pine" })
+  -- use({ "rose-pine/neovim", as = "rose-pine" })
 
   -- Visual --
   use({ "goolord/alpha-nvim" })
@@ -100,7 +100,7 @@ return packer.startup(function(use)
   use({ "hrsh7th/cmp-buffer" }) -- source for text in buffer
   use({ "hrsh7th/cmp-path" }) -- source for file system paths
   use({ "hrsh7th/nvim-cmp" }) -- completion plugin
-  use({ "tzachar/cmp-tabnine", { run = "./install.sh" } }) -- ${HOME}/.local/share/nvim/site/pack/packer/start/cmp-tabnine/install.sh
+  use({ "tzachar/cmp-tabnine", run = "./install.sh" }) -- ${HOME}/.local/share/nvim/site/pack/packer/start/cmp-tabnine/install.sh
 
   -- snippets
   use("L3MON4D3/LuaSnip") -- snippet engine
@@ -130,6 +130,15 @@ return packer.startup(function(use)
 
   -- Others
   use({ "ThePrimeagen/vim-be-good" })
+
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

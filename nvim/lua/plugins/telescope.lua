@@ -18,20 +18,7 @@ require("telescope").setup({
       case_mode = "smart_case", -- or "ignore_case" or "respect_case"                          -- the default case_mode is "smart_case"
     },
     -- https://github.com/nvim-telescope/telescope-file-browser.nvim/#mappings
-    file_browser = {
-      -- theme = "ivy",
-      -- disables netrw and use telescope-file-browser in its place
-      hijack_netrw = true,
-      mappings = {
-        ["i"] = {
-          -- your custom insert mode mappings
-          ["<C-h>"] = fb_actions.goto_home_dir,
-        },
-        ["n"] = {
-          -- your custom normal mode mappings
-        },
-      },
-    },
+    -- file_browser = {},
   },
 })
 require("telescope").load_extension("fzf")

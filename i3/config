@@ -11,6 +11,8 @@ set $mod Mod4
 
 exec --no-startup-id xrandr --output HDMI-1  --primary
 exec --no-startup-id xrandr --output eDP-1 --right-of HDMI-1 --auto
+# https://gist.github.com/amanusk/6b79d407945ca79caa945ce2658fd987  -> get monitors
+
 
 #font pango:monospace 8
 font pango:Iosevka Nerd Font 10
@@ -27,6 +29,11 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Change brightnes
+#brightnessctl to crank up the brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +25%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 25%-
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -191,9 +198,6 @@ bindsym $mod+r mode "resize"
 #         status_command i3status
 #         position top
 # }
-
-
-
 
 # Gaps
 smart_gaps on

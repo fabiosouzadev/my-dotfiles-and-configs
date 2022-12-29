@@ -13,7 +13,8 @@
         rofi \
         nitrogen \
         feh \
-        blueman
+        blueman \
+        brightnessctl
     - [
         wget -qO- https://git.io/papirus-icon-theme-install | sh,
         Install papirus-icon-theme,

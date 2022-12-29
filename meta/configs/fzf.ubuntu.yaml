@@ -26,4 +26,4 @@
 - link:
     ~/.zshrc.d/011-fzf-ubuntu.zsh:
       if: "[ `uname` = Linux ]"
-      path: zshrc.d/011-fzf.zsh
+      path: zshrc.d/011-fzf-ubuntu.zsh

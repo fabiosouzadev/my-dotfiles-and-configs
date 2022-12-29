@@ -79,7 +79,7 @@ return packer.startup(function(use)
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
   use({ "nvim-telescope/telescope-file-browser.nvim" })
   -- Harpoon
-  use("ThePrimeagen/harpoon")
+  use({ "ThePrimeagen/harpoon" })
   ----------------------
   --    Code        --
   ---------------------
@@ -91,8 +91,8 @@ return packer.startup(function(use)
   use({ "folke/trouble.nvim" })
 
   -- formatting & linting
-  use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-  use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+  use({ "jose-elias-alvarez/null-ls.nvim" }) -- configure formatters & linters
+  use({ "jayp0521/mason-null-ls.nvim" }) -- bridges gap b/w mason & null-ls
 
   -- autocompletion
   use({ "hrsh7th/cmp-nvim-lsp" }) -- for autocompletion
@@ -103,13 +103,13 @@ return packer.startup(function(use)
   use({ "tzachar/cmp-tabnine", run = "./install.sh" }) -- ${HOME}/.local/share/nvim/site/pack/packer/start/cmp-tabnine/install.sh
 
   -- snippets
-  use("L3MON4D3/LuaSnip") -- snippet engine
-  use("saadparwaiz1/cmp_luasnip") -- for autocompletion
-  use("rafamadriz/friendly-snippets") -- useful snippets
+  use({ "L3MON4D3/LuaSnip" }) -- snippet engine
+  use({ "saadparwaiz1/cmp_luasnip" }) -- for autocompletion
+  use({ "rafamadriz/friendly-snippets" }) -- useful snippets
 
   -- managing & installing lsp servers, linters & formatters
-  use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
-  use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
+  use({ "williamboman/mason.nvim" }) -- in charge of managing lsp servers, linters & formatters
+  use({ "williamboman/mason-lspconfig.nvim" }) -- bridges gap b/w mason & lspconfig
 
   -- Treesitter
   use({
@@ -131,14 +131,14 @@ return packer.startup(function(use)
   -- Others
   use({ "ThePrimeagen/vim-be-good" })
 
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
-    ft = { "markdown" },
-  })
+  -- use({
+  --   "iamcco/markdown-preview.nvim",
+  --   run = "cd app && npm install",
+  --   setup = function()
+  --     vim.g.mkdp_filetypes = { "markdown" }
+  --   end,
+  --   ft = { "markdown" },
+  -- })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

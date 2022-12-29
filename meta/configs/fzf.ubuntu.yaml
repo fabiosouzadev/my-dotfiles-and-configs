@@ -2,29 +2,23 @@
     - description: Validating sudo credentials
       command: "sudo --validate"
     - description: Installing packages
-      command: scripts/fzf.ubuntu.sh
-      stdout: true
-      stderr: true
-# - link:
-#     ~/.zgen-setup: meta/zsh-quickstart-kit/zsh/.zgen-setup
-#     ~/.zsh_aliases: meta/zsh-quickstart-kit/zsh/.zsh_aliases
-#     ~/.zsh_functions: meta/zsh-quickstart-kit/zsh/.zsh_functions
-#     ~/.zshrc: meta/zsh-quickstart-kit/zsh/.zshrc
-#     ~/.zshrc.d/001-aliases.zsh: zshrc.d/001-aliases.zsh
-#     ~/.zshrc.d/002-nvm.zsh: zshrc.d/002-nvm.zsh
-#     ~/.zshrc.d/003-brew-completations.zsh:
-#       if: "[ `uname` = Darwin ]"
-#       path: zshrc.d/003-brew-completations.zsh
-#     ~/.zshrc.d/004-java.zsh: zshrc.d/004-java.zsh
-#     ~/.zshrc.d/005-rust.zsh: zshrc.d/005-rust.zsh
-#     ~/.zshrc.d/006-pyenv.zsh:
-#       # if: '[ $(which pyenv) ]'
-#       path: zshrc.d/006-pyenv.zsh
-#     ~/.zshrc.d/007-android.zsh: zshrc.d/007-android.zsh
-#     ~/.zshrc.d/008-flutter.zsh: zshrc.d/008-flutter.zsh
-#     ~/.zshrc.d/009-webkit.zsh: zshrc.d/009-webkit.zsh
-#     ~/.zshrc.d/010-fzf.zsh:
-#       if: "[ `uname` = Darwin ]"
-#       path: zshrc.d/010-fzf.zsh
-#     ~/.p10k.zsh: powerlevel10k/p10k.zsh
-#     ~/.zsh-quickstart-local-plugins: zshrc.d/zsh-quickstart-local-plugins
+      command: |
+        if [ ! -d $HOME/.fzf ]; then
+          git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+        fi
+        cd $HOME/.fzf
+        git pull
+        ~/.fzf/install
+    - description: Installing optional dependencies
+      command: |
+        #Atualizar sources lists
+        sudo apt-get -y update
+
+        sudo apt-get install -y \
+        ripgrep \
+        universal-ctags \
+        silversearcher-ag
+
+        #Config fdfind
+        #https://github.com/sharkdp/fd/releases/download/v8.6.0/fd_8.6.0_amd64.deb
+        #sudo ln -fvs /usr/bin/fdfind /usr/bin/fd

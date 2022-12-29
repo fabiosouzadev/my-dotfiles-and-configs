@@ -10,8 +10,8 @@ sudo apt-get -y update
 sudo apt-get install -y \
       ripgrep \
       universal-ctags \
-      silversearcher-ag \
-      fd-find
+      # fd-find \
+      silversearcher-ag
 
 #Config fd
 sudo ln -fvs /usr/bin/fdfind /usr/bin/fd

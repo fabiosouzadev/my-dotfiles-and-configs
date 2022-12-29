@@ -9,6 +9,7 @@
         cd $HOME/.fzf
         git pull
         ~/.fzf/install
+      stdout: true
     - description: Installing optional dependencies
       command: |
         #Atualizar sources lists
@@ -22,3 +23,7 @@
         #Config fdfind
         #https://github.com/sharkdp/fd/releases/download/v8.6.0/fd_8.6.0_amd64.deb
         #sudo ln -fvs /usr/bin/fdfind /usr/bin/fd
+- link:
+    ~/.zshrc.d/011-fzf-ubuntu.zsh:
+      if: "[ `uname` = Linux ]"
+      path: zshrc.d/011-fzf.zsh

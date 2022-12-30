@@ -11,6 +11,7 @@ set $mod Mod4
 
 exec --no-startup-id xrandr --output HDMI-1  --primary
 exec --no-startup-id xrandr --output eDP-1 --right-of HDMI-1 --auto
+bindsym $mod+p exec --no-startup-id $HOME/.config/i3/scripts/display.sh 
 # https://gist.github.com/amanusk/6b79d407945ca79caa945ce2658fd987  -> get monitors
 
 

@@ -31,8 +31,9 @@ set $ws10 "10"
 
 exec --no-startup-id xrandr --output HDMI-1  --primary
 exec --no-startup-id xrandr --output eDP-1 --right-of HDMI-1 --auto
-bindsym $mod+p exec --no-startup-id $HOME/.config/i3/scripts/display.sh 
 # https://gist.github.com/amanusk/6b79d407945ca79caa945ce2658fd987  -> get monitors
+bindsym $mod+m exec --no-startup-id $HOME/.config/i3/scripts/display.sh 
+
 
 
 #font pango:monospace 8
@@ -63,6 +64,7 @@ floating_modifier $mod
 # bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Return exec brave-browser-beta
+bindsym $mod+p exec spotify
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -223,16 +225,16 @@ for_window [class="^.*"] border pixel 3
 #gaps outer 3
 
 # Background
-#exec --no-startup-id feh --bg-scale $HOME/Downloads/Wallpapers/zaki-aby-fisheye-top-0-064.jpg
-exec always nitrogen --restore
+exec --no-startup-id feh --bg-scale $HOME/Downloads/Wallpapers/zaki-aby-fisheye-top-0-064.jpg
+#exec always nitrogen --restore
 
 
 # Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Compositor
-exec_always --no-startup-id picom 
+exec_always --no-startup-id picom --experimental-backends 
 
 #Dunst
-exec killall -q <notification daemon>
+exec killall -q dunst
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc

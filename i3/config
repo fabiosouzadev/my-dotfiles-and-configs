@@ -9,6 +9,26 @@
 
 set $mod Mod4
 
+set $up k
+set $right l
+set $down j
+set $left h
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# ==========================
+# ===  General settings  ===
+# ==========================
+
 exec --no-startup-id xrandr --output HDMI-1  --primary
 exec --no-startup-id xrandr --output eDP-1 --right-of HDMI-1 --auto
 bindsym $mod+p exec --no-startup-id $HOME/.config/i3/scripts/display.sh 
@@ -58,10 +78,10 @@ bindsym $mod+Shift+w exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec "rofi -combi-modi window,drun,run,ssh -modi combi -show combi"
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -70,10 +90,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -107,19 +127,6 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# ==========================
-# ===    Workspace       ===
-# ==========================
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
 
 # ==========================
 # ===  Workspace Moving  ===
@@ -155,6 +162,10 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # ===  Assign Programs To Workspaces   ===
 # ========================================
 
+# ========================================
+# ===  Assign Programs To Workspaces   ===
+# ========================================
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -170,10 +181,15 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym ccedilla resize grow width 10 px or 10 ppt
+        bindsym $left resize shrink width 10 px or 10 ppt
+        bindsym $down resize grow height 10 px or 10 ppt
+        bindsym $up resize shrink height 10 px or 10 ppt
+        bindsym $right resize grow width 10 px or 10 ppt
+
+        bindsym Shift+$left resize shrink width 50 px or 10 ppt
+        bindsym Shift+$down resize grow height 50 px or 10 ppt
+        bindsym Shift+$up resize shrink height 50 px or 10 ppt
+        bindsym Shift+$right resize grow width 50 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -184,7 +200,6 @@ mode "resize" {
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -208,8 +223,8 @@ for_window [class="^.*"] border pixel 3
 #gaps outer 3
 
 # Background
-exec --no-startup-id feh --bg-scale $HOME/Downloads/Wallpapers/zaki-aby-fisheye-top-0-064.jpg
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+#exec --no-startup-id feh --bg-scale $HOME/Downloads/Wallpapers/zaki-aby-fisheye-top-0-064.jpg
+exec always nitrogen --restore
 
 
 # Polybar

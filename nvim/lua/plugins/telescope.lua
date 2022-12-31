@@ -1,6 +1,17 @@
-local fb_actions = require("telescope").extensions.file_browser.actions
-require("telescope").setup({
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+  return
+end
+
+telescope.load_extension("fzf")
+telescope.load_extension("file_browser")
+
+local fb_actions = telescope.extensions.file_browser.actions
+
+telescope.setup({
   defaults = {
+    -- prompt_prefix = " ",
+    -- selection_caret = " ",
     file_ignore_patterns = { "%.git/", "node_modules/", "coverage/", "__pycache__/", "%.o" },
     layout_config = {
       width = 0.75,
@@ -34,5 +45,4 @@ require("telescope").setup({
     },
   },
 })
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("file_browser")
+

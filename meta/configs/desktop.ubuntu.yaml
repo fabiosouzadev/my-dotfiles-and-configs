@@ -5,3 +5,22 @@
       command: scripts/desktop.ubuntu.packages.sh
       stderr: true
       stdout: true
+    # - description: LibreOffice install
+    #   command: |
+    #     # https://librewolf.net/installation/debian/#main-debian-repository
+    #     # Change this command to choose a distro manually.
+    #     distro=$(if echo " bullseye focal impish jammy uma una vanessa" | grep -q " $(lsb_release -sc) "; then echo $(lsb_release -sc); else echo focal; fi)
+    #
+    #     sudo curl -fsSLo /usr/share/keyrings/librewolf.gpg https://deb.librewolf.net/keyring.gpg
+    #
+    #     echo  "Types: deb
+    #     URIs: https://deb.librewolf.net
+    #     Suites: $distro
+    #     Components: main
+    #     Architectures: amd64
+    #     Signed-By: /usr/share/keyrings/librewolf.gpg"  | sudo tee /etc/apt/sources.list.d/librewolf.sources
+    #
+    #     sudo apt update
+    #
+    #     sudo apt install librewolf -y
+    #   stdout: true

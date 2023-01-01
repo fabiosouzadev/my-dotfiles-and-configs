@@ -225,7 +225,7 @@ for_window [class="^.*"] border pixel 3
 #gaps outer 3
 
 # Background
-exec --no-startup-id feh --bg-scale $HOME/Downloads/Wallpapers/zaki-aby-fisheye-top-0-064.jpg
+exec --no-startup-id feh --bg-scale $HOME/Pictures/Wallpapers/zaki-aby-fisheye-top-0-064.jpg
 #exec always nitrogen --restore
 
 

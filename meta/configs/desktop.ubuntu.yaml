@@ -5,6 +5,11 @@
       command: scripts/desktop.ubuntu.packages.sh
       stderr: true
       stdout: true
+    - description: Ferdium install
+      command: |
+        sudo curl -L "https://github.com/ferdium/ferdium-app/releases/download/v6.2.4-nightly.1/Ferdium-linux-6.2.4-nightly.1-amd64.deb" -o $HOME/.local/src/Ferdium.deb
+        sudo dpkg -i $HOME/.local/src/Ferdium.deb
+      stdout: true
     # - description: LibreOffice install
     #   command: |
     #     # https://librewolf.net/installation/debian/#main-debian-repository

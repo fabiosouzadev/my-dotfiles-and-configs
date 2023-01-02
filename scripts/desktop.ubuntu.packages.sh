@@ -25,7 +25,8 @@ sudo apt install -y \
     libqt5webkit5 \
     network-manager-vpnc \
     network-manager-vpnc-gnome \
-    brave-browser-beta
+    brave-browser-beta \
+    transmission
 
 sudo snap install \
     authy \

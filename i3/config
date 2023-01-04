@@ -29,8 +29,8 @@ set $ws10 "10"
 # ===  General settings  ===
 # ==========================
 
-exec --no-startup-id xrandr --output HDMI-1  --primary
-exec --no-startup-id xrandr --output eDP-1 --right-of HDMI-1 --auto
+exec --no-startup-id xrandr --output HDMI-1 --auto --primary
+exec --no-startup-id xrandr --output eDP-1 --auto --right-of HDMI-1
 # https://gist.github.com/amanusk/6b79d407945ca79caa945ce2658fd987  -> get monitors
 bindsym $mod+m exec --no-startup-id $HOME/.config/i3/scripts/display.sh 
 
@@ -202,6 +202,7 @@ mode "resize" {
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"

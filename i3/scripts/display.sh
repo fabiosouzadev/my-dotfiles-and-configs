@@ -47,5 +47,5 @@ case "$chosen" in
     external) xrandr --output $INTERNAL_OUTPUT --off --output $EXTERNAL_OUTPUT --auto --primary ;;
     laptop) xrandr --output $INTERNAL_OUTPUT --auto --primary --output $EXTERNAL_OUTPUT --off ;;
     clone) xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --auto --same-as $INTERNAL_OUTPUT ;;
-    dual) xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --auto --left-of $INTERNAL_OUTPUT --primary ;;
+    dual) xrandr --output $INTERNAL_OUTPUT --auto --right-of $EXTERNAL_OUTPUT && xrandr --output $EXTERNAL_OUTPUT --auto --primary ;;
 esac

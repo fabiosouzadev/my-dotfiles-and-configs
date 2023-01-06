@@ -70,6 +70,9 @@
         fi
     - description: Install Wakatime
       command: python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
-
+    - description: Install ngrok
+      command: |
+        curl -sLo $HOME/.local/src/ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+        sudo tar xvzf $HOME/.local/src/ngrok.tgz  -C /usr/local/bin
 - link:
     ~/.config/bat: bat

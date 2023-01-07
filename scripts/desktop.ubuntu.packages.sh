@@ -39,11 +39,16 @@ sudo snap install \
     telegram-desktop \
     vlc \
     slack \
-    spotify
+    spotify \
+    termius-beta \
+    firetruck
 
 
 #Ferdium
-sudo snap install --edge ferdium
+sudo snap install --edge \
+    ferdium \
+    gisto \
+    cacher
 sudo snap connect ferdium:camera
 sudo snap connect ferdium:audio-record
 

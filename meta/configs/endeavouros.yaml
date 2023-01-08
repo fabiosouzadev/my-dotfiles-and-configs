@@ -1,3 +1,9 @@
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Install i3-gaps
+      command: |
+        sudo pacman -S globalprotect-openconnect
 - link:
     ~/.config/i3: endeavouros/config/i3
     ~/.config/dunst: endeavouros/config/dunst

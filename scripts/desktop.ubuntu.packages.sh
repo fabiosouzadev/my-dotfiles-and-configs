@@ -47,7 +47,6 @@ sudo snap install \
 #Ferdium
 sudo snap install --edge \
     ferdium \
-    gisto \
     cacher
 sudo snap connect ferdium:camera
 sudo snap connect ferdium:audio-record

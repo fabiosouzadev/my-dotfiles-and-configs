@@ -21,16 +21,23 @@
     - description: Install snaps
       command: |
         sudo snap install \
-        authy \
-        bitwarden \
-        notion-snap \
-        dbeaver-ce \
-        postman \
-        insomnia \
-        whatsapp-for-linux \
-        telegram-desktop \
-        vlc \
-        slack \
-        spotify \
-        termius-beta \
-        firetruck
+          authy \
+          bitwarden \
+          notion-snap \
+          dbeaver-ce \
+          postman \
+          insomnia \
+          whatsapp-for-linux \
+          telegram-desktop \
+          vlc \
+          slack \
+          spotify \
+          termius-beta \
+          firetruck
+    - description: Install snaps --edges
+      command: |
+        sudo snap install --edge \
+          ferdium \
+          cacher
+        sudo snap connect ferdium:camera
+        sudo snap connect ferdium:audio-record

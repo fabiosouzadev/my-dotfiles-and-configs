@@ -5,10 +5,9 @@
       command: |
         sudo pacman -S globalprotect-openconnect
 - link:
-    ~/.config/i3: endeavouros/config/i3
-    ~/.config/dunst: endeavouros/config/dunst
-    ~/.config/rofi: endeavouros/config/rofi
-    ~/.config/gtk-3.0: endeavouros/config/gtk-3.0
-    ~/.config/gtk-4.0: endeavouros/config/gtk-4.0
-    ~/.config/xfce4: endeavouros/config/xfce4
-    ~/.config/picom.conf: endeavouros/config/picom.conf
+  ~/.config/i3: endeavouros/i3
+  ~/.config/dunst: endeavouros/dunst
+  ~/.config/rofi: endeavouros/rofi
+  ~/.config/gtk-3.0: endeavouros/gtk-3.0
+  ~/.config/xfce4/terminal: endeavouros/xfce4/terminal
+  ~/.config/picom.conf: endeavouros/picom.conf

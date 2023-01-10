@@ -41,6 +41,7 @@
       npm install -g appium
       npm install -g detox-cli
       npm install -g electron
+      npm install -g @bitwarden/cli
 
   - description: Installing editors packages
     command: |

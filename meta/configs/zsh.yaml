@@ -1,7 +1,10 @@
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
-    - [sudo apt-get install -y zsh]
+    - description: Install zsh
+      command: '[[ `echo $(lsb_release -is)` = "Ubuntu" ]] && sudo apt install -y zsh'
+    - description: Install zsh
+      command: '[[ `echo $(lsb_release -is)` = "EndeavourOS" ]] && sudo pacman -S --noconfirm zsh'
     - description: Adding zsh to list of acceptable shells
       command: '[[ "$(grep "/bin/zsh" /etc/shells)" ]] || sudo sh -c "echo /bin/zsh >> /etc/shells"'
     # - description: Making zsh the default shell

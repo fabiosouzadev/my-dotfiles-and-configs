@@ -9,8 +9,6 @@
     - [git submodule update --init --recursive, Installing submodules]
     - description: "Clone zgenom"
       command: "[ -d $HOME/zgenom ] || git clone https://github.com/jandamm/zgenom.git $HOME/zgenom"
-      stdout: true
-      stderr: true
 
 - link:
     ~/.zgen-setup: meta/zsh-quickstart-kit/zsh/.zgen-setup

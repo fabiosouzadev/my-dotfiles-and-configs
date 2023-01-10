@@ -1,8 +1,7 @@
-
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate" 
-    - description: Remove previous asdf folder
+    - description: Create source dir 
       command: "[ ! -d $HOME/.local/src ] || mkdir -p $HOME/.local/src"
     - description: Install snaps
       command: |

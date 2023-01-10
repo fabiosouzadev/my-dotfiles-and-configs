@@ -22,8 +22,8 @@
           doxygen
         ;;
 
-      Arch)
-        sudo pacman -S --noconfirm base-devel \
+      Arch | EndeavourOS)
+        sudo pacman -Sy --noconfirm base-devel \
           cmake \
           unzip \
           ninja \

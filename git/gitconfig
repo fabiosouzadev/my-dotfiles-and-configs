@@ -49,7 +49,7 @@
     path = ~/.gitconfig.local
 
 [includeIf "gitdir:~/Projects/mglu/"]
-	path = ~/.gitconfig.work
+	path = ~/.gitconfig_mglu
 
 ;[includeIf "gitdir:~/Projects/Work/github/"]
 ;    path = ~/.gitconfig_github_work

@@ -1,0 +1,5 @@
+- shell:
+    - [ cp mglu/id_ed25519_luizalabs ~/.ssh/id_ed25519_luizalabs]
+    - [ cp mglu/id_ed25519_luizalabs.pub ~/.ssh/id_ed25519_luizalabs.pub]
+    - [ chmod 400 ~/.ssh/id_ed25519_luizalabs]
+    - [ chmod 400 ~/.ssh/id_ed25519_luizalabs.pub]

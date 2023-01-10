@@ -17,3 +17,6 @@
 [submodule "meta/dotbot_plugin_aptget"]
 	path = meta/dotbot_plugin_aptget
 	url = https://github.com/dein0s/dotbot_plugin_aptget.git
+[submodule "mglu"]
+	path = mglu
+	url = git@github.com:fabiosouzadev/mglu.git

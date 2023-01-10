@@ -2,10 +2,10 @@
     - description: Validating sudo credentials
       command: "sudo --validate" 
     - description: Create source dir 
-      command: "[ ! -d $HOME/.local/src ] || mkdir -p $HOME/.local/src"
-    - description: Install snaps
+      command: "[ -d $HOME/.local/src ] || mkdir -p $HOME/.local/src"
+    - description: Install snaps
       command: |
-        [ ! -d $HOME/.local/src/snapd ] || git clone https://aur.archlinux.org/snapd.git $HOME/.local/src/snapd
+        [ -d $HOME/.local/src/snapd ] || git clone https://aur.archlinux.org/snapd.git $HOME/.local/src/snapd
         cd $HOME/.local/src/snapd
         makepkg -si --noconfirm
 
@@ -17,7 +17,7 @@
 
         sudo systemctl start snapd
 
-    - description: Install snaps
+    - description: Install snaps
       command: |
         sudo snap install \
           authy \

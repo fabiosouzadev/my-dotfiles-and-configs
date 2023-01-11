@@ -4,8 +4,11 @@ ssh
 zsh
 starship
 fonts.linux
+asdf
 nvm
 nvim
 tmux
 snaps
+wakatime
 mglu
+alacritty

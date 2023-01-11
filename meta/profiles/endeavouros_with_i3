@@ -6,9 +6,9 @@ zsh
 starship
 fonts.linux
 fzf
-#pyenv
-#docker.ubuntu
-#k8s.ubuntu
+pyenv
+docker
+k8s
 asdf
 nvm
 nvim

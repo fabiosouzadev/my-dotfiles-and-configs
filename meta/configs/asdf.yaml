@@ -7,6 +7,7 @@
       command: "git clone https://github.com/asdf-vm/asdf.git ~/.asdf"
       stderr: true
       stdout: true
+    - [exec $SHELL]
 
 - link:
     ~/.asdfrc: asdf/asdfrc
@@ -62,5 +63,3 @@
       global: latest
       versions:
         - latest
-- shell:
-    - [exec $SHELL]

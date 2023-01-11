@@ -4,6 +4,7 @@ ssh
 zsh
 starship
 fonts.linux
+fzf
 asdf
 nvm
 nvim
@@ -12,3 +13,4 @@ snaps
 wakatime
 mglu
 alacritty
+kitty

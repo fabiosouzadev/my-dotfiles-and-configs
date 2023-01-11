@@ -1,6 +1,6 @@
 desktop.ubuntu
 cli.ubuntu
-fzf.ubuntu
+fzf
 docker.ubuntu
 k8s.ubuntu
 pyenv

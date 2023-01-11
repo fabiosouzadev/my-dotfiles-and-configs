@@ -2,7 +2,42 @@
     - description: Validating sudo credentials
       command: "sudo --validate"
     - description: Installing apps
-      command: scripts/desktop.ubuntu.packages.sh
+      command: |
+        sudo apt update -y
+        sudo apt upgrade -y
+        sudo apt install curl
+
+        #Add to sources list
+        #Brave
+        sudo curl -fsSLo /usr/share/keyrings/brave-browser-beta-archive-keyring.gpg https://brave-browser-apt-beta.s3.brave.com/brave-browser-beta-archive-keyring.gpg
+        echo "deb [signed-by=/usr/share/keyrings/brave-browser-beta-archive-keyring.gpg arch=amd64] https://brave-browser-apt-beta.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-beta.list
+
+        #Update sources
+        sudo apt-get update
+
+        sudo apt install -y \
+        apt-transport-https \
+        gnome-tweaks \
+        snapd \
+        vpnc \
+        pavucontrol \
+        caffeine \
+        libqt5webkit5 \
+        network-manager-vpnc \
+        network-manager-vpnc-gnome \
+        brave-browser-beta \
+        transmission
+
+        #Install toogl
+        TOGGL_VERSION="7.5.324"
+        wget -O "toggl.deb" "https://github.com/toggl-open-source/toggldesktop/releases/download/v${TOGGL_VERSION}/toggldesktop_${TOGGL_VERSION}_ubuntu1604_amd64.deb"
+        sudo dpkg -i "toggl.deb"
+        sudo apt-get install -fy
+        sudo rm toggl.deb
+
+        # Install yt-dlp
+        sudo wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/local/bin/yt-dlp
+        sudo chmod a+rx /usr/local/bin/yt-dlp
       stderr: true
       stdout: true
     - description: Ferdium install
@@ -10,7 +45,7 @@
         sudo curl -L "https://github.com/ferdium/ferdium-app/releases/download/v6.2.4-nightly.1/Ferdium-linux-6.2.4-nightly.1-amd64.deb" -o $HOME/.local/src/Ferdium.deb
         sudo dpkg -i $HOME/.local/src/Ferdium.deb
       stdout: true
-    # - description: LibreOffice install
+    # - description: LibreWolf install
     #   command: |
     #     # https://librewolf.net/installation/debian/#main-debian-repository
     #     # Change this command to choose a distro manually.

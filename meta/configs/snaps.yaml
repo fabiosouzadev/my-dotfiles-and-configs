@@ -10,6 +10,7 @@
         makepkg -si --noconfirm
 
         sudo systemctl enable --now snapd.socket
+        sudo systemctl enable --now snapd.refresh.timer
 
         if [ -f /var/lib/snapd/snap ]; then
           sudo ln -s /var/lib/snapd/snap /snap
@@ -28,7 +29,6 @@
           telegram-desktop \
           vlc \
           slack \
-          spotify \
           termius-beta \
           firetruck
     - description: Install ferdium

@@ -1,12 +1,17 @@
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
+    - description: Install bluetooth
+      command: |
+        sudo pacman -S --needed bluez bluez-utils blueman
+        sudo systemctl enable --now bluetooth
     - description: Install globalprotect
       command: |
         sudo pacman -S --noconfirm globalprotect-openconnect
-        sudo pacman -S --needed bluez bluez-utils blueman
-        sudo systemctl enable --now bluetooth
-        yay -S brave-nightly-bin
+    - description: Install brave
+      command: ["yay -S brave-nightly-bin"] 
+    - description: Install spotify
+      command: "sudo pacman -Syu --noconfirm spotify-launcher"
 - link:
     ~/.config/i3: endeavouros/i3
     ~/.config/dunst: endeavouros/dunst

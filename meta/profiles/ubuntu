@@ -9,7 +9,7 @@ ssh
 nvm
 nvim
 tmux
-fonts.ubuntu
+fonts.linux
 wakatime
 zsh
 starship

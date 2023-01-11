@@ -1,10 +1,14 @@
 endeavourous
+#cli.ubuntu
 git
 ssh
 zsh
 starship
 fonts.linux
 fzf
+#pyenv
+#docker.ubuntu
+#k8s.ubuntu
 asdf
 nvm
 nvim
@@ -14,3 +18,5 @@ wakatime
 mglu
 alacritty
 kitty
+vscodium
+

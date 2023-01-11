@@ -4,6 +4,9 @@
     - description: Install globalprotect
       command: |
         sudo pacman -S --noconfirm globalprotect-openconnect
+        sudo pacman -S --needed bluez bluez-utils blueman
+        sudo systemctl enable --now bluetooth
+        yay -S brave-nightly-bin
 - link:
     ~/.config/i3: endeavouros/i3
     ~/.config/dunst: endeavouros/dunst

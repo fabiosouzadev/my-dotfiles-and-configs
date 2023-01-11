@@ -15,8 +15,6 @@
           sudo ln -s /var/lib/snapd/snap /snap
         fi
 
-        sudo systemctl start snapd
-
     - description: Install snaps
       command: |
         sudo snap install \
@@ -33,10 +31,8 @@
           spotify \
           termius-beta \
           firetruck
-    - description: Install snaps --edges
+    - description: Install ferdium
       command: |
-        sudo snap install --edge \
-          ferdium \
-          cacher
+        sudo snap install --edge ferdium
         sudo snap connect ferdium:camera
         sudo snap connect ferdium:audio-record

@@ -36,8 +36,8 @@
     ~/.zshrc.d/007-android.zsh: zshrc.d/007-android.zsh
     ~/.zshrc.d/008-flutter.zsh: zshrc.d/008-flutter.zsh
     ~/.zshrc.d/009-webkit.zsh: zshrc.d/009-webkit.zsh
-    ~/.zshrc.d/010-fzf.zsh:
+    ~/.zshrc.d/010-fzf-macos.zsh:
       if: "[ `uname` = Darwin ]"
-      path: zshrc.d/010-fzf.zsh
+      path: zshrc.d/010-fzf-macos.zsh
     ~/.p10k.zsh: powerlevel10k/p10k.zsh
     ~/.zsh-quickstart-local-plugins: zshrc.d/zsh-quickstart-local-plugins

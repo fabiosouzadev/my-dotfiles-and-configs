@@ -1,4 +1,15 @@
 - shell:
+    - description: Install dependencies
+      command: | 
+        sudo pacman -S --noconfirm \
+          cmake \
+          freetype2 \
+          fontconfig \
+          pkg-config \
+          make \
+          libxcb \
+          libxkbcommon \
+          python
     - description: Installing Alacritty
       command: | 
         
@@ -8,7 +19,7 @@
           cd $HOME/.local/src/alacritty
           rustup override set stable
           rustup update stable
-          cargo build --release    
+          cargo build --release
           ### Force support for only Wayland ###
           #cargo build --release --no-default-features --features=wayland
 
@@ -36,8 +47,10 @@
           cp extra/completions/_alacritty $HOME/.local/share/alacritty/ #copy completions
 
           # Default terminal
-          sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/alacritty 100
-          sudo update-alternatives --config x-terminal-emulator
+          if [ $(lsb_release -is) == "Ubuntu" ]; then
+            sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/alacritty 100
+            sudo update-alternatives --config x-terminal-emulator
+          fi
 
           sudo rm -r $HOME/.local/src/alacritty 
         fi

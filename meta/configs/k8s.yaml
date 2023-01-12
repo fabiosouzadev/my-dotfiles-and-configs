@@ -9,7 +9,14 @@
           sudo mv -v ./kind /usr/local/bin/kind
         fi
     - description: Installing k9s
-      command: "[ `uname` = 'Linux' ] && curl -sS https://webinstall.dev/k9s | sh"
+      command: |
+        if [ `uname` = 'Linux' ]; then 
+          curl -sS https://webinstall.dev/k9s | sh 
+          if [ -x "$HOME/.local/bin/k9s" ]; then 
+            sudo rm /usr/local/bin/k9s
+            sudo mv "$HOME/.local/bin/k9s" /usr/local/bin
+          fi
+        fi
     - description: Installing minikube
       command: |
         if [[ `uname` == 'Linux' && ! -f /usr/local/bin/minikube  ]]; then

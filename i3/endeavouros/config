@@ -572,3 +572,5 @@ bindsym $mod+t exec rofi -show window \
 #exec --no-startup-id greenclip daemon>/dev/null
 #bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
 #		-config ~/.config/rofi/rofidmenu.rasi
+
+exec_always "setxkbmap -model pc105 -layout us,br -variant intl,abnt2 -option grp:alt_shift_toggle"

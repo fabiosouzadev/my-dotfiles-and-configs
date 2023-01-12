@@ -19,4 +19,4 @@
     ~/.config/gtk-3.0: gtk-3.0/endeavouros
     ~/.config/xfce4/terminal: xfce4/terminal
     ~/.config/picom.conf: picom/endeavouros_picom.conf
-    ~/.screenlayout: xrand 
+    ~/.screenlayout: xrand

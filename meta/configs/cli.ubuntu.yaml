@@ -45,11 +45,10 @@
           direnv \
           neofetch \
           ranger \
-          xsel \
-          rofi
+          xsel 
     - description: Create ~/.local/bin
       command: "[ -d ~/.local/bin ] || mkdir -p ~/.local/bin"
-    - description: Create ~/.local/bin
+    - description: Create ~/.local/src
       command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
     - description: Install bat
       command: "[ `uname` = Linux  ] && sudo apt-get -y install bat"

@@ -1,9 +1,20 @@
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
+    - description: Create ~/.local/src
+      command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
+    - description: Install packages
+      command: |
+        sudo pacman -Syu  --noconfirm \
+          exa \
+          bat \
+          xsel \
+          ranger \
+          neofetch \
+          git-delta 
     - description: Install bluetooth
       command: |
-        sudo pacman -S --needed bluez bluez-utils blueman
+        sudo pacman -Syu --needed bluez bluez-utils blueman
         sudo systemctl enable --now bluetooth
     - description: Install globalprotect
       command: |
@@ -12,6 +23,11 @@
       command: ["yay -S brave-nightly-bin"] 
     - description: Install spotify
       command: "sudo pacman -Syu --noconfirm spotify-launcher"
+    - description: Install ngrok
+      command: |
+        curl -sLo $HOME/.local/src/ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+        sudo tar xvzf $HOME/.local/src/ngrok.tgz  -C /usr/local/bin
+
 - link:
     ~/.config/i3: i3/endeavouros
     ~/.config/dunst: dunst/endeavouros
@@ -20,3 +36,4 @@
     ~/.config/xfce4/terminal: xfce4/terminal
     ~/.config/picom.conf: picom/endeavouros_picom.conf
     ~/.screenlayout: xrand
+    ~/.config/bat: bat

@@ -37,7 +37,11 @@
         Arch | EndeavourOS)
           sudo pacman -Syu --noconfirm
           sudo pacman -Syu --noconfirm docker
-          sudo systemctl enable --now docker.service
+          sudo systemctl enable --now docker
+          sudo groupadd -f docker
+          sudo usermod -aG docker $USER
+          newgrp docker
+          sudo chmod 666 /var/run/docker.sock
         ;;
       esac
   - description: Installing docker-compose
@@ -48,14 +52,15 @@
           sudo chmod +x /usr/local/bin/docker-compose
         ;;
         Arch | EndeavourOS)
-        #sudo pacman -Syu --noconfirm docker-compose
-          sudo curl -L "https://github.com/docker/compose/releases/download/2.15.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-          sudo chmod +x /usr/local/bin/docker-compose
+          sudo pacman -Syu --noconfirm docker-compose
         ;;
       esac
   - description: Installing Lazydocker
     command: |
-      export DIR=/usr/local/bin
-      curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | sudo zsh
+      curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | zsh
+      if [ -x "$HOME/.local/bin/lazydocker" ]; then 
+        sudo rm /usr/local/bin/lazygit
+        sudo mv "$HOME/.local/bin/lazydocker" /usr/local/bin
+      fi
     stderr: true
     stdout: true

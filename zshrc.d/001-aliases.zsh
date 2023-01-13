@@ -37,8 +37,8 @@ alias cat='bat'
 alias path='echo $PATH | tr -s ":" "\n"'
 
 #Lazygit and Lazydocker
-alias lg="lazygit"
-alias ld="lazydocker"
+alias lzg="lazygit"
+alias lzd="lazydocker"
 
 alias showhidden="defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app"
 

@@ -44,7 +44,12 @@
     command: |
         case $(lsb_release -is) in 
           Arch | EndeavourOS)
-            sudo pacman -Syu --noconfirm noto-fonts-emoji
+            sudo pacman -Syu --noconfirm \
+              noto-fonts-emoji \
+              ttf-joypixels \
+              ttf-twemoji \
+              otf-openmoji \
+              ttf-twemoji-color \
+              ttf-symbola
           ;;
         esac
-

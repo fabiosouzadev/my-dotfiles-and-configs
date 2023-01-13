@@ -20,3 +20,6 @@
 [submodule "mglu"]
 	path = mglu
 	url = git@github.com:fabiosouzadev/mglu.git
+[submodule "personal"]
+	path = personal
+	url = git@github.com:fabiosouzadev/personal.git

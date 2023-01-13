@@ -5,6 +5,7 @@
     - [ chmod 400 ~/.ssh/id_ed25519.pub]
 
 - link:
-    ~/.gitconfig_local: personal/gitconfig_local
-    ~/.wakatime.cfg: personal/wakatime.cfg
-    ~/.ssh/known_hosts: personal/ssh/known_hosts  
+    ~/.gitconfig_local:         personal/gitconfig_local
+    ~/.wakatime.cfg:            personal/wakatime.cfg
+    ~/.ssh/known_hosts:         personal/ssh/known_hosts
+    ~/.config/ngrok/ngrok.yml:  personal/ngrok.yml

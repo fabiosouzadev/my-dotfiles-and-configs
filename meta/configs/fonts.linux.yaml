@@ -40,5 +40,11 @@
       cp -v *.ttf  $LOCAL_SHARE_FONTS
       fc-cache -fv
       sudo rm -r $TEMP_DIR_FONTS
-    stderr: true
-    stdout: true
+  - description: Install icons symbols 
+    command: |
+        case $(lsb_release -is) in 
+          Arch | EndeavourOS)
+            sudo pacman -Syu --noconfirm noto-fonts-emoji
+          ;;
+        esac
+

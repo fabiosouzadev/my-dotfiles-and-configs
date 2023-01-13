@@ -46,7 +46,7 @@
     count = !git shortlog -s --grep
 
 [include]
-    path = ~/.gitconfig.local
+    path = ~/.gitconfig_local
 
 [includeIf "gitdir:~/Projects/mglu/"]
 	path = ~/.gitconfig_mglu

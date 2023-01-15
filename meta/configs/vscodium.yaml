@@ -3,17 +3,20 @@
     command: "sudo --validate"
   - description: Installing vscodium
     command: |
-      wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
-      | gpg --dearmor \
-      | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+        case $(lsb_release -is) in 
+          Ubuntu)
+            wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
+            | gpg --dearmor \
+            | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
 
-      echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
-      sudo apt update 
-      sudo apt install -y codium
-
-    stderr: true
-    stdout: true
-
+            echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
+            sudo apt update 
+            sudo apt install -y codium
+          ;;
+          Arch | EndeavourOS)
+            yay -S vscodium-bin
+          ;;
+        esac
 - link:
     # linux:
     "~/.config/VSCodium/User/settings.json":

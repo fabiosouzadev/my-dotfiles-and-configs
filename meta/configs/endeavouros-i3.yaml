@@ -3,6 +3,10 @@
       command: "sudo --validate"
     - description: Create ~/.local/src
       command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
+    - description: Install first packages
+      command: | 
+        sudo pacman -Syu --noconfirm bitwarden
+        yay -S authy
     - description: Install packages
       command: |
         sudo pacman -Syu  --noconfirm \
@@ -12,7 +16,18 @@
           xterm \
           ranger \
           neofetch \
-          git-delta 
+          git-delta \
+          postgresql-libs
+          notion \
+          dbeaver-ce \
+          postman \
+          insomnia \
+          whatsapp-for-linux \
+          telegram-desktop \
+          vlc \
+          slack \
+          termius-beta \
+          firetruck
     - description: Install bluetooth
       command: |
         sudo pacman -Syu --needed bluez bluez-utils blueman
@@ -20,10 +35,12 @@
     - description: Install globalprotect
       command: |
         sudo pacman -S --noconfirm globalprotect-openconnect
-    - description: Install brave
-      command: ["yay -S brave-nightly-bin"] 
-    - description: Install spotify
-      command: "sudo pacman -Syu --noconfirm spotify-launcher"
+    - description: Install yay packages
+      command: |
+        yay -S \
+          brave-nightly-bin \
+          spotify \
+          ferdium 
     - description: Install ngrok
       command: |
         curl -sLo $HOME/.local/src/ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz

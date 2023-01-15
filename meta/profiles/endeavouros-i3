@@ -1,11 +1,12 @@
-endeavourous
-#cli.ubuntu
+endeavouros-i3
+personal
+mglu
 git
 ssh
+fzf
 zsh
 starship
 fonts.linux
-fzf
 pyenv
 docker
 k8s
@@ -13,10 +14,7 @@ asdf
 nvm
 nvim
 tmux
-snaps
 wakatime
-mglu
 alacritty
 kitty
 vscodium
-

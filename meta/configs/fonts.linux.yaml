@@ -7,34 +7,34 @@
       LOCAL_SHARE_FONTS=$HOME/.local/share/fonts
 
       FONTS=(
-      "CascadiaCode"
-      "FiraCode"
-      "Hack"
-      "Iosevka"
-      "JetBrainsMono"
-      "VictorMono"
-      "IBMPlexMono"
-      "SourceCodePro"
+        "CascadiaCode"
+        "FiraCode"
+        "Hack"
+        "Iosevka"
+        "JetBrainsMono"
+        "VictorMono"
+        "IBMPlexMono"
+        "SourceCodePro"
       )
 
 
       if [ ! -d $LOCAL_SHARE_FONTS ]; then
-      mkdir  $LOCAL_SHARE_FONTS
+        mkdir  $LOCAL_SHARE_FONTS
       fi
 
 
       if [ ! -d $TEMP_DIR_FONTS ]; then
-      mkdir  $TEMP_DIR_FONTS
-      cd $TEMP_DIR_FONTS
+        mkdir  $TEMP_DIR_FONTS
+        cd $TEMP_DIR_FONTS
       fi
 
 
 
       for i in "${FONTS[@]}"
-      do
-      ### sudo ./install.sh <Font-Name>
-      wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.0-RC/"$i".zip"
-      unzip "$i".zip
+        do
+        ### sudo ./install.sh <Font-Name>
+        wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.0-RC/"$i".zip"
+        unzip "$i".zip
       done
 
       cp -v *.ttf  $LOCAL_SHARE_FONTS
@@ -42,14 +42,10 @@
       sudo rm -r $TEMP_DIR_FONTS
   - description: Install icons symbols 
     command: |
-        case $(lsb_release -is) in 
-          Arch | EndeavourOS)
-            sudo pacman -Syu --noconfirm \
-              noto-fonts-emoji \
-              ttf-joypixels \
-              ttf-twemoji \
-              otf-openmoji \
-              ttf-twemoji-color \
-              ttf-symbola
-          ;;
-        esac
+      case $(lsb_release -is) in 
+        Arch | EndeavourOS)
+          sudo pacman -Syu --noconfirm \
+            noto-fonts-emoji \
+            ttf-joypixels
+        ;;
+      esac

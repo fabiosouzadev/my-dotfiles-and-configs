@@ -50,4 +50,4 @@
 - link:
     ~/.zshrc.d/011-fzf-ubuntu.zsh:
       if: "[ `uname` = Linux ]"
-      path: zshrc.d/011-fzf-ubuntu.zsh
+      path: zshrc.d/011-fzf-linux.zsh

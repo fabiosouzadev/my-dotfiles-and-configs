@@ -1,8 +1,6 @@
 - shell:
-    - description: Validating .env
-      command: scripts/git.sh
-      stderr: true
-      stdout: true
+    - description: Validating sudo credentials
+      command: "sudo --validate"
     - description: Install Lazygit
       command: |
         case $(lsb_release -is) in 

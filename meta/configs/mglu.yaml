@@ -7,10 +7,29 @@
       command: "sudo --validate"
     - description: Install remmina
       command: |
-        sudo pacman -Syu --noconfirm remmina
+        sudo pacman -Syu --noconfirm \
+          remmina \
+          freerdp
     - description: Install globalprotect
       command: |
-        sudo pacman -S --noconfirm globalprotect-openconnect
+        sudo pacman -Syu --noconfirm globalprotect-openconnect
+    - description: Install forticlient
+      command: |
+        case $(lsb_release -is) in 
+
+          Ubuntu)
+            wget -O - https://repo.fortinet.com/repo/6.4/ubuntu/DEB-GPG-KEY | sudo apt-key add -
+            echo 'deb [arch=amd64] https://repo.fortinet.com/repo/6.4/ubuntu/ /bionic multiverse' |  sudo tee /etc/apt/sources.list.d/forticlient.list 
+
+            sudo apt-get update
+            sudo apt install -y forticlient
+          ;;
+
+          Arch | EndeavourOS)
+            yay -S forticlientsslvpn --nocleanmenu --noconfirm --nodiffmenu
+          ;; 
+        esac
+    - command: '[ -d "/etc/openfortivpn/" ]  && sudo cp mglu/vpnhub /etc/openfortivpn'
 
 - link:
     ~/.gitconfig_mglu: mglu/gitconfig_mglu 

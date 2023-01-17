@@ -384,7 +384,9 @@ exec --no-startup-id sleep 1 && $HOME/.screenlayout/dual.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/eos_wallpapers_community/EOS_SPACEMAN_4K.png
+#exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/eos_wallpapers_community/EOS_SPACEMAN_4K.png
+# https://i.redd.it/j66lclfcc2ca1.png
+exec --no-startup-id sleep 1 && feh --bg-fill /home/fabio/Pictures/j66lclfcc2ca1.png
 #exec --no-startup-id sleep 1 && feh --bg-fill --randomize /usr/share/endeavouros/backgrounds/eos_wallpapers_community/*
 
 # set powersavings for display:

@@ -6,7 +6,9 @@
     - description: Install first packages
       command: | 
         sudo pacman -Syu --noconfirm bitwarden
-        yay -S authy
+        yay -Syu --nocleanmenu --noconfirm --nodiffmenu \
+          authy \
+          bitw-git
     - description: Install packages
       command: |
         sudo pacman -Syu  --noconfirm \
@@ -30,7 +32,7 @@
         sudo systemctl enable --now bluetooth
     - description: Install yay packages
       command: |
-        yes | yay -S \
+        yay -Syu --nocleanmenu --noconfirm --nodiffmenu \
           brave-nightly-bin \
           spotify \
           ferdium \
@@ -56,3 +58,15 @@
     ~/.config/picom.conf: picom/endeavouros_picom.conf
     ~/.screenlayout: xrand
     ~/.config/bat: bat
+
+      #client_id:
+      #user.251fa982-74fd-4d64-b905-ad4a017cda75
+
+      #client_secret:
+      #hZs2p2F3o3zLlXEdN8DhyVPiVPeG25
+
+      #scope:
+      #api
+
+      #grant_type:
+      #client_credentials

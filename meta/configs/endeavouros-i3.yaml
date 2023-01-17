@@ -28,9 +28,6 @@
       command: |
         sudo pacman -Syu --needed bluez bluez-utils blueman
         sudo systemctl enable --now bluetooth
-    - description: Install globalprotect
-      command: |
-        sudo pacman -S --noconfirm globalprotect-openconnect
     - description: Install yay packages
       command: |
         yes | yay -S \

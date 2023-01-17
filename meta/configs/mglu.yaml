@@ -3,6 +3,14 @@
     - command: '[ -f "$HOME/.ssh/id_ed25519_luizalabs.pub" ]  || cp mglu/id_ed25519_luizalabs.pub ~/.ssh/id_ed25519_luizalabs.pub'
     - [ chmod 400 ~/.ssh/id_ed25519_luizalabs]
     - [ chmod 400 ~/.ssh/id_ed25519_luizalabs.pub]
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Install remmina
+      command: |
+        sudo pacman -Syu --noconfirm remmina
+    - description: Install globalprotect
+      command: |
+        sudo pacman -S --noconfirm globalprotect-openconnect
 
 - link:
     ~/.gitconfig_mglu: mglu/gitconfig_mglu 

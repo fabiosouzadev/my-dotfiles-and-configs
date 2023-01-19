@@ -20,12 +20,8 @@
           neofetch \
           git-delta \
           postgresql-libs \
-          dbeaver
-          # whatsapp-for-linux \
-          # telegram-desktop \
-          # vlc \
-          # slack \
-          # firetruck \
+          dbeaver \
+          qutebrowser
     - description: Install bluetooth
       command: |
         sudo pacman -Syu --needed bluez bluez-utils blueman

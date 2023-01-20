@@ -27,11 +27,9 @@
           ;;
 
           Arch | EndeavourOS)
-            yay -S forticlientsslvpn --nocleanmenu --noconfirm --nodiffmenu
+            yay -S forticlientsslvpn forticlient-vpn --nocleanmenu --noconfirm --nodiffmenu
           ;; 
         esac
-    - command: '[ -d "/etc/openfortivpn/" ]  && sudo cp mglu/vpnhub /etc/openfortivpn'
-
 - link:
     ~/.gitconfig_mglu: mglu/gitconfig_mglu 
     ~/.kube/eks-development.yaml: mglu/kube/eks-development.yaml

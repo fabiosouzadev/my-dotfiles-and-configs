@@ -1,14 +1,17 @@
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
+
     - description: Create ~/.local/src
       command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
+
     - description: Install first packages
       command: | 
         sudo pacman -Syu --noconfirm bitwarden
         yay -Syu --nocleanmenu --noconfirm --nodiffmenu \
           authy \
           bitw-git
+
     - description: Install packages
       command: |
         sudo pacman -Syu  --noconfirm \
@@ -22,10 +25,12 @@
           postgresql-libs \
           dbeaver \
           qutebrowser
+
     - description: Install bluetooth
       command: |
         sudo pacman -Syu --needed bluez bluez-utils blueman
         sudo systemctl enable --now bluetooth
+
     - description: Install yay packages
       command: |
         yay -Syu --nocleanmenu --noconfirm --nodiffmenu \
@@ -34,12 +39,23 @@
           ferdium \
           notion-app \
           postman-bin \
-          insomnia \
           termius-beta
+
     - description: Install ngrok
       command: |
         curl -sLo $HOME/.local/src/ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
         sudo tar xvzf $HOME/.local/src/ngrok.tgz  -C /usr/local/bin
+
+    - description: Install insomnia
+      command: |
+        yay -Syu insomnia-bin --nocleanmenu --noconfirm --nodiffmenu 
+        # [ -d $HOME/.local/src/insomnia ] && sudo rm -r $HOME/.local/src/insomnia
+        # curl -sLo $HOME/.local/src/insomnia.tar.gz https://aur.archlinux.org/cgit/aur.git/snapshot/insomnia.tar.gz
+        # tar -xzf $HOME/.local/src/insomnia.tar.gz -C $HOME/.local/src
+        # cd $HOME/.local/src/insomnia
+        # makepkg -s
+        # sudo pacman -U insomnia-*-x86_64.pkg.tar
+  
     - description: Install Postman-cli
       command: |
         #Postman-cli

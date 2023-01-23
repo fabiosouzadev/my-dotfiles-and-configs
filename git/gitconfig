@@ -19,6 +19,9 @@
     followTags = true
 	default = current
 
+[pull]
+	rebase = true
+
 [delta]
     navigate = true 
     light = false

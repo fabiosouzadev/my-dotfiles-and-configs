@@ -10,6 +10,7 @@ VSCODE_EXTENSIONS=(
 "daltonmenezes.aura-theme"
 "wicked-labs.wvsc-serendipity"
 "johnpapa.vscode-peacock"
+"esbenp.prettier-vscode"
 
 )
 

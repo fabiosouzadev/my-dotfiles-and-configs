@@ -123,7 +123,7 @@ local mappings = {
   ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Go to next diagnostic" },
   ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go to previous diagnostic" },
   ["]e"] = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Go To Next Diagnostic" },
-  ["]e"] = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go To Previous Diagnostic" },
+  ["[e"] = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go To Previous Diagnostic" },
   -- Open Floaterm
   ["<A-g>"] = { "<cmd>Lspsaga open_floaterm lazygit<cr>", "Open Lazy Git" },
 

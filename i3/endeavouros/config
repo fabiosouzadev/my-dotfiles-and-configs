@@ -603,3 +603,6 @@ bindsym $mod+t exec rofi -show window \
 #exec --no-startup-id greenclip daemon>/dev/null
 #bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
 #		-config ~/.config/rofi/rofidmenu.rasi
+#
+
+bindsym $mod+y exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'

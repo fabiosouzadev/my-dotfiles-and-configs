@@ -8,46 +8,43 @@
     - description: Install first packages
       command: | 
         sudo pacman -Syu --noconfirm bitwarden
-        yay -Syu --nocleanmenu --noconfirm --nodiffmenu \
+        yay -Syu --noconfirm --nodiffmenu \
           authy \
           bitw-git
 
     - description: Install packages
       command: |
-        sudo pacman -Syu  \
-          --nocleanmenu \
-          --noconfirm \
-          --nodiffmenu \
+        sudo pacman -Syu --noconfirm \
           exa \
           bat \
           xsel \
+          xclip \
           xterm \
           ranger \
           neofetch \
           git-delta \
           postgresql-libs \
           dbeaver \
-          qutebrowser
+          qutebrowser \
+          flameshot \
+          maim
 
     - description: Install bluetooth
       command: |
-        sudo pacman -Syu \
-          --nocleanmenu \
-          --noconfirm \
-          --nodiffmenu \
-          blueberry
-        
+        sudo pacman -Syu --noconfirm blueberry 
         sudo systemctl enable --now bluetooth
 
     - description: Install yay packages
       command: |
-        yay -Syu --nocleanmenu --noconfirm --nodiffmenu \
+        yay -Syu --noconfirm \
           brave-nightly-bin \
           spotify \
           ferdium \
           notion-app \
           postman-bin \
-          termius-beta
+          termius-beta \
+          rofi-greenclip
+
 
     - description: Install ngrok
       command: |
@@ -56,7 +53,7 @@
 
     - description: Install insomnia
       command: |
-        yay -Syu insomnia-bin --nocleanmenu --noconfirm --nodiffmenu 
+        yay -Syu insomnia-bin --noconfirm
         # [ -d $HOME/.local/src/insomnia ] && sudo rm -r $HOME/.local/src/insomnia
         # curl -sLo $HOME/.local/src/insomnia.tar.gz https://aur.archlinux.org/cgit/aur.git/snapshot/insomnia.tar.gz
         # tar -xzf $HOME/.local/src/insomnia.tar.gz -C $HOME/.local/src
@@ -78,3 +75,4 @@
     ~/.config/picom.conf: picom/endeavouros_picom.conf
     ~/.screenlayout: xrand
     ~/.config/bat: bat
+    ~/.config/greenclip.toml: i3/endeavouros/greenclip.toml

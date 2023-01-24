@@ -14,7 +14,10 @@
 
     - description: Install packages
       command: |
-        sudo pacman -Syu  --noconfirm \
+        sudo pacman -Syu  \
+          --nocleanmenu \
+          --noconfirm \
+          --nodiffmenu \
           exa \
           bat \
           xsel \
@@ -28,7 +31,12 @@
 
     - description: Install bluetooth
       command: |
-        sudo pacman -Syu --needed bluez bluez-utils blueman
+        sudo pacman -Syu \
+          --nocleanmenu \
+          --noconfirm \
+          --nodiffmenu \
+          blueberry
+        
         sudo systemctl enable --now bluetooth
 
     - description: Install yay packages

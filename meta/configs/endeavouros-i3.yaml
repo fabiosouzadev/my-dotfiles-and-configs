@@ -32,7 +32,11 @@
 
     - description: Install bluetooth
       command: |
-        sudo pacman -Syu --noconfirm blueberry 
+        sudo pacman -Syu --noconfirm --needed \
+          bluez \
+          bluez-utils \
+          pulseaudio-bluetooth \ 
+          blueberry
         sudo systemctl enable --now bluetooth
 
     - description: Install yay packages
@@ -43,6 +47,7 @@
           ferdium \
           notion-app \
           postman-bin \
+          insomnia-bin \
           termius-beta \
           rofi-greenclip
 
@@ -52,21 +57,20 @@
         curl -sLo $HOME/.local/src/ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
         sudo tar xvzf $HOME/.local/src/ngrok.tgz  -C /usr/local/bin
 
-    - description: Install insomnia
-      command: |
-        yay -Syu insomnia-bin --noconfirm
-        # [ -d $HOME/.local/src/insomnia ] && sudo rm -r $HOME/.local/src/insomnia
-        # curl -sLo $HOME/.local/src/insomnia.tar.gz https://aur.archlinux.org/cgit/aur.git/snapshot/insomnia.tar.gz
-        # tar -xzf $HOME/.local/src/insomnia.tar.gz -C $HOME/.local/src
-        # cd $HOME/.local/src/insomnia
-        # makepkg -s
-        # sudo pacman -U insomnia-*-x86_64.pkg.tar
-  
     - description: Install Postman-cli
       command: |
         #Postman-cli
         curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-  
+
+    - description: Install Spotify/Spicetify
+      command: |
+        yay -Syu --noconfirm spotify spicetify-cli
+        sudo chmod a+wr /opt/spotify
+        sudo chmod a+wr /opt/spotify/Apps -R
+        spicetify backup apply
+        curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
+      stdout: true
+
 - link:
     ~/.config/i3: i3/endeavouros
     ~/.config/dunst: dunst/endeavouros

@@ -1,83 +1,96 @@
 - shell:
-    - description: Validating sudo credentials
-      command: "sudo --validate"
-
-    - description: Create ~/.local/src
-      command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
-
-    - description: Install first packages
-      command: | 
-        sudo pacman -Syu --noconfirm bitwarden
-        yay -Syu --noconfirm --nodiffmenu \
-          authy \
-          bitw-git
-
-    - description: Install packages
-      command: |
-        sudo pacman -Syu --noconfirm \
-          exa \
-          bat \
-          xsel \
-          xclip \
-          xterm \
-          ranger \
-          neofetch \
-          git-delta \
-          postgresql-libs \
-          dbeaver \
-          qutebrowser \
-          flameshot \
-          maim \
-          peek
-
-    - description: Install bluetooth
-      command: |
-        sudo pacman -Syu --noconfirm --needed \
-          bluez \
-          bluez-utils \
-          pulseaudio-bluetooth \ 
-          blueberry
-        sudo systemctl enable --now bluetooth
-
-    - description: Install yay packages
-      command: |
-        yay -Syu --noconfirm \
-          brave-nightly-bin \
-          spotify \
-          ferdium \
-          notion-app \
-          postman-bin \
-          insomnia-bin \
-          termius-beta \
-          rofi-greenclip
-
-
-    - description: Install ngrok
-      command: |
-        curl -sLo $HOME/.local/src/ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
-        sudo tar xvzf $HOME/.local/src/ngrok.tgz  -C /usr/local/bin
-
-    - description: Install Postman-cli
-      command: |
-        #Postman-cli
-        curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-
+    # - description: Validating sudo credentials
+    #   command: "sudo --validate"
+    #
+    # - description: Create ~/.local/src
+    #   command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
+    #
+    # - description: Install first packages
+    #   command: | 
+    #     sudo pacman -Syu --noconfirm bitwarden
+    #     yay -Syu --noconfirm --nodiffmenu \
+    #       authy \
+    #       bitw-git
+    #
+    # - description: Install packages
+    #   command: |
+    #     sudo pacman -Syu --noconfirm \
+    #       exa \
+    #       bat \
+    #       xsel \
+    #       xclip \
+    #       xterm \
+    #       ranger \
+    #       neofetch \
+    #       git-delta \
+    #       postgresql-libs \
+    #       dbeaver \
+    #       qutebrowser \
+    #       flameshot \
+    #       maim \
+    #       peek
+    #
+    # - description: Install bluetooth
+    #   command: |
+    #     sudo pacman -Syu --noconfirm --needed \
+    #       bluez \
+    #       bluez-utils \
+    #       pulseaudio-bluetooth \ 
+    #       blueberry
+    #     sudo systemctl enable --now bluetooth
+    #
+    # - description: Install yay packages
+    #   command: |
+    #     yay -Syu --noconfirm \
+    #       brave-nightly-bin \
+    #       spotify \
+    #       ferdium \
+    #       notion-app \
+    #       postman-bin \
+    #       insomnia-bin \
+    #       termius-beta \
+    #       rofi-greenclip
+    #
+    #
+    # - description: Install ngrok
+    #   command: |
+    #     curl -sLo $HOME/.local/src/ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+    #     sudo tar xvzf $HOME/.local/src/ngrok.tgz  -C /usr/local/bin
+    #
+    # - description: Install Postman-cli
+    #   command: |
+    #     #Postman-cli
+    #     curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+    #
     - description: Install Spotify/Spicetify
-      command: |
+      command: | 
         yay -Syu --noconfirm spotify spicetify-cli
         sudo chmod a+wr /opt/spotify
         sudo chmod a+wr /opt/spotify/Apps -R
-        spicetify backup apply
-        curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
+        spicetify backup apply 
+
+        [ ! -d  $HOME/.local/src/spicetify-themes ] && git clone --depth=1 https://github.com/spicetify/spicetify-themes.git $HOME/.local/src/spicetify-themes
+        cp -r $HOME/.local/src/spicetify-themes/* $HOME/.config/spicetify/Themes
+        #spicetify config current_theme THEME_NAME
+        spicetify config current_theme Dribbblish
+        #spicetify config color_scheme SCHEME_NAME
+        spicetify config color_scheme Rosepine
+        
+        # Only for Dribbblish
+        cp $HOME/.config/spicetify/Themes/Dribbblish/dribbblish.js $HOME/.config/spicetify/Extensions/
+        spicetify config extensions dribbblish.js
+        
+        spicetify apply
+
       stdout: true
 
-- link:
-    ~/.config/i3: i3/endeavouros
-    ~/.config/dunst: dunst/endeavouros
-    ~/.config/rofi: rofi/endeavouros
-    ~/.config/gtk-3.0: gtk-3.0/endeavouros
-    ~/.config/xfce4/terminal: xfce4/terminal
-    ~/.config/picom.conf: picom/endeavouros_picom.conf
-    ~/.screenlayout: xrand
-    ~/.config/bat: bat
-    ~/.config/greenclip.toml: i3/endeavouros/greenclip.toml
+# - link:
+#     ~/.config/i3: i3/endeavouros
+#     ~/.config/dunst: dunst/endeavouros
+#     ~/.config/rofi: rofi/endeavouros
+#     ~/.config/gtk-3.0: gtk-3.0/endeavouros
+#     ~/.config/xfce4/terminal: xfce4/terminal
+#     ~/.config/picom.conf: picom/endeavouros_picom.conf
+#     ~/.screenlayout: xrand
+#     ~/.config/bat: bat
+#     ~/.config/greenclip.toml: i3/endeavouros/greenclip.toml

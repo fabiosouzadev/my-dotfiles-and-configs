@@ -27,7 +27,8 @@
           dbeaver \
           qutebrowser \
           flameshot \
-          maim
+          maim \
+          peek
 
     - description: Install bluetooth
       command: |

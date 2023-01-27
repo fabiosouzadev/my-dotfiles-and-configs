@@ -1,96 +1,111 @@
 - shell:
-    # - description: Validating sudo credentials
-    #   command: "sudo --validate"
-    #
-    # - description: Create ~/.local/src
-    #   command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
-    #
-    # - description: Install first packages
-    #   command: | 
-    #     sudo pacman -Syu --noconfirm bitwarden
-    #     yay -Syu --noconfirm --nodiffmenu \
-    #       authy \
-    #       bitw-git
-    #
-    # - description: Install packages
-    #   command: |
-    #     sudo pacman -Syu --noconfirm \
-    #       exa \
-    #       bat \
-    #       xsel \
-    #       xclip \
-    #       xterm \
-    #       ranger \
-    #       neofetch \
-    #       git-delta \
-    #       postgresql-libs \
-    #       dbeaver \
-    #       qutebrowser \
-    #       flameshot \
-    #       maim \
-    #       peek
-    #
-    # - description: Install bluetooth
-    #   command: |
-    #     sudo pacman -Syu --noconfirm --needed \
-    #       bluez \
-    #       bluez-utils \
-    #       pulseaudio-bluetooth \ 
-    #       blueberry
-    #     sudo systemctl enable --now bluetooth
-    #
-    # - description: Install yay packages
-    #   command: |
-    #     yay -Syu --noconfirm \
-    #       brave-nightly-bin \
-    #       spotify \
-    #       ferdium \
-    #       notion-app \
-    #       postman-bin \
-    #       insomnia-bin \
-    #       termius-beta \
-    #       rofi-greenclip
-    #
-    #
-    # - description: Install ngrok
-    #   command: |
-    #     curl -sLo $HOME/.local/src/ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
-    #     sudo tar xvzf $HOME/.local/src/ngrok.tgz  -C /usr/local/bin
-    #
-    # - description: Install Postman-cli
-    #   command: |
-    #     #Postman-cli
-    #     curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-    #
-    - description: Install Spotify/Spicetify
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+
+    - description: Create ~/.local/src
+      command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
+
+    - description: Install first packages
       command: | 
-        yay -Syu --noconfirm spotify spicetify-cli
-        sudo chmod a+wr /opt/spotify
-        sudo chmod a+wr /opt/spotify/Apps -R
-        spicetify backup apply 
+        sudo pacman -Syu --noconfirm bitwarden
+        yay -Syu --noconfirm --nodiffmenu \
+          authy \
+          bitw-git
 
-        [ ! -d  $HOME/.local/src/spicetify-themes ] && git clone --depth=1 https://github.com/spicetify/spicetify-themes.git $HOME/.local/src/spicetify-themes
-        cp -r $HOME/.local/src/spicetify-themes/* $HOME/.config/spicetify/Themes
-        #spicetify config current_theme THEME_NAME
-        spicetify config current_theme Dribbblish
-        #spicetify config color_scheme SCHEME_NAME
-        spicetify config color_scheme Rosepine
-        
-        # Only for Dribbblish
-        cp $HOME/.config/spicetify/Themes/Dribbblish/dribbblish.js $HOME/.config/spicetify/Extensions/
-        spicetify config extensions dribbblish.js
-        
-        spicetify apply
+    - description: Install packages
+      command: |
+        sudo pacman -Syu --noconfirm \
+          exa \
+          bat \
+          xsel \
+          xclip \
+          xterm \
+          ranger \
+          neofetch \
+          git-delta \
+          postgresql-libs \
+          dbeaver \
+          qutebrowser \
+          flameshot \
+          maim \
+          peek
 
+    - description: Install bluetooth
+      command: |
+        sudo pacman -Syu --noconfirm --needed \
+          bluez \
+          bluez-utils \
+          pulseaudio-bluetooth \ 
+          blueberry
+        sudo systemctl enable --now bluetooth
+
+    - description: Install yay packages
+      command: |
+        yay -Syu --noconfirm \
+          brave-nightly-bin \
+          ferdium \
+          notion-app \
+          postman-bin \
+          insomnia-bin \
+          termius-beta \
+          rofi-greenclip
+
+
+    - description: Install ngrok
+      command: |
+        curl -sLo $HOME/.local/src/ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+        sudo tar xvzf $HOME/.local/src/ngrok.tgz  -C /usr/local/bin
+
+    - description: Install Postman-cli
+      command: |
+        #Postman-cli
+        curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+
+    - description: Install Spotify/Spicetify
+      command: |
+        yay -Syu  --noconfirm \
+          spotify \
+          spotifyd \ 
+          spotify-tui
+
+          systemctl --user enable spotifyd.service
       stdout: true
 
-# - link:
-#     ~/.config/i3: i3/endeavouros
-#     ~/.config/dunst: dunst/endeavouros
-#     ~/.config/rofi: rofi/endeavouros
-#     ~/.config/gtk-3.0: gtk-3.0/endeavouros
-#     ~/.config/xfce4/terminal: xfce4/terminal
-#     ~/.config/picom.conf: picom/endeavouros_picom.conf
-#     ~/.screenlayout: xrand
-#     ~/.config/bat: bat
-#     ~/.config/greenclip.toml: i3/endeavouros/greenclip.toml
+    # - description: Install Spicetify
+    #   command: |
+    #     curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
+    #     
+    #     $HOME/.spicetify/spicetify backup apply
+    #
+    #     [ ! -d  $HOME/.local/src/spicetify-themes ] && git clone --depth=1 https://github.com/spicetify/spicetify-themes.git $HOME/.local/src/spicetify-themes
+    #     cp -r $HOME/.local/src/spicetify-themes/* $HOME/.config/spicetify/Themes
+    #     
+    #     #spicetify config current_theme THEME_NAME
+    #     # spicetify config color_scheme SCHEME_NAME
+    #     #$HOME/.spicetify/spicetify config current_theme Dribbblish color_scheme beach-sunset
+    #      
+    #     # # Only for Dribbblish
+    #     cp $HOME/.config/spicetify/Themes/Dribbblish/dribbblish.js $HOME/.config/spicetify/Extensions/
+    #     $HOME/.spicetify/spicetify config extensions dribbblish.js 
+    #     $HOME/.spicetify/spicetify config current_theme Dribbblish color_scheme purple
+    #     $HOME/.spicetify/spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
+    #     $HOME/.spicetify/spicetify apply
+    #      
+    #     
+    #     cp $HOME/.spicetify/Extensions/keyboardShortcut.js  $HOME/.config/spicetify/Extensions/
+    #     $HOME/.spicetify/spicetify config extensions keyboardShortcut.js
+    #     # 
+    #     $HOME/.spicetify/spicetify apply
+
+- link:
+    ~/.config/i3: i3/endeavouros
+    ~/.config/dunst: dunst/endeavouros
+    ~/.config/rofi: rofi/endeavouros
+    ~/.config/gtk-3.0: gtk-3.0/endeavouros
+    ~/.config/xfce4/terminal: xfce4/terminal
+    ~/.config/picom.conf: picom/endeavouros_picom.conf
+    ~/.screenlayout: xrand
+    ~/.config/bat: bat
+    ~/.config/greenclip.toml: i3/endeavouros/greenclip.toml
+    ~/.config/spotify-tui/config.yml: spotify-tui/config.yml
+    ~/.config/spotifyd/spotifyd.conf: spotifyd/spotifyd.conf

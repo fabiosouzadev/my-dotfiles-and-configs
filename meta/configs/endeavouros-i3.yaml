@@ -28,7 +28,8 @@
           qutebrowser \
           flameshot \
           maim \
-          peek
+          peek \
+          seahorse
 
     - description: Install bluetooth
       command: |
@@ -37,7 +38,7 @@
           bluez-utils \
           pulseaudio-bluetooth \ 
           blueberry
-        sudo systemctl enable --now bluetooth
+        sudo systemctl enable bluetooth
 
     - description: Install yay packages
       command: |
@@ -69,7 +70,7 @@
           spotify-tui
 
           systemctl --user enable spotifyd.service
-      stdout: true
+          #secret-tool store --label='name you choose' application rust-keyring service spotifyd username <your-username>
 
     # - description: Install Spicetify
     #   command: |

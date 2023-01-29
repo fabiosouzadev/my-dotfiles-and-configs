@@ -8,6 +8,7 @@
 
       nvm install --lts
       nvm use --lts
+  - [ exec /usr/bin/zsh ]
   - description: Installing npm global packages
     command: |
       npm install -g yarn
@@ -55,6 +56,6 @@
       npm install -g pyright
       npm install -g bash-language-server
       npm install -g tree-sitter-cli
-      npm install -g neovim 
+      npm install -g neovim
       npm install -g vue-language-server
       npm install -g tailwindcss-language-server

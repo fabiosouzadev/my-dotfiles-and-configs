@@ -3,7 +3,7 @@
       command: "[ ! -d ~/.asdf ] || sudo rm -rf ~/.asdf "
     - description: Clone asdf
       command: "git clone https://github.com/asdf-vm/asdf.git ~/.asdf"
-    - [exec $SHELL]
+    - [ exec /usr/bin/zsh ]
 
 - link:
     ~/.asdfrc: asdf/asdfrc

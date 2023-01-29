@@ -27,6 +27,8 @@ git submodule update --init --recursive dotbot_plugin_aptget
 git submodule update --init --recursive zsh-quickstart-kit
 
 cd "${BASE_DIR}"
+git submodule update --init --recursive personal
+git submodule update --init --recursive mglu
 
 for config in ${@}; do
 

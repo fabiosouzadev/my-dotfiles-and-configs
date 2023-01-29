@@ -6,7 +6,7 @@
       command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
 
     - description: Install first packages
-      command: | 
+      command: |
         sudo pacman -Syu --noconfirm bitwarden
         yay -Syu --noconfirm --nodiffmenu \
           authy \
@@ -15,6 +15,7 @@
     - description: Install packages
       command: |
         sudo pacman -Syu --noconfirm \
+          zsh \
           exa \
           bat \
           xsel \
@@ -33,11 +34,11 @@
 
     - description: Install bluetooth
       command: |
-        sudo pacman -Syu --noconfirm --needed \
+        sudo pacman -S --noconfirm --needed \
           bluez \
           bluez-utils \
-          pulseaudio-bluetooth \ 
-          blueberry
+          blueman \
+          pipewire-pulse
         sudo systemctl enable bluetooth
 
     - description: Install yay packages
@@ -50,7 +51,6 @@
           insomnia-bin \
           termius-beta \
           rofi-greenclip
-
 
     - description: Install ngrok
       command: |
@@ -66,37 +66,11 @@
       command: |
         yay -Syu  --noconfirm \
           spotify \
-          spotifyd \ 
+          spotifyd \
           spotify-tui
 
-          systemctl --user enable spotifyd.service
-          #secret-tool store --label='name you choose' application rust-keyring service spotifyd username <your-username>
-
-    # - description: Install Spicetify
-    #   command: |
-    #     curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
-    #     
-    #     $HOME/.spicetify/spicetify backup apply
-    #
-    #     [ ! -d  $HOME/.local/src/spicetify-themes ] && git clone --depth=1 https://github.com/spicetify/spicetify-themes.git $HOME/.local/src/spicetify-themes
-    #     cp -r $HOME/.local/src/spicetify-themes/* $HOME/.config/spicetify/Themes
-    #     
-    #     #spicetify config current_theme THEME_NAME
-    #     # spicetify config color_scheme SCHEME_NAME
-    #     #$HOME/.spicetify/spicetify config current_theme Dribbblish color_scheme beach-sunset
-    #      
-    #     # # Only for Dribbblish
-    #     cp $HOME/.config/spicetify/Themes/Dribbblish/dribbblish.js $HOME/.config/spicetify/Extensions/
-    #     $HOME/.spicetify/spicetify config extensions dribbblish.js 
-    #     $HOME/.spicetify/spicetify config current_theme Dribbblish color_scheme purple
-    #     $HOME/.spicetify/spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
-    #     $HOME/.spicetify/spicetify apply
-    #      
-    #     
-    #     cp $HOME/.spicetify/Extensions/keyboardShortcut.js  $HOME/.config/spicetify/Extensions/
-    #     $HOME/.spicetify/spicetify config extensions keyboardShortcut.js
-    #     # 
-    #     $HOME/.spicetify/spicetify apply
+        systemctl --user enable spotifyd.service
+        #secret-tool store --label='name you choose' application rust-keyring service spotifyd username <your-username>
 
 - link:
     ~/.config/i3: i3/endeavouros

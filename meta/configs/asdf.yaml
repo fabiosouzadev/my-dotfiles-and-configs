@@ -1,12 +1,8 @@
 - shell:
     - description: Remove previous asdf folder
       command: "[ ! -d ~/.asdf ] || sudo rm -rf ~/.asdf "
-      stderr: true
-      stdout: true
     - description: Clone asdf
       command: "git clone https://github.com/asdf-vm/asdf.git ~/.asdf"
-      stderr: true
-      stdout: true
     - [exec $SHELL]
 
 - link:

@@ -1,9 +1,9 @@
 - shell:
     - description: Install pyenv
-      command: '[ -d "$HOME/.pyenv" ] || curl https://pyenv.run | zsh'
-    - "[ -d $HOME/.pyenv/versions/3.10.4 ] || pyenv install 3.10.4"
-    - "[ -d $HOME/.pyenv/versions/3.8.15 ] || pyenv install 3.8.15"
-    - "[ -d $HOME/.pyenv/versions/3.10.4 ] && pyenv global 3.10.4"
+      command: '[ -d "$HOME/.pyenv" ] || curl https://pyenv.run | bash'
+    - "[ -d $HOME/.pyenv/versions/3.10.4 ] || $HOME/.pyenv/bin/pyenv install 3.10.4"
+    - "[ -d $HOME/.pyenv/versions/3.8.15 ] || $HOME/.pyenv/bin/pyenv install 3.8.15"
+    - "[ -d $HOME/.pyenv/versions/3.10.4 ] && $HOME/.pyenv/bin/pyenv global 3.10.4"
     # - [ exec $SHELL ]
-    # - [ pip install --upgrade pip, "Upgrade pip" ] 
-    # - [ pip install awscli, "Install awscli" ] 
+    # - [ pip install --upgrade pip, "Upgrade pip" ]
+    # - [ pip install awscli, "Install awscli" ]

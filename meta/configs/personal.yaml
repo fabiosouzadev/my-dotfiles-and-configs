@@ -12,6 +12,10 @@
         gpg --import $HOME/.gnupg/public.gpg
         gpg --import $HOME/.gnupg/private.gpg
         gpg --import-ownertrust $HOME/.gnupg/trust.gpg
+    - description: Install pass
+      command: |
+        sudo pacman -S --noconfirm pass
+        #pass init fabiovanderlei.developer@gmail.com
 
 - link:
     ~/.gitconfig_local:                   personal/gitconfig_local
@@ -19,4 +23,5 @@
     ~/.ssh/known_hosts:                   personal/ssh/known_hosts
     ~/.config/ngrok/ngrok.yml:            personal/ngrok.yml
     ~/.config/spotify-tui/client.yml:     personal/spotify-client.yml
+    ~/.password-store:                    personal/password-store
 

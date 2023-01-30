@@ -1,6 +1,11 @@
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
+    - description: Install kubectl
+      command: |
+        curl -Lo $HOME/.local/src/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        sudo install -o root -g root -m 0755 $HOME/.local/src/kubectl /usr/local/bin/kubectl
+
     - description: Installing kind
       command: |
         if [ `uname` = 'Linux' ]; then
@@ -28,4 +33,4 @@
         [ -d /opt/kubectx ]             || sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
         [ -f /usr/local/bin/kubectx ]   || sudo ln -sf /opt/kubectx/kubectx /usr/local/bin/kubectx
         [ -f /usr/local/bin/kubens ]    || sudo ln -sf /opt/kubectx/kubens /usr/local/bin/kubens
-    - [exec /bin/zsh]
+    - [ exec /bin/zsh ]

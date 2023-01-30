@@ -35,7 +35,6 @@
           sudo usermod -aG docker $USER
         ;;
         Arch | EndeavourOS)
-          sudo pacman -Syu --noconfirm
           sudo pacman -Syu --noconfirm docker
           sudo systemctl enable --now docker
           sudo groupadd -f docker

@@ -62,3 +62,5 @@
 
 ;[includeIf "gitdir:~/Projects/Work/bitbucket/"]
 ;    path = ~/.gitconfig_bitbucket    
+[commit]
+	gpgsign = true

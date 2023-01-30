@@ -34,3 +34,6 @@
         [ -f /usr/local/bin/kubectx ]   || sudo ln -sf /opt/kubectx/kubectx /usr/local/bin/kubectx
         [ -f /usr/local/bin/kubens ]    || sudo ln -sf /opt/kubectx/kubens /usr/local/bin/kubens
     - [ exec /bin/zsh ]
+
+- link:
+    ~/.zshrc.d/012-kubectl-completions.zsh: zshrc.d/012-kubectl-completions.zsh

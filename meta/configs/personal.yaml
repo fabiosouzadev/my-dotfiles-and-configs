@@ -1,8 +1,17 @@
 - shell:
     - command: '[ -f "$HOME/.ssh/id_ed25519" ]  || cp personal/ssh/id_ed25519 ~/.ssh/id_ed25519'
     - command: '[ -f "$HOME/.ssh/id_ed25519.pub" ]  || cp personal/ssh/id_ed25519.pub ~/.ssh/id_ed25519.pub'
-    - [ chmod 400 ~/.ssh/id_ed25519]
-    - [ chmod 400 ~/.ssh/id_ed25519.pub]
+    - [ chmod 400 ~/.ssh/id_ed25519 ]
+    - [ chmod 400 ~/.ssh/id_ed25519.pub ]
+    - command: '[ -d "$HOME/.gnupg/" ]  || mkdir -p "$HOME/.gnupg"'
+    - command: '[ -f "$HOME/.gnupg/private.gpg" ] || cp personal/gnupg/private.gpg ~/.gnupg/private.gpg'
+    - command: '[ -f "$HOME/.gnupg/public.gpg" ]  || cp personal/gnupg/public.gpg ~/.gnupg/public.gpg'
+    - command: '[ -f "$HOME/.gnupg/trust.gpg" ]   || cp personal/gnupg/trust.gpg ~/.gnupg/trust.gpg'
+    - description:
+      command: |
+        gpg --import $HOME/.gnupg/public.gpg
+        gpg --import $HOME/.gnupg/private.gpg
+        gpg --import-ownertrust $HOME/.gnupg/trust.gpg
 
 - link:
     ~/.gitconfig_local:                   personal/gitconfig_local
@@ -10,3 +19,4 @@
     ~/.ssh/known_hosts:                   personal/ssh/known_hosts
     ~/.config/ngrok/ngrok.yml:            personal/ngrok.yml
     ~/.config/spotify-tui/client.yml:     personal/spotify-client.yml
+

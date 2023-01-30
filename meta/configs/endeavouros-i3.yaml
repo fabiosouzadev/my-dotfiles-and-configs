@@ -62,16 +62,6 @@
         #Postman-cli
         curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
 
-    - description: Install Spotify/Spicetify
-      command: |
-        yay -Syu  --noconfirm \
-          spotify \
-          spotifyd \
-          spotify-tui
-
-        systemctl --user enable spotifyd.service
-        #secret-tool store --label='name you choose' application rust-keyring service spotifyd username <your-username>
-
 - link:
     ~/.config/i3: i3/endeavouros
     ~/.config/dunst: dunst/endeavouros
@@ -82,5 +72,3 @@
     ~/.screenlayout: xrand
     ~/.config/bat: bat
     ~/.config/greenclip.toml: i3/endeavouros/greenclip.toml
-    ~/.config/spotify-tui/config.yml: spotify-tui/config.yml
-    ~/.config/spotifyd/spotifyd.conf: spotifyd/spotifyd.conf

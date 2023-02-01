@@ -66,7 +66,11 @@
       command: |
         echo "[main]\\ndns=none\\nrc-manager=unmanaged" | sudo tee /etc/NetworkManager/conf.d/no-dns.conf      
         sudo rm /etc/resolv.conf
-        sudo ln -s etc/resolv.conf /etc/resolv.conf
+        sudo cp etc/resolv.conf /etc/resolv.conf
+         
+        if [[ -f "mglu/resolv.conf" ]]; then
+          cat mglu/resolv.conf | sudo tee -a /etc/resolv.conf
+        fi
         sudo systemctl restart NetworkManager.service
         #echo "nameserver 8.8.8.8\\nnameserver 8.8.4.4\\nnameserver 1.1.1.1\\nnameserver 1.0.0.1\\nnameserver 10.0.0.150\\nnameserver 10.0.0.151" | sudo tee /etc/resolv.conf
 

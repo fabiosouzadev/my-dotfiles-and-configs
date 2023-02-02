@@ -52,3 +52,14 @@ fi
 batdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
+
+updatedns(){ 
+    echo "[main]\\ndns=none\\nrc-manager=unmanaged" | sudo tee /etc/NetworkManager/conf.d/no-dns.conf      
+    sudo rm /etc/resolv.conf
+    sudo cp etc/resolv.conf /etc/resolv.conf
+
+    if [[ -f "mglu/resolv.conf" ]]; then
+        cat mglu/resolv.conf | sudo tee -a /etc/resolv.conf
+    fi
+    sudo systemctl restart NetworkManager.service
+}

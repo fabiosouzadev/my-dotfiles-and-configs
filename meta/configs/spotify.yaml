@@ -2,13 +2,14 @@
     - description: Install Spotify/Spotifyd/Spotify-tui
       command: |
         yay -Syu  --noconfirm \
-          spotify \
-          spotifyd \
-          spotify-tui
+          spotify
+          # spotify \
+          # spotifyd \
+          # spotify-tui
         
-        systemctl --user enable spotifyd
+        # systemctl --user enable spotifyd
 
-- link:
-    ~/.config/spotify-tui/config.yml: spotify-tui/config.yml
-    ~/.config/spotifyd/spotifyd.conf: spotifyd/spotifyd.conf
-    ~/.config/systemd/user/spotifyd.service: spotifyd/spotifyd.service
+# - link:
+#     ~/.config/spotify-tui/config.yml: spotify-tui/config.yml
+#     ~/.config/spotifyd/spotifyd.conf: spotifyd/spotifyd.conf
+#     ~/.config/systemd/user/spotifyd.service: spotifyd/spotifyd.service

@@ -27,7 +27,7 @@
           ;;
 
           Arch | EndeavourOS)
-            yay -S forticlientsslvpn forticlient-vpn --nocleanmenu --noconfirm --nodiffmenu
+            yay -S forticlientsslvpn --nocleanmenu --noconfirm --nodiffmenu
           ;; 
         esac
 - link:

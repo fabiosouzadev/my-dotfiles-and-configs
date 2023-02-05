@@ -2,6 +2,7 @@ return {
     -- {{{ nvim-lspconfig
     {
         'neovim/nvim-lspconfig',
+        event = 'BufReadPre',
         dependencies = {
           -- Automatically install LSPs to stdpath for neovim
           'williamboman/mason.nvim',
@@ -71,8 +72,7 @@ return {
     },
     {   -- Useful status updates for LSP
         'j-hui/fidget.nvim',
-        config = true,
         event = 'VeryLazy',
-        dependencies = "neodev.nvim",
+        config = true,
     },
 }

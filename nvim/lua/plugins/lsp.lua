@@ -4,15 +4,15 @@ return {
         'neovim/nvim-lspconfig',
         event = 'BufReadPre',
         dependencies = {
-          -- Automatically install LSPs to stdpath for neovim
-          'williamboman/mason.nvim',
-          'williamboman/mason-lspconfig.nvim',
-          -- 'hrsh7th/cmp-nvim-lsp',
-          -- Useful status updates for LSP
-          'j-hui/fidget.nvim',
+            -- Automatically install LSPs to stdpath for neovim
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+            -- 'hrsh7th/cmp-nvim-lsp',
+            -- Useful status updates for LSP
+            'j-hui/fidget.nvim',
 
-          -- Additional lua configuration, makes nvim stuff amazing
-          'folke/neodev.nvim',
+            -- Additional lua configuration, makes nvim stuff amazing
+            'folke/neodev.nvim',
         },
         config = function()
             local lspconfig = require('lspconfig')
@@ -23,9 +23,9 @@ return {
             -- Setup neovim lua configuration
             local signs = {
                 { name = "DiagnosticSignError", text = "" },
-                { name = "DiagnosticSignWarn",  text = "" },
-                { name = "DiagnosticSignHint",  text = "" },
-                { name = "DiagnosticSignInfo",  text = "" },
+                { name = "DiagnosticSignWarn", text = "" },
+                { name = "DiagnosticSignHint", text = "" },
+                { name = "DiagnosticSignInfo", text = "" },
             }
 
             for _, sign in ipairs(signs) do
@@ -59,6 +59,8 @@ return {
             })
         end
     },
+    -- ----------------------------------------------------------------------- }}}
+    -- {{{ Mason
     {
         "williamboman/mason.nvim",
         config = true,
@@ -66,11 +68,96 @@ return {
         lazy = true,
     },
     {
+        "jose-elias-alvarez/null-ls.nvim",
+        lazy = true,
+        dependencies = {
+            -- Automatically install LSPs to stdpath for neovim
+            'williamboman/mason.nvim',
+            'jay-babu/mason-null-ls.nvim',
+        },
+        config = function()
+            local null_ls = require("null-ls.nvim")
+            -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
+            -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
+            local formatting = null_ls.builtins.formatting
+            local diagnostics = null_ls.builtins.diagnostics
+            -- local code_actions = null_ls.builtins.code_actions
+            -- local hover = null_ls.builtins.hover
+            -- local completion = null_ls.builtins.completion
+
+            local sources = {
+                -- formatting
+                formatting.prettierd,
+                formatting.black.with({ extra_args = { "--fast" } }),
+                formatting.stylua,
+                formatting.fixjson,
+                -- diagnostics
+                diagnostics.flake8,
+                diagnostics.eslint_d.with({ -- js/ts linter
+                    -- only enable eslint if root has .eslintrc.js (not in youtube nvim video)
+                    condition = function(utils)
+                        return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
+                    end,
+                }),
+                -- code actions
+                -- hover
+            }
+
+            local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+            local lsp_formatting = function(bufnr)
+                vim.lsp.buf.format({
+                    filter = function(client)
+                        return client.name == "null-ls"
+                    end,
+                    bufnr = bufnr,
+                })
+            end
+
+            local on_attach = function(client, bufnr)
+                if client.supports_method("textDocument/formatting") then
+                    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        group = augroup,
+                        buffer = bufnr,
+                        callback = function()
+                            lsp_formatting(bufnr)
+                        end,
+                    })
+                end
+                if client.supports_method("textDocument/rangeFormatting") then
+                    vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+                end
+            end
+
+            null_ls.setup({
+                debug = true,
+                sources = sources,
+                on_attach = on_attach,
+            })
+        end
+    },
+    {
+        "jay-babu/mason-null-ls.nvim",
+        dependencies = {
+            "mason.nvim",
+        },
+        config = function()
+            local servers = require('lsp.ensure_installed')
+            local mason_null_ls = require('mason-null-ls')
+            mason_null_ls.setup({
+                ensure_installed = servers.ensure_installed_null_ls,
+                -- auto-install configured servers (with lspconfig)
+                automatic_installation = true, -- not the same as ensure_installed
+            })
+        end
+    },
+    {
         "folke/neodev.nvim",
         config = true,
         lazy = true,
     },
-    {   -- Useful status updates for LSP
+    { -- Useful status updates for LSP
         'j-hui/fidget.nvim',
         event = 'VeryLazy',
         config = true,

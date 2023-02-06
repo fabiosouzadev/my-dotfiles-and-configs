@@ -55,6 +55,9 @@ local opts = {
       diagnostics = {
         globals = { "vim", "lvim", "reload" },
       },
+      completion = {
+        callSnippet = "Replace"
+      },
       workspace = default_workspace,
     },
   },

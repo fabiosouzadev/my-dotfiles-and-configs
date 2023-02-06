@@ -6,13 +6,13 @@ return {
         dependencies = {
             -- Automatically install LSPs to stdpath for neovim
             -- "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
+            "mason-lspconfig.nvim",
             -- 'hrsh7th/cmp-nvim-lsp',
             -- Useful status updates for LSP
             -- "j-hui/fidget.nvim",
 
             -- Additional lua configuration, makes nvim stuff amazing
-            "folke/neodev.nvim",
+            "neodev.nvim",
         },
         config = function()
             local lspconfig = require("lspconfig")
@@ -153,19 +153,9 @@ return {
             })
         end,
     },
-    {
-        "folke/neodev.nvim",
-        lazy = true,
-        config = true,
-    },
     { -- Useful status updates for LSP
         "j-hui/fidget.nvim",
         event = "VeryLazy",
         config = true,
-    },
-    {
-        "nvim-lua/plenary.nvim",
-        cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" },
-        lazy = true,
     },
 }

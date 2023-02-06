@@ -2,7 +2,7 @@ return {
     -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
-        -- run = ":TSUpdate",
+        build = ":TSUpdate",
         config = function()
             local servers = require("lsp.ensure_installed")
             require("nvim-treesitter.configs").setup({
@@ -26,10 +26,10 @@ return {
                 textobjects = {
                     enable = true,
                 },
-                -- context_commentstring = {
-                --   enable = true,
-                --   enable_autocmd = false,
-                -- },
+                context_commentstring = {
+                  enable = true,
+                  enable_autocmd = false,
+                },
             })
         end,
         cmd = { "TSInstall", "TSUninstall", "TSUpdate", "TSInstallInfo", "TSInstallSync", "TSInstallFromGrammar" },

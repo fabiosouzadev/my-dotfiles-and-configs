@@ -17,7 +17,7 @@ return {
         config = function()
             local lspconfig = require("lspconfig")
             local capabilities = vim.lsp.protocol.make_client_capabilities()
-            -- capabilities = require('cmp_nvim_lsp').default_capabilities()
+            capabilities = require('cmp_nvim_lsp').default_capabilities()
             local servers = require("lsp.ensure_installed")
             local lsp_language_servers = servers.ensure_installed_lsp
             -- Setup neovim lua configuration

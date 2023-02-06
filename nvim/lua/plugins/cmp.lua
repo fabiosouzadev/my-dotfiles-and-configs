@@ -5,9 +5,11 @@ return {
         opts = function()
             local has_words_before = function()
                 local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-                return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+                return col ~= 0 and
+                    vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
             end
             local cmp = require("cmp")
+            local lspkind = require('lspkind')
             return {
                 completion = {
                     completeopt = "menu,menuone,noinsert",
@@ -17,8 +19,26 @@ return {
                         require("luasnip").lsp_expand(args.body)
                     end,
                 },
+                formatting = {
+                    format = lspkind.cmp_format({
+                        with_text = true,
+                        maxwidth = 50,
+                        menu = {
+                            nvim_lsp = "[LSP]",
+                            luasnip = "[Luasnip]",
+                            treesitter = "[Treesitter]",
+                            buffer = "[Buffer]",
+                            path = "[Path]",
+                            emoji = "[Emoji]",
+                            cmp_tabnine = "[TabNine]",
+                            copilot = "[Copilot]",
+                        },
+                    }),
+                },
                 mapping = cmp.mapping.preset.insert({
-                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-p>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+                    ["<C-n>"] = cmp.mapping.select_next_item(), -- next suggestion
+                    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
@@ -39,11 +59,14 @@ return {
                     end, { "i", "s" }),
                 }),
                 sources = cmp.config.sources({
+                    { name = "emoji" },
                     { name = "luasnip" }, -- For luasnip users.
                     { name = "nvim_lsp" },
                     { name = "buffer" },
                     { name = "path" },
                     { name = "cmp_tabnine" },
+                    { name = "copilot" },
+                    { name = "treesitter" },
                 }),
                 experimental = {
                     ghost_text = {
@@ -53,25 +76,28 @@ return {
             }
         end,
         dependencies = {
+            "lspkind.nvim",
             "cmp-nvim-lsp",
             "cmp-buffer",
             "cmp-path",
+            "cmp-emoji",
             "cmp_luasnip",
             "cmp-treesitter",
-            "copilot.vim"
+            "copilot.vim",
         },
-
     },
-    { "hrsh7th/cmp-nvim-lsp", lazy = true},
-    { "hrsh7th/cmp-buffer", lazy = true},
-    { "hrsh7th/cmp-path", lazy = true},
-    { "saadparwaiz1/cmp_luasnip", lazy = true},
-    { "ray-x/cmp-treesitter", lazy = true},
-    { "github/copilot.vim",lazy = true},
+    { "onsails/lspkind.nvim", lazy = true },
+    { "hrsh7th/cmp-nvim-lsp", lazy = true },
+    { "hrsh7th/cmp-buffer", lazy = true },
+    { "hrsh7th/cmp-path", lazy = true },
+    { "hrsh7th/cmp-emoji", lazy = true },
+    { "saadparwaiz1/cmp_luasnip", lazy = true },
+    { "ray-x/cmp-treesitter", lazy = true },
+    { "github/copilot.vim", lazy = true },
     {
-        'tzachar/cmp-tabnine',
-        build='./install.sh',
-        requires = 'nvim-cmp',
+        "tzachar/cmp-tabnine",
+        build = "./install.sh",
+        requires = "nvim-cmp",
         lazy = true,
     },
     {

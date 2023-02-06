@@ -7,7 +7,7 @@
 return {
   {
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
+    event = "VimEnter",
     dependencies = {
       "nvim-web-devicons",
     },
@@ -28,7 +28,6 @@ return {
       "nvim-web-devicons",
     },
     config = true,
-    branch = "main",
     event = "VeryLazy",
   },
   {

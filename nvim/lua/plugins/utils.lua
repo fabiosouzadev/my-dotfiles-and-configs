@@ -37,4 +37,8 @@ return {
             keymap("n", "<C-Space>", '<cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateNext()<cr>', opts)
         end,
     },
+    {
+        "wakatime/vim-wakatime",
+        event= "VeryLazy"
+    }
 }

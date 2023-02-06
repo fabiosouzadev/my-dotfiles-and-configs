@@ -5,11 +5,11 @@ return {
         event = "BufReadPre",
         dependencies = {
             -- Automatically install LSPs to stdpath for neovim
-            "williamboman/mason.nvim",
+            -- "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             -- 'hrsh7th/cmp-nvim-lsp',
             -- Useful status updates for LSP
-            "j-hui/fidget.nvim",
+            -- "j-hui/fidget.nvim",
 
             -- Additional lua configuration, makes nvim stuff amazing
             "folke/neodev.nvim",
@@ -46,12 +46,11 @@ return {
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
-        event = "BufReadPre",
         dependencies = {
             -- Automatically install LSPs to stdpath for neovim
-            "williamboman/mason.nvim",
-            "jay-babu/mason-null-ls.nvim",
-            "nvim-lua/plenary.nvim",
+            -- "williamboman/mason.nvim",
+            "mason-null-ls.nvim",
+            "plenary.nvim",
         },
         config = function()
             local null_ls = require("null-ls")
@@ -156,12 +155,17 @@ return {
     },
     {
         "folke/neodev.nvim",
-        event = "VeryLazy",
+        lazy = true,
         config = true,
     },
     { -- Useful status updates for LSP
         "j-hui/fidget.nvim",
         event = "VeryLazy",
         config = true,
+    },
+    {
+        "nvim-lua/plenary.nvim",
+        cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" },
+        lazy = true,
     },
 }

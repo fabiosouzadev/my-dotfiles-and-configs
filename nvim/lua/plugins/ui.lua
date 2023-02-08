@@ -4,6 +4,8 @@
 -- "folke/noice.nvim",
 -- "goolord/alpha-nvim",
 -- 'tpope/vim-sleuth'
+-- bufferline ==> romgrk/barbar.nvim
+-- toggleterm.nvim
 return {
   {
     "nvim-lualine/lualine.nvim",

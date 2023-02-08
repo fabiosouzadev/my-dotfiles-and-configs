@@ -14,4 +14,5 @@ return {
         keys = { { "gc", mode = { "n", "v" } }, { "gb", mode = { "n", "v" } } },
         event = "User FileOpened",
     },
+    { 'mg979/vim-visual-multi'}
 }

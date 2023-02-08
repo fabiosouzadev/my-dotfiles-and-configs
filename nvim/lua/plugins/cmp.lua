@@ -59,7 +59,6 @@ return {
                     end, { "i", "s" }),
                 }),
                 sources = cmp.config.sources({
-                    { name = "emoji" },
                     { name = "luasnip" }, -- For luasnip users.
                     { name = "nvim_lsp" },
                     { name = "buffer" },
@@ -67,6 +66,7 @@ return {
                     { name = "cmp_tabnine" },
                     { name = "copilot" },
                     { name = "treesitter" },
+                    { name = "emoji" },
                 }),
                 experimental = {
                     ghost_text = {
@@ -83,6 +83,7 @@ return {
             "cmp-emoji",
             "cmp_luasnip",
             "cmp-treesitter",
+            "cmp-tabnine",
             "copilot.vim",
         },
     },

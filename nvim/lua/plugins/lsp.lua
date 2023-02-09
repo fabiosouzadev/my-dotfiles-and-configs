@@ -65,7 +65,7 @@ return {
             local sources = {
                 -- formatting
                 formatting.prettierd,
-                formatting.black.with({ extra_args = { "--fast" } }),
+                formatting.black.with({ extra_args = { "--line-length", "79", "-t", "py37", "--skip-string-normalization" } }),
                 formatting.stylua,
                 formatting.fixjson,
                 -- diagnostics

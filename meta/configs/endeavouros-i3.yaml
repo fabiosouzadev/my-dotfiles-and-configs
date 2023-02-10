@@ -30,7 +30,8 @@
           flameshot \
           maim \
           peek \
-          seahorse
+          seahorse \
+          picom
 
     - description: Install bluetooth
       command: |

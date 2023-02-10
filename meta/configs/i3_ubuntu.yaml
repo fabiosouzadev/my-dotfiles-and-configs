@@ -39,7 +39,7 @@
         make
         sudo make install
 - link:
-    ~/.config/i3: i3/ubuntu
+    ~/.config/i3: i3
     ~/.config/polybar: polybar/ubuntu
     ~/.config/picom.conf: picom/picom.conf
     ~/.config/dunst: dunst/ubuntu

@@ -76,7 +76,7 @@
         #echo "nameserver 8.8.8.8\\nnameserver 8.8.4.4\\nnameserver 1.1.1.1\\nnameserver 1.0.0.1\\nnameserver 10.0.0.150\\nnameserver 10.0.0.151" | sudo tee /etc/resolv.conf
 
 - link:
-    ~/.config/i3: i3/endeavouros
+    ~/.config/i3: i3
     ~/.config/dunst: dunst/endeavouros
     ~/.config/rofi: rofi/endeavouros
     ~/.config/gtk-3.0: gtk-3.0/endeavouros
@@ -84,4 +84,4 @@
     ~/.config/picom.conf: picom/picom.conf
     ~/.screenlayout: xrand
     ~/.config/bat: bat
-    ~/.config/greenclip.toml: i3/endeavouros/greenclip.toml
+    ~/.config/greenclip.toml: greenclip/greenclip.toml

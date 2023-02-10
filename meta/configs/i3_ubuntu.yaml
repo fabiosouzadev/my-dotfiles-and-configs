@@ -41,7 +41,7 @@
 - link:
     ~/.config/i3: i3/ubuntu
     ~/.config/polybar: polybar/ubuntu
-    ~/.config/picom.conf: picom/ubuntu_picom.conf
+    ~/.config/picom.conf: picom/picom.conf
     ~/.config/dunst: dunst/ubuntu
     ~/.config/rofi: rofi/ubuntu
     ~/.config/gtk-3.0: gtk-3.0/ubuntu

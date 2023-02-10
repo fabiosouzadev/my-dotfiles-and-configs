@@ -77,9 +77,9 @@
 
 - link:
     ~/.config/i3: i3
-    ~/.config/dunst: dunst/endeavouros
-    ~/.config/rofi: rofi/endeavouros
-    ~/.config/gtk-3.0: gtk-3.0/endeavouros
+    ~/.config/dunst: dunst
+    ~/.config/rofi: rofi
+    ~/.config/gtk-3.0: gtk-3.0
     ~/.config/xfce4/terminal: xfce4/terminal
     ~/.config/picom.conf: picom/picom.conf
     ~/.screenlayout: xrand

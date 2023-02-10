@@ -40,8 +40,8 @@
         sudo make install
 - link:
     ~/.config/i3: i3
-    ~/.config/polybar: polybar/ubuntu
+    ~/.config/polybar: polybar
     ~/.config/picom.conf: picom/picom.conf
-    ~/.config/dunst: dunst/ubuntu
-    ~/.config/rofi: rofi/ubuntu
-    ~/.config/gtk-3.0: gtk-3.0/ubuntu
+    ~/.config/dunst: dunst
+    ~/.config/rofi: rofi
+    ~/.config/gtk-3.0: gtk-3.0

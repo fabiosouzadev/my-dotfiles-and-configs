@@ -46,6 +46,7 @@
       command: |
         yay -Syu --noconfirm \
           brave-nightly-bin \
+          slack-desktop \
           ferdium \
           notion-app \
           postman-bin \

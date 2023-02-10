@@ -85,3 +85,4 @@
     ~/.screenlayout: xrand
     ~/.config/bat: bat
     ~/.config/greenclip.toml: greenclip/greenclip.toml
+    ~/.config/wallpapers: wallpapers

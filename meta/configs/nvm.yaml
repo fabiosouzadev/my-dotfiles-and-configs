@@ -60,3 +60,4 @@
       npm install -g neovim
       npm install -g vue-language-server
       npm install -g tailwindcss-language-server
+      npm install -g diagnostic-languageserver

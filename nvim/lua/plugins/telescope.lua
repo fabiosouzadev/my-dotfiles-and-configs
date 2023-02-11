@@ -3,13 +3,10 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
+        cmd = "Telescope",
         config = function()
             local telescope = require("telescope")
             local fb_actions = telescope.extensions.file_browser.actions
-
-            telescope.load_extension("fzf")
-            telescope.load_extension("file_browser")
-
             telescope.setup({
                 defaults = {
                     prompt_prefix = " ",
@@ -47,10 +44,11 @@ return {
                     },
                 },
             })
+            telescope.load_extension("fzf")
+            telescope.load_extension("file_browser")
         end,
         dependencies = { "telescope-fzf-native.nvim","telescope-file-browser" },
         lazy = true,
-        cmd = "Telescope",
     },
     {
         "nvim-telescope/telescope-fzf-native.nvim",

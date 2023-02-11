@@ -14,6 +14,7 @@ return {
     { "mg979/vim-visual-multi" },
     {
         "lukas-reineke/indent-blankline.nvim",
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             vim.opt.list = true
             vim.opt.listchars:append("space:⋅")
@@ -36,7 +37,6 @@ return {
                 show_current_context_start = true,
             })
         end,
-        event = "User FileOpened",
     },
     {
         "norcalli/nvim-colorizer.lua",

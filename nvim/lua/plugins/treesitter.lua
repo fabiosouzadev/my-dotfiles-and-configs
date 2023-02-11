@@ -2,7 +2,7 @@ return {
     -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
-        event = 'BufReadPost',
+        event = { "BufReadPost", "BufNewFile" },
         build = ":TSUpdate",
         config = function()
             local servers = require("lsp.ensure_installed")

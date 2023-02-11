@@ -126,7 +126,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         cmd = { "LspInstall", "LspUninstall" },
         lazy = true,
-        dependencies = "mason.nvim",
+        dependencies = {"mason.nvim"},
         config = function()
             local servers = require("lsp.ensure_installed")
             local mason_lspconfig = require("mason-lspconfig")

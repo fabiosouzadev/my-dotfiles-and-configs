@@ -7,6 +7,9 @@ return {
             local telescope = require("telescope")
             local fb_actions = telescope.extensions.file_browser.actions
 
+            telescope.load_extension("fzf")
+            telescope.load_extension("file_browser")
+
             telescope.setup({
                 defaults = {
                     prompt_prefix = " ",

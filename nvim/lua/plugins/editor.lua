@@ -3,9 +3,6 @@
 -- "windwp/nvim-spectre",
 -- easily jump to any location and enhanced f/t motions for Leap
 -- "ggandor/leap.nvim",
--- "folke/trouble.nvim",
---  OPtion for comments
---  "folke/todo-comments.nvim",
 return {
     -- Comments
     {
@@ -14,5 +11,42 @@ return {
         keys = { { "gc", mode = { "n", "v" } }, { "gb", mode = { "n", "v" } } },
         event = "User FileOpened",
     },
-    { 'mg979/vim-visual-multi'}
+    { "mg979/vim-visual-multi" },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+            vim.opt.list = true
+            vim.opt.listchars:append("space:⋅")
+            vim.opt.listchars:append("eol:↴")
+
+            vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
+            vim.g.indent_blankline_filetype_exclude = {
+                "help",
+                "startify",
+                "dashboard",
+                "packer",
+                "neogitstatus",
+                "NvimTree",
+                "Trouble",
+            }
+
+            require("indent_blankline").setup({
+                space_char_blankline = " ",
+                show_current_context = true,
+                show_current_context_start = true,
+            })
+        end,
+        event = "User FileOpened",
+    },
+    {
+        "norcalli/nvim-colorizer.lua",
+        config = true,
+        lazy = true,
+        event = "User FileOpened",
+    },
+    {
+        'windwp/nvim-autopairs',
+        event = 'InsertEnter',
+        config = true,
+    },
 }

@@ -1,3 +1,4 @@
+-- toggleterm -- config
 return {
     -- measure startuptime
     {
@@ -39,6 +40,20 @@ return {
     },
     {
         "wakatime/vim-wakatime",
-        event= "VeryLazy"
-    }
+        event = "VeryLazy",
+    },
+    {
+        "ThePrimeagen/vim-be-good",
+        event = "VeryLazy",
+    },
+    {
+        "ThePrimeagen/harpoon",
+        event = "BufEnter",
+        lazy = true,
+    },
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        config = true,
+    },
 }

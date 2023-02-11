@@ -46,6 +46,7 @@
 
   - description: Installing editors packages
     command: |
+      npm install -g @vscode/codicons
       npm install -g vscode-html-language-server
       npm install -g typescript-language-server
       npm install -g eslint-plugin-prettier

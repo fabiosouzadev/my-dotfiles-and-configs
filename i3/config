@@ -26,16 +26,6 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-#set $ws1 "1:"
-#set $ws2 "2:"
-#set $ws3 "3:"
-#set $ws4 "4:"
-#set $ws5 "5:"
-#set $ws6 "6"
-#set $ws7 "7"
-#set $ws8 "8"
-#set $ws9 "9"
-#set $ws10 "10"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -332,15 +322,15 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 #workspace $ws5 output HDMI-0
 
 # bind program to workspace and focus to them on startup:
-assign [class="Xfce4-terminal"] $ws1
-assign [class="(?i)firefox"] $ws2
+#assign [class="Brave-browser-*"] $ws1
+assign [class="Slack"] $ws2
 assign [class="Thunar"] $ws3
 assign [class="Thunderbird"] $ws4
 assign [class="TelegramDesktop"] $ws5
 
 # automatic set focus new window if it opens on another workspace than the current:
-for_window [class=Xfce4-terminal] focus
-for_window [class=(?i)firefox] focus
+for_window [class=Slack] focus
+for_window [class=Brave-browser-*] focus
 for_window [class=Thunar] focus
 for_window [class=Thunderbird] focus
 for_window [class=TelegramDesktop] focus
@@ -442,7 +432,7 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 #exec_always --no-startup-id autotiling
 
 # Autostart apps as you like
-#exec --no-startup-id sleep 2 && xfce4-terminal
+exec --no-startup-id sleep 2 && slack
 #exec --no-startup-id sleep 7 && firefox https://github.com/endeavouros-team/endeavouros-i3wm-setup/blob/main/force-knowledge.md
 #exec --no-startup-id sleep 3 && thunar
 
@@ -585,7 +575,7 @@ strip_workspace_numbers yes
 ## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
 
 bindsym $mod+d exec rofi -modi drun -show drun \
-		-config ~/.config/rofi/rofidmenu.rasi
+		-config ~/.config/rofi/launchers/launcher/rofidmenu.rasi
 
 #bindsym F9 exec rofi -modi drun -show drun \
 #		-config ~/.config/rofi/rofidmenu.rasi
@@ -593,7 +583,7 @@ bindsym $mod+d exec rofi -modi drun -show drun \
 ## rofi bindings for window menu ($mod+t /F10 optional disabled)
 
 bindsym $mod+t exec rofi -show window \
-		-config ~/.config/rofi/rofidmenu.rasi
+		-config ~/.config/rofi/launchers/launcher/rofidmenu.rasi
 
 #bindsym F10 exec rofi -show window \
 #		-config ~/.config/rofi/rofidmenu.rasi

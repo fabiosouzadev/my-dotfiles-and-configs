@@ -51,9 +51,4 @@ return {
         event = "BufEnter",
         lazy = true,
     },
-    {
-        "akinsho/toggleterm.nvim",
-        version = "*",
-        config = true,
-    },
 }

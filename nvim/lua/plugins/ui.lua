@@ -44,4 +44,9 @@ return {
         "nvim-tree/nvim-web-devicons",
         lazy = true,
     },
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        config = true,
+    },
 }

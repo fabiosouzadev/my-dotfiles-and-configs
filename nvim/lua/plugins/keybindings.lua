@@ -21,12 +21,12 @@ return {
                     r = { ":source %<cr>", "Reload Config" },
                 },
                 -- nvim-tree
-                -- t = { ":NvimTreeToggle<cr>", "Toggle NvimTree" },
+                t = { "<cmd>:NeoTree<cr>", "Toggle NeoTree" },
                 -- r = { ":NvimTreeRefresh<cr>", "Refresh NvimTree" },
                 -- n = { ":NvimTreeFindFile<cr>", "Find Files Nvim" },
                 -- b = { ":Buffers<cr>", "Buffers" },
                 -- Telescope
-                t = { '<cmd>lua require "telescope".extensions.file_browser.file_browser()<cr>', "File Browser" }, -- (insert mode: <C-/>, normal mode: ?)
+                -- t = { '<cmd>lua require "telescope".extensions.file_browser.file_browser()<cr>', "File Browser" }, -- (insert mode: <C-/>, normal mode: ?)
                 f = {
                     name = "+Telescope",
                     f = { '<cmd>lua require "telescope.builtin".find_files()<cr>', "Find Files" },
@@ -92,9 +92,9 @@ return {
                     d = { "<Cmd>BufferOrderByDirectory<CR>", "BufferOrderByBufferDirectory" },
                     l = { "<Cmd>BufferOrderByLanguage<CR>", "BufferOrderByLanguage" },
                     w = { "<Cmd>BufferOrderByWindowNumber<CR>", "BufferOrderByWindowNumber" },
-                }
+                },
             },
-                        -- Buffers
+            -- Buffers
             ["<tab>"] = { ":bnext<cr>", "Next Buffer" }, -- or <c-^
             ["<s-tab>"] = { ":bprevious<cr>", "Previous Buffer" },
             --- LSP --
@@ -111,7 +111,6 @@ return {
                 f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format File" },
             },
             K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Lsp - Hover" }, -- or <cmd>Lspsaga hover_doc<cr>
-
             --- Lspsaga --
             ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Go to next diagnostic" },
             ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go to previous diagnostic" },
@@ -126,7 +125,6 @@ return {
                 end,
                 "Harpoon Toogle Menu",
             },
-
             -- Window
             ["<c-w>"] = {
                 name = "+Window",
@@ -148,8 +146,8 @@ return {
                 l = { ":vertical resize +2<cr>", ":vertical resize +2<cr>" },
             },
             ["<A>"] = {
-                c = {"<Cmd>BufferClose<CR>","BufferClose" }
-            }
+                c = { "<Cmd>BufferClose<CR>", "BufferClose" },
+            },
         }
 
         wk.register(mappings)

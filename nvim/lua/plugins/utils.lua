@@ -1,4 +1,3 @@
--- toggleterm -- config
 return {
     -- measure startuptime
     {

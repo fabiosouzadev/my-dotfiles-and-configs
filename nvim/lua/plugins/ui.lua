@@ -31,18 +31,30 @@ return {
         end,
     },
 
-    { 
-        "romgrk/barbar.nvim", 
+    {
+        "romgrk/barbar.nvim",
         event = "BufWinEnter",
         dependencies = "nvim-web-devicons"
     },
     {
-        "nvim-tree/nvim-web-devicons",
-        lazy = true,
+        "nvim-neo-tree/neo-tree.nvim",
+        cmd = "Neotree",
+        version = "v2.x",
+        config = true,
+        dependencies = {
+            "plenary.nvim",
+            "nvim-web-devicons", -- not strictly required, but recommended
+            "nui.nvim",
+        }
     },
     {
         "akinsho/toggleterm.nvim",
         branch = "main",
         config = true,
     },
+    -- icons
+    { "nvim-tree/nvim-web-devicons", lazy = true },
+
+    -- ui components
+    { "MunifTanjim/nui.nvim", lazy = true }
 }

@@ -21,7 +21,7 @@ return {
                     r = { ":source %<cr>", "Reload Config" },
                 },
                 -- nvim-tree
-                t = { "<cmd>:NeoTree<cr>", "Toggle NeoTree" },
+                t = { "<cmd>NvimTreeToggle<cr>", "Toggle NeoTree" },
                 -- r = { ":NvimTreeRefresh<cr>", "Refresh NvimTree" },
                 -- n = { ":NvimTreeFindFile<cr>", "Find Files Nvim" },
                 -- b = { ":Buffers<cr>", "Buffers" },
@@ -116,8 +116,6 @@ return {
             ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go to previous diagnostic" },
             ["]e"] = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Go To Next Diagnostic" },
             ["[e"] = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go To Previous Diagnostic" },
-            -- Open Floaterm
-            ["<A-g>"] = { "<cmd>Lspsaga open_floaterm lazygit<cr>", "Open Lazy Git" },
             -- Harpoon
             ["<c-e>"] = {
                 function()
@@ -144,9 +142,6 @@ return {
                 k = { ":resize +2<cr>", ":resize +2<cr>" },
                 h = { ":vertical resize -2<cr>", ":vertical resize -2<cr>" },
                 l = { ":vertical resize +2<cr>", ":vertical resize +2<cr>" },
-            },
-            ["<A>"] = {
-                c = { "<Cmd>BufferClose<CR>", "BufferClose" },
             },
         }
 

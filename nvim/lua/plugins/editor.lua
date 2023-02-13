@@ -1,8 +1,3 @@
--- "nvim-neo-tree/neo-tree.nvim",
--- search/replace in multiple files
--- "windwp/nvim-spectre",
--- easily jump to any location and enhanced f/t motions for Leap
--- "ggandor/leap.nvim",
 return {
     -- Comments
     {
@@ -48,5 +43,9 @@ return {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',
         config = true,
+    },
+    {
+        'junegunn/vim-easy-align',
+        event = 'BufEnter',
     },
 }

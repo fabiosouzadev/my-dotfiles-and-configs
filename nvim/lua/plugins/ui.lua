@@ -5,7 +5,6 @@
 -- "goolord/alpha-nvim",
 -- 'tpope/vim-sleuth'
 -- bufferline ==> romgrk/barbar.nvim
--- toggleterm.nvim
 return {
     {
         "nvim-lualine/lualine.nvim",
@@ -31,14 +30,11 @@ return {
             })
         end,
     },
-    {
-        "akinsho/bufferline.nvim",
-        version = "v3.*",
-        dependencies = {
-            "nvim-web-devicons",
-        },
-        config = true,
-        event = "VeryLazy",
+
+    { 
+        "romgrk/barbar.nvim", 
+        event = "BufWinEnter",
+        dependencies = "nvim-web-devicons"
     },
     {
         "nvim-tree/nvim-web-devicons",
@@ -46,7 +42,7 @@ return {
     },
     {
         "akinsho/toggleterm.nvim",
-        version = "*",
+        branch = "main",
         config = true,
     },
 }

@@ -9,8 +9,8 @@ return {
             local fb_actions = telescope.extensions.file_browser.actions
             telescope.setup({
                 defaults = {
-                    prompt_prefix = " ",
-                    selection_caret = " ",
+                    -- prompt_prefix = " ",
+                    -- selection_caret = " ",
                     file_ignore_patterns = { "%.git/", "node_modules/", "coverage/", "__pycache__/", "%.o" },
                     layout_config = {
                         width = 0.75,

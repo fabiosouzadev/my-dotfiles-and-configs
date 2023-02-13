@@ -1,11 +1,10 @@
 local M = {}
 M.ensure_installed_lsp = {
   "cssls",
-  "sumneko_lua",
+  "lua_ls",
   "emmet_ls",
   "html",
   "jsonls",
-  "sumneko_lua",
   "tsserver",
   "pyright",
   "bashls",

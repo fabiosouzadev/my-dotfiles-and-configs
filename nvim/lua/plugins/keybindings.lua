@@ -1,3 +1,4 @@
+-- WhichKey
 return {
     "folke/which-key.nvim",
     event = "VeryLazy",
@@ -14,7 +15,8 @@ return {
         local mappings = {
             ["<leader>"] = {
                 -- Configs
-                s = {
+                c = {
+                    name = "+Config",
                     e = { ':vsplit %<cr>"', "Edit configuration" },
                     r = { ":source %<cr>", "Reload Config" },
                 },
@@ -26,7 +28,7 @@ return {
                 -- Telescope
                 t = { '<cmd>lua require "telescope".extensions.file_browser.file_browser()<cr>', "File Browser" }, -- (insert mode: <C-/>, normal mode: ?)
                 f = {
-                    name = "Telescope",
+                    name = "+Telescope",
                     f = { '<cmd>lua require "telescope.builtin".find_files()<cr>', "Find Files" },
                     b = { '<cmd>lua require "telescope".extensions.file_browser.file_browser()<cr>', "File Browser" }, -- (insert mode: <C-/>, normal mode: ?)
                     g = { '<cmd>lua require "telescope.builtin".live_grep()<cr>', "Live Grep" },
@@ -77,7 +79,24 @@ return {
                     end,
                     "Harpoon mark file",
                 },
+                -- Barbar --
+                -- Buffers --
+                b = {
+                    name = "+Buffers",
+                    p = { "<Cmd>BufferPin<CR>", "Buffer Pin" },
+                    c = { "<Cmd>BufferClose<CR>", "Buffer Close" },
+                    [","] = { "<Cmd>BufferMovePrevious<CR>", "Buffer Move Previous" },
+                    ["."] = { "<Cmd>BufferMoveNext<CR>", "Buffer Move Next" },
+                    -- " Sort automatically by...
+                    b = { "<Cmd>BufferOrderByBufferNumber<CR>", "Buffer Order By Buffer Number" },
+                    d = { "<Cmd>BufferOrderByDirectory<CR>", "BufferOrderByBufferDirectory" },
+                    l = { "<Cmd>BufferOrderByLanguage<CR>", "BufferOrderByLanguage" },
+                    w = { "<Cmd>BufferOrderByWindowNumber<CR>", "BufferOrderByWindowNumber" },
+                }
             },
+                        -- Buffers
+            ["<tab>"] = { ":bnext<cr>", "Next Buffer" }, -- or <c-^
+            ["<s-tab>"] = { ":bprevious<cr>", "Previous Buffer" },
             --- LSP --
             g = {
                 name = "Lsp",
@@ -100,11 +119,6 @@ return {
             ["[e"] = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Go To Previous Diagnostic" },
             -- Open Floaterm
             ["<A-g>"] = { "<cmd>Lspsaga open_floaterm lazygit<cr>", "Open Lazy Git" },
-
-            -- Buffers
-            ["<tab>"] = { ":bnext<cr>", "Next Buffer" }, -- or <c-^
-            ["<s-tab>"] = { ":bprevious<cr>", "Previous Buffer" },
-
             -- Harpoon
             ["<c-e>"] = {
                 function()
@@ -126,7 +140,6 @@ return {
                 o = { "<C-w>o", "Close other panes" },
                 r = { "<C-w>r", "Rotate Pane" },
                 x = { "<C-w>x", "exchange current window with next one" },
-                d = { ":bdelete<cr>", "Buffer Delete" },
 
                 -- Resize
                 j = { ":resize -2<cr>", ":resize -2<cr>" },
@@ -134,6 +147,9 @@ return {
                 h = { ":vertical resize -2<cr>", ":vertical resize -2<cr>" },
                 l = { ":vertical resize +2<cr>", ":vertical resize +2<cr>" },
             },
+            ["<A>"] = {
+                c = {"<Cmd>BufferClose<CR>","BufferClose" }
+            }
         }
 
         wk.register(mappings)

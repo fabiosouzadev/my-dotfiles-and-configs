@@ -1,4 +1,4 @@
-local opts = {
+return {
   settings = {
     yaml = {
       hover = true,
@@ -26,5 +26,3 @@ local opts = {
     },
   },
 }
-
-return opts

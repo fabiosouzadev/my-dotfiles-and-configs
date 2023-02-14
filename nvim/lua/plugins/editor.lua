@@ -45,6 +45,7 @@ return {
         config = true,
     },
     {
+        --https://github.com/junegunn/vim-easy-align
         'junegunn/vim-easy-align',
         event = 'BufEnter',
     },

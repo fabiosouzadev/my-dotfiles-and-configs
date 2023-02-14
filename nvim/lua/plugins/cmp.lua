@@ -29,9 +29,7 @@ return {
                             treesitter = "[Treesitter]",
                             buffer = "[Buffer]",
                             path = "[Path]",
-                            emoji = "[Emoji]",
                             cmp_tabnine = "[TabNine]",
-                            copilot = "[Copilot]",
                         },
                     }),
                 },
@@ -64,9 +62,7 @@ return {
                     { name = "buffer" },
                     { name = "path" },
                     { name = "cmp_tabnine" },
-                    { name = "copilot" },
                     { name = "treesitter" },
-                    { name = "emoji" },
                 }),
                 experimental = {
                     ghost_text = {
@@ -76,25 +72,15 @@ return {
             }
         end,
         dependencies = {
-            "lspkind.nvim",
-            "cmp-nvim-lsp",
-            "cmp-buffer",
-            "cmp-path",
-            "cmp-emoji",
-            "cmp_luasnip",
-            "cmp-treesitter",
+            "onsails/lspkind.nvim",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "saadparwaiz1/cmp_luasnip",
+            "ray-x/cmp-treesitter",
             "cmp-tabnine",
-            "copilot.vim",
         },
     },
-    { "onsails/lspkind.nvim", lazy = true },
-    { "hrsh7th/cmp-nvim-lsp", lazy = true },
-    { "hrsh7th/cmp-buffer", lazy = true },
-    { "hrsh7th/cmp-path", lazy = true },
-    { "hrsh7th/cmp-emoji", lazy = true },
-    { "saadparwaiz1/cmp_luasnip", lazy = true },
-    { "ray-x/cmp-treesitter", lazy = true },
-    { "github/copilot.vim", lazy = true },
     {
         "tzachar/cmp-tabnine",
         build = "./install.sh",
@@ -119,10 +105,6 @@ return {
             require("luasnip.loaders.from_vscode").lazy_load()
             require("luasnip.loaders.from_snipmate").lazy_load()
         end,
-        dependencies = { "friendly-snippets" },
-    },
-    {
-        "rafamadriz/friendly-snippets",
-        lazy = true,
+        dependencies = { "rafamadriz/friendly-snippets" },
     },
 }

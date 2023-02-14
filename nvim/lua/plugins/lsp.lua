@@ -10,27 +10,24 @@ return {
         event = "BufReadPre",
         dependencies = {
             -- Automatically install LSPs to stdpath for neovim
-            -- "williamboman/mason.nvim",
-            "mason-lspconfig.nvim",
-            -- 'hrsh7th/cmp-nvim-lsp',
-            -- Useful status updates for LSP
-            -- "j-hui/fidget.nvim",
-
-            -- Additional lua configuration, makes nvim stuff amazing
+            "j-hui/fidget.nvim",
             "neodev.nvim",
+            "mason.nvim",
+            "mason-lspconfig.nvim",
+            "cmp-nvim-lsp",
         },
         config = function()
             local lspconfig = require("lspconfig")
             local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities = require('cmp_nvim_lsp').default_capabilities()
+            capabilities = require("cmp_nvim_lsp").default_capabilities()
             local servers = require("lsp.ensure_installed")
             local lsp_language_servers = servers.ensure_installed_lsp
             -- Setup neovim lua configuration
             local signs = {
                 { name = "DiagnosticSignError", text = "" },
-                { name = "DiagnosticSignWarn", text = "" },
-                { name = "DiagnosticSignHint", text = "" },
-                { name = "DiagnosticSignInfo", text = "" },
+                { name = "DiagnosticSignWarn",  text = "" },
+                { name = "DiagnosticSignHint",  text = "" },
+                { name = "DiagnosticSignInfo",  text = "" },
             }
 
             for _, sign in ipairs(signs) do
@@ -131,7 +128,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         cmd = { "LspInstall", "LspUninstall" },
         lazy = true,
-        dependencies = {"mason.nvim"},
+        dependencies = { "mason.nvim" },
         config = function()
             local servers = require("lsp.ensure_installed")
             local mason_lspconfig = require("mason-lspconfig")
@@ -170,7 +167,7 @@ return {
         config = function()
             require("lspsaga").setup({})
         end,
-        dependencies = { {"nvim-web-devicons"} }
+        dependencies = { { "nvim-web-devicons" } },
     },
     {
         "folke/trouble.nvim",

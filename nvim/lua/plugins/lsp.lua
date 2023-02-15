@@ -97,9 +97,11 @@ return {
             local diagnostics = null_ls.builtins.diagnostics
             -- local code_actions = null_ls.builtins.code_actions
             -- local hover = null_ls.builtins.hover
-            -- local completion = null_ls.builtins.completion
+            local completion = null_ls.builtins.completion
 
             local sources = {
+                -- snippets support
+                completion.luasnip,
                 -- formatting
                 formatting.prettierd,
                 formatting.black.with({ extra_args = { "--line-length", "79", "-t", "py37", "--skip-string-normalization" } }),

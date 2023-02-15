@@ -8,17 +8,11 @@ return {
         end,
     },
     {
-        "folke/neodev.nvim",
-        lazy = true,
-        config = true,
-    },
-    {
         "nvim-lua/plenary.nvim",
         cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" },
         lazy = true,
     },
     -- {{{ Navigate Vim Splits and Tmux pains.
-
     {
         "alexghergh/nvim-tmux-navigation",
         event = "BufEnter",

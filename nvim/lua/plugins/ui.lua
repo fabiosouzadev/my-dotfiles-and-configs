@@ -35,7 +35,7 @@ return {
             })
         end,
     },
-    { "romgrk/barbar.nvim",          dependencies = "nvim-web-devicons" },
+    -- { "romgrk/barbar.nvim",          dependencies = "nvim-web-devicons" },
     {
         "kyazdani42/nvim-tree.lua",
         version = "nightly",

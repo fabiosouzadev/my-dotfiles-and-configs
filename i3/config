@@ -31,8 +31,8 @@ set $ws10 "10"
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango: Noto Sans Regular 10
-font pango:Iosevka Nerd Font 10
+font pango: Noto Sans Regular 12
+#font pango:Iosevka Nerd Font 10
 
 
 #####################
@@ -322,11 +322,11 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 #workspace $ws5 output HDMI-0
 
 # bind program to workspace and focus to them on startup:
-#assign [class="Brave-browser-*"] $ws1
+assign [class="Spotify"] $ws1
 assign [class="Slack"] $ws2
-assign [class="Thunar"] $ws3
-assign [class="Thunderbird"] $ws4
-assign [class="TelegramDesktop"] $ws5
+assign [class="xfce4*"] $ws3
+assign [class="Brave-browser-*"] $ws3
+assign [class="Thunar"] $ws4
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=Slack] focus

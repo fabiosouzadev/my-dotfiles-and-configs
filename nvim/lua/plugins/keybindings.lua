@@ -30,7 +30,7 @@ return {
                 f = {
                     name = "+Telescope",
                     f = { '<cmd>lua require "telescope.builtin".find_files()<cr>', "Find Files" },
-                    b = { '<cmd>lua require "telescope".extensions.file_browser.file_browser()<cr>', "File Browser" }, -- (insert mode: <C-/>, normal mode: ?)
+                    -- b = { '<cmd>lua require "telescope".extensions.file_browser.file_browser()<cr>', "File Browser" }, -- (insert mode: <C-/>, normal mode: ?)
                     g = { '<cmd>lua require "telescope.builtin".live_grep()<cr>', "Live Grep" },
                     u = { '<cmd>lua require "telescope.builtin".buffers()<cr>', "Buffers" },
                     h = { '<cmd>lua require "telescope.builtin".help_tags()<cr>', "Help Tags" },

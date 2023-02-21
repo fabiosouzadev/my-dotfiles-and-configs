@@ -19,16 +19,15 @@ return {
         config = function()
             require("nvim-tmux-navigation").setup({
                 disable_when_zoomed = true,
+                keybindings = {
+                    left = "<C-h>",
+                    down = "<C-j>",
+                    up = "<C-k>",
+                    right = "<C-l>",
+                    last_active = "<C-\\>",
+                    next = "<C-Space>",
+                }
             })
-            local keymap = vim.api.nvim_set_keymap
-            local opts = { noremap = true, silent = true }
-            -- nvim-tmux-navigation
-            keymap("n", "<C-h>", '<cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateLeft()<cr>', opts)
-            keymap("n", "<C-j>", '<cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateDown()<cr>', opts)
-            keymap("n", "<C-k>", '<cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateUp()<cr>', opts)
-            keymap("n", "<C-l>", '<cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateRight()<cr>', opts)
-            keymap("n", "<C-\\>", '<cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateLastActive()<cr>', opts)
-            keymap("n", "<C-Space>", '<cmd>lua require("nvim-tmux-navigation").NvimTmuxNavigateNext()<cr>', opts)
         end,
     },
     {

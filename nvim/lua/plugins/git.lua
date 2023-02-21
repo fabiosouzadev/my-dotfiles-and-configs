@@ -1,4 +1,4 @@
- -- Git related plugins
+-- Git related plugins
 -- use 'tpope/vim-fugitive'
 -- use 'tpope/vim-rhubarb'
 return {

@@ -4,20 +4,23 @@ return {
         "nvim-treesitter/nvim-treesitter",
         event = { "BufReadPost", "BufNewFile" },
         build = ":TSUpdate",
-        config = function()
+        opts = function ()
             local servers = require("lsp.ensure_installed")
+            return {treesitter_servers = servers.ensure_installed_treesitter}
+        end,
+        config = function(_,opts)
             require("nvim-treesitter.configs").setup({
                 highlight = {
                     enable = true, -- false will disable the whole extension
                 },
-                indent = { enable = true, disable = { 'python' } },
+                indent = { enable = true},
                 autopairs = {
                     enable = true,
                 },
                 -- enable autotagging (w/ nvim-ts-autotag plugin)
                 autotag = { enable = true },
                 -- ensure these language parsers are installed
-                ensure_installed = servers.ensure_installed_treesitter,
+                ensure_installed = opts.treesitter_servers,
                 -- auto install above language parsers
                 auto_install = true,
                 incremental_selection = {

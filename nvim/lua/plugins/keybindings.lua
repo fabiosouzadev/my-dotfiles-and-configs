@@ -5,7 +5,7 @@ return {
     cmd = "WhichKey",
     config = function()
         vim.o.timeout = true
-        vim.o.timeoutlen = 300
+        vim.o.timeoutlen = 50
         local wk = require("which-key")
         wk.setup({
             -- your configuration comes here

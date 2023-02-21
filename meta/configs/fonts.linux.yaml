@@ -9,12 +9,19 @@
       FONTS=(
         "CascadiaCode"
         "FiraCode"
+        "FiraMono"
         "Hack"
         "Iosevka"
         "JetBrainsMono"
         "VictorMono"
         "IBMPlexMono"
         "SourceCodePro"
+        "SpaceMono"
+        "NerdFontsSymbolsOnly"
+        "UbuntuMono"
+        "Noto"
+        "Meslo"
+        "Inconsolata"
       )
 
 

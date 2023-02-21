@@ -42,5 +42,4 @@
 
 - link:
     ~/.tmux.conf: tmux/tmux.conf
-    ~/.config/tmux/tokyonight.conf: tmux/tokyonight.conf
-    ~/.config/tmux/utility.conf: tmux/utility.conf
+    ~/.config/tmux: tmux/tmux

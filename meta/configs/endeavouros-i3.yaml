@@ -30,6 +30,7 @@
           flameshot \
           maim \
           peek \
+          libsecret \
           seahorse \
           picom
 

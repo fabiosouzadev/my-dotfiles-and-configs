@@ -5,6 +5,7 @@
     defaultBranch = main
 
 [credential]
+	helper = libsecret
 #	helper = osxkeychain
 
 [core]

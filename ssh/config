@@ -1,4 +1,4 @@
-# Azure
+#sudo pacman -S viewnior Azure
 Host ssh.dev.azure.com
   HostName ssh.dev.azure.com
   PreferredAuthentications publickey

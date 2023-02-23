@@ -1,8 +1,8 @@
 - shell:
     - command: '[ -f "$HOME/.ssh/id_ed25519" ]  || cp personal/ssh/id_ed25519 ~/.ssh/id_ed25519'
     - command: '[ -f "$HOME/.ssh/id_ed25519.pub" ]  || cp personal/ssh/id_ed25519.pub ~/.ssh/id_ed25519.pub'
-    - [ chmod 400 ~/.ssh/id_ed25519 ]
-    - [ chmod 400 ~/.ssh/id_ed25519.pub ]
+    - [chmod 400 ~/.ssh/id_ed25519]
+    - [chmod 400 ~/.ssh/id_ed25519.pub]
     - command: '[ -d "$HOME/.gnupg/" ]  || mkdir -p "$HOME/.gnupg"'
     - command: '[ -f "$HOME/.gnupg/private.gpg" ] || cp personal/gnupg/private.gpg ~/.gnupg/private.gpg'
     - command: '[ -f "$HOME/.gnupg/public.gpg" ]  || cp personal/gnupg/public.gpg ~/.gnupg/public.gpg'
@@ -18,10 +18,9 @@
         #pass init fabiovanderlei.developer@gmail.com
 
 - link:
-    ~/.gitconfig_local:                   personal/gitconfig_local
-    ~/.wakatime.cfg:                      personal/wakatime.cfg
-    ~/.ssh/known_hosts:                   personal/ssh/known_hosts
-    ~/.config/ngrok/ngrok.yml:            personal/ngrok.yml
-    ~/.config/spotify-tui/client.yml:     personal/spotify-client.yml
-    ~/.password-store:                    personal/password-store
-
+    ~/.gitconfig_local: personal/gitconfig_local
+    ~/.wakatime.cfg: personal/wakatime.cfg
+    ~/.ssh/known_hosts: personal/ssh/known_hosts
+    ~/.config/ngrok/ngrok.yml: personal/ngrok.yml
+    ~/.config/spotify-tui/client.yml: personal/spotify-client.yml
+    ~/.password-store: personal/password-store

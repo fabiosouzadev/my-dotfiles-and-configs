@@ -54,8 +54,8 @@
 [includeIf "gitdir:~/Projects/mglu/"]
 	path = ~/.gitconfig_mglu
 
-;[includeIf "gitdir:~/Projects/Work/github/"]
-;    path = ~/.gitconfig_github_work
+[includeIf "gitdir:~/Projects/hub/"]
+    path = ~/.gitconfig_mglu
 
 ;[includeIf "gitdir:~/Projects/Work/gitlab/"]
 ;    path = ~/.gitconfig_gitlab

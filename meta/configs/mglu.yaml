@@ -1,8 +1,8 @@
 - shell:
     - command: '[ -f "$HOME/.ssh/id_ed25519_luizalabs" ]  || cp mglu/id_ed25519_luizalabs ~/.ssh/id_ed25519_luizalabs'
     - command: '[ -f "$HOME/.ssh/id_ed25519_luizalabs.pub" ]  || cp mglu/id_ed25519_luizalabs.pub ~/.ssh/id_ed25519_luizalabs.pub'
-    - [ chmod 400 ~/.ssh/id_ed25519_luizalabs]
-    - [ chmod 400 ~/.ssh/id_ed25519_luizalabs.pub]
+    - [chmod 400 ~/.ssh/id_ed25519_luizalabs]
+    - [chmod 400 ~/.ssh/id_ed25519_luizalabs.pub]
     - command: '[ -d "$HOME/.kube" ]  || mkdir $HOME/.kube'
     - description: Validating sudo credentials
       command: "sudo --validate"
@@ -31,7 +31,7 @@
           ;; 
         esac
 - link:
-    ~/.gitconfig_mglu: mglu/gitconfig_mglu 
+    ~/.gitconfig_mglu: mglu/gitconfig_mglu
     ~/.kube/eks-development.yaml: mglu/kube/eks-development.yaml
     ~/.kube/eks-hml-pagamentos.yaml: mglu/kube/eks-hml-pagamentos.yaml
     ~/.kube/eks-prd-pagamentos.yaml: mglu/kube/eks-prd-pagamentos.yaml

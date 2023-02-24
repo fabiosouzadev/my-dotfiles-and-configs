@@ -6,7 +6,7 @@
     - description: Install Pycharm
       command: |
         SHORTCUTS_DIR="/usr/share/applications"
-        version="231.6471.3"
+        version="231.7515.12"
 
         PYCHARM_SHORTCUT="[Desktop Entry]
         Version=${version}

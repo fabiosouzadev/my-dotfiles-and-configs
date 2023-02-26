@@ -53,7 +53,8 @@
           postman-bin \
           insomnia-bin \
           termius-beta \
-          rofi-greenclip
+          rofi-greenclip \
+          whatsapp-for-linux
 
     - description: Install ngrok
       command: |

@@ -25,11 +25,6 @@
       global: latest
       versions:
         - latest
-    - plugin: kubectx
-      url: https://github.com/virtualstaticvoid/asdf-kubectx.git
-      global: latest
-      versions:
-        - latest
     - plugin: argocd
       url: https://github.com/beardix/asdf-argocd.git
       global: latest

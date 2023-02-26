@@ -57,9 +57,3 @@
   - description: Installing Lazydocker
     command: |
       curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | zsh
-      if [ -x "$HOME/.local/bin/lazydocker" ]; then 
-        sudo rm /usr/local/bin/lazydocker
-        sudo mv "$HOME/.local/bin/lazydocker" /usr/local/bin
-      fi
-    stderr: true
-    stdout: true

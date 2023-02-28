@@ -39,9 +39,8 @@
         sudo pacman -S --noconfirm --needed \
           bluez \
           bluez-utils \
-          blueman \
-          pipewire-pulse
-        sudo systemctl enable bluetooth
+          blueman 
+        sudo systemctl enable --now bluetooth
 
     - description: Install yay packages
       command: |
@@ -68,7 +67,7 @@
 
     - description: Disable DNS NetworkManager processing
       command: |
-        echo "[main]\\ndns=none\\nrc-manager=unmanaged" | sudo tee /etc/NetworkManager/conf.d/no-dns.conf      
+        #echo "[main]\\ndns=none\\nrc-manager=unmanaged" | sudo tee /etc/NetworkManager/conf.d/no-dns.conf      
         sudo rm /etc/resolv.conf
         sudo cp etc/resolv.conf /etc/resolv.conf
          
@@ -76,6 +75,7 @@
           cat mglu/resolv.conf | sudo tee -a /etc/resolv.conf
         fi
         sudo systemctl restart NetworkManager.service
+        sleep 20
         #echo "nameserver 8.8.8.8\\nnameserver 8.8.4.4\\nnameserver 1.1.1.1\\nnameserver 1.0.0.1\\nnameserver 10.0.0.150\\nnameserver 10.0.0.151" | sudo tee /etc/resolv.conf
 
 - link:

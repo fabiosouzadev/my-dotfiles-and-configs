@@ -51,3 +51,4 @@ Brewfile.lock.json
 .DS_Store
 install.log
 lazy-lock.json
+kubectl

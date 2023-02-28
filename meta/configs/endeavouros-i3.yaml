@@ -67,17 +67,14 @@
 
     - description: Disable DNS NetworkManager processing
       command: |
-        #echo "[main]\\ndns=none\\nrc-manager=unmanaged" | sudo tee /etc/NetworkManager/conf.d/no-dns.conf      
+        sudo cp etc/90-no-dns.conf /etc/NetworkManager/conf.d
         sudo rm /etc/resolv.conf
         sudo cp etc/resolv.conf /etc/resolv.conf
          
         if [[ -f "mglu/resolv.conf" ]]; then
           cat mglu/resolv.conf | sudo tee -a /etc/resolv.conf
         fi
-        sudo systemctl restart NetworkManager.service
-        sleep 20
-        #echo "nameserver 8.8.8.8\\nnameserver 8.8.4.4\\nnameserver 1.1.1.1\\nnameserver 1.0.0.1\\nnameserver 10.0.0.150\\nnameserver 10.0.0.151" | sudo tee /etc/resolv.conf
-
+        sudo systemctl reload NetworkManager
 - link:
     ~/.config/i3: i3
     ~/.config/dunst: dunst

@@ -19,7 +19,7 @@ set $left h
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango: Noto Sans NF Regular 10
+font pango: Hack NFM Regular 10
 #font pango:Iosevka Nerd Font 10
 
 
@@ -478,11 +478,11 @@ set $darkbluetrans	#08052be6
 set $darkblue		#08052b
 set $lightblue		#5294e2
 set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
+set $white		    #ffffff
+set $black		    #000000
+set $purple		    #e345ff
 set $darkgrey		#383c4a
-set $grey		#b0b5bd
+set $grey		    #b0b5bd
 set $mediumgrey		#8b8b8b
 set $yellowbrown	#e1b700
 

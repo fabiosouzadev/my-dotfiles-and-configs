@@ -37,10 +37,10 @@
         - latest
     - plugin: java
       url: https://github.com/halcyon/asdf-java.git
-      global: temurin-17.0.2+8
+      global: temurin-19.0.2+7
       versions:
-        - temurin-17.0.2+8
-        - temurin-8.0.322+6
+        - temurin-19.0.2+7
+        - temurin-8.0.362+9
     - plugin: gradle
       url: https://github.com/rfrancis/asdf-gradle.git
       global: 6.5.1

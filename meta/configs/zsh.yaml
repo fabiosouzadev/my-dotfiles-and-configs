@@ -30,9 +30,6 @@
       path: zshrc.d/003-brew-completations.zsh
     ~/.zshrc.d/004-java.zsh: zshrc.d/004-java.zsh
     ~/.zshrc.d/005-rust.zsh: zshrc.d/005-rust.zsh
-    ~/.zshrc.d/006-pyenv.zsh:
-      # if: '[ $(which pyenv) ]'
-      path: zshrc.d/006-pyenv.zsh
     ~/.zshrc.d/007-android.zsh: zshrc.d/007-android.zsh
     ~/.zshrc.d/008-flutter.zsh: zshrc.d/008-flutter.zsh
     ~/.zshrc.d/009-webkit.zsh: zshrc.d/009-webkit.zsh

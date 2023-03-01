@@ -1,4 +1,6 @@
 - shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
     - description: Install dependencies
       command: | 
         sudo pacman -S --noconfirm \
@@ -52,7 +54,7 @@
             sudo update-alternatives --config x-terminal-emulator
           fi
 
-          sudo rm -r $HOME/.local/src/alacritty 
+          # sudo rm -r $HOME/.local/src/alacritty 
         fi
       stderr: true
       stdout: true

@@ -27,8 +27,8 @@ Host gitlab.luizalabs.com
 Host gitlab.hubfintech.com.br
   User git
   HostName gitlab.hubfintech.com.br
-  PreferredAuthentications publickey
-  IdentityFile ~/.ssh/id_ed25519_luizalabs
+  # PreferredAuthentications publickey
+  # IdentityFile ~/.ssh/id_ed25519_luizalabs
 
 #Lembrar senhas
 Host *

@@ -19,7 +19,7 @@ set $left h
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango: JetBrainsMono Nerd Font 12
+font pango: JetBrainsMono Nerd Font 10
 #font pango:Iosevka Nerd Font 10
 
 

@@ -1,4 +1,6 @@
 endeavouros-i3
+linux.browsers
+linux.fonts
 personal
 mglu
 git
@@ -6,7 +8,6 @@ ssh
 fzf
 zsh
 starship
-fonts.linux
 pyenv
 docker
 k8s

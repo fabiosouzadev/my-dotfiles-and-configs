@@ -1,0 +1,25 @@
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Installing apps
+      command: |
+        case $(lsb_release -is) in 
+        Ubuntu)
+
+        ;;
+
+        Arch | EndeavourOS)
+          yay -Syu --noconfirm \
+            brave-nightly-bin \
+            chromium-snapshot-bin \
+            google-chrome-dev \
+            opera-developer \
+            vivaldi-snapshot \
+            firefox-nightly \
+            firefox-developer-edition 
+          
+          sudo pacman -Syu --noconfirm \
+            qutebrowser
+        ;;
+
+        esac

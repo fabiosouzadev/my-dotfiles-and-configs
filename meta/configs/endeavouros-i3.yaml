@@ -30,7 +30,6 @@
           git-delta \
           postgresql-libs \
           dbeaver \
-          qutebrowser \
           flameshot \
           maim \
           peek \
@@ -49,7 +48,6 @@
     - description: Install yay packages
       command: |
         yay -Syu --noconfirm \
-          brave-nightly-bin \
           slack-desktop \
           ferdium \
           notion-app \

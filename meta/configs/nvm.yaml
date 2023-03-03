@@ -42,6 +42,7 @@
       npm install -g detox-cli
       npm install -g electron
       npm install -g @bitwarden/cli
+      npm install -g @ionic/cli
       
       # Installing editors packages
       npm install -g @vscode/codicons

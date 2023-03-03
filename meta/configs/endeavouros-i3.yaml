@@ -35,7 +35,8 @@
           peek \
           libsecret \
           seahorse \
-          picom
+          picom \
+          telegram-desktop
 
     - description: Install bluetooth
       command: |

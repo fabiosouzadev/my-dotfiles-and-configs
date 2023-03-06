@@ -56,7 +56,8 @@
           insomnia-bin \
           termius-beta \
           rofi-greenclip \
-          whatsapp-for-linux
+          whatsapp-for-linux \
+          discord-canary
 
     - description: Install ngrok
       command: |

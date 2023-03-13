@@ -1,17 +1,16 @@
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
-    - description: Create source dir 
+    - description: Create source dir
       command: "[ -d $HOME/.local/src ] || mkdir -p $HOME/.local/src"
     - description: Install jetbrains-toolbox
       command: |
-        version="1.27.3.14493"
-        wget -v -P $HOME/.local/src https://download.jetbrains.com/toolbox/jetbrains-toolbox-${version}.tar.gz
+        version=1.27.3.14493
+        if [[ `uname` == 'Linux' && ! -d $HOME/.local/src/jetbrains-toolbox-${version} ]]; then
+          curl -L "https://download.jetbrains.com/toolbox/jetbrains-toolbox-$version.tar.gz" | tar -xz -C $HOME/.local/src/
+        fi
 
-        sudo tar xzf $HOME/.local/src/jetbrains-toolbox-${version}.tar.gz -C /opt/
-        rm $HOME/.local/src/jetbrains-toolbox-${version}.tar.gz
-        cd /opt/jetbrains-toolbox-${version}
-
+        cd $HOME/.local/src/jetbrains-toolbox-${version}
         ./jetbrains-toolbox
 
 - link:

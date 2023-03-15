@@ -51,3 +51,4 @@
 - link:
     ~/.zshrc.d/012-kubectl-completions.zsh: zshrc.d/012-kubectl-completions.zsh
     ~/.zshrc.d/014-gcloud.zsh: zshrc.d/014-gcloud.zsh
+    ~/.zshrc.d/016-k9s-completions.zsh: zshrc.d/016-k9s-completions.zsh

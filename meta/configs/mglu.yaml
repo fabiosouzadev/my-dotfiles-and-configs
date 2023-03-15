@@ -45,8 +45,8 @@
     - [ git clone git@gitlab.luizalabs.com:cicd/fintech/magalu-pagamentos/squad-pix/hogwarts.git ~/Projects/mglu/cicd_hogwarts ] 
 - link:
     ~/.gitconfig_mglu: mglu/gitconfig_mglu
-    ~/.kube/eks-development.yaml: mglu/kube/eks-development.yaml
-    ~/.kube/eks-hml-pagamentos.yaml: mglu/kube/eks-hml-pagamentos.yaml
-    ~/.kube/eks-prd-pagamentos.yaml: mglu/kube/eks-prd-pagamentos.yaml
-    ~/.kube/eks-production.yaml: mglu/kube/eks-production.yaml
+    ~/.kube/mglu/eks-development.yaml: mglu/kube/eks-development.yaml
+    ~/.kube/mglu/eks-hml-pagamentos.yaml: mglu/kube/eks-hml-pagamentos.yaml
+    ~/.kube/mglu/eks-prd-pagamentos.yaml: mglu/kube/eks-prd-pagamentos.yaml
+    ~/.kube/mglu/eks-production.yaml: mglu/kube/eks-production.yaml
     ~/.zshrc.d/200-mglu.zsh: mglu/200-mglu.zsh

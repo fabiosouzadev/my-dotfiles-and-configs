@@ -63,3 +63,7 @@ updatedns(){
     fi
     sudo systemctl restart NetworkManager.service
 }
+
+alias kubectx='switch'
+alias kctx='switch'
+alias kubeswitch='switch'

@@ -1,3 +1,5 @@
+source $HOME/.local/bin/switch.sh
+
 autoload -U +X bashcompinit && bashcompinit
 zmodload -i zsh/parameter
 if ! (( $+functions[compdef] )) ; then

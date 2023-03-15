@@ -49,4 +49,5 @@
     ~/.kube/mglu/eks-hml-pagamentos.yaml: mglu/kube/eks-hml-pagamentos.yaml
     ~/.kube/mglu/eks-prd-pagamentos.yaml: mglu/kube/eks-prd-pagamentos.yaml
     ~/.kube/mglu/eks-production.yaml: mglu/kube/eks-production.yaml
+    ~/.kube/switch-config.yaml: mglu/kubeswitch/switch-config.yaml
     ~/.zshrc.d/200-mglu.zsh: mglu/200-mglu.zsh

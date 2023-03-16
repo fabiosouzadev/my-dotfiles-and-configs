@@ -7,6 +7,8 @@
       command: "[ -d ~/.local/share ] || mkdir -p ~/.local/share"
     - description: Create ~/.local/bin
       command: "[ -d ~/.local/bin ] || mkdir -p ~/.local/bin"
+    - description: Create ~/.kube
+      command: "[ -d ~/.kube ] || mkdir -p ~/.kube"
     - description: Install kubectl
       command: |
         curl -Lo $HOME/.local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"

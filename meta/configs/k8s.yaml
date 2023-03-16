@@ -1,51 +1,51 @@
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
-    # - description: Create ~/.local/src
-    #   command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
-    # - description: Create ~/.local/share
-    #   command: "[ -d ~/.local/share ] || mkdir -p ~/.local/share"
-    # - description: Create ~/.local/bin
-    #   command: "[ -d ~/.local/bin ] || mkdir -p ~/.local/bin"
-    # - description: Install kubectl
-    #   command: |
-    #     curl -Lo $HOME/.local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-    #     if [ -f $HOME/.local/bin/kubectl ];then
-    #         chmod +x $HOME/.local/bin/kubectl
-    #     fi
-    #
-    # - description: Installing kind
-    #   command: |
-    #     if [ `uname` = 'Linux' ]; then
-    #       curl -Lo $HOME/.local/bin/kind https://kind.sigs.k8s.io/dl/v0.15.0/kind-linux-amd64
-    #       if [ -f $HOME/.local/bin/kind ];then
-    #         chmod +x $HOME/.local/bin/kind
-    #       fi
-    #     fi
-    # - description: Installing k9s
-    #   command: |
-    #     if [ `uname` = 'Linux' ]; then 
-    #       curl -sS https://webinstall.dev/k9s | sh 
-    #     fi
-    # - description: Installing minikube
-    #   command: |
-    #     if [[ `uname` == 'Linux' && ! -f /usr/local/bin/minikube  ]]; then
-    #       r=https://api.github.com/repos/kubernetes/minikube/releases
-    #       curl -Lo $HOME/.local/src/minikube-linux-amd64 $(curl -s $r | grep -o 'http.*download/v.*beta.*/minikube-linux-amd64' | head -n1)
-    #       sudo install $HOME/.local/src/minikube-linux-amd64  $HOME/.local/bin/minikube
-    #     fi
-    # - description: Installing kubectx
-    #   command: |
-    #     [ -d $HOME/.local/share/kubectx ]   || git clone https://github.com/ahmetb/kubectx  $HOME/.local/share/kubectx
-    #     [ -f $HOME/.local/bin/kubectx ]     || ln -sf $HOME/.local/share/kubectx/kubectx    $HOME/.local/bin/kubectx
-    #     [ -f $HOME/.local/bin/kubens ]      || ln -sf $HOME/.local/share/kubectx/kubens     $HOME/.local/bin/kubens
-    # - description: Installing gcloud
-    #   command: |
-    #     if [[ `uname` == 'Linux' && ! -x $HOME/.local/src/google-cloud-sdk/bin/gcloud   ]]; then
-    #       version=421.0.0
-    #       curl "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-$version-linux-x86_64.tar.gz" | tar -xz -C $HOME/.local/src
-    #       . $HOME/.local/src/google-cloud-sdk/install.sh
-    #     fi
+    - description: Create ~/.local/src
+      command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
+    - description: Create ~/.local/share
+      command: "[ -d ~/.local/share ] || mkdir -p ~/.local/share"
+    - description: Create ~/.local/bin
+      command: "[ -d ~/.local/bin ] || mkdir -p ~/.local/bin"
+    - description: Install kubectl
+      command: |
+        curl -Lo $HOME/.local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        if [ -f $HOME/.local/bin/kubectl ];then
+            chmod +x $HOME/.local/bin/kubectl
+        fi
+
+    - description: Installing kind
+      command: |
+        if [ `uname` = 'Linux' ]; then
+          curl -Lo $HOME/.local/bin/kind https://kind.sigs.k8s.io/dl/v0.15.0/kind-linux-amd64
+          if [ -f $HOME/.local/bin/kind ];then
+            chmod +x $HOME/.local/bin/kind
+          fi
+        fi
+    - description: Installing k9s
+      command: |
+        if [ `uname` = 'Linux' ]; then 
+          curl -sS https://webinstall.dev/k9s | sh 
+        fi
+    - description: Installing minikube
+      command: |
+        if [[ `uname` == 'Linux' && ! -f /usr/local/bin/minikube  ]]; then
+          r=https://api.github.com/repos/kubernetes/minikube/releases
+          curl -Lo $HOME/.local/src/minikube-linux-amd64 $(curl -s $r | grep -o 'http.*download/v.*beta.*/minikube-linux-amd64' | head -n1)
+          sudo install $HOME/.local/src/minikube-linux-amd64  $HOME/.local/bin/minikube
+        fi
+    - description: Installing kubectx
+      command: |
+        [ -d $HOME/.local/share/kubectx ]   || git clone https://github.com/ahmetb/kubectx  $HOME/.local/share/kubectx
+        [ -f $HOME/.local/bin/kubectx ]     || ln -sf $HOME/.local/share/kubectx/kubectx    $HOME/.local/bin/kubectx
+        [ -f $HOME/.local/bin/kubens ]      || ln -sf $HOME/.local/share/kubectx/kubens     $HOME/.local/bin/kubens
+    - description: Installing gcloud
+      command: |
+        if [[ `uname` == 'Linux' && ! -x $HOME/.local/src/google-cloud-sdk/bin/gcloud   ]]; then
+          version=421.0.0
+          curl "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-$version-linux-x86_64.tar.gz" | tar -xz -C $HOME/.local/src
+          . $HOME/.local/src/google-cloud-sdk/install.sh
+        fi
     - description: Installing kubeswitch
       command: |
         OS=`uname`                        # Pick the right os: linux, darwin (intel only)

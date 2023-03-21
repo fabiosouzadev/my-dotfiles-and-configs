@@ -158,7 +158,7 @@ return {
         dependencies = 'nvim-web-devicons',
     },
     {
-        'kyazdani42/nvim-tree.lua',
+        'nvim-tree/nvim-tree.lua',
         version = 'nightly',
         config = function()
             local nvimtree = require 'nvim-tree'
@@ -171,6 +171,7 @@ return {
                     enable = true,
                 },
                 filters = {
+                    dotfiles = true,
                     custom = { '.git$', '.gitignore', 'node_modules', '.cache' },
                 },
             }
@@ -187,11 +188,11 @@ return {
         'sindrets/diffview.nvim',
         requires = 'plenary.nvim',
     },
-    {
-        'stevearc/dressing.nvim',
-        lazy = true,
-        config = true,
-    },
+    -- {
+    --     'stevearc/dressing.nvim',
+    --     lazy = true,
+    --     config = true,
+    -- },
     {
         'nvim-tree/nvim-web-devicons',
         lazy = true,

@@ -16,17 +16,18 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: eks-hml-pagamentos
-  currentCluster: eks-hml-pagamentos
+  currentContext: gke_gke-magalu-dict
+  currentCluster: gke_gke-magalu-dict
   clusters:
-    eks-hml-pagamentos:
+    gke_gke-magalu-dict:
       namespace:
-        active: all
+        active: sr-barriga-beat-argocd
         lockFavorites: false
         favorites:
+        - sr-barriga-beat-argocd
         - default
       view:
-        active: po
+        active: context
       featureGates:
         nodeShell: false
       shellPod:

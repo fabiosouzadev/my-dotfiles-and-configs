@@ -16,18 +16,18 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: gke_gke-magalu-dict
-  currentCluster: gke_gke-magalu-dict
+  currentContext: kind-fullcycle
+  currentCluster: kind-fullcycle
   clusters:
-    gke_gke-magalu-dict:
+    kind-fullcycle:
       namespace:
-        active: sr-barriga-beat-argocd
+        active: all
         lockFavorites: false
         favorites:
-        - sr-barriga-beat-argocd
+        - all
         - default
       view:
-        active: context
+        active: nodes
       featureGates:
         nodeShell: false
       shellPod:

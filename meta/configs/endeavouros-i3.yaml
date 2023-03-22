@@ -69,16 +69,6 @@
         #Postman-cli
         curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
 
-    - description: Disable DNS NetworkManager processing
-      command: |
-        sudo cp etc/90-no-dns.conf /etc/NetworkManager/conf.d
-        sudo rm /etc/resolv.conf
-        sudo cp etc/resolv.conf /etc/resolv.conf
-         
-        if [[ -f "mglu/resolv.conf" ]]; then
-          cat mglu/resolv.conf | sudo tee -a /etc/resolv.conf
-        fi
-        sudo systemctl reload NetworkManager
 - link:
     ~/.config/i3: i3
     ~/.config/dunst: dunst

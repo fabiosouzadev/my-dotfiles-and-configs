@@ -38,14 +38,6 @@
           picom \
           telegram-desktop
 
-    - description: Install bluetooth
-      command: |
-        sudo pacman -S --noconfirm --needed \
-          bluez \
-          bluez-utils \
-          blueman 
-        sudo systemctl enable --now bluetooth
-
     - description: Install yay packages
       command: |
         yay -Syu --noconfirm \

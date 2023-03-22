@@ -1,0 +1,11 @@
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+
+    - description: Install bluetooth
+      command: |
+        sudo pacman -Syu --noconfirm --needed \
+          bluez \
+          bluez-utils \
+          blueman 
+        sudo systemctl enable --now bluetooth

@@ -15,7 +15,6 @@
         if [ -f $HOME/.local/bin/kubectl ];then
             chmod +x $HOME/.local/bin/kubectl
         fi
-
     - description: Installing kind
       command: |
         if [ `uname` = 'Linux' ]; then
@@ -23,11 +22,6 @@
           if [ -f $HOME/.local/bin/kind ];then
             chmod +x $HOME/.local/bin/kind
           fi
-        fi
-    - description: Installing k9s
-      command: |
-        if [ `uname` = 'Linux' ]; then 
-          curl -sS https://webinstall.dev/k9s | sh 
         fi
     - description: Installing minikube
       command: |
@@ -58,9 +52,41 @@
 
         curl -Lo $HOME/.local/bin/switch.sh https://github.com/danielfoehrKn/kubeswitch/releases/download/${VERSION}/switch.sh
         chmod +x $HOME/.local/bin/switch.sh
-
+    - description: Installing k9s
+      command: |
+        if [ `uname` = 'Linux' ]; then 
+          curl -sS https://webinstall.dev/k9s | sh 
+        fi
+    - description: Installing Lens
+      command: |
+        case $(lsb_release -is) in 
+          Ubuntu) 
+            curl -fsSL https://downloads.k8slens.dev/keys/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/lens-archive-keyring.gpg > /dev/null
+            echo "deb [arch=amd64 signed-by=/usr/share/keyrings/lens-archive-keyring.gpg] https://downloads.k8slens.dev/apt/debian stable main" | sudo tee /etc/apt/sources.list.d/lens.list > /dev/null
+            sudo apt update
+            sudo apt install lens
+          ;;
+          Arch | EndeavourOS)
+            curl -Lo $HOME/.local/bin/lens https://api.k8slens.dev/binaries/latest.x86_64.AppImage
+            if [ -f $HOME/.local/bin/Lens ]; then
+              chmod +x $HOME/.local/bin/lens
+            fi
+            LENS_SHORTCUT="[Desktop Entry]
+            Name=Lens
+            Exec=$HOME/.local/bin/lens %U
+            Terminal=false
+            Type=Application
+            Icon=lens
+            StartupWMClass=Lens
+            Comment=Lens - The Kubernetes IDE
+            MimeType=x-scheme-handler/lens;
+            Categories=Network;"
+            
+            echo $LENS_SHORTCUT > $HOME/.local/share/applications/lens.desktop
+          ;;
+        esac
+      stdout: true
     - [ exec /bin/zsh ]
-
 - link:
     ~/.zshrc.d/012-kubectl-completions.zsh: zshrc.d/012-kubectl-completions.zsh
     ~/.zshrc.d/014-gcloud.zsh: zshrc.d/014-gcloud.zsh

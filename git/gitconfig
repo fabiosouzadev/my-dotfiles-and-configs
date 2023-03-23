@@ -49,6 +49,15 @@
     amend = !git add --all && git commit --amend --no-edit
     count = !git shortlog -s --grep
 
+[merge]
+    tool = nvim
+
+[mergetool]
+    keepBackup = false
+
+[mergetool "nvim"]
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
 [include]
     path = ~/.gitconfig_local
 

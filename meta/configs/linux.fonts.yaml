@@ -5,6 +5,7 @@
     command: | 
       TEMP_DIR_FONTS=$HOME/.temp-fonts
       LOCAL_SHARE_FONTS=$HOME/.local/share/fonts
+      VERSION=v2.3.3
 
       FONTS=(
         "CascadiaCode"
@@ -37,7 +38,7 @@
       for i in "${FONTS[@]}"
         do
         ### sudo ./install.sh <Font-Name>
-        wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/"$i".zip"
+        wget "https://github.com/ryanoasis/nerd-fonts/releases/download/$VERSION/"$i".zip"
         unzip "$i".zip
       done
 

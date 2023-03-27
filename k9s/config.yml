@@ -21,7 +21,7 @@ k9s:
   clusters:
     kind-fullcycle:
       namespace:
-        active: all
+        active: default
         lockFavorites: false
         favorites:
         - all

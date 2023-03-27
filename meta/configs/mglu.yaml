@@ -49,7 +49,7 @@
     - description: Config DNS NetworkManager
       command: |
         if [[ -f "mglu/network/resolv.conf" ]]; then
-          cat mglu/resolv.conf | sudo tee -a /etc/resolv.conf
+          cat mglu/network/resolv.conf | sudo tee -a /etc/resolv.conf
         fi
         sudo systemctl reload NetworkManager
 - link:
@@ -58,7 +58,6 @@
     ~/.kube/mglu/eks-hml-pagamentos.yaml: mglu/kube/eks-hml-pagamentos.yaml
     ~/.kube/mglu/eks-prd-pagamentos.yaml: mglu/kube/eks-prd-pagamentos.yaml
     ~/.kube/mglu/eks-production.yaml: mglu/kube/eks-production.yaml
-    # ~/.kube/mglu: mglu/kube
     ~/.kube/switch-config.yaml: mglu/kubeswitch/switch-config.yaml
     ~/.zshrc.d/200-mglu.zsh: mglu/zsh/200-mglu.zsh
     ~/.config/gcloud/configurations/config_magalu-dict: mglu/gcloud/configurations/config_magalu-dict

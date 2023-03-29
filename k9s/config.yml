@@ -16,18 +16,18 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: kind-fullcycle
-  currentCluster: kind-fullcycle
+  currentContext: eks-prd-pagamentos
+  currentCluster: eks-prd-pagamentos
   clusters:
-    kind-fullcycle:
+    eks-prd-pagamentos:
       namespace:
-        active: default
+        active: hagrid-api-argocd
         lockFavorites: false
         favorites:
-        - all
+        - hagrid-api-argocd
         - default
       view:
-        active: pods
+        active: po
       featureGates:
         nodeShell: false
       shellPod:

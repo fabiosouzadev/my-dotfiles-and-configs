@@ -1,0 +1,15 @@
+- shell:
+  - description: Validating sudo credentials
+    command: "sudo --validate"
+  - description: Build tmux
+    command: |
+      case $(lsb_release -is) in 
+      Ubuntu)
+
+      ;;
+
+      Arch | EndeavourOS)
+        yay -Sy --noconfirm \
+          papirus-icon-theme-git
+      ;; 
+      esac

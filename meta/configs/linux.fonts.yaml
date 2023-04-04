@@ -29,11 +29,10 @@
 
 
       if [ ! -d $TEMP_DIR_FONTS ]; then
-        mkdir  $TEMP_DIR_FONTS
-        cd $TEMP_DIR_FONTS
+        mkdir $TEMP_DIR_FONTS
       fi
 
-
+      cd $TEMP_DIR_FONTS
 
       for i in "${FONTS[@]}"
         do

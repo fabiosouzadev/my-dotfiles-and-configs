@@ -21,14 +21,14 @@ k9s:
   clusters:
     eks-prd-pagamentos:
       namespace:
-        active: all
+        active: hagrid-api-argocd
         lockFavorites: false
         favorites:
         - all
         - hagrid-api-argocd
         - default
       view:
-        active: serverstatusrequest
+        active: pods
       featureGates:
         nodeShell: false
       shellPod:

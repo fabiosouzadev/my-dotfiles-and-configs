@@ -16,7 +16,7 @@ docker
 k8s
 asdf
 nvm
-nvim
+neovim
 tmux
 wakatime
 alacritty

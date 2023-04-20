@@ -8,7 +8,7 @@ pyenv
 git
 ssh
 nvm
-nvim
+neovim
 tmux
 fonts.linux
 wakatime

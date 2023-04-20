@@ -6,7 +6,6 @@
   - description: Build prerequisites
     command: | 
       case $(lsb_release -is) in 
-
       Ubuntu)
         sudo apt-get install -y ninja-build \
           gettext \
@@ -31,14 +30,19 @@
           curl
         ;;
       esac
+  - description: Clean older versions
+    command: |
+      [ -d $HOME/.cache/nvim/ ] && sudo rm -r $HOME/.cache/nvim
+      [ -d $HOME/.local/share/nvim/ ] && sudo rm -r $HOME/.local/share/nvim
+      [ -d /usr/local/share/nvim/ ] && sudo rm -r /usr/local/share/nvim
+      [ -d $HOME/.local/src/neovim ] && sudo rm -r $HOME/.local/src/neovim
+
   - description: Build neovim
     command: | 
-      [ -d $HOME/.local/src/neovim ] || git clone https://github.com/neovim/neovim $HOME/.local/src/neovim
+      git clone https://github.com/neovim/neovim $HOME/.local/src/neovim
       cd $HOME/.local/src/neovim
       sudo make distclean && sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
       sudo make install
-  - description: Install packer.nvim
-    command: '[ ! -f $HOME/.local/share/nvim/site/pack/packer ] || git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim'
 
 - link:
     ~/.config/nvim: nvim

@@ -3,8 +3,23 @@
       command: "sudo --validate"
     - description: Install VirtualBox
       command: |
-        wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --dearmor --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg
-        echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian focal contrib' |  sudo tee /etc/apt/sources.list.d/virtualbox.list
-        sudo apt-get update
-        sudo apt-get install -y virtualbox-6.1
+        case $(lsb_release -is) in 
+        Ubuntu)
+          wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --dearmor --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg
+          echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian focal contrib' |  sudo tee /etc/apt/sources.list.d/virtualbox.list
+          sudo apt-get update
+          sudo apt-get install -y virtualbox-6.1
+        ;;
+        Arch | EndeavourOS)
+          sudo pacman -Sy --noconfirm \
+            virtualbox \
+            virtualbox-guest-iso
+          sudo gpasswd -a $USER vboxusers
+          sudo modprobe vboxdrv
+          # yay -Syy
+          # yay -S virtualbox-ext-oracle
+          # sudo systemctl enable vboxweb.service
+          # sudo systemctl start vboxweb.service
+        ;;
+        esac
       stdout: true

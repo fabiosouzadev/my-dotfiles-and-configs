@@ -36,7 +36,8 @@
           libsecret \
           seahorse \
           picom \
-          telegram-desktop
+          telegram-desktop \
+          vlc
 
     - description: Install yay packages
       command: |

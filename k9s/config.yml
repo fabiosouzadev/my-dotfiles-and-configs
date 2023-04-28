@@ -21,9 +21,10 @@ k9s:
   clusters:
     eks-prd-pagamentos:
       namespace:
-        active: hagrid-api-argocd
+        active: griphook-api-argocd
         lockFavorites: false
         favorites:
+        - griphook-api-argocd
         - all
         - hagrid-api-argocd
         - default

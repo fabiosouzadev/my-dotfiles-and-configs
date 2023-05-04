@@ -16,17 +16,15 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: eks-prd-pagamentos
-  currentCluster: eks-prd-pagamentos
+  currentContext: eks-hml-pagamentos
+  currentCluster: eks-hml-pagamentos
   clusters:
-    eks-prd-pagamentos:
+    eks-hml-pagamentos:
       namespace:
-        active: griphook-api-argocd
+        active: pix-core-preprod
         lockFavorites: false
         favorites:
-        - griphook-api-argocd
-        - all
-        - hagrid-api-argocd
+        - pix-core-preprod
         - default
       view:
         active: pods

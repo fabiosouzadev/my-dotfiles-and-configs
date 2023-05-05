@@ -1,11 +1,11 @@
 - shell:
-    - description: Validating sudo credentials
-      command: "sudo --validate"
-    - description: Create source dir
-      command: "[ -d $HOME/.local/src ] || mkdir -p $HOME/.local/src"
-    - description: Build tmux
-      command: |
-        case $(lsb_release -is) in 
+  - description: Validating sudo credentials
+    command: "sudo --validate"
+  - description: Create source dir
+    command: "[ -d $HOME/.local/src ] || mkdir -p $HOME/.local/src"
+  - description: Build tmux
+    command: |
+      case $(lsb_release -is) in 
 
         Ubuntu)
           sudo apt install -y \
@@ -26,19 +26,19 @@
             pkg-config
         ;;
 
-        esac
+      esac
 
-        [ -d $HOME/.local/src/tmux ] || git clone https://github.com/tmux/tmux.git $HOME/.local/src/tmux
-        cd $HOME/.local/src/tmux
-        sh autogen.sh
-        ./configure
-        make && sudo make install
+      [ -d $HOME/.local/src/tmux ] || git clone https://github.com/tmux/tmux.git $HOME/.local/src/tmux
+      cd $HOME/.local/src/tmux
+      sh autogen.sh
+      ./configure
+      make && sudo make install
 
-    # - description: Fallback tmux
-    #   command: "[ -x /usr/local/bin/tmux ] || sudo apt-get install -y tmux"
-    - description: "Clone TPM"
-      command: "[ -d $HOME/.tmux/plugins/tpm ] || git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm"
+  # - description: Fallback tmux
+  #   command: "[ -x /usr/local/bin/tmux ] || sudo apt-get install -y tmux"
+  - description: "Clone TPM"
+    command: "[ -d $HOME/.tmux/plugins/tpm ] || git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm"
 
 - link:
-    ~/.tmux.conf: tmux/tmux.conf
-    ~/.config/tmux: tmux/tmux
+  ~/.tmux.conf: tmux/tmux.conf
+  ~/.config/tmux: tmux/tmux

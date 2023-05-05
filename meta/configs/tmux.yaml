@@ -1,7 +1,7 @@
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
-    - description: Create source dir 
+    - description: Create source dir
       command: "[ -d $HOME/.local/src ] || mkdir -p $HOME/.local/src"
     - description: Build tmux
       command: |
@@ -19,16 +19,15 @@
         Arch | EndeavourOS)
           sudo pacman -Sy --noconfirm \
             base-devel \
-            libevent-dev \
-            ncurses-dev \
-            build-essential \
+            libevent \
+            ncurses \
+            make \
             bison \
             pkg-config
-
         ;;
-        
+
         esac
-        
+
         [ -d $HOME/.local/src/tmux ] || git clone https://github.com/tmux/tmux.git $HOME/.local/src/tmux
         cd $HOME/.local/src/tmux
         sh autogen.sh

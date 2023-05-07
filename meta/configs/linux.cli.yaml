@@ -1,3 +1,7 @@
+- create:
+  - ~/.local/src
+  - ~/.local/bin
+
 - shell:
   - description: Validating sudo credentials
     command: "sudo --validate"
@@ -58,22 +62,19 @@
             picom \
         ;;
       esac
-    stdout: true
-    stderr: true
+
   - description: Install bat
     command: |
       case $(lsb_release -is) in
         Ubuntu)
           sudo apt-get -y install bat
-          [ -x ~/.local/bin/bat ] || mkdir -p ~/.local/bin && ln -fs /usr/bin/batcat ~/.local/bin/bat
+          [ -x ~/.local/bin/bat ] ||  ln -fs /usr/bin/batcat ~/.local/bin/bat
         ;;
         Arch | EndeavourOS)
           sudo pacman -Syu --noconfirm bat
         ;;
       esac
-    stdout: true
-    stderr: true
-  
+
   - description: Install delta
     command: |
       case $(lsb_release -is) in

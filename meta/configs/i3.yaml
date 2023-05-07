@@ -1,13 +1,34 @@
 - create:
-    - ~/.local/src
-    - ~/.local/bin
+  - ~/.local/src
+  - ~/.local/bin
 
 - shell:
-    - description: Validating sudo credentials
-      command: "sudo --validate"
+  - description: Validating sudo credentials
+    command: "sudo --validate"
 
-    - description: Configure keyboard
-      command: "[ -d /etc/X11/xorg.conf.d/ ] && sudo cp xorg/00-keyboard.conf /etc/X11/xorg.conf.d/"
+  - description: Configure keyboard
+    command: "[ -d /etc/X11/xorg.conf.d/ ] && sudo cp xorg/00-keyboard.conf /etc/X11/xorg.conf.d/"
+
+  - description: Install i3
+    command: |
+      case $(lsb_release -is) in
+        Ubuntu)
+          sudo apt update
+          sudo apt install -y \
+            i3 \
+            i3lock \
+            i3status \
+            i3blocks \
+            suckless-tools \
+            picom \
+            rofi \
+            nitrogen \
+            feh \
+            blueman \
+            brightnessctl \
+            terminator
+        ;;
+      esac
         
 - link:
     ~/.config/i3: i3

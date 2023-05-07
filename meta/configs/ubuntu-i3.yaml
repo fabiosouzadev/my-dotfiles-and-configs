@@ -1,15 +1,31 @@
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
-    - description: Install i3-gaps
+
+    - description: Create ~/.local/src
+      command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
+
+    - description: Configure keyboard
       command: |
-        sudo add-apt-repository ppa:kgilmer/speed-ricer
+        sudo cp xorg/00-keyboard.conf /etc/X11/xorg.conf.d/
+
+    - description: Install first packages
+      command: |
+        sudo apt-get install -y \
+          git \
+          curl \
+          make
+
+    - description: Install i3
+      command: |
         sudo apt update
         sudo apt install -y \
-        i3-gaps \
-        polybar \
+        i3 \
+        i3lock \
+        i3status \
+        i3blocks \
+        suckless-tools \
         picom \
-        dunst \
         rofi \
         nitrogen \
         feh \
@@ -40,9 +56,7 @@
         sudo make install
 - link:
     ~/.config/i3: i3
-    ~/.config/polybar: polybar
-    ~/.config/picom.conf: picom/picom.conf
     ~/.config/dunst: dunst
     ~/.config/rofi: rofi
-    ~/.config/gtk-3.0: gtk-3.0
+    ~/.config/picom.conf: picom/picom.conf
     ~/.config/wallpapers: wallpapers

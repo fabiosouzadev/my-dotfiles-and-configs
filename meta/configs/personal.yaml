@@ -14,8 +14,12 @@
         gpg --import-ownertrust $HOME/.gnupg/trust.gpg
     - description: Install pass
       command: |
-        sudo pacman -S --noconfirm pass
-        #pass init fabiovanderlei.developer@gmail.com
+        case $(lsb_release -is) in
+          Arch | EndeavourOS)
+            sudo pacman -S --noconfirm pass
+            #pass init fabiovanderlei.developer@gmail.com
+          ;;
+        esac
 
 - link:
     ~/.gitconfig_local: personal/gitconfig_local

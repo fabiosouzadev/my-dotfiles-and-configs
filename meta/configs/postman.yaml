@@ -1,0 +1,12 @@
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+
+    - description: Create ~/.local/src
+      command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
+
+    - description: Install Postman-cli
+      command: |
+        sudo apt-get install curl
+        #Postman-cli
+        curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh

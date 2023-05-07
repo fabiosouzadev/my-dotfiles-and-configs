@@ -67,9 +67,5 @@
           && sudo unzip -q $HOME/.local/src/exa.zip bin/exa -d /usr/local \
           && rm -rf $HOME/.local/src/exa.zip
         fi
-    - description: Install ngrok
-      command: |
-        curl -sLo $HOME/.local/src/ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
-        sudo tar xvzf $HOME/.local/src/ngrok.tgz  -C /usr/local/bin
 - link:
     ~/.config/bat: bat

@@ -39,33 +39,13 @@
           libxcb-xfixes0-dev \
           libxkbcommon-dev \
           libqt5webkit5 \
-          zsh \
           golang \
           unzip \
           direnv \
           neofetch \
           ranger \
           xsel 
-    - description: Create ~/.local/bin
-      command: "[ -d ~/.local/bin ] || mkdir -p ~/.local/bin"
-    - description: Create ~/.local/src
-      command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
-    - description: Install bat
-      command: "[ `uname` = Linux  ] && sudo apt-get -y install bat"
-    - description: Create link to bat
-      command: "[ -x ~/.local/bin/bat ] || mkdir -p ~/.local/bin && ln -fs /usr/bin/batcat ~/.local/bin/bat"
-    - description: Install delta
-      command: |
-        curl -sLo $HOME/.local/src/git-delta_0.13.0_amd64.deb https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb \
-        && sudo dpkg -i $HOME/.local/src/git-delta_0.13.0_amd64.deb \
-        && rm $HOME/.local/src/git-delta_0.13.0_amd64.deb
-    - description: Install exa
-      command: |
-        if [ ! -f /usr/local/bin/exa ]; then
-          EXA_VERSION=$(curl -s "https://api.github.com/repos/ogham/exa/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
-          curl -Lo $HOME/.local/src/exa.zip "https://github.com/ogham/exa/releases/latest/download/exa-linux-x86_64-v${EXA_VERSION}.zip" \
-          && sudo unzip -q $HOME/.local/src/exa.zip bin/exa -d /usr/local \
-          && rm -rf $HOME/.local/src/exa.zip
-        fi
+
+
 - link:
     ~/.config/bat: bat

@@ -4,7 +4,7 @@ git
 ssh
 desktop.ubuntu
 snaps
-cli.ubuntu
+linux.cli
 fzf
 docker
 k8s.ubuntu

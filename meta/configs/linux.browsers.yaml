@@ -1,10 +1,39 @@
 - shell:
-    - description: Validating sudo credentials
-      command: "sudo --validate"
-    - description: Installing apps
-      command: |
-        case $(lsb_release -is) in 
+  - description: Validating sudo credentials
+    command: "sudo --validate"
+  - description: Installing apps
+    command: |
+      case $(lsb_release -is) in 
         Ubuntu)
+          
+          #Brave
+          sudo apt install curl
+          sudo curl -fsSLo /usr/share/keyrings/brave-browser-nightly-archive-keyring.gpg https://brave-browser-apt-nightly.s3.brave.com/brave-browser-nightly-archive-keyring.gpg
+          echo "deb [signed-by=/usr/share/keyrings/brave-browser-nightly-archive-keyring.gpg] https://brave-browser-apt-nightly.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-nightly.list
+          sudo apt update
+          sudo apt install -y brave-browser-nightly
+
+          #Chromium ==>TODO BUILD
+          
+          #Chrome dev
+          #sudo apt-get install -y google-chrome-unstable
+
+          #Opera developer
+          #sudo sh -c 'echo "deb http://deb.opera.com/opera-stable/ stable non-free" >> /etc/apt/sources.list.d/opera.list'
+          #wget -qO- https://deb.opera.com/archive.key | sudo apt-key add -
+          #sudo apt-get update
+          #sudo apt-get install -y opera-developer
+
+          #Vivaldi dev
+          #sudo sh -c 'echo "deb http://repo.vivaldi.com/stable/deb/ stable main" >> /etc/apt/sources.list'
+          #wget -q -O - http://repo.vivaldi.com/stable/linux_signing_key.pub | sudo apt-key add -
+          #sudo apt-get update
+          #sudo apt install -y vivaldi-snapshot
+          
+          #Firefox nightly
+          #sudo add-apt-repository ppa:ubuntu-mozilla-daily/ppa
+          #sudo apt-get update
+          #sudo apt-get install -y firefox-trunk
 
         ;;
 
@@ -21,5 +50,6 @@
           sudo pacman -Syu --noconfirm \
             qutebrowser
         ;;
-
-        esac
+      esac 
+    stderr: true
+    stdout: true

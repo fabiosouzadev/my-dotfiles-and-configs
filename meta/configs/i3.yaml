@@ -20,11 +20,11 @@
             i3status \
             i3blocks \
             suckless-tools \
+            network-manager-gnome \
             picom \
             rofi \
             nitrogen \
             feh \
-            blueman \
             brightnessctl \
             terminator
         ;;

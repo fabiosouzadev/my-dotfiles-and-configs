@@ -3,6 +3,10 @@ personal
 git
 ssh
 linux.cli
+linux.bluetooth
+linux.browsers
+linux.fonts
+linux.icons
 i3
 ngrok
 postman

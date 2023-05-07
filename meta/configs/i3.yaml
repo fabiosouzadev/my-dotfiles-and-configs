@@ -1,0 +1,29 @@
+- create:
+    - ~/.local/src
+    - ~/.local/bin
+
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+
+    - description: Configure keyboard
+      command: "[ -d /etc/X11/xorg.conf.d/ ] && sudo cp xorg/00-keyboard.conf /etc/X11/xorg.conf.d/"
+        
+- link:
+    ~/.config/i3: i3
+    ~/.config/dunst: dunst
+    ~/.config/rofi: rofi
+    ~/.config/picom.conf: picom/picom.conf
+    ~/.config/wallpapers: wallpapers
+    
+    ~/.config/greenclip.toml:
+      if: '[`lsb_release -is` = EndeavourOS]'
+      path: greenclip/greenclip.toml
+    ~/.screenlayout:
+      if: '[`lsb_release -is` = EndeavourOS]'
+      path: xrand
+    ~/.config/xfce4/terminal: 
+      if: '[`lsb_release -is` = EndeavourOS]'
+    ~/.config/gtk-3.0: 
+      if: '[`lsb_release -is` = EndeavourOS]'
+      path: gtk-3.0

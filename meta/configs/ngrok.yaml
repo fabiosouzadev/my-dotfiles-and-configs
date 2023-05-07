@@ -7,6 +7,5 @@
 
     - description: Install ngrok
       command: |
-        sudo apt-get install curl
         curl -sLo $HOME/.local/src/ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
         sudo tar xvzf $HOME/.local/src/ngrok.tgz  -C /usr/local/bin

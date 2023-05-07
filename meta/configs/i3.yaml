@@ -29,7 +29,30 @@
             terminator
         ;;
       esac
-        
+  - description: Install dunst
+    command: |
+      case $(lsb_release -is) in
+        Ubuntu)
+          sudo apt install -y \
+            libdbus-1-dev \
+            libx11-dev \
+            libxinerama-dev \
+            libxrandr-dev \
+            libxss-dev \
+            libglib2.0-dev \
+            libpango1.0-dev \
+            libgtk-3-dev \
+            libxdg-basedir-dev \
+            libnotify-dev
+
+          [ -d $HOME/.local/src/dunst ] || git clone https://github.com/dunst-project/dunst.git $HOME/.local/src/dunst
+          cd $HOME/.local/src/dunst
+          git pull
+          make
+          sudo make install
+        ;;
+      esac
+      
 - link:
     ~/.config/i3: i3
     ~/.config/dunst: dunst

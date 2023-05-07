@@ -1,13 +1,12 @@
 dns
+personal
+git
+ssh
 endeavouros-i3
 linux.bluetooth
 linux.browsers
 linux.fonts
 linux.icons
-personal
-mglu
-git
-ssh
 fzf
 zsh
 starship
@@ -26,3 +25,4 @@ jetbrains-toolbox
 spotify
 ngrok
 postman
+mglu

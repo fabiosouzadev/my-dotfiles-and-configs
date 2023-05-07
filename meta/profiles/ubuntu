@@ -1,3 +1,7 @@
+dns
+personal
+git
+ssh
 desktop.ubuntu
 snaps
 cli.ubuntu
@@ -22,3 +26,4 @@ i3
 pycharm
 ngrok
 postman
+mglu

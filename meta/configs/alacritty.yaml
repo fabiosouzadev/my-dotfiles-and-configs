@@ -2,22 +2,28 @@
     - description: Validating sudo credentials
       command: "sudo --validate"
     - description: Install dependencies
-      command: | 
-        sudo pacman -S --noconfirm \
-          cmake \
-          freetype2 \
-          fontconfig \
-          pkg-config \
-          make \
-          libxcb \
-          libxkbcommon \
-          python
+      command: |
+        case $(lsb_release -is) in 
+          Ubuntu)
+          ;;
+          Arch | EndeavourOS)
+            sudo pacman -S --noconfirm \
+              cmake \
+              freetype2 \
+              fontconfig \
+              pkg-config \
+              make \
+              libxcb \
+              libxkbcommon \
+              python
+          ;;
+        esac
     - description: Installing Alacritty
-      command: | 
-        
+      command: |
+
         if [ ! -f /usr/local/bin/alacritty ]; then
         #Install alacritty
-          git clone https://github.com/alacritty/alacritty.git $HOME/.local/src/alacritty
+         [ -d $HOME/.local/src/alacritty ] || git clone https://github.com/alacritty/alacritty.git $HOME/.local/src/alacritty
           cd $HOME/.local/src/alacritty
           rustup override set stable
           rustup update stable

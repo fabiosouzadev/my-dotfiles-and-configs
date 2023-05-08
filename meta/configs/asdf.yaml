@@ -3,18 +3,17 @@
       command: "[ ! -d ~/.asdf ] || sudo rm -rf ~/.asdf "
     - description: Clone asdf
       command: |
-        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
+        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
         export PATH="$PATH:$HOME/.asdf/bin"
 - link:
     ~/.asdfrc: asdf/asdfrc
-
 - asdf:
     - plugin: direnv
       url: https://github.com/asdf-community/asdf-direnv.git
       shell: zsh
       global: latest
       versions:
-        - latest 
+        - latest
     - plugin: bun
       url: https://github.com/cometkim/asdf-bun.git
       global: latest

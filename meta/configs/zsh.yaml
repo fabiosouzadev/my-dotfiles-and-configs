@@ -13,7 +13,7 @@
           ;;
         esac
     - description: Adding zsh to list of acceptable shells
-      command: '[ -x /usr/bin/zsh ] && sudo sh -c "echo /usr/bin/zsh >> /etc/shells"'
+      command: '[ -x $(which zsh) ] && sudo sh -c "echo $(which zsh) >> /etc/shells"'
     - [git submodule update --init --recursive, Installing submodules]
     - description: "Clone zgenom"
       command: "[ -d $HOME/zgenom ] || git clone https://github.com/jandamm/zgenom.git $HOME/zgenom"

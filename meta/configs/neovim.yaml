@@ -1,48 +1,58 @@
 - shell:
-  - description: Validating sudo credentials
-    command: "sudo --validate" 
-  - description: Create source dir 
-    command: "[ -d $HOME/.local/src ] || mkdir -p $HOME/.local/src"
-  - description: Build prerequisites
-    command: | 
-      case $(lsb_release -is) in 
-      Ubuntu)
-        sudo apt-get install -y ninja-build \
-          gettext \
-          libtool \
-          libtool-bin \
-          autoconf \
-          automake \
-          cmake \
-          g++ \
-          pkg-config \
-          unzip \
-          curl \
-          doxygen
-        ;;
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Create source dir
+      command: "[ -d $HOME/.local/src ] || mkdir -p $HOME/.local/src"
+    - description: Build prerequisites
+      command: |
+        case $(lsb_release -is) in 
+        Ubuntu)
+          sudo apt-get install -y ninja-build \
+            gettext \
+            libtool \
+            libtool-bin \
+            autoconf \
+            automake \
+            cmake \
+            g++ \
+            pkg-config \
+            unzip \
+            curl \
+            doxygen
+          ;;
 
-      Arch | EndeavourOS)
-        sudo pacman -Sy --noconfirm base-devel \
-          cmake \
-          unzip \
-          ninja \
-          tree-sitter \
-          curl
-        ;;
-      esac
-  - description: Clean older versions
-    command: |
-      [ -d $HOME/.cache/nvim/ ] && sudo rm -r $HOME/.cache/nvim
-      [ -d $HOME/.local/share/nvim/ ] && sudo rm -r $HOME/.local/share/nvim
-      [ -d /usr/local/share/nvim/ ] && sudo rm -r /usr/local/share/nvim
-      [ -d $HOME/.local/src/neovim ] && sudo rm -r $HOME/.local/src/neovim
+        Arch | EndeavourOS)
+          sudo pacman -Sy --noconfirm base-devel \
+            cmake \
+            unzip \
+            ninja \
+            tree-sitter \
+            curl
+          ;;
+        esac
+    - description: Clean older versions
+      command: |
+        if [ -d $HOME/.cache/nvim/ ]; then 
+          sudo rm -r $HOME/.cache/nvim 
+        fi 
+        if [ -d $HOME/.local/share/nvim/ ]; then 
+          sudo rm -r $HOME/.local/share/nvim 
+        fi
+        if [ -d /usr/local/share/nvim/ ]; then
+          sudo rm -r /usr/local/share/nvim 
+        fi
+        if [ -d $HOME/.local/src/neovim ]; then 
+          sudo rm -r $HOME/.local/src/neovim 
+        fi
+      stderr: true
+      stdout: true
 
-  - description: Build neovim
-    command: | 
-      git clone https://github.com/neovim/neovim $HOME/.local/src/neovim
-      cd $HOME/.local/src/neovim
-      sudo make distclean && sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
-      sudo make install
+    - description: Build neovim
+      command: |
+        git clone https://github.com/neovim/neovim $HOME/.local/src/neovim
+        cd $HOME/.local/src/neovim
+        sudo make distclean && sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
+        sudo make install
 
 - link:
     ~/.config/nvim: nvim

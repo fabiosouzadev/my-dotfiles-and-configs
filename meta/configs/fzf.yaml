@@ -35,7 +35,7 @@
           Ubuntu)
             #Atualizar sources lists
             if [ ! -x /usr/bin/fd ]; then
-              curl -Lo $HOME/.local/src/fd.deb https://github.com/sharkdp/fd/releases/download/v8.6.0/fd_8.6.0_amd64.deb
+              curl -Lo $HOME/.local/src/fd.deb https://github.com/sharkdp/fd/releases/download/v8.7.0/fd_8.7.0_amd64.deb
               sudo dpkg -i $HOME/.local/src/fd.deb
             fi
             if [ ! -x /usr/bin/fdfind ]; then

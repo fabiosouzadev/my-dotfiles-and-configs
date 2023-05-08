@@ -1,12 +1,12 @@
 - shell:
-  - description: Install pyenv
-    command: '[ -d "$HOME/.pyenv" ] || curl https://pyenv.run | bash'
-  - "[ -d $HOME/.pyenv/versions/3.11.2 ] || $HOME/.pyenv/bin/pyenv install 3.11.2"
-  - "[ -d $HOME/.pyenv/versions/3.11.2 ] && $HOME/.pyenv/bin/pyenv global 3.11.2"
-  - "[ -d $HOME/.pyenv/versions/3.9.0 ] || $HOME/.pyenv/bin/pyenv install 3.9.0"
-  - [ $HOME/.pyenv/shims/pip install --upgrade pip, "Upgrade pip" ]
-  - [ $HOME/.pyenv/shims/pip install awscli, "Install awscli" ]
-  - [ $HOME/.pyenv/shims/pip install neovim, "Install neovim" ]
+    - description: Install pyenv
+      command: '[ -d "$HOME/.pyenv" ] || curl https://pyenv.run | bash'
+    - "[ -d $HOME/.pyenv/versions/3.11.2 ] || $HOME/.pyenv/bin/pyenv install 3.11.2"
+    - "[ -d $HOME/.pyenv/versions/3.11.2 ] && $HOME/.pyenv/bin/pyenv global 3.11.2"
+    - "[ -d $HOME/.pyenv/versions/3.9.0 ] || $HOME/.pyenv/bin/pyenv install 3.9.0"
+    - [$HOME/.pyenv/shims/pip install --upgrade pip, "Upgrade pip"]
+    - [$HOME/.pyenv/shims/pip install awscli, "Install awscli"]
+    - [$HOME/.pyenv/shims/pip install neovim, "Install neovim"]
 
 - link:
     ~/.zshrc.d/006-pyenv.zsh: zshrc.d/006-pyenv.zsh

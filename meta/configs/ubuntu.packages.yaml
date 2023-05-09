@@ -1,0 +1,68 @@
+- create:
+    - ~/.local/src
+    - ~/.local/bin
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Installing apps
+      command: |
+        sudo apt update -y
+        sudo apt upgrade -y
+
+        sudo apt install -y \
+        apt-transport-https \
+        gnome-tweaks \
+        vpnc \
+        caffeine \
+        libqt5webkit5 \
+        transmission
+
+      stderr: true
+      stdout: true
+
+    - description: Toggle install
+      command: |
+        case $(lsb_release -is) in 
+          Ubuntu)
+            #Install toogl
+            TOGGL_VERSION="7.5.324"
+            wget -O "toggl.deb" "https://github.com/toggl-open-source/toggldesktop/releases/download/v${TOGGL_VERSION}/toggldesktop_${TOGGL_VERSION}_ubuntu1604_amd64.deb"
+            sudo dpkg -i "toggl.deb"
+            sudo apt-get install -fy
+            sudo rm toggl.deb
+          ;;
+        esac
+
+    - description: Youtube Downloader install
+      command: |
+        case $(lsb_release -is) in 
+          Ubuntu)
+            # Install yt-dlp
+            sudo wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O ~/.local/bin/yt-dlp
+            sudo chmod a+rx ~/.local/bin/yt-dlp
+          ;;
+        esac
+
+    - description: Ferdium install
+      command: |
+        case $(lsb_release -is) in 
+          Ubuntu)
+            sudo curl -L "https://github.com/ferdium/ferdium-app/releases/download/v6.2.7-nightly.13/Ferdium-linux-6.2.7-nightly.13-amd64.deb" -o $HOME/.local/src/Ferdium.deb
+            sudo dpkg -i $HOME/.local/src/Ferdium.deb
+          ;;
+        esac
+    - description: Install slack
+      command: |
+        sudo curl -L "https://downloads.slack-edge.com/releases/linux/4.31.155/prod/x64/slack-desktop-4.31.155-amd64.deb" -o $HOME/.local/src/slack.deb
+        sudo dpkg -i $HOME/.local/src/slack.deb
+
+    - description: Install Discord
+      command: |
+        sudo curl -L "https://dl.discordapp.net/apps/linux/0.0.27/discord-0.0.27.deb" -o $HOME/.local/src/discord.deb
+        sudo dpkg -i $HOME/.local/src/slack.deb
+
+    - description: Install vlc
+      command: |
+        sudo add-apt-repository ppa:videolan/master-daily -y
+        sudo apt-get update
+        sudo apt-get install vlc -y

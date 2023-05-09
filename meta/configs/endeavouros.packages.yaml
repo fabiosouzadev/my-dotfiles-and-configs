@@ -1,0 +1,35 @@
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Install first packages
+      command: |
+        if [ $(lsb_release -is) = 'Arch' || $(lsb_release -is) = 'EndeavourOS' ]; then
+          sudo pacman -Syu --noconfirm bitwarden
+          yay -Syu --noconfirm --nodiffmenu \
+            authy \
+            bitw-git
+        fi
+    - description: Install packages
+      command: |
+        sudo pacman -Syu --noconfirm \
+              dbeaver \
+              flameshot \
+              maim \
+              peek \
+              libsecret \
+              seahorse \
+              telegram-desktop \
+              vlc
+
+    - description: Install yay packages
+      command: |
+        yay -Syu --noconfirm \
+          slack-desktop \
+          ferdium \
+          notion-app \
+          postman-bin \
+          insomnia-bin \
+          termius-beta \
+          rofi-greenclip \
+          whatsapp-for-linux \
+          discord-canary

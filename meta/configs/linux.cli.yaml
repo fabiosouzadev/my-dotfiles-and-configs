@@ -1,109 +1,109 @@
 - create:
-  - ~/.local/src
-  - ~/.local/bin
+    - ~/.local/src
+    - ~/.local/bin
 
 - shell:
-  - description: Validating sudo credentials
-    command: "sudo --validate"
-  - description: Install packages
-    command: |
-      case $(lsb_release -is) in
-        Ubuntu)
-          sudo apt-get install -y \
-            make \
-            cmake \
-            gcc \
-            clang \
-            wget \
-            curl \
-            build-essential \
-            libssl-dev \
-            zlib1g-dev \
-            libbz2-dev \
-            libreadline-dev \
-            libsqlite3-dev \
-            lsb-release \
-            ca-certificates \
-            apt-transport-https \
-            software-properties-common \
-            llvm \
-            libncursesw5-dev \
-            xz-utils \
-            tk-dev \
-            libxml2-dev \
-            libxmlsec1-dev \
-            libffi-dev \
-            liblzma-dev \
-            libpq-dev \
-            ninja-build \
-            pkg-config \
-            libgtk-3-dev \
-            libfreetype6-dev \
-            libfontconfig1-dev \
-            libxcb-xfixes0-dev \
-            libxkbcommon-dev \
-            libqt5webkit5 \
-            golang \
-            unzip \
-            direnv \
-            neofetch \
-            ranger \
-            xsel 
-        ;;
-        Arch | EndeavourOS)
-          sudo pacman -Syu --noconfirm \
-            exa \
-            xsel \
-            xclip \
-            xterm \
-            ranger \
-            neofetch \
-            postgresql-libs \
-            picom \
-        ;;
-      esac
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Install packages
+      command: |
+        case $(lsb_release -is) in
+          Ubuntu)
+            sudo apt-get install -y \
+              make \
+              cmake \
+              gcc \
+              clang \
+              wget \
+              curl \
+              build-essential \
+              libssl-dev \
+              zlib1g-dev \
+              libbz2-dev \
+              libreadline-dev \
+              libsqlite3-dev \
+              lsb-release \
+              ca-certificates \
+              apt-transport-https \
+              software-properties-common \
+              llvm \
+              libncursesw5-dev \
+              xz-utils \
+              tk-dev \
+              libxml2-dev \
+              libxmlsec1-dev \
+              libffi-dev \
+              liblzma-dev \
+              libpq-dev \
+              ninja-build \
+              pkg-config \
+              libgtk-3-dev \
+              libfreetype6-dev \
+              libfontconfig1-dev \
+              libxcb-xfixes0-dev \
+              libxkbcommon-dev \
+              libqt5webkit5 \
+              golang \
+              unzip \
+              direnv \
+              neofetch \
+              ranger \
+              xsel \
+              libfuse2
+          ;;
+          Arch | EndeavourOS)
+            sudo pacman -Syu --noconfirm \
+              exa \
+              xsel \
+              xclip \
+              xterm \
+              ranger \
+              neofetch \
+              postgresql-libs \
+              picom \
+          ;;
+        esac
 
-  - description: Install bat
-    command: |
-      case $(lsb_release -is) in
-        Ubuntu)
-          sudo apt-get -y install bat
-          [ -x ~/.local/bin/bat ] ||  ln -fs /usr/bin/batcat ~/.local/bin/bat
-        ;;
-        Arch | EndeavourOS)
-          sudo pacman -Syu --noconfirm bat
-        ;;
-      esac
+    - description: Install bat
+      command: |
+        case $(lsb_release -is) in
+          Ubuntu)
+            sudo apt-get -y install bat
+            [ -x ~/.local/bin/bat ] ||  ln -fs /usr/bin/batcat ~/.local/bin/bat
+          ;;
+          Arch | EndeavourOS)
+            sudo pacman -Syu --noconfirm bat
+          ;;
+        esac
 
-  - description: Install delta
-    command: |
-      case $(lsb_release -is) in
-        Ubuntu)
-          curl -sLo $HOME/.local/src/git-delta_0.13.0_amd64.deb https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb \
-          && sudo dpkg -i $HOME/.local/src/git-delta_0.13.0_amd64.deb \
-          && rm $HOME/.local/src/git-delta_0.13.0_amd64.deb
-        ;;
-        Arch | EndeavourOS)
-          sudo pacman -Syu --noconfirm git-delta
-        ;;
-      esac
-        
+    - description: Install delta
+      command: |
+        case $(lsb_release -is) in
+          Ubuntu)
+            curl -sLo $HOME/.local/src/git-delta_0.13.0_amd64.deb https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb \
+            && sudo dpkg -i $HOME/.local/src/git-delta_0.13.0_amd64.deb \
+            && rm $HOME/.local/src/git-delta_0.13.0_amd64.deb
+          ;;
+          Arch | EndeavourOS)
+            sudo pacman -Syu --noconfirm git-delta
+          ;;
+        esac
 
-  - description: Install exa
-    command: |
-      case $(lsb_release -is) in
-        Ubuntu)
-          if [ ! -f /usr/local/bin/exa ]; then
-            EXA_VERSION=$(curl -s "https://api.github.com/repos/ogham/exa/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
-            curl -Lo $HOME/.local/src/exa.zip "https://github.com/ogham/exa/releases/latest/download/exa-linux-x86_64-v${EXA_VERSION}.zip" \
-            && sudo unzip -q $HOME/.local/src/exa.zip bin/exa -d /usr/local \
-            && rm -rf $HOME/.local/src/exa.zip
-          fi
-        ;;
-        Arch | EndeavourOS)
-          sudo pacman -Syu --noconfirm exa
-        ;;
-      esac
-      
+    - description: Install exa
+      command: |
+        case $(lsb_release -is) in
+          Ubuntu)
+            if [ ! -f /usr/local/bin/exa ]; then
+              EXA_VERSION=$(curl -s "https://api.github.com/repos/ogham/exa/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
+              curl -Lo $HOME/.local/src/exa.zip "https://github.com/ogham/exa/releases/latest/download/exa-linux-x86_64-v${EXA_VERSION}.zip" \
+              && sudo unzip -q $HOME/.local/src/exa.zip bin/exa -d /usr/local \
+              && rm -rf $HOME/.local/src/exa.zip
+            fi
+          ;;
+          Arch | EndeavourOS)
+            sudo pacman -Syu --noconfirm exa
+          ;;
+        esac
+
 - link:
     ~/.config/bat: bat

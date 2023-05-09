@@ -6,59 +6,6 @@
       command: |
         sudo cp xorg/00-keyboard.conf /etc/X11/xorg.conf.d/
 
-    - description: Install first packages
-      command: |
-        sudo pacman -Syu --noconfirm bitwarden
-        yay -Syu --noconfirm --nodiffmenu \
-          authy \
-          bitw-git
-
-    - description: Install packages
-      command: |
-        sudo pacman -Syu --noconfirm \
-          zsh \
-          exa \
-          bat \
-          xsel \
-          xclip \
-          xterm \
-          ranger \
-          neofetch \
-          git-delta \
-          postgresql-libs \
-#          dbeaver \
-#          flameshot \
-#          maim \
-#          peek \
-#          libsecret \
-#          seahorse \
-          picom \
-#          telegram-desktop \
-#          vlc
-
-    - description: Install yay packages
-      command: |
-        yay -Syu --noconfirm \
-          slack-desktop \
-          ferdium \
-          notion-app \
-          postman-bin \
-          insomnia-bin \
-          termius-beta \
-          rofi-greenclip \
-          whatsapp-for-linux \
-          discord-canary
-
-    - description: Install ngrok
-      command: |
-        curl -sLo $HOME/.local/src/ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
-        sudo tar xvzf $HOME/.local/src/ngrok.tgz  -C /usr/local/bin
-
-    - description: Install Postman-cli
-      command: |
-        #Postman-cli
-        curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-
 - link:
     ~/.config/i3: i3
     ~/.config/dunst: dunst

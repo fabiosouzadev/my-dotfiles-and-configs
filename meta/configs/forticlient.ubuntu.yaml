@@ -1,5 +1,0 @@
-- shell:
-  - description: Install global version
-    command: "./scripts/forticlient.install.sh"
-    stderr: true
-    stdout: true

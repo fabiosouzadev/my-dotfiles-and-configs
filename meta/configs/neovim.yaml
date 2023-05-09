@@ -1,3 +1,7 @@
+- create:
+    - ~/.local/src
+    - ~/.local/bin
+
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
@@ -55,4 +59,4 @@
         sudo make install
 
 - link:
-    ~/.config/nvim: nvim
+    ~/.config/nvim: neovim

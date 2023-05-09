@@ -59,7 +59,7 @@
     - description: Install Discord
       command: |
         sudo curl -L "https://dl.discordapp.net/apps/linux/0.0.27/discord-0.0.27.deb" -o $HOME/.local/src/discord.deb
-        sudo dpkg -i $HOME/.local/src/slack.deb
+        sudo dpkg -i $HOME/.local/src/discord.deb
 
     - description: Install vlc
       command: |

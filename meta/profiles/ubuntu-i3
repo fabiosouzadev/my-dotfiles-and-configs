@@ -3,6 +3,8 @@ personal
 git
 ssh
 linux.cli
+ubuntu.packages
+ubuntu.snaps
 linux.bluetooth
 linux.browsers
 linux.fonts
@@ -26,6 +28,4 @@ kitty
 vscodium
 jetbrains-toolbox
 spotify
-ubuntu.packages
-ubuntu.snaps
 mglu

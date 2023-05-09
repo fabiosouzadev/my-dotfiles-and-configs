@@ -49,7 +49,7 @@
               neofetch \
               ranger \
               xsel \
-              libfuse2
+              libfuse2 
           ;;
           Arch | EndeavourOS)
             sudo pacman -Syu --noconfirm \

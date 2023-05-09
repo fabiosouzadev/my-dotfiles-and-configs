@@ -14,6 +14,8 @@ starship
 pyenv
 docker
 k8s
+ngrok
+postman
 asdf
 nvm
 neovim
@@ -24,6 +26,5 @@ kitty
 vscodium
 jetbrains-toolbox
 spotify
-ngrok
-postman
+endeavouros.packages
 mglu

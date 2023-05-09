@@ -23,6 +23,7 @@
       command: |
         case $(lsb_release -is) in 
           Ubuntu)
+          sudo dpkg -i mglu/network/vpns/GlobalProtect_UI_deb-6.1.0.0-44.deb
           ;;
           Arch | EndeavourOS)
             sudo pacman -Syu --noconfirm globalprotect-openconnect

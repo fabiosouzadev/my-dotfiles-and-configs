@@ -105,5 +105,10 @@
           ;;
         esac
 
+    - description: Install Rust
+      command: |
+        curl https://sh.rustup.rs -sSf | sh -s -- -y
+        source $HOME/.cargo/env
+
 - link:
     ~/.config/bat: bat

@@ -5,8 +5,14 @@
       command: |
         git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
         export PATH="$PATH:$HOME/.asdf/bin"
+        echo '. "$HOME/.asdf/asdf.sh"' | tee ~/.bashrc > /dev/null
+        . ~/.bashrc
 - link:
     ~/.asdfrc: asdf/asdfrc
+    ~/.zshrc.d/018-asdf.zsh: zshrc.d/018-asdf.zsh
+
+- shell:
+    - [source ~/.bashrc]
 - asdf:
     - plugin: direnv
       url: https://github.com/asdf-community/asdf-direnv.git

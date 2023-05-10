@@ -58,9 +58,9 @@
 
     - description: Install Discord
       command: |
+        sudo apt-get install -y gconf-service gconf-service-backend gconf2-common libc++1 libc++1-14 libc++abi1-14 libgconf-2-4 libunwind-14
         sudo curl -L "https://dl.discordapp.net/apps/linux/0.0.27/discord-0.0.27.deb" -o $HOME/.local/src/discord.deb
         sudo dpkg -i $HOME/.local/src/discord.deb
-        sudo apt-get install -f
 
     - description: Install vlc
       command: |

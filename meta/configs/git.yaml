@@ -1,3 +1,6 @@
+- create:
+    - ~/.local/src
+    - ~/.local/bin
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
@@ -5,7 +8,7 @@
       command: |
         case $(lsb_release -is) in 
           Ubuntu)
-            sudo apt install git -f
+            sudo apt-get install -y git curl 
             LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep '"tag_name":' |  sed -E 's/.*"v*([^"]+)".*/\1/')
             curl -Lo $HOME/.local/src/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
             sudo tar xf $HOME/.local/src/lazygit.tar.gz -C /usr/local/bin lazygit

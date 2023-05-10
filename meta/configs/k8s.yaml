@@ -37,10 +37,11 @@
         [ -f $HOME/.local/bin/kubens ]      || ln -sf $HOME/.local/share/kubectx/kubens     $HOME/.local/bin/kubens
     - description: Installing gcloud
       command: |
-        if [[ `uname` == 'Linux' && ! -x $HOME/.local/src/google-cloud-sdk/bin/gcloud   ]]; then
+        if [[ `uname` == 'Linux' && ! -x $HOME/.local/src/google-cloud-sdk/bin/gcloud ]]; then
           version=421.0.0
           curl "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-$version-linux-x86_64.tar.gz" | tar -xz -C $HOME/.local/src
-          . $HOME/.local/src/google-cloud-sdk/install.sh
+          cd $HOME/.local/src/google-cloud-sdk/
+          sh install.sh
         fi
     - description: Installing kubeswitch
       command: |
@@ -86,7 +87,7 @@
           ;;
         esac
       stdout: true
-    - [ exec /bin/zsh ]
+    - [exec /bin/zsh]
 - link:
     ~/.zshrc.d/012-kubectl-completions.zsh: zshrc.d/012-kubectl-completions.zsh
     ~/.zshrc.d/014-gcloud.zsh: zshrc.d/014-gcloud.zsh

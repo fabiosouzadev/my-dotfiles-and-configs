@@ -30,33 +30,34 @@
 
     - description: Install jq
       command: |
-        asdf plugin add jq https://github.com/AZMCode/asdf-jq.git
-        asdf install jq latest
-        asdf global jq latest
+        $HOME/.asdf/bin/asdf plugin add jq https://github.com/AZMCode/asdf-jq.git
+        $HOME/.asdf/bin/asdf install jq latest
+        $HOME/.asdf/bin/asdf global jq latest
       stdout: true
 
     - description: Install bun
       command: |
-        asdf plugin add bun https://github.com/cometkim/asdf-bun.git
-        asdf install bun latest
-        asdf global bun latest
+        $HOME/.asdf/bin/asdf plugin add bun https://github.com/cometkim/asdf-bun.git
+        $HOME/.asdf/bin/asdf install bun latest
+        $HOME/.asdf/bin/asdf global bun latest
 
     - description: Install Flutter
       command: |
-        asdf plugin-add flutter
-        asdf install flutter 3.7.12-stable
-        asdf global flutter 3.7.12-stable
+        sudo apt-get install jq
+        $HOME/.asdf/bin/asdf plugin-add flutter
+        $HOME/.asdf/bin/asdf install flutter 3.7.12-stable
+        $HOME/.asdf/bin/asdf global flutter 3.7.12-stable
       stdout: true
 
     - description: Install Dart
       command: |
-        asdf plugin add dart https://github.com/patoconnor43/asdf-dart.git
-        asdf install dart latest
-        asdf global dart latest
+        $HOME/.asdf/bin/asdf plugin add dart https://github.com/patoconnor43/asdf-dart.git
+        $HOME/.asdf/bin/asdf install dart latest
+        $HOME/.asdf/bin/asdf global dart latest
 
     - description: Install dotnet-core
       command: |
-        asdf plugin add dotnet-core https://github.com/emersonsoares/asdf-dotnet-core.git
-        asdf install dotnet-core latest
-        asdf global dotnet-core latest
+        $HOME/.asdf/bin/asdf plugin add dotnet-core https://github.com/emersonsoares/asdf-dotnet-core.git
+        $HOME/.asdf/bin/asdf install dotnet-core latest
+        $HOME/.asdf/bin/asdf global dotnet-core latest
       stdout: true

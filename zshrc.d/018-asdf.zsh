@@ -4,3 +4,4 @@ export PATH="$PATH:$HOME/.asdf/bin"
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
+export FLUTTER_ROOT="$(asdf where flutter)"

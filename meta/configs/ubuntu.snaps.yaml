@@ -18,7 +18,6 @@
       command: |
         if [ $(lsb_release -is) = 'Ubuntu' ]; then
           sudo snap install \
-            notion-snap \
             insomnia \
             whatsapp-for-linux \
             telegram-desktop \

@@ -23,8 +23,21 @@
       command: |
         case $(lsb_release -is) in 
           Ubuntu)
-          sudo dpkg -i mglu/network/vpns/globalprotect/GlobalProtect_UI_deb-6.1.0.0-44.deb
-          sudo cp mglu/network/vpns/globalprotect/openssl.cnf /usr/lib/ssl/
+          # Method 1
+          # sudo dpkg -i mglu/network/vpns/luizalabs/GlobalProtect_UI_deb-6.1.0.0-44.deb
+          # sudo cp mglu/network/vpns/luizalabs/openssl.cnf /usr/lib/ssl/
+          
+          #Method 2
+          sudo add-apt-repository -y ppa:yuezk/globalprotect-openconnect
+          sudo apt-get update 
+          sudo apt-get install -y globalprotect-openconnect
+          if [ -x gnome-extensions ]; then
+            git clone https://github.com/ubuntu/gnome-shell-extension-appindicator.git
+            meson gnome-shell-extension-appindicator /tmp/g-s-appindicators-build
+            ninja -C /tmp/g-s-appindicators-build install
+            gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
+          fi
+
           ;;
           Arch | EndeavourOS)
             sudo pacman -Syu --noconfirm globalprotect-openconnect
@@ -34,11 +47,13 @@
       command: |
         case $(lsb_release -is) in 
           Ubuntu)
-            wget -O - https://repo.fortinet.com/repo/6.4/ubuntu/DEB-GPG-KEY | sudo apt-key add -
-            echo 'deb [arch=amd64] https://repo.fortinet.com/repo/6.4/ubuntu/ /bionic multiverse' |  sudo tee /etc/apt/sources.list.d/forticlient.list 
-
-            sudo apt-get update
-            sudo apt install -y forticlient
+            # Method 1
+            # sudo apt-get install openfortivpn
+            # sudo cp mglu/network/vpns/hub/config /etc/openfortivpn
+            
+            #Method 2
+            sudo apt-get install -y libgdk-pixbuf-xlib-2.0-0 libgdk-pixbuf2.0-0
+            sudo dpkg -i mglu/network/vpns/hub/forticlient-sslvpn_4.4.2333-1_amd64.deb
           ;;
 
           Arch | EndeavourOS)

@@ -25,9 +25,9 @@
         #Install alacritty
          [ -d $HOME/.local/src/alacritty ] || git clone https://github.com/alacritty/alacritty.git $HOME/.local/src/alacritty
           cd $HOME/.local/src/alacritty
-          rustup override set stable
-          rustup update stable
-          cargo build --release
+          $HOME/.cargo/bin/rustup override set stable
+          $HOME/.cargo/bin/rustup update stable
+          $HOME/.cargo/bin/cargo build --release
           ### Force support for only Wayland ###
           #cargo build --release --no-default-features --features=wayland
 

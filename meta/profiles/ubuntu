@@ -3,8 +3,8 @@ personal
 git
 ssh
 linux.cli
-ubuntu.packages
 ubuntu.snaps
+ubuntu.packages
 linux.bluetooth
 linux.browsers
 linux.fonts

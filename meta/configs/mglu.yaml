@@ -75,12 +75,12 @@
     - command: "[ -d ~/Projects/mglu/cicd_hogwarts ]  || git clone git@gitlab.luizalabs.com:cicd/fintech/magalu-pagamentos/squad-pix/hogwarts.git   ~/Projects/mglu/cicd_hogwarts ]"
     # - description: Config hosts
     #   command: 'cat mglu/network/hosts.conf | sudo tee -a /etc/hosts'
-    - description: Config DNS NetworkManager
-      command: |
-        if [[ -f "mglu/network/resolv.conf" ]]; then
-          cat mglu/network/resolv.conf | sudo tee -a /etc/resolv.conf
-        fi
-        sudo systemctl reload NetworkManager
+    # - description: Config DNS NetworkManager
+    #   command: |
+    #     if [[ -f "mglu/network/resolv.conf" ]]; then
+    #       cat mglu/network/resolv.conf | sudo tee -a /etc/resolv.conf
+    #     fi
+    #     sudo systemctl reload NetworkManager
 - link:
     ~/.gitconfig_mglu: mglu/git/gitconfig_mglu
     ~/.kube/mglu/eks-development.yaml: mglu/kube/eks-development.yaml

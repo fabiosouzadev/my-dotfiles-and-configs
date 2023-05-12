@@ -19,7 +19,7 @@
       command: "[ -d $HOME/zgenom ] || git clone https://github.com/jandamm/zgenom.git $HOME/zgenom"
 
 - link:
-    ~/.zgen-setup: meta/zsh-quickstart-kit/zsh/.zgen-setup
+    ~/.zgen-setup: zsh/zgenom-setup
     ~/.zsh_aliases: meta/zsh-quickstart-kit/zsh/.zsh_aliases
     ~/.zsh_functions: meta/zsh-quickstart-kit/zsh/.zsh_functions
     ~/.zshrc: meta/zsh-quickstart-kit/zsh/.zshrc

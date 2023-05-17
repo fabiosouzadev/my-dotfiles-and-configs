@@ -16,18 +16,17 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: eks-hml-pagamentos
-  currentCluster: eks-hml-pagamentos
+  currentContext: eks-development
+  currentCluster: eks-development
   clusters:
-    eks-hml-pagamentos:
+    eks-development:
       namespace:
-        active: pix-core-preprod
+        active: all
         lockFavorites: false
         favorites:
-        - pix-core-preprod
         - default
       view:
-        active: pods
+        active: context
       featureGates:
         nodeShell: false
       shellPod:

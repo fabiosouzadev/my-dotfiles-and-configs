@@ -87,6 +87,12 @@
           ;;
         esac
       stdout: true
+    - description: Installing ArgoCD cli
+      command: |
+        cd  $HOME/.local/src
+        curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+        sudo install -m 555 argocd-linux-amd64 $HOME/.local/bin/argocd
+        rm argocd-linux-amd64
     - [exec /bin/zsh]
 - link:
     ~/.zshrc.d/012-kubectl-completions.zsh: zshrc.d/012-kubectl-completions.zsh

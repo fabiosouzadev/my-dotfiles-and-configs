@@ -69,10 +69,10 @@
     - command: "[ -d ~/Projects/mglu/snape ]    || git clone git@gitlab.luizalabs.com:luizalabs/fintech/snape.git         ~/Projects/mglu/snape"
     - command: "[ -d ~/Projects/mglu/hogwarts ] || git clone git@gitlab.luizalabs.com:luizalabs/fintech/hogwarts.git      ~/Projects/mglu/hogwarts/"
 
-    - command: "[ -d ~/Projects/mglu/cicd_griphook ]  || git clone git@gitlab.luizalabs.com:cicd/fintech/magalu-pagamentos/squad-pix/griphook.git   ~/Projects/mglu/cicd_griphook ]"
-    - command: "[ -d ~/Projects/mglu/cicd_hagrid ]    || git clone git@gitlab.luizalabs.com:cicd/fintech/magalu-pagamentos/squad-pix/hagrid.git   ~/Projects/mglu/cicd_hagrid ]"
-    - command: "[ -d ~/Projects/mglu/cicd_snape ]     || git clone git@gitlab.luizalabs.com:cicd/fintech/magalu-pagamentos/squad-pix/snape.git   ~/Projects/mglu/cicd_snape ]"
-    - command: "[ -d ~/Projects/mglu/cicd_hogwarts ]  || git clone git@gitlab.luizalabs.com:cicd/fintech/magalu-pagamentos/squad-pix/hogwarts.git   ~/Projects/mglu/cicd_hogwarts ]"
+    - command: "[ -d ~/Projects/mglu/cicd_griphook ]  || git clone git@gitlab.luizalabs.com:cicd/fintech/magalu-pagamentos/squad-pix/griphook.git     ~/Projects/mglu/cicd_griphook"
+    - command: "[ -d ~/Projects/mglu/cicd_hagrid ]    || git clone git@gitlab.luizalabs.com:cicd/fintech/magalu-pagamentos/squad-pix/hagrid.git       ~/Projects/mglu/cicd_hagrid"
+    - command: "[ -d ~/Projects/mglu/cicd_snape ]     || git clone git@gitlab.luizalabs.com:cicd/fintech/magalu-pagamentos/squad-pix/snape.git        ~/Projects/mglu/cicd_snape"
+    - command: "[ -d ~/Projects/mglu/cicd_hogwarts ]  || git clone git@gitlab.luizalabs.com:cicd/fintech/magalu-pagamentos/squad-pix/hogwarts.git     ~/Projects/mglu/cicd_hogwarts"
     # - description: Config hosts
     #   command: 'cat mglu/network/hosts.conf | sudo tee -a /etc/hosts'
     # - description: Config DNS NetworkManager

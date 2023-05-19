@@ -1,3 +1,6 @@
+- create:
+    - $HOME/.local/src
+    - $HOME/.local/bin
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
@@ -17,6 +20,13 @@
             
             #Chrome dev
             #sudo apt-get install -y google-chrome-unstable
+            curl -fsSLo $HOME/.local/src/chrome-unstable.deb https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
+            sudo dpkg -i $HOME/.local/src/chrome-unstable.deb 
+      
+            #Chrome beta
+            #sudo apt-get install -y google-chrome-unstable
+            curl -fsSLo $HOME/.local/src/chrome-beta.deb https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
+            sudo dpkg -i $HOME/.local/src/chrome-beta.deb 
 
             #Opera developer
             #sudo sh -c 'echo "deb http://deb.opera.com/opera-stable/ stable non-free" >> /etc/apt/sources.list.d/opera.list'

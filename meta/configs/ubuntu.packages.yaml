@@ -15,7 +15,9 @@
         vpnc \
         caffeine \
         libqt5webkit5 \
-        transmission
+        transmission \
+        ubuntu-restricted-extras \
+        gnome-shell-extension-ubuntu-tiling-assistant
 
       stderr: true
       stdout: true

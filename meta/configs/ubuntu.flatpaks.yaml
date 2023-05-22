@@ -10,23 +10,21 @@
             gnome-software-plugin-flatpak \
             flatpak
           
-          flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+          export FLATPAK=/usr/bin/flatpak
+          $FLATPAK remote-add --if-not-exists --system flathub \
+            https://flathub.org/repo/flathub.flatpakrepo
+
+          $FLATPAK update -v
+          $FLATPAK uninstall --unused
+          $FLATPAK repair
+          $FLATPAK repair --user
         fi
 
-    - description: Install first snaps
-      command: |
-        sudo snap install \
-          authy \
-          bitwarden
 
-    - description: Install snaps
+    - description: Install flatpaks
       command: |
         if [ $(lsb_release -is) = 'Ubuntu' ]; then
-          sudo snap install \
-            insomnia \
-            whatsapp-for-linux \
-            telegram-desktop \
-            termius-beta \
-            redisinsight \
-            firetruck
+          export FLATPAK=/usr/bin/flatpak
+          $FLATPAK install -y org.freedesktop.Platform
+          $FLATPAK install -y flathub com.redis.RedisInsight 
         fi

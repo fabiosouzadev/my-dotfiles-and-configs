@@ -5,6 +5,7 @@ ssh
 linux.cli
 ubuntu.packages
 ubuntu.snaps
+ubuntu.flatpacks
 linux.bluetooth
 linux.browsers
 linux.fonts

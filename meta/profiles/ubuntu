@@ -4,6 +4,7 @@ git
 ssh
 linux.cli
 ubuntu.snaps
+ubuntu.flatpack
 ubuntu.packages
 linux.bluetooth
 linux.browsers

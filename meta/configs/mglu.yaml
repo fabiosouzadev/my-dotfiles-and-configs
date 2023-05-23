@@ -85,8 +85,11 @@
     ~/.gitconfig_mglu: mglu/git/gitconfig_mglu
     ~/.kube/mglu/eks-development.yaml: mglu/kube/eks-development.yaml
     ~/.kube/mglu/eks-hml-pagamentos.yaml: mglu/kube/eks-hml-pagamentos.yaml
+    ~/.kube/mglu/eks-preprod.yaml: mglu/kube/eks-preprod.yaml
     ~/.kube/mglu/eks-prd-pagamentos.yaml: mglu/kube/eks-prd-pagamentos.yaml
     ~/.kube/mglu/eks-production.yaml: mglu/kube/eks-production.yaml
+    ~/.kube/mglu/gke-magalu.yaml: mglu/kube/gke-magalu.yaml
     ~/.kube/switch-config.yaml: mglu/kubeswitch/switch-config.yaml
     ~/.zshrc.d/200-mglu.zsh: mglu/zsh/200-mglu.zsh
     ~/.config/gcloud/configurations/config_magalu-dict: mglu/gcloud/configurations/config_magalu-dict
+    ~/.config/gcloud/configurations/config_magalu-digital-project: mglu/gcloud/configurations/config_magalu-digital-project

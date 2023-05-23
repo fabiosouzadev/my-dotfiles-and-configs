@@ -16,17 +16,17 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: eks-prd-pagamentos
-  currentCluster: eks-prd-pagamentos
+  currentContext: gke_gke-digital-transaction
+  currentCluster: gke_gke-digital-transaction
   clusters:
-    eks-prd-pagamentos:
+    gke_gke-digital-transaction:
       namespace:
         active: all
         lockFavorites: false
         favorites:
         - default
       view:
-        active: po
+        active: context
       featureGates:
         nodeShell: false
       shellPod:

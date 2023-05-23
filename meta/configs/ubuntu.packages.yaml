@@ -67,6 +67,15 @@
         sudo add-apt-repository ppa:videolan/master-daily -y
         sudo apt-get update
         sudo apt-get install vlc -y
+    
+    - description: Install pano (Gnome)
+      command: |
+        sudo apt-get install -y gir1.2-gda-5.0 gir1.2-gsound-1.0
+        git clone https://github.com/oae/gnome-shell-pano.git
+        cd ./gnome-shell-pano
+        yarn install
+        yarn build
+        ln -s "$PWD/dist" "$HOME/.local/share/gnome-shell/extensions/pano@elhan.io"
 
 - link:
     ~/.config/xfce4/terminal: xfce4/terminal

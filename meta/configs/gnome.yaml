@@ -1,0 +1,25 @@
+- create:
+    - ~/.local/src
+    - ~/.local/bin
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Install Gnome shell
+      command: |
+        case $(lsb_release -is) in 
+          Ubuntu)
+            sudo apt-get install -y \
+              chrome-gnome-shell\
+                gnome-tweaks
+
+          ;;
+          Arch | EndeavourOS)
+            git clone https://aur.archlinux.org/gnome-browser-connector.git
+            cd gnome-browser-connector
+            makepkg -si
+          ;;
+        esac
+- link:
+    ~/.config/xfce4/terminal: xfce4/terminal
+    ~/.config/monitors.xml: monitors/monitors.xml
+    ~/.config/gtk-3.0: gtk-3.0

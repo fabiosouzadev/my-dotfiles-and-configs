@@ -29,16 +29,17 @@
             sudo dpkg -i $HOME/.local/src/chrome-beta.deb 
 
             #Opera developer
-            #sudo sh -c 'echo "deb http://deb.opera.com/opera-stable/ stable non-free" >> /etc/apt/sources.list.d/opera.list'
-            #wget -qO- https://deb.opera.com/archive.key | sudo apt-key add -
-            #sudo apt-get update
-            #sudo apt-get install -y opera-developer
+            sudo sh -c 'echo "deb http://deb.opera.com/opera-stable/ stable non-free" >> /etc/apt/sources.list.d/opera.list'
+            wget -qO- https://deb.opera.com/archive.key | sudo apt-key add -
+            sudo apt-get update
+            sudo apt-get install -y opera-developer
 
             #Vivaldi dev
-            #sudo sh -c 'echo "deb http://repo.vivaldi.com/stable/deb/ stable main" >> /etc/apt/sources.list'
-            #wget -q -O - http://repo.vivaldi.com/stable/linux_signing_key.pub | sudo apt-key add -
-            #sudo apt-get update
-            #sudo apt install -y vivaldi-snapshot
+            wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | gpg --dearmor | sudo dd of=/usr/share/keyrings/vivaldi-browser.gpg
+            echo "deb [signed-by=/usr/share/keyrings/vivaldi-browser.gpg arch=$(dpkg --print-architecture)] \
+              https://repo.vivaldi.com/archive/deb/ stable main" | sudo dd of=/etc/apt/sources.list.d/vivaldi-archive.list
+            sudo apt-get update
+            sudo apt install -y vivaldi-snapshot
             
             #Firefox nightly
             #sudo add-apt-repository ppa:ubuntu-mozilla-daily/ppa

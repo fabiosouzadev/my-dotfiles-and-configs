@@ -67,3 +67,4 @@ updatedns(){
 alias kubectx='switch'
 alias kctx='switch'
 alias kubeswitch='switch'
+alias df='duf'

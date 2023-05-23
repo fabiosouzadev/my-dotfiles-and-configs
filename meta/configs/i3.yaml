@@ -100,15 +100,15 @@
     ~/.config/rofi: rofi
     ~/.config/picom.conf: picom/picom.conf
     ~/.config/wallpapers: wallpapers
+    ~/.config/xfce4/terminal:
 
     ~/.config/greenclip.toml:
       if: "[`lsb_release -is` = EndeavourOS]"
       path: greenclip/greenclip.toml
     ~/.screenlayout:
       if: "[`lsb_release -is` = EndeavourOS]"
-      path: xrand
-    ~/.config/xfce4/terminal:
-      if: "[`lsb_release -is` = EndeavourOS]"
+      path: monitors/xrand
+    ~/.config/monitors.xml: monitors/monitors.xml
     ~/.config/gtk-3.0:
       if: "[`lsb_release -is` = EndeavourOS]"
       path: gtk-3.0

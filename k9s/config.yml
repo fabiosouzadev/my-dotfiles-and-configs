@@ -16,10 +16,10 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: eks-development
-  currentCluster: eks-development
+  currentContext: eks-preprod
+  currentCluster: eks-preprod
   clusters:
-    eks-development:
+    eks-preprod:
       namespace:
         active: all
         lockFavorites: false

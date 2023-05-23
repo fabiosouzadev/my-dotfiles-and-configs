@@ -17,10 +17,7 @@
         libqt5webkit5 \
         transmission \
         ubuntu-restricted-extras \
-        gnome-shell-extension-ubuntu-tiling-assistant
-
-      stderr: true
-      stdout: true
+        xfce4-terminal
 
     - description: Toggle install
       command: |
@@ -69,3 +66,8 @@
         sudo add-apt-repository ppa:videolan/master-daily -y
         sudo apt-get update
         sudo apt-get install vlc -y
+
+- link:
+    ~/.config/xfce4/terminal: xfce4/terminal
+    ~/.config/monitors.xml: monitors/monitors.xml
+    ~/.config/gtk-3.0: gtk-3.0

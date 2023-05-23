@@ -16,17 +16,17 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: eks-preprod
-  currentCluster: eks-preprod
+  currentContext: eks-prd-pagamentos
+  currentCluster: eks-prd-pagamentos
   clusters:
-    eks-preprod:
+    eks-prd-pagamentos:
       namespace:
         active: all
         lockFavorites: false
         favorites:
         - default
       view:
-        active: context
+        active: po
       featureGates:
         nodeShell: false
       shellPod:

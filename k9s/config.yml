@@ -16,17 +16,20 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: gke_gke-digital-transaction
-  currentCluster: gke_gke-digital-transaction
+  currentContext: eks-development
+  currentCluster: eks-development
   clusters:
-    gke_gke-digital-transaction:
+    eks-development:
       namespace:
-        active: all
+        active: hagrid-admin-argocd
         lockFavorites: false
         favorites:
+        - hagrid-api-argocd
+        - hagrid-admin-argocd
+        - all
         - default
       view:
-        active: context
+        active: pods
       featureGates:
         nodeShell: false
       shellPod:

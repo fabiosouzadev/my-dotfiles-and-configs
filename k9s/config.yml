@@ -21,15 +21,13 @@ k9s:
   clusters:
     eks-development:
       namespace:
-        active: hagrid-admin-argocd
+        active: hogwarts-api-argocd
         lockFavorites: false
         favorites:
-        - hagrid-api-argocd
-        - hagrid-admin-argocd
-        - all
+        - hogwarts-api-argocd
         - default
       view:
-        active: pods
+        active: pod
       featureGates:
         nodeShell: false
       shellPod:

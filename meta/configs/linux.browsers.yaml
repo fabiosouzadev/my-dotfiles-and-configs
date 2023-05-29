@@ -17,6 +17,7 @@
             sudo apt install -y brave-browser-nightly
 
             #Chromium ==>TODO BUILD
+            sudo snap install chromium --channel=latest/candidate/hwacc
             
             #Chrome dev
             #sudo apt-get install -y google-chrome-unstable

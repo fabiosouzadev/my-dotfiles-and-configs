@@ -3,15 +3,17 @@
       command: "sudo --validate"
     - description: Install zsh
       command: |
-        case $(lsb_release -is) in 
-          Ubuntu)
-            sudo apt-get install -y zsh
-          ;;
-          
-          Arch | EndeavourOS)
-            sudo pacman -S --noconfirm zsh
-          ;;
-        esac
+        if [ `uname` = 'Linux' ]; then 
+          case $(lsb_release -is) in 
+            Ubuntu)
+              sudo apt-get install -y zsh
+            ;;
+            
+            Arch | EndeavourOS)
+              sudo pacman -S --noconfirm zsh
+            ;;
+          esac
+        fi
     - description: Adding zsh to list of acceptable shells
       command: '[ -x $(which zsh) ] && sudo sh -c "echo $(which zsh) >> /etc/shells"'
     - [git submodule update --init --recursive, Installing submodules]
@@ -25,17 +27,11 @@
     ~/.zshrc: meta/zsh-quickstart-kit/zsh/.zshrc
     ~/.zshrc.d/001-aliases.zsh: zshrc.d/001-aliases.zsh
     ~/.zshrc.d/002-nvm.zsh: zshrc.d/002-nvm.zsh
-    ~/.zshrc.d/003-brew-completations.zsh:
-      if: "[ `uname` = Darwin ]"
-      path: zshrc.d/003-brew-completations.zsh
     ~/.zshrc.d/004-java.zsh: zshrc.d/004-java.zsh
     ~/.zshrc.d/005-rust.zsh: zshrc.d/005-rust.zsh
     # ~/.zshrc.d/007-android.zsh: zshrc.d/007-android.zsh
     ~/.zshrc.d/008-flutter.zsh: zshrc.d/008-flutter.zsh
     ~/.zshrc.d/009-webkit.zsh: zshrc.d/009-webkit.zsh
-    ~/.zshrc.d/010-fzf-macos.zsh:
-      if: "[ `uname` = Darwin ]"
-      path: zshrc.d/010-fzf-macos.zsh
     ~/.p10k.zsh: powerlevel10k/p10k.zsh
     ~/.zshrc.d/013-local-path.zsh: zshrc.d/013-local-path.zsh
     ~/.zsh-quickstart-local-plugins: zshrc.d/zsh-quickstart-local-plugins

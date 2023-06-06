@@ -1,4 +1,5 @@
-export PATH=$HOME/.local/src/google-cloud-sdk/bin:$PATH
+export PATH=$HOME/.local/src/google-cloud-sdk/bin:$HOME/.local/src/google-cloud-sdk/path.zsh.inc:$PATH
+source $HOME/.local/src/google-cloud-sdk/completion.zsh.inc 2> /dev/null
 
 autoload -U +X bashcompinit && bashcompinit
 zmodload -i zsh/parameter

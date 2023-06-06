@@ -7,19 +7,27 @@
     - command: '[ -f "$HOME/.gnupg/private.gpg" ] || cp personal/gnupg/private.gpg ~/.gnupg/private.gpg'
     - command: '[ -f "$HOME/.gnupg/public.gpg" ]  || cp personal/gnupg/public.gpg ~/.gnupg/public.gpg'
     - command: '[ -f "$HOME/.gnupg/trust.gpg" ]   || cp personal/gnupg/trust.gpg ~/.gnupg/trust.gpg'
-    - description:
+    - [chown -R $(whoami) ~/.gnupg]
+    - [chmod 700 ~/.gnupg]
+    - [chmod 600 ~/.gnupg/*]
+    - [chmod 700 ~/.gnupg/*.d]
+    - description: Configure gnupg
       command: |
         gpg --import $HOME/.gnupg/public.gpg
         gpg --import $HOME/.gnupg/private.gpg
+        gpg --import-options restore --import $HOME/.gnupg/private.gpg
         gpg --import-ownertrust $HOME/.gnupg/trust.gpg
+
     - description: Install pass
       command: |
-        case $(lsb_release -is) in
-          Arch | EndeavourOS)
-            sudo pacman -S --noconfirm pass
-            #pass init fabiovanderlei.developer@gmail.com
-          ;;
-        esac
+        if [ `uname` = 'Linux' ]; then
+          case $(lsb_release -is) in
+            Arch | EndeavourOS)
+              sudo pacman -S --noconfirm pass
+              #pass init fabiovanderlei.developer@gmail.com
+            ;;
+          esac
+        fi
 
 - link:
     ~/.gitconfig_local: personal/gitconfig_local

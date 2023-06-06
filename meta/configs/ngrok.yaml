@@ -7,5 +7,10 @@
 
     - description: Install ngrok
       command: |
-        curl -sLo $HOME/.local/src/ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
-        sudo tar xvzf $HOME/.local/src/ngrok.tgz  -C /usr/local/bin
+        if [ `uname` = 'Darwin' ]; then 
+          brew install ngrok/ngrok/ngrok
+        elif [ `uname` = 'Linux' ]; then
+          curl -sLo $HOME/.local/src/ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+          sudo tar xvzf $HOME/.local/src/ngrok.tgz  -C /usr/local/bin
+        fi
+        

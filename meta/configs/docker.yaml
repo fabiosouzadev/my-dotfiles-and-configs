@@ -3,57 +3,71 @@
     command: "sudo --validate"
   - description: Installing docker dependencies
     command: |
-      case $(lsb_release -is) in 
-        Ubuntu)
-          sudo apt-get update
-          sudo apt-get install -y \
-          lsb-release \
-          ca-certificates \
-          apt-transport-https \
-          software-properties-common \
-          wget \
-          curl
-        ;;
-        Arch | EndeavourOS)
-          sudo pacman -Syu --noconfirm libxcrypt-compat 
-        ;;
-      esac
+      if [ `uname` = 'Linux' ]; then
+        case $(lsb_release -is) in 
+          Ubuntu)
+            sudo apt-get update
+            sudo apt-get install -y \
+            lsb-release \
+            ca-certificates \
+            apt-transport-https \
+            software-properties-common \
+            wget \
+            curl
+          ;;
+          Arch | EndeavourOS)
+            sudo pacman -Syu --noconfirm libxcrypt-compat 
+          ;;
+        esac
+      fi
   - description: Installing docker
     command: |
-      case $(lsb_release -is) in 
-        Ubuntu)
-          if [ ! -f  '/usr/share/keyrings/docker-archive-keyring.gpg' ]; then
-            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null 
-            sudo apt-get update
-          fi
-          sudo apt-get install -y \
-          docker-ce \
-          docker-ce-cli \
-          containerd.io \
-          docker-compose-plugin
-          sudo usermod -aG docker $USER
-        ;;
-        Arch | EndeavourOS)
-          sudo pacman -Syu --noconfirm docker
-          sudo systemctl enable --now docker
-          sudo groupadd -f docker
-          sudo usermod -aG docker $USER
-          newgrp docker
-          sudo chmod 666 /var/run/docker.sock
-        ;;
-      esac
+      if [ `uname` = 'Darwin' ]; then
+        brew install --cask docker
+      elif [ `uname` = 'Linux' ]; then
+        case $(lsb_release -is) in 
+          Ubuntu)
+            if [ ! -f  '/usr/share/keyrings/docker-archive-keyring.gpg' ]; then
+              curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+              echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null 
+              sudo apt-get update
+            fi
+            sudo apt-get install -y \
+            docker-ce \
+            docker-ce-cli \
+            containerd.io \
+            docker-compose-plugin
+            sudo usermod -aG docker $USER
+          ;;
+          Arch | EndeavourOS)
+            sudo pacman -Syu --noconfirm docker
+            sudo systemctl enable --now docker
+            sudo groupadd -f docker
+            sudo usermod -aG docker $USER
+            newgrp docker
+            sudo chmod 666 /var/run/docker.sock
+          ;;
+        esac
+      fi
   - description: Installing docker-compose
     command: |
-      case $(lsb_release -is) in 
-        Ubuntu)
-          sudo curl -L "https://github.com/docker/compose/releases/download/2.15.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-          sudo chmod +x /usr/local/bin/docker-compose
-        ;;
-        Arch | EndeavourOS)
-          sudo pacman -Syu --noconfirm docker-compose
-        ;;
-      esac
+      if [ `uname` = 'Darwin' ]; then
+        brew install docker-compose 
+      elif [ `uname` = 'Linux' ]; then
+        case $(lsb_release -is) in 
+          Ubuntu)
+            sudo curl -L "https://github.com/docker/compose/releases/download/2.15.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
+          ;;
+          Arch | EndeavourOS)
+            sudo pacman -Syu --noconfirm docker-compose
+          ;;
+        esac
+      fi
   - description: Installing Lazydocker
     command: |
-      curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | zsh
+      if [ `uname` = 'Darwin' ]; then
+        brew install jesseduffield/lazydocker/lazydocker 
+      elif [ `uname` = 'Linux' ]; then
+        curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | zsh
+      fi

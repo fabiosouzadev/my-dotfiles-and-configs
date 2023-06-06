@@ -1,6 +1,6 @@
 dns
 personal
-git
+linux.git
 ssh
 linux.cli
 ubuntu.packages
@@ -11,7 +11,7 @@ linux.browsers
 linux.fonts
 linux.icons
 i3
-fzf
+linux.fzf
 zsh
 starship
 pyenv

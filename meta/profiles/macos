@@ -1,6 +1,8 @@
 personal
 ssh
+git
 brew
+fzf
 pyenv
 asdf
 starship

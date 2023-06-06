@@ -1,0 +1,36 @@
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Installing vscode/vscodium packages
+      command: |
+        EXECUTOR=$(which code)
+        if [ -x "$(which codium)" ]; then
+          EXECUTOR=$(which codium)
+        fi
+        if [ -x "$(which code-insiders)" ]; then
+          EXECUTOR=$(which code-insiders)
+        fi
+        if [ -x "$(which vscodium-insiders)" ]; then
+          EXECUTOR=$(which vscodium-insiders)
+        fi
+
+
+        # Install packages
+        VSCODE_EXTENSIONS=(
+        # ICONS
+        'vscode-icons-team.vscode-icons'
+        #THEMES
+        "enkia.tokyo-night"
+        "whizkydee.material-palenight-theme"
+        "arcticicestudio.nord-visual-studio-code"
+        "daltonmenezes.aura-theme"
+        "wicked-labs.wvsc-serendipity"
+        "johnpapa.vscode-peacock"
+        "esbenp.prettier-vscode"
+        )
+
+        for i in "${VSCODE_EXTENSIONS[@]}"
+        do
+          ${EXECUTOR} --install-extension  "$i"
+        done
+      stdout: true

@@ -5,12 +5,17 @@
       command: "[ -d $HOME/.local/src ] || mkdir -p $HOME/.local/src"
     - description: Install jetbrains-toolbox
       command: |
-        version=1.28.1.15219
-        if [[ `uname` == 'Linux' && ! -d $HOME/.local/src/jetbrains-toolbox-${version} ]]; then
-          curl -L "https://download.jetbrains.com/toolbox/jetbrains-toolbox-$version.tar.gz" | tar -xz -C $HOME/.local/src/
+        if [ `uname` = 'Darwin' ]; then 
+          brew install --cask jetbrains-toolbox
+        elif [ `uname` = 'Linux' ]; then
+          version=1.28.1.15219
+          if [ -d $HOME/.local/src/jetbrains-toolbox-${version} ]; then
+            curl -L "https://download.jetbrains.com/toolbox/jetbrains-toolbox-$version.tar.gz" | tar -xz -C $HOME/.local/src/
+          fi
+          cd $HOME/.local/src/jetbrains-toolbox-${version}
+          ./jetbrains-toolbox
         fi
-
-        cd $HOME/.local/src/jetbrains-toolbox-${version}
-        ./jetbrains-toolbox
+          
+        
 - link:
     ~/.zshrc.d/015-jetbrains-toolbox.zsh: zshrc.d/015-jetbrains-toolbox.zsh

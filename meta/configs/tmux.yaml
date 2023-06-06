@@ -1,32 +1,80 @@
+- create:
+    - ~/.local/src
+    - ~/.local/bin
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
-    - description: Create source dir
-      command: "[ -d $HOME/.local/src ] || mkdir -p $HOME/.local/src"
+      
+    - description: Install openssl
+      command: |
+        version=3.1.1
+        curl -L "https://www.openssl.org/source/openssl-$version.tar.gz" | tar -xz -C $HOME/.local/src
+        cd $HOME/.local/src/openssl-$version
+        if [ `uname` = 'Darwin' ]; then
+          ./Configure --prefix=/usr/local --openssldir=/usr/local/openssl darwin64-x86_64-cc
+        fi
+        make test
+        sudo make install
+      stdout: true
+    - description: Install libevent
+      command: |
+        version=2.1.12
+        curl -L "https://github.com/libevent/libevent/releases/download/release-$version-stable/libevent-$version-stable.tar.gz" | tar -xz -C $HOME/.local/src
+        cd $HOME/.local/src/libevent-$version-stable
+        ./configure --prefix=/usr/local --enable-shared
+        make 
+        sudo make install
+      stdout: true
+    - description: Install ncurses
+      command: |
+        version=6.3
+        curl -L https://invisible-island.net/datafiles/release/ncurses.tar.gz | tar -xz -C $HOME/.local/src
+        cd $HOME/.local/src/ncurses-$version
+        ./configure --prefix=/usr/local --with-shared --with-termlib --enable-pc-files --with-pkg-config-libdir=/usr/local/lib/pkgconfig
+        make 
+        make install
+      stdout: true
+    - description: Install utf8proc
+      command: |
+        if [ `uname` = 'Darwin' ]; then
+          version=2.8.0
+          curl -L https://github.com/JuliaStrings/utf8proc/archive/refs/tags/v$version.tar.gz | tar -xz -C $HOME/.local/src
+          cd $HOME/.local/src/utf8proc-$version
+          make --prefix=/usr/local
+          sudo make install
+        fi
+      stdout: true
+      
     - description: Build tmux
       command: |
-        case $(lsb_release -is) in 
+        if [ `uname` = 'Darwin' ]; then
+          brew install autoconf
+          brew install automake
+          brew install libtool
+          brew install pkg-config
+        elif [ `uname` = 'Linux' ]; then 
+          case $(lsb_release -is) in 
+            Ubuntu)
+              sudo apt install -y \
+                libevent-dev \
+                ncurses-dev \
+                build-essential \
+                bison \
+                pkg-config
+            ;;
 
-          Ubuntu)
-            sudo apt install -y \
-              libevent-dev \
-              ncurses-dev \
-              build-essential \
-              bison \
-              pkg-config
-          ;;
-
-          Arch | EndeavourOS)
-            sudo pacman -Sy --noconfirm \
-              base-devel \
-              libevent \
-              ncurses \
-              make \
-              bison \
-              pkg-config
-          ;;
-
-        esac
+            Arch | EndeavourOS)
+              sudo pacman -Sy --noconfirm \
+                base-devel \
+                libevent \
+                ncurses \
+                make \
+                bison \
+                pkg-config
+            ;;
+          esac
+        fi
+        
 
         if [ !  -d $HOME/.local/src/tmux ]; then
           git clone https://github.com/tmux/tmux.git $HOME/.local/src/tmux
@@ -34,15 +82,19 @@
         cd $HOME/.local/src/tmux
         git pull
         sh autogen.sh
-        ./configure
-        make && sudo make install
+        if [ `uname` = 'Darwin' ]; then
+         ./configure --enable-utf8proc
+        elif [ `uname` = 'Linux' ]; then 
+          ./configure
+        fi
+        make 
+        sudo make install
 
         if [ -d $HOME/.tmux ]; then
           sudo rm -r $HOME/.tmux
         fi
+      stdout: true
 
-    # - description: Fallback tmux
-    #   command: "[ -x /usr/local/bin/tmux ] || sudo apt-get install -y tmux"
     - description: "Clone TPM"
       command: |
         if [ ! -d $HOME/.tmux/plugins/tpm ]; then

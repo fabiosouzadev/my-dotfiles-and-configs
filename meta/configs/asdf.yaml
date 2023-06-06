@@ -3,7 +3,6 @@
       command: "[ ! -d ~/.asdf ] || sudo rm -rf ~/.asdf"
     - description: Clone asdf
       command: |
-        sudo apt-get install -y git
         git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
 - link:
     ~/.asdfrc: asdf/asdfrc
@@ -17,23 +16,28 @@
         . "$HOME/.asdf/asdf.sh"
         . ~/.bashrc
 
-        sudo apt-get install -y \
-          dirmngr \
-          gpg \
-          curl \
-          gawk
+        if [ `uname` = 'Linux' ]; then 
+          case $(lsb_release -is) in 
+            Ubuntu)
+              sudo apt-get install -y \
+                dirmngr \
+                gpg \
+                curl \
+                gawk
+          esac
+        fi
 
     # - description: Install Java
     #   command: |
     #     asdf plugin add java https://github.com/halcyon/asdf-java.git
     #     asdf install java latest
 
-    - description: Install jq
-      command: |
-        $HOME/.asdf/bin/asdf plugin add jq https://github.com/AZMCode/asdf-jq.git
-        $HOME/.asdf/bin/asdf install jq latest
-        $HOME/.asdf/bin/asdf global jq latest
-      stdout: true
+    # - description: Install jq
+    #   command: |
+    #     $HOME/.asdf/bin/asdf plugin add jq https://github.com/AZMCode/asdf-jq.git
+    #     $HOME/.asdf/bin/asdf install jq 1.6
+    #     $HOME/.asdf/bin/asdf global jq 1.6
+    #   stdout: true
 
     - description: Install bun
       command: |
@@ -43,7 +47,14 @@
 
     - description: Install Flutter
       command: |
-        sudo apt-get install jq
+        if [ `uname` = 'Darwin' ]; then
+          brew install jq
+        elif [ `uname` = 'Linux' ]; then 
+          case $(lsb_release -is) in 
+            Ubuntu)
+              sudo apt-get install jq
+          esac
+        fi
         $HOME/.asdf/bin/asdf plugin-add flutter
         $HOME/.asdf/bin/asdf install flutter 3.7.12-stable
         $HOME/.asdf/bin/asdf global flutter 3.7.12-stable

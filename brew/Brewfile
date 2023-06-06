@@ -6,6 +6,7 @@ tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'nicoverbruggen/homebrew-cask'
 tap 'jesseduffield/lazygit'
+tap 'ferdium/ferdium'
 
 #CLI
 brew 'gnupg'
@@ -55,6 +56,7 @@ cask 'bitwarden'
 cask 'macs-fan-control'
 cask 'spotify'
 brew 'ferdium-nightly'
+cask 'appcleaner'
 
 # Mac App Store
 mas "Battery Health", id: 490192174

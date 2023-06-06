@@ -4,14 +4,24 @@
 
     - description: Install Postman-cli
       command: |
-        #Postman-cli
-        curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+        if [ `uname` = 'Darwin' ]; then 
+          brew install --cask postman-cli
+        elif [ `uname` = 'Linux' ]; then
+          #Postman-cli
+          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+        fi
+        
 
     - description: Install Postman Desktop
       command: |
-        case $(lsb_release -is) in 
-          Ubuntu)
-            sudo snap install \
-              postman
-          ;;
-        esac
+        if [ `uname` = 'Darwin' ]; then 
+          brew install --cask postman
+        elif [ `uname` = 'Linux' ]; then
+          case $(lsb_release -is) in 
+            Ubuntu)
+              sudo snap install \
+                postman
+            ;;
+          esac
+        fi
+        

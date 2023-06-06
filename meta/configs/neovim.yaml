@@ -51,16 +51,21 @@
         if [ -d $HOME/.local/src/neovim ]; then 
           sudo rm -r $HOME/.local/src/neovim 
         fi
+        if [ -d $HOME/.local/state/nvim ]; then 
+          sudo rm -r $HOME/.local/state/nvim 
+        fi
+        if [ -f /usr/local/bin/nvim ]; then 
+          sudo rm /usr/local/bin/nvim 
+        fi
       stdout: true
 
     - description: Build neovim
       command: |
         git clone https://github.com/neovim/neovim $HOME/.local/src/neovim
         cd $HOME/.local/src/neovim
-        sudo make distclean && sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
-        sudo make install
-        sudo chown -R $USER ~/.config/nvim/
-        sudo chown -R $USER ~/.local/state/
+        make distclean 
+        make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local
+        make install
       stdout: true
 
 - link:

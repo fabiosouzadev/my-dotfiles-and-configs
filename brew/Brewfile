@@ -8,6 +8,7 @@ tap 'nicoverbruggen/homebrew-cask'
 tap 'jesseduffield/lazygit'
 
 #CLI
+brew 'gnupg'
 brew 'lazygit'
 brew 'neofetch'
 brew 'direnv'

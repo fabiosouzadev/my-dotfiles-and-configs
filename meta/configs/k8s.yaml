@@ -1,49 +1,41 @@
+- create:
+    - ~/.local/src
+    - ~/.local/bin
+    - ~/.local/share
+    - ~/.kube
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
-    - description: Create ~/.local/src
-      command: "[ -d ~/.local/src ] || mkdir -p ~/.local/src"
-    - description: Create ~/.local/share
-      command: "[ -d ~/.local/share ] || mkdir -p ~/.local/share"
-    - description: Create ~/.local/bin
-      command: "[ -d ~/.local/bin ] || mkdir -p ~/.local/bin"
-    - description: Create ~/.kube
-      command: "[ -d ~/.kube ] || mkdir -p ~/.kube"
     - description: Install kubectl
       command: |
-        curl -Lo $HOME/.local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        OS=`uname`
+        curl -Lo $HOME/.local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/${OS}/amd64/kubectl"
         if [ -f $HOME/.local/bin/kubectl ];then
             chmod +x $HOME/.local/bin/kubectl
         fi
     - description: Installing kind
       command: |
-        if [ `uname` = 'Linux' ]; then
-          curl -Lo $HOME/.local/bin/kind https://kind.sigs.k8s.io/dl/v0.15.0/kind-linux-amd64
-          if [ -f $HOME/.local/bin/kind ];then
-            chmod +x $HOME/.local/bin/kind
-          fi
+        OS=`uname`
+        curl -Lo $HOME/.local/bin/kind https://kind.sigs.k8s.io/dl/v0.15.0/kind-${OS}-amd64
+        if [ -f $HOME/.local/bin/kind ];then
+          chmod +x $HOME/.local/bin/kind
         fi
     - description: Installing minikube
       command: |
-        if [[ `uname` == 'Linux' && ! -f /usr/local/bin/minikube  ]]; then
+        if [ `uname` = 'Darwin' ]; then
+          r=https://api.github.com/repos/kubernetes/minikube/releases
+          curl -Lo $HOME/.local/src/minikube-darwin-amd64 $(curl -s $r | grep -o 'http.*download/v.*beta.*/minikube-darwin-amd64' | head -n1)
+          sudo install $HOME/.local/src/minikube-darwin-amd64 $HOME/.local/bin/minikube
+        elif [ `uname` = 'Linux' ]; then
           r=https://api.github.com/repos/kubernetes/minikube/releases
           curl -Lo $HOME/.local/src/minikube-linux-amd64 $(curl -s $r | grep -o 'http.*download/v.*beta.*/minikube-linux-amd64' | head -n1)
-          sudo install $HOME/.local/src/minikube-linux-amd64  $HOME/.local/bin/minikube
+          sudo install $HOME/.local/src/minikube-linux-amd64 $HOME/.local/bin/minikube
         fi
     - description: Installing kubectx
       command: |
         [ -d $HOME/.local/share/kubectx ]   || git clone https://github.com/ahmetb/kubectx  $HOME/.local/share/kubectx
         [ -f $HOME/.local/bin/kubectx ]     || ln -sf $HOME/.local/share/kubectx/kubectx    $HOME/.local/bin/kubectx
         [ -f $HOME/.local/bin/kubens ]      || ln -sf $HOME/.local/share/kubectx/kubens     $HOME/.local/bin/kubens
-    - description: Installing gcloud
-      command: |
-        if [[ `uname` == 'Linux' && ! -x $HOME/.local/src/google-cloud-sdk/bin/gcloud ]]; then
-          version=421.0.0
-          curl "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-$version-linux-x86_64.tar.gz" | tar -xz -C $HOME/.local/src
-          cd $HOME/.local/src/google-cloud-sdk/
-          sh install.sh 
-          gcloud components install gke-gcloud-auth-plugin
-        fi
     - description: Installing kubeswitch
       command: |
         OS=`uname`                        # Pick the right os: linux, darwin (intel only)
@@ -56,49 +48,62 @@
         chmod +x $HOME/.local/bin/switch.sh
     - description: Installing k9s
       command: |
-        if [ `uname` = 'Linux' ]; then 
-          curl -sS https://webinstall.dev/k9s | sh 
-        fi
+        curl -sS https://webinstall.dev/k9s | sh 
     - description: Installing Lens
       command: |
-        case $(lsb_release -is) in 
-          Ubuntu) 
-            curl -fsSL https://downloads.k8slens.dev/keys/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/lens-archive-keyring.gpg > /dev/null
-            echo "deb [arch=amd64 signed-by=/usr/share/keyrings/lens-archive-keyring.gpg] https://downloads.k8slens.dev/apt/debian stable main" | sudo tee /etc/apt/sources.list.d/lens.list > /dev/null
-            sudo apt update
-            sudo apt install lens
-          ;;
-          Arch | EndeavourOS)
-            curl -Lo $HOME/.local/bin/lens https://api.k8slens.dev/binaries/latest.x86_64.AppImage
-            if [ -f $HOME/.local/bin/Lens ]; then
-              chmod +x $HOME/.local/bin/lens
-            fi
-            LENS_SHORTCUT="[Desktop Entry]
-            Name=Lens
-            Exec=$HOME/.local/bin/lens %U
-            Terminal=false
-            Type=Application
-            Icon=lens
-            StartupWMClass=Lens
-            Comment=Lens - The Kubernetes IDE
-            MimeType=x-scheme-handler/lens;
-            Categories=Network;"
-            
-            echo $LENS_SHORTCUT > $HOME/.local/share/applications/lens.desktop
-          ;;
-        esac
-      stdout: true
+        if [ `uname` = 'Linux' ]; then 
+          case $(lsb_release -is) in 
+            Ubuntu) 
+              curl -fsSL https://downloads.k8slens.dev/keys/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/lens-archive-keyring.gpg > /dev/null
+              echo "deb [arch=amd64 signed-by=/usr/share/keyrings/lens-archive-keyring.gpg] https://downloads.k8slens.dev/apt/debian stable main" | sudo tee /etc/apt/sources.list.d/lens.list > /dev/null
+              sudo apt update
+              sudo apt install lens
+            ;;
+            Arch | EndeavourOS)
+              curl -Lo $HOME/.local/bin/lens https://api.k8slens.dev/binaries/latest.x86_64.AppImage
+              if [ -f $HOME/.local/bin/Lens ]; then
+                chmod +x $HOME/.local/bin/lens
+              fi
+              LENS_SHORTCUT="[Desktop Entry]
+              Name=Lens
+              Exec=$HOME/.local/bin/lens %U
+              Terminal=false
+              Type=Application
+              Icon=lens
+              StartupWMClass=Lens
+              Comment=Lens - The Kubernetes IDE
+              MimeType=x-scheme-handler/lens;
+              Categories=Network;"
+              
+              echo $LENS_SHORTCUT > $HOME/.local/share/applications/lens.desktop
+            ;;
+          esac
+        elif [ `uname` = 'Darwin' ]; then
+          brew install --cask lens
+        fi
     - description: Installing ArgoCD cli
       command: |
-        cd  $HOME/.local/src
-        curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
-        sudo install -m 555 argocd-linux-amd64 $HOME/.local/bin/argocd
-        rm argocd-linux-amd64
+        OS=`uname`
+        VERSION=$(curl --silent "https://api.github.com/repos/argoproj/argo-cd/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
+        curl -sSL -o $HOME/.local/src/argocd-$OS-amd64 https://github.com/argoproj/argo-cd/releases/download/$VERSION/argocd-$OS-amd64
+        sudo install -m 555 $HOME/.local/src/argocd-$OS-amd64 $HOME/.local/bin/argocd
+        
     - description: Installing Gitlab Runner cli
       command: |
-        cd  $HOME/.local/src
-        sudo curl -L --output $HOME/.local/bin/gitlab-runner "https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64"
+        if [ `uname` = 'Darwin' ]; then
+          curl --output $HOME/.local/bin/gitlab-runner "https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-darwin-amd64"
+        elif [ `uname` = 'Linux' ]; then
+          curl -L --output $HOME/.local/bin/gitlab-runner "https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64"
+        fi
         sudo chmod +x $HOME/.local/bin/gitlab-runner
+    - description: Installing gcloud
+      command: |
+        OS=`uname`
+        VERSION=433.0.1
+        curl "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-$VERSION-$OS-x86_64.tar.gz" | tar -xz -C $HOME/.local/src
+        cd $HOME/.local/src/google-cloud-sdk
+        sh install.sh --quiet --install-python false
+        gcloud components install gke-gcloud-auth-plugin
     - [exec /bin/zsh]
 - link:
     ~/.zshrc.d/012-kubectl-completions.zsh: zshrc.d/012-kubectl-completions.zsh

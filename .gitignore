@@ -52,3 +52,4 @@ Brewfile.lock.json
 install.log
 lazy-lock.json
 kubectl
+.nvimlog

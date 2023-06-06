@@ -54,6 +54,7 @@ cask 'authy'
 cask 'bitwarden'
 cask 'macs-fan-control'
 cask 'spotify'
+brew 'ferdium-nightly'
 
 # Mac App Store
 mas "Battery Health", id: 490192174

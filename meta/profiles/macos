@@ -4,8 +4,8 @@ git
 brew
 fzf
 pyenv
+rustup
 asdf
-starship
 docker
 k8s
 nvm
@@ -15,6 +15,7 @@ wakatime
 ngrok
 postman
 zsh
+starship
 kitty
 vscodium
 vscode.extensions

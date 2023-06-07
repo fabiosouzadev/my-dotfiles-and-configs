@@ -28,7 +28,6 @@
     ~/.zshrc.d/001-aliases.zsh: zshrc.d/001-aliases.zsh
     ~/.zshrc.d/002-nvm.zsh: zshrc.d/002-nvm.zsh
     ~/.zshrc.d/004-java.zsh: zshrc.d/004-java.zsh
-    ~/.zshrc.d/005-rust.zsh: zshrc.d/005-rust.zsh
     # ~/.zshrc.d/007-android.zsh: zshrc.d/007-android.zsh
     ~/.zshrc.d/008-flutter.zsh: zshrc.d/008-flutter.zsh
     ~/.zshrc.d/009-webkit.zsh: zshrc.d/009-webkit.zsh

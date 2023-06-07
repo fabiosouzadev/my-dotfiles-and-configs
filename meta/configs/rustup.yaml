@@ -1,0 +1,6 @@
+- shell:
+    - description: Install rustup
+      command: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
+      stdout: true
+- link:
+    ~/.zshrc.d/005-rust.zsh: zshrc.d/005-rust.zsh

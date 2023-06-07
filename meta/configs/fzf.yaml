@@ -1,52 +1,70 @@
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
-    - description: Installing packages
+    - description: Installing package
       command: |
-        if [ ! -d $HOME/.fzf ]; then
-          git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+        if [ `uname` = 'Linux' ]; then
+          if [ ! -d $HOME/.fzf ]; then
+            git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+          fi
+          cd $HOME/.fzf
+          git pull
+          ~/.fzf/install
+        elif [ `uname` = 'Darwin' ]; then
+          brew install fzf
         fi
-        cd $HOME/.fzf
-        git pull
-        ~/.fzf/install
       stdout: true
     - description: Installing optional dependencies
       command: |
-        case $(lsb_release -is) in
-            Ubuntu)
-              #Atualizar sources lists
-              sudo apt-get -y update
-              sudo apt-get install -y \
-              ripgrep \
-              universal-ctags \
-              silversearcher-ag
-            ;;
-
-            Arch | EndeavourOS)
-              sudo pacman -Syu --noconfirm \
+        if [ `uname` = 'Linux' ]; then
+          case $(lsb_release -is) in
+              Ubuntu)
+                #Atualizar sources lists
+                sudo apt-get -y update
+                sudo apt-get install -y \
                 ripgrep \
                 universal-ctags \
-                the_silver_searcher
-            ;;
-        esac
+                silversearcher-ag
+              ;;
+
+              Arch | EndeavourOS)
+                sudo pacman -Syu --noconfirm \
+                  ripgrep \
+                  universal-ctags \
+                  the_silver_searcher
+              ;;
+          esac
+        elif [ `uname` = 'Darwin' ]; then
+          brew install ripgrep
+          brew install fzy
+          brew install the_silver_searcher
+          brew install universal-ctags
+        fi
     - description: Installing fdfind
       command: |
-        case $(lsb_release -is) in
-          Ubuntu)
-            #Atualizar sources lists
-            if [ ! -x /usr/bin/fd ]; then
-              curl -Lo $HOME/.local/src/fd.deb https://github.com/sharkdp/fd/releases/download/v8.7.0/fd_8.7.0_amd64.deb
-              sudo dpkg -i $HOME/.local/src/fd.deb
-            fi
-            if [ ! -x /usr/bin/fdfind ]; then
-              sudo ln -fvs /usr/bin/fd /usr/bin/fdfind
-            fi
-          ;;
-          Arch | EndeavourOS)
-            sudo pacman -Syu --noconfirm fd
-          ;;
-        esac
+        if [ `uname` = 'Linux' ]; then
+          case $(lsb_release -is) in
+            Ubuntu)
+              #Atualizar sources lists
+              if [ ! -x /usr/bin/fd ]; then
+                curl -Lo $HOME/.local/src/fd.deb https://github.com/sharkdp/fd/releases/download/v8.7.0/fd_8.7.0_amd64.deb
+                sudo dpkg -i $HOME/.local/src/fd.deb
+              fi
+              if [ ! -x /usr/bin/fdfind ]; then
+                sudo ln -fvs /usr/bin/fd /usr/bin/fdfind
+              fi
+            ;;
+            Arch | EndeavourOS)
+              sudo pacman -Syu --noconfirm fd
+            ;;
+          esac
+        elif [ `uname` = 'Darwin' ]; then
+          brew install fd
+        fi
 - link:
+    ~/.zshrc.d/010-fzf-macos.zsh:
+      if: "[ `uname` = Darwin ]"
+      path: zshrc.d/010-fzf-macos.zsh
     ~/.zshrc.d/011-fzf-ubuntu.zsh:
       if: "[ `uname` = Linux ]"
       path: zshrc.d/011-fzf-linux.zsh

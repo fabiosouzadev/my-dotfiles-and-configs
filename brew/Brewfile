@@ -18,9 +18,6 @@ brew 'duf'
 brew 'bat'
 brew 'git-delta'
 brew 'exa'
-brew 'fzf'
-brew 'fzy'
-brew 'fd'
 brew 'hey' # Like a ab (ApacheBench)
 
 

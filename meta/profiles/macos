@@ -6,14 +6,14 @@ fzf
 pyenv
 rustup
 asdf
+nvm
 docker
 k8s
-nvm
-neovim
-tmux
 wakatime
 ngrok
 postman
+neovim
+tmux
 zsh
 starship
 kitty

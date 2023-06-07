@@ -1,17 +1,17 @@
 # This apply to all commands that come after setting the defaults.
 - shell:
-  - description: Validating sudo credentials
-    command: "sudo --validate"
-  - description: Install brew 
-    command: | 
-      if [ ! -x /usr/local/bin/brew ]; then
-        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      fi
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Install brew
+      command: |
+        if [ ! -x /usr/local/bin/brew ]; then
+          NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        fi
 - defaults:
     brewfile:
       stdout: true
       stderr: true
-      include: ['tap', 'brew', 'cask', 'mas']
+      include: ["tap", "brew", "cask", "mas"]
 
 - brewfile:
     # This accepts the same options as `brew bundle` command:
@@ -23,6 +23,3 @@
     ~/.zshrc.d/003-brew-completions.zsh:
       if: "[ `uname` = Darwin ]"
       path: zshrc.d/003-brew-completions.zsh
-    ~/.zshrc.d/010-fzf-macos.zsh:
-      if: "[ `uname` = Darwin ]"
-      path: zshrc.d/010-fzf-macos.zsh

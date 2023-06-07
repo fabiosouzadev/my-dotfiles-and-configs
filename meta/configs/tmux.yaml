@@ -85,7 +85,9 @@
         if [ `uname` = 'Darwin' ]; then
          ./configure --enable-utf8proc
         elif [ `uname` = 'Linux' ]; then 
-          ./configure
+          #./configure
+          # Test config (https://github.com/tmux/tmux/issues/3218)
+          ./configure --enable-systemd
         fi
         make 
         sudo make install
@@ -106,10 +108,15 @@
     - description: Installing tmux-256color ( only macOS)
       command: |
         if [ `uname` = 'Darwin' ]; then
-          curl -L https://invisible-island.net/datafiles/current/terminfo.src.gz | gunzip > $HOME/.local/src/terminfo.src
-          sudo /usr/bin/tic -xe alacritty-direct,tmux-256color $HOME/.local/src/terminfo.src
-          # /*/*/Cellar/ncurses/6.3/bin/infocmp -x tmux-256color >tmux-256color.src
-          
+          #Method 1
+          #curl -L https://invisible-island.net/datafiles/current/terminfo.src.gz | gunzip > $HOME/.local/src/terminfo.src
+          #sudo /usr/bin/tic -xe tmux-256color $HOME/.local/src/terminfo.src
+          #Method 2
+          infocmp -x tmux-256color > $HOME/.local/src/tmux-256color.src
+          sudo /usr/bin/tic -xe alacritty-direct,tmux-256color $HOME/.local/src/tmux-256color.src
+          #Method 3
+          infocmp -x tmux-256color > $HOME/.local/src/tmux-256color.src
+          sudo tic -xe alacritty-direct,tmux-256color $HOME/.local/src/tmux-256color.src
         fi
 
 - link:

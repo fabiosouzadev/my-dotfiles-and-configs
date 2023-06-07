@@ -56,7 +56,7 @@ cask 'authy'
 cask 'bitwarden'
 cask 'macs-fan-control'
 cask 'spotify'
-brew 'ferdium-nightly'
+cask 'ferdium-nightly'
 cask 'appcleaner'
 
 # Mac App Store

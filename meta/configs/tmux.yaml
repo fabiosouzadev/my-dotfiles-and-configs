@@ -4,14 +4,14 @@
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
-      
+
     - description: Install openssl
       command: |
         version=3.1.1
         curl -L "https://www.openssl.org/source/openssl-$version.tar.gz" | tar -xz -C $HOME/.local/src
         cd $HOME/.local/src/openssl-$version
         if [ `uname` = 'Darwin' ]; then
-          ./Configure --prefix=/usr/local --openssldir=/usr/local/openssl darwin64-x86_64-cc
+          ./Configure darwin64-x86_64-cc
         fi
         make test
         sudo make install
@@ -21,7 +21,7 @@
         version=2.1.12
         curl -L "https://github.com/libevent/libevent/releases/download/release-$version-stable/libevent-$version-stable.tar.gz" | tar -xz -C $HOME/.local/src
         cd $HOME/.local/src/libevent-$version-stable
-        ./configure --prefix=/usr/local --enable-shared
+        ./configure --enable-shared
         make 
         sudo make install
       stdout: true
@@ -30,9 +30,9 @@
         version=6.3
         curl -L https://invisible-island.net/datafiles/release/ncurses.tar.gz | tar -xz -C $HOME/.local/src
         cd $HOME/.local/src/ncurses-$version
-        ./configure --prefix=/usr/local --with-shared --with-termlib --enable-pc-files --with-pkg-config-libdir=/usr/local/lib/pkgconfig
+        ./configure --with-shared --with-termlib --enable-pc-files
         make 
-        make install
+        sudo make install
       stdout: true
     - description: Install utf8proc
       command: |
@@ -40,11 +40,11 @@
           version=2.8.0
           curl -L https://github.com/JuliaStrings/utf8proc/archive/refs/tags/v$version.tar.gz | tar -xz -C $HOME/.local/src
           cd $HOME/.local/src/utf8proc-$version
-          make --prefix=/usr/local
+          make
           sudo make install
         fi
       stdout: true
-      
+
     - description: Build tmux
       command: |
         if [ `uname` = 'Darwin' ]; then
@@ -74,7 +74,7 @@
             ;;
           esac
         fi
-        
+
 
         if [ !  -d $HOME/.local/src/tmux ]; then
           git clone https://github.com/tmux/tmux.git $HOME/.local/src/tmux
@@ -102,6 +102,15 @@
         fi
         cd $HOME/.tmux/plugins/tpm
         git pull
+
+    - description: Installing tmux-256color ( only macOS)
+      command: |
+        if [ `uname` = 'Darwin' ]; then
+          curl -L https://invisible-island.net/datafiles/current/terminfo.src.gz | gunzip > $HOME/.local/src/terminfo.src
+          sudo /usr/bin/tic -xe alacritty-direct,tmux-256color $HOME/.local/src/terminfo.src
+          # /*/*/Cellar/ncurses/6.3/bin/infocmp -x tmux-256color >tmux-256color.src
+          
+        fi
 
 - link:
     ~/.tmux.conf:

@@ -55,6 +55,7 @@ cask 'macs-fan-control'
 cask 'spotify'
 cask 'ferdium-nightly'
 cask 'appcleaner'
+cask 'microsoft-teams'
 
 # Mac App Store
 mas "Battery Health", id: 490192174

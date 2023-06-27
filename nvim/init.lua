@@ -1,5 +1,5 @@
 require "core"
--- require("core.utils").load_mappings()
+require("core.utils").load_mappings()
 
 -- {{{ Auto install lazy.nvim if when needed.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

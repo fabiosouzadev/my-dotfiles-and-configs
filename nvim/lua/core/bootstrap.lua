@@ -17,9 +17,6 @@ M.lazy = function(install_path)
     "--branch=stable", -- latest stable release
     install_path,
   })
-  vim.opt.rtp:prepend(install_path, M.lazy_config())
-  -- install plugins
-  require "core.bootstrap"
 end
 
 

@@ -67,6 +67,5 @@
         make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local
         make install
       stdout: true
-
 - link:
-    ~/.config/nvim: neovim
+    ~/.config/nvim: nvim

@@ -1,4 +1,5 @@
 return {
+{ 
   'nvim-tree/nvim-tree.lua',
   version = 'nightly',
   cmd = { "NvimTreeToggle", "NvimTreeFocus" },
@@ -23,5 +24,17 @@ return {
       vim.opt.termguicolors = true
 
       nvimtree.setup(opts)
+  end
+},
+{
+  'romgrk/barbar.nvim',
+  init = function()
+    -- vim.g.barbar_auto_setup = false
+    require("core.utils").load_mappings "barbar"
   end,
+  dependencies = {
+    'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+    'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons}
+  },
+},
 }

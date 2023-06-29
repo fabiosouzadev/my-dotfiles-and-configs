@@ -17,6 +17,21 @@ M.general = {
   },
 }
 
+M.barbar = {
+  plugin = true,
+
+  n = {
+    -- cycle through buffers
+    ["<tab>"] = { "<Cmd>BufferNext<CR>", "Goto next buffer"},
+    ["<S-tab>"] = { "<Cmd>BufferPrevious<CR>", "Goto prev buffer"},
+     -- cycle through buffers
+     ["<leader>."] = { "<Cmd>BufferMoveNext<CR>", "Move buffer forward"},
+     ["<leader>,"] = { "<Cmd>BufferMovePrevious<CR>", "Move buffer back"},
+    -- close buffer + hide terminal buffer
+    ["<leader>x"] = { "<Cmd>BufferClose<CR>", "Close buffer"},
+  },
+} 
+
 M.nvimtree = {
   plugin = true,
 
@@ -55,6 +70,7 @@ M.telescope = {
     ["<leader>ma"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
   },
 }
+
 M.whichkey = {
   plugin = true,
   n = {

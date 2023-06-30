@@ -17,11 +17,13 @@ M.lazy = function(install_path)
     "--branch=stable", -- latest stable release
     install_path,
   })
+  vim.opt.rtp:prepend(install_path)
+  -- install plugins
+  require "plugins"
 end
 
 
-M.lazy_config = function() 
-  local config =  {
+M.lazy_config =  {
     performance = {
       rtp = {
         disabled_plugins = {
@@ -57,7 +59,5 @@ M.lazy_config = function()
       },
     },
   }
-  return config
-end
 
 return M

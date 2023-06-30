@@ -32,6 +32,7 @@
       "editorCodeLens.foreground": "#7982a9" // Preferred hex color
     }
   },
+  "editor.fontFamily": "JetBrains Mono Nerd Font",
   "editor.fontLigatures": true,
   "editor.lineHeight": 24,
   "editor.tabSize": 2,
@@ -171,5 +172,6 @@
   "editor.inlineSuggest.enabled": true,
   "window.zoomLevel": 1,
   "editor.fontSize": 10,
-  "workbench.colorTheme": "Tokyo Night"
+  "workbench.colorTheme": "Tokyo Night",
+  "workbench.sideBar.location": "right"
 }

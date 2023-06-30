@@ -4,7 +4,6 @@
 --   visual_block_mode = "x",
 --   term_mode = "t",
 --   command_mode = "c",
--- n, v, i, t = mode names
 local M = {}
 
 M.general = {
@@ -17,20 +16,38 @@ M.general = {
   },
 }
 
-M.barbar = {
-  plugin = true,
+-- M.barbar = {
+--   plugin = true,
 
+--   n = {
+--     -- cycle through buffers
+--     ["<tab>"] = { "<Cmd>BufferNext<CR>", "Goto next buffer"},
+--     ["<S-tab>"] = { "<Cmd>BufferPrevious<CR>", "Goto prev buffer"},
+--      -- cycle through buffers
+--     ["<leader>."] = { "<Cmd>BufferMoveNext<CR>", "Move buffer forward"},
+--     ["<leader>,"] = { "<Cmd>BufferMovePrevious<CR>", "Move buffer back"},
+--     --  Pin/unpin buffer
+--     ["<C-p>"] = { "<Cmd>BufferPin<CR>", "Pin/Unpin buffer"},
+--     -- close buffer + hide terminal buffer
+--     ["<leader>x"] = { "<Cmd>BufferClose<CR>", "Close buffer"},
+--   },
+-- }
+
+M.bufferline = {
+  plugin = true,
   n = {
     -- cycle through buffers
-    ["<tab>"] = { "<Cmd>BufferNext<CR>", "Goto next buffer"},
-    ["<S-tab>"] = { "<Cmd>BufferPrevious<CR>", "Goto prev buffer"},
+    ["<tab>"] = { "<Cmd>BufferLineCycleNext<CR>", "Goto next buffer"},
+    ["<S-tab>"] = { "<Cmd>BufferLineCyclePrev<CR>", "Goto prev buffer"},
      -- cycle through buffers
-     ["<leader>."] = { "<Cmd>BufferMoveNext<CR>", "Move buffer forward"},
-     ["<leader>,"] = { "<Cmd>BufferMovePrevious<CR>", "Move buffer back"},
+    ["<leader>."] = { "<Cmd>BufferLineMoveNext<CR>", "Move buffer forward"},
+    ["<leader>,"] = { "<Cmd>BufferLineMovePrev<CR>", "Move buffer back"},
+    --  Pin/unpin buffer
+    ["<leader>bp"] = { "<Cmd>BufferLineTogglePin<CR>", "Pin/Unpin buffer"},
     -- close buffer + hide terminal buffer
-    ["<leader>x"] = { "<Cmd>BufferClose<CR>", "Close buffer"},
+    ["<leader>x"] = { "<Cmd>bdelete<CR>", "Close buffer"},
   },
-} 
+}
 
 M.nvimtree = {
   plugin = true,

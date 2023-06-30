@@ -27,32 +27,7 @@ return {
       nvimtree.setup(opts)
   end
 },
---
 -- Tabline
---
--- {
---   'romgrk/barbar.nvim',
---   init = function()
---     -- vim.g.barbar_auto_setup = false
---     require("core.utils").load_mappings "barbar"
---   end,
---   opts = function()
---     return {
---       gitsigns = {
---         added = {enabled = true, icon = '+'},
---         changed = {enabled = true, icon = '~'},
---         deleted = {enabled = true, icon = '-'},
---       },
---     }
---   end,
---   config = function(_, opts)
---     require("barbar").setup(opts)
---   end,
---   dependencies = {
---     'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
---     'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons}
---   },
--- },
 {
   'akinsho/bufferline.nvim',
   event = "User FileOpen",
@@ -69,7 +44,7 @@ return {
               filetype = "NvimTree",
               text = "File Explorer",
               highlight = "Directory",
-              separator = true -- use a "true" to enable the default, or set your own character
+              text_align = "center",
           }
         },
       },
@@ -77,6 +52,41 @@ return {
   end,
   config = function(_, opts)
     require("bufferline").setup(opts)
+  end,
+  dependencies = {
+    'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons}
+  },
+},
+-- Statusline
+{
+  'nvim-lualine/lualine.nvim',
+  event = 'VimEnter',
+  opts = function()
+    return {
+      options = {
+        disabled_filetypes = { 
+          statusline = { 
+            "dashboard", 
+            "alpha" 
+          } 
+        },
+        theme = 'moonfly',
+        component_separators = '|',
+
+        section_separators = '',
+      },
+      sections = {
+          lualine_a = { 'mode' },
+          lualine_b = { 'branch', 'diff', 'diagnostics' },
+          lualine_c = { 'filename', 'lsp_progress' },
+          lualine_x = { 'encoding', 'fileformat', 'filetype' },
+          lualine_y = { 'progress' },
+          lualine_z = { 'location' },
+      },
+    }
+  end,
+  config = function(_, opts)
+    require("lualine").setup(opts)
   end,
   dependencies = {
     'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons}

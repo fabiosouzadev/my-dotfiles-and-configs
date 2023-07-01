@@ -5,39 +5,39 @@ local plugins = {
 "nvim-lua/plenary.nvim",
 
   -- tokyonight
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = { style = "night" },
-    config = function()
-        vim.cmd("colorscheme tokyonight-night")
-    end
-  },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   priority = 1000,
+  --   opts = { style = "night" },
+  --   config = function()
+  --       -- vim.cmd("colorscheme tokyonight-night")
+  --   end
+  -- },
 
   -- catppuccin
   {
-    "catppuccin/nvim",
-    lazy = true,
-    name = "catppuccin",
-  },
-  { 
-    "EdenEast/nightfox.nvim",
-    lazy = true,
-    config = function()
-    --    vim.cmd('colorscheme carbonfox')
-    end
-  },
-  {
-    'rose-pine/neovim',
-    name = 'rose-pine',
-    lazy = true,
+    "catppuccin/nvim", 
+    name = "catppuccin", 
     priority = 1000,
     config = function()
-        require("rose-pine").setup()
-        -- vim.cmd('colorscheme rose-pine')
+      vim.cmd.colorscheme "catppuccin-frappe"
     end
   },
+  -- { 
+  --   "EdenEast/nightfox.nvim",
+  --   config = function()
+  --   --    vim.cmd('colorscheme carbonfox')
+  --   end
+  -- },
+  -- {
+  --   'rose-pine/neovim',
+  --   name = 'rose-pine',
+  --   priority = 1000,
+  --   config = function()
+  --       require("rose-pine").setup()
+  --       -- vim.cmd('colorscheme rose-pine')
+  --   end
+  -- },
 
 {
   "NvChad/nvim-colorizer.lua",
@@ -78,6 +78,57 @@ local plugins = {
 },
 
 -- git stuff
+
+-- cmp stuff
+{
+  "hrsh7th/nvim-cmp",
+  event = "InsertEnter",
+  dependencies = {
+    {
+      -- snippet plugin
+      "L3MON4D3/LuaSnip",
+      dependencies = "rafamadriz/friendly-snippets",
+      opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+      config = function(_, opts)
+        require("plugins.configs.luasnip").luasnip(opts)
+      end,
+    },
+
+    -- autopairing of (){}[] etc
+    {
+      "windwp/nvim-autopairs",
+      opts = {
+        fast_wrap = {},
+        disable_filetype = { "TelescopePrompt", "vim" },
+      },
+      config = function(_, opts)
+        require("nvim-autopairs").setup(opts)
+
+        -- setup cmp for autopairs
+        local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+        require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+      end,
+    },
+    -- Tabnine?
+    -- Copilot?
+    -- cmp sources plugins
+    {
+      "onsails/lspkind.nvim",
+      "saadparwaiz1/cmp_luasnip",
+      "ray-x/cmp-treesitter",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+    },
+  },
+  opts = function()
+    return require "plugins.configs.cmp"
+  end,
+  config = function(_, opts)
+    require("cmp").setup(opts)
+  end,
+},
 
 -- lsp stuff
 -- Useful status updates for LSP
@@ -130,7 +181,7 @@ local plugins = {
     require("core.utils").lazy_load "nvim-lspconfig"
   end,
   config = function()
-    require "plugins.lsp.lspconfig"
+    require "plugins.configs.lspconfig"
   end,
 },
 
@@ -239,6 +290,7 @@ local plugins = {
           } 
         },
         theme = 'moonfly',
+        -- theme = 'catppuccin',
         component_separators = '|',
 
         section_separators = '',

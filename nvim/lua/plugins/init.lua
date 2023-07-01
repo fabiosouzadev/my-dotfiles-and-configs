@@ -2,7 +2,7 @@
 -- List of all default plugins & their definitions
 local plugins = {
 
-{ 
+{
   "nvim-lua/plenary.nvim",
   cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" },
 },
@@ -19,8 +19,8 @@ local plugins = {
 
   -- catppuccin
   {
-    "catppuccin/nvim", 
-    name = "catppuccin", 
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
     config = function()
       vim.cmd.colorscheme "catppuccin-frappe"
@@ -99,29 +99,14 @@ local plugins = {
 
 -- git stuff
 {
-    "lewis6991/gitsigns.nvim",
-    ft = { "gitcommit", "diff" },
-    init = function()
-      -- load gitsigns only when a git file is opened
-      vim.api.nvim_create_autocmd({ "BufRead" }, {
-        group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
-        callback = function()
-          vim.fn.system("git -C " .. '"' .. vim.fn.expand "%:p:h" .. '"' .. " rev-parse")
-          if vim.v.shell_error == 0 then
-            vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
-            vim.schedule(function()
-              require("lazy").load { plugins = { "gitsigns.nvim" } }
-            end)
-          end
-        end,
-      })
-    end,
-    opts = function()
-      return require "plugins.configs.gitsigns"
-    end,
-    config = function(_, opts)
-      require("gitsigns").setup(opts)
-    end,
+  "lewis6991/gitsigns.nvim",
+  -- ft = { "gitcommit", "diff" },
+  opts = function()
+    return require ("plugins.configs.gitsigns")
+  end,
+  config = function(_, opts)
+    require("gitsigns").setup(opts)
+  end,
 },
 
 -- cmp stuff

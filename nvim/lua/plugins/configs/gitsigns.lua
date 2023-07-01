@@ -9,7 +9,7 @@ M.signs = {
 }
 
 M.current_line_blame = true
-    -- },
+
 M.on_attach = function(bufnr)
     require ("core.utils").load_mappings("gitsigns", { buffer = bufnr })
 end

@@ -81,15 +81,14 @@ local plugins = {
 
 -- lsp stuff
 -- Useful status updates for LSP
--- {
---   "j-hui/fidget.nvim",
---   event = "VeryLazy",
---   config = true,
--- },
+{
+  "j-hui/fidget.nvim",
+  tag = "legacy",
+  config = true,
+},
 -- Additional lua configuration, makes nvim stuff amazing
 {
   "folke/neodev.nvim",
-  lazy = true,
   opts = {
       experimental = { pathStrict = true },
   },
@@ -111,6 +110,8 @@ local plugins = {
     vim.g.mason_binaries_list = opts.ensure_installed
   end,
 },
+
+-- mason-lspconfig
 { 
   "williamboman/mason-lspconfig.nvim",
   event = 'BufEnter', 
@@ -119,18 +120,35 @@ local plugins = {
     return require "plugins.configs.mason-lspconfig"
   end,
   config = function(_, opts)
-    -- mason-lspconfig
     require("mason-lspconfig").setup(opts)
   end
 },
+
+{
+  "neovim/nvim-lspconfig",
+  init = function()
+    require("core.utils").lazy_load "nvim-lspconfig"
+  end,
+  config = function()
+    require "plugins.lsp.lspconfig"
+  end,
+},
+
+-- ----------------------------------------------------------------------- }}}
 -- {
---   "neovim/nvim-lspconfig",
---   init = function()
---     require("core.utils").lazy_load "nvim-lspconfig"
---   end,
+--   "glepnir/lspsaga.nvim",
+--   event = "BufRead",
+--   lazy = true,
 --   config = function()
---     require "plugins.configs.lspconfig"
+--       require("lspsaga").setup({})
 --   end,
+--   dependencies = { { "nvim-web-devicons" } },
+-- },
+-- {
+--   "folke/trouble.nvim",
+--   lazy = true,
+--   requires = "nvim-web-devicons",
+--   config = true,
 -- },
 
 -- cmp

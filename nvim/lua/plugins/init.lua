@@ -7,25 +7,24 @@ local plugins = {
   cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" },
 },
 
-  -- tokyonight
+-- tokyonight
+{
+  "folke/tokyonight.nvim",
+  priority = 1000,
+  config = function()
+    vim.cmd("colorscheme tokyonight-storm")
+  end
+},
+
+  -- -- catppuccin
   -- {
-  --   "folke/tokyonight.nvim",
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
   --   priority = 1000,
-  --   opts = { style = "night" },
   --   config = function()
-  --       -- vim.cmd("colorscheme tokyonight-night")
+  --     vim.cmd.colorscheme "catppuccin-frappe"
   --   end
   -- },
-
-  -- catppuccin
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme "catppuccin-frappe"
-    end
-  },
   -- { 
   --   "EdenEast/nightfox.nvim",
   --   config = function()
@@ -41,6 +40,15 @@ local plugins = {
   --       -- vim.cmd('colorscheme rose-pine')
   --   end
   -- },
+
+-- kanagawa.nvim
+-- {
+--   "rebelot/kanagawa.nvim",
+--   priority = 1000,
+--   config = function()
+--     vim.cmd("colorscheme kanagawa-wave")
+--   end
+-- },
 
 {
   "NvChad/nvim-colorizer.lua",
@@ -65,8 +73,27 @@ local plugins = {
   end,
 },
 
--- indent-blankline
+-- Toggle floating terminal on <F7> [term]
+  -- https://github.com/akinsho/toggleterm.nvim
+  -- neovim bug → https://github.com/neovim/neovim/issues/21106
+  -- workarounds → https://github.com/akinsho/toggleterm.nvim/wiki/Mouse-support
+  {
+    "akinsho/toggleterm.nvim",
+    cmd = { "ToggleTerm", "TermExec" },
+    opts = {
+      size = 10,
+      open_mapping = [[<F7>]],
+      shading_factor = 2,
+      direction = "float",
+      float_opts = {
+        border = "curved",
+        highlights = { border = "Normal", background = "Normal" },
+      },
+    },
+  },
 
+
+-- indent-blankline
 {
   "lukas-reineke/indent-blankline.nvim",
   init = function()
@@ -264,6 +291,9 @@ local plugins = {
 --   requires = "nvim-web-devicons",
 --   config = true,
 -- },
+
+-- dap
+
 
 -- Comments
 {

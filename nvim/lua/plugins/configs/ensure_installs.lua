@@ -34,6 +34,7 @@ M.ensure_installed_null_ls = {
   "fixjson",
   -- diagnostics
   "flake8",
+  "markdownlint",
   -- code_action
   "eslint_d", -- ts/js linter
   -- hover

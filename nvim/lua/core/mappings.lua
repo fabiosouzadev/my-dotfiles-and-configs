@@ -271,7 +271,7 @@ M.gitsigns = {
     },
 
     -- Actions
-    ["<leader>rh"] = {
+    ["<leader>hr"] = {
       function()
         require("gitsigns").reset_hunk()
       end,
@@ -285,14 +285,14 @@ M.gitsigns = {
       "Preview hunk",
     },
 
-    ["<leader>gb"] = {
+    ["<leader>hb"] = {
       function()
         package.loaded.gitsigns.blame_line()
       end,
       "Blame line",
     },
 
-    ["<leader>td"] = {
+    ["<leader>htd"] = {
       function()
         require("gitsigns").toggle_deleted()
       end,

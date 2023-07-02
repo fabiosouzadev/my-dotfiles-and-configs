@@ -101,6 +101,7 @@ local plugins = {
 {
   "lewis6991/gitsigns.nvim",
   -- ft = { "gitcommit", "diff" },
+  event = 'BufRead',
   opts = function()
     return require ("plugins.configs.gitsigns")
   end,
@@ -193,9 +194,9 @@ local plugins = {
 },
 
 -- mason-lspconfig
-{ 
+{
   "williamboman/mason-lspconfig.nvim",
-  event = 'BufEnter', 
+  event = 'BufEnter',
   -- cmd = { "LspInstall", "LspUninstall" },
   opts = function()
     return require "plugins.configs.mason-lspconfig"
@@ -215,11 +216,43 @@ local plugins = {
   end,
 },
 
+-- formatters
+-- {{{ Null-ls
+{
+  "jose-elias-alvarez/null-ls.nvim",
+  dependencies = {
+    -- Automatically install LSPs to stdpath for neovim
+    {
+      "jay-babu/mason-null-ls.nvim",
+      cmd = { "NullLsInstall", "NullLsUninstall" },
+      opts = { handlers = {} },
+    },
+  },
+  init = function()
+    require("core.utils").lazy_load "null-ls.nvim"
+  end,
+  opts = function()
+    return require "plugins.configs.null-ls"
+  end,
+  config = function(_, opts)
+    -- mason_null_ls
+    require("mason-null-ls").setup({
+      ensure_installed = opts.servers.ensure_installed_null_ls,
+      -- auto-install configured servers (with lspconfig)
+      automatic_installation = true, -- not the same as ensure_installed
+    })
+    require("null-ls").setup({
+      debug = true,
+      sources = opts.sources,
+      -- on_attach = on_attach,
+    })
+  end,
+},
+
 -- ----------------------------------------------------------------------- }}}
 -- {
 --   "glepnir/lspsaga.nvim",
 --   event = "BufRead",
---   lazy = true,
 --   config = function()
 --       require("lspsaga").setup({})
 --   end,
@@ -227,12 +260,10 @@ local plugins = {
 -- },
 -- {
 --   "folke/trouble.nvim",
---   lazy = true,
+--    event = "BufRead"
 --   requires = "nvim-web-devicons",
 --   config = true,
 -- },
-
--- cmp
 
 -- Comments
 {

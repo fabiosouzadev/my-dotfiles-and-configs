@@ -1,12 +1,6 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
 local plugins = {
-
-  {
-    "nvim-lua/plenary.nvim",
-    cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" },
-  },
-
   -- tokyonight
   -- {
   --   "folke/tokyonight.nvim",
@@ -18,29 +12,30 @@ local plugins = {
   -- },
 
   -- -- catppuccin
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme "catppuccin-frappe"
-    end
-  },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme "catppuccin-frappe"
+  --   end
+  -- },
   -- {
   --   "EdenEast/nightfox.nvim",
   --   config = function()
   --   --    vim.cmd('colorscheme carbonfox')
   --   end
   -- },
-  -- {
-  --   'rose-pine/neovim',
-  --   name = 'rose-pine',
-  --   priority = 1000,
-  --   config = function()
-  --       require("rose-pine").setup()
-  --       -- vim.cmd('colorscheme rose-pine')
-  --   end
-  -- },
+  -- rosepine
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    priority = 1000,
+    config = function()
+        require("rose-pine").setup()
+        vim.cmd('colorscheme rose-pine')
+    end
+  },
 
   -- kanagawa.nvim
   -- {
@@ -50,7 +45,16 @@ local plugins = {
   --     vim.cmd("colorscheme kanagawa-wave")
   --   end
   -- },
-
+  {
+    "nvim-lua/plenary.nvim",
+    cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" },
+  },
+  {
+    "nvim-tree/nvim-web-devicons",
+    config = function(_, opts)
+      require("nvim-web-devicons").setup(opts)
+    end,
+  },
   {
     "NvChad/nvim-colorizer.lua",
     init = function()
@@ -67,23 +71,16 @@ local plugins = {
     end,
   },
 
-  {
-    "nvim-tree/nvim-web-devicons",
-    config = function(_, opts)
-      require("nvim-web-devicons").setup(opts)
-    end,
-  },
-
   -- Toggle floating terminal on <F7> [term]
   -- https://github.com/akinsho/toggleterm.nvim
   -- neovim bug → https://github.com/neovim/neovim/issues/21106
   -- workarounds → https://github.com/akinsho/toggleterm.nvim/wiki/Mouse-support
   {
     "akinsho/toggleterm.nvim",
-    cmd = { "ToggleTerm", "TermExec" },
+    -- cmd = { "ToggleTerm", "TermExec" },
     opts = {
       size = 10,
-      open_mapping = [[<F7>]],
+      open_mapping = [[<C-\>]],
       shading_factor = 2,
       direction = "float",
       float_opts = {

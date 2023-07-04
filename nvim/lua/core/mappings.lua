@@ -54,6 +54,13 @@ M.lspconfig = {
 
   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
   n = {
+    ["K"] = {
+      function()
+        vim.lsp.buf.hover()
+      end,
+      "LSP hover",
+    },
+
     ["gD"] = {
       function()
         vim.lsp.buf.declaration()
@@ -68,13 +75,6 @@ M.lspconfig = {
       "LSP definition",
     },
 
-    ["K"] = {
-      function()
-        vim.lsp.buf.hover()
-      end,
-      "LSP hover",
-    },
-
     ["gi"] = {
       function()
         vim.lsp.buf.implementation()
@@ -82,7 +82,14 @@ M.lspconfig = {
       "LSP implementation",
     },
 
-    ["<leader>ls"] = {
+    ["gr"] = {
+      function()
+        vim.lsp.buf.references()
+      end,
+      "LSP references",
+    },
+
+    ["<C-K>"] = {
       function()
         vim.lsp.buf.signature_help()
       end,
@@ -96,9 +103,9 @@ M.lspconfig = {
       "LSP definition type",
     },
 
-    ["<leader>ra"] = {
+    ["<leader>rn"] = {
       function()
-        require("nvchad_ui.renamer").open()
+        vim.lsp.buf.rename()
       end,
       "LSP rename",
     },
@@ -110,14 +117,7 @@ M.lspconfig = {
       "LSP code action",
     },
 
-    ["gr"] = {
-      function()
-        vim.lsp.buf.references()
-      end,
-      "LSP references",
-    },
-
-    ["<leader>f"] = {
+    ["<leader>e"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
@@ -179,6 +179,15 @@ M.lspconfig = {
     ["<leader>fli"] = { '<cmd>lua require "telescope.builtin".lsp_implementations()<cr>', "Lsp implementations" },
     ["<leader>flt"] = { '<cmd>lua require "telescope.builtin".lsp_type_definitions()<cr>', "Lsp type_definition" },
   },
+
+  v = {
+    ["<leader>ca"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      "LSP code action",
+    },
+  },
 }
 
 M.nvimtree = {
@@ -208,8 +217,8 @@ M.telescope = {
     ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
 
     -- git
-    ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
-    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
+    ["<leader>fc"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
+    ["<leader>fs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
 
     -- pick a hidden term
     -- ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
@@ -321,7 +330,7 @@ M.gitsigns = {
 
     ["<leader>hD"] = {
       function()
-        require("gitsigns").diffthis('~')
+        require("gitsigns").diffthis "~"
       end,
       "Diff this",
     },

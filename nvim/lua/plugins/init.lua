@@ -11,15 +11,15 @@ local plugins = {
   --   end,
   -- },
 
-  -- -- catppuccin
-  -- {
-  --   "catppuccin/nvim",
-  --   name = "catppuccin",
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme "catppuccin-frappe"
-  --   end
-  -- },
+  -- catppuccin
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme "catppuccin-frappe"
+    end
+  },
   -- {
   --   "EdenEast/nightfox.nvim",
   --   config = function()
@@ -27,15 +27,15 @@ local plugins = {
   --   end
   -- },
   -- rosepine
-  {
-    'rose-pine/neovim',
-    name = 'rose-pine',
-    priority = 1000,
-    config = function()
-        require("rose-pine").setup()
-        vim.cmd('colorscheme rose-pine')
-    end
-  },
+  -- {
+  --   'rose-pine/neovim',
+  --   name = 'rose-pine',
+  --   priority = 1000,
+  --   config = function()
+  --       require("rose-pine").setup()
+  --       vim.cmd('colorscheme rose-pine')
+  --   end
+  -- },
 
   -- kanagawa.nvim
   -- {

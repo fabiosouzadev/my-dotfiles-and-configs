@@ -16,22 +16,22 @@ M.general = {
   },
 }
 
--- M.barbar = {
---   plugin = true,
+M.barbar = {
+  plugin = true,
 
---   n = {
---     -- cycle through buffers
---     ["<tab>"] = { "<Cmd>BufferNext<CR>", "Goto next buffer"},
---     ["<S-tab>"] = { "<Cmd>BufferPrevious<CR>", "Goto prev buffer"},
---      -- cycle through buffers
---     ["<leader>."] = { "<Cmd>BufferMoveNext<CR>", "Move buffer forward"},
---     ["<leader>,"] = { "<Cmd>BufferMovePrevious<CR>", "Move buffer back"},
---     --  Pin/unpin buffer
---     ["<C-p>"] = { "<Cmd>BufferPin<CR>", "Pin/Unpin buffer"},
---     -- close buffer + hide terminal buffer
---     ["<leader>x"] = { "<Cmd>BufferClose<CR>", "Close buffer"},
---   },
--- }
+  n = {
+    -- cycle through buffers
+    ["<tab>"] = { "<Cmd>BufferNext<CR>", "Goto next buffer"},
+    ["<S-tab>"] = { "<Cmd>BufferPrevious<CR>", "Goto prev buffer"},
+     -- cycle through buffers
+    ["<leader>."] = { "<Cmd>BufferMoveNext<CR>", "Move buffer forward"},
+    ["<leader>,"] = { "<Cmd>BufferMovePrevious<CR>", "Move buffer back"},
+    --  Pin/unpin buffer
+    ["<leader>bp"] = { "<Cmd>BufferPin<CR>", "Pin/Unpin buffer"},
+    -- close buffer + hide terminal buffer
+    ["<leader>x"] = { "<Cmd>BufferClose<CR>", "Close buffer"},
+  },
+}
 
 M.bufferline = {
   plugin = true,
@@ -53,7 +53,6 @@ M.lspconfig = {
   plugin = true,
 
   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
-
   n = {
     ["gD"] = {
       function()
@@ -97,12 +96,7 @@ M.lspconfig = {
       "LSP definition type",
     },
 
-    ["<leader>ra"] = {
-      function()
-        require("nvchad_ui.renamer").open()
-      end,
-      "LSP rename",
-    },
+    ["<leader>ra"] = { function() require("nvchad_ui.renamer").open() end, "LSP rename" },
 
     ["<leader>ca"] = {
       function()
@@ -173,6 +167,12 @@ M.lspconfig = {
       end,
       "List workspace folders",
     },
+
+    --- :Telescope LSP --
+    ["<leader>flr"] = { '<cmd>lua require "telescope.builtin".lsp_references()<cr>', "Lsp references" },
+    ["<leader>fld"] = { '<cmd>lua require "telescope.builtin".lsp_definitions()<cr>', "Lsp definitions" },
+    ["<leader>fli"] = { '<cmd>lua require "telescope.builtin".lsp_implementations()<cr>', "Lsp implementations" },
+    ["<leader>flt"] = { '<cmd>lua require "telescope.builtin".lsp_type_definitions()<cr>', "Lsp type_definition" },
   },
 }
 
@@ -195,15 +195,16 @@ M.telescope = {
     -- find
     ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
-    ["<leader>fg"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
+    ["<leader>fg"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
+    ["<leader>ft"] = { "<cmd> Telescope treesitter <CR>", "Find Treesitter" },
     ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
 
     -- git
-    ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
-    ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "Git status" },
+    ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
+    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
 
     -- pick a hidden term
     -- ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },

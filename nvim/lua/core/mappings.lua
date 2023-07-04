@@ -9,10 +9,10 @@ local M = {}
 M.general = {
   n = {
     -- disable arrow keys cause im learning vim ;)
-    ["<Up>"] = {"<Nop>", "Disable up"},
-    ["<Down>"] = {"<Nop>", "Disable down"},
-    ["<Left>"] = {"<Nop>", "Disable left"},
-    ["<Right>"] = {"<Nop>", "Disable right"}
+    ["<Up>"] = { "<Nop>", "Disable up" },
+    ["<Down>"] = { "<Nop>", "Disable down" },
+    ["<Left>"] = { "<Nop>", "Disable left" },
+    ["<Right>"] = { "<Nop>", "Disable right" },
   },
 }
 
@@ -21,15 +21,15 @@ M.barbar = {
 
   n = {
     -- cycle through buffers
-    ["<tab>"] = { "<Cmd>BufferNext<CR>", "Goto next buffer"},
-    ["<S-tab>"] = { "<Cmd>BufferPrevious<CR>", "Goto prev buffer"},
-     -- cycle through buffers
-    ["<leader>."] = { "<Cmd>BufferMoveNext<CR>", "Move buffer forward"},
-    ["<leader>,"] = { "<Cmd>BufferMovePrevious<CR>", "Move buffer back"},
+    ["<tab>"] = { "<Cmd>BufferNext<CR>", "Goto next buffer" },
+    ["<S-tab>"] = { "<Cmd>BufferPrevious<CR>", "Goto prev buffer" },
+    -- cycle through buffers
+    ["<leader>."] = { "<Cmd>BufferMoveNext<CR>", "Move buffer forward" },
+    ["<leader>,"] = { "<Cmd>BufferMovePrevious<CR>", "Move buffer back" },
     --  Pin/unpin buffer
-    ["<leader>bp"] = { "<Cmd>BufferPin<CR>", "Pin/Unpin buffer"},
+    ["<leader>bp"] = { "<Cmd>BufferPin<CR>", "Pin/Unpin buffer" },
     -- close buffer + hide terminal buffer
-    ["<leader>x"] = { "<Cmd>BufferClose<CR>", "Close buffer"},
+    ["<leader>x"] = { "<Cmd>BufferClose<CR>", "Close buffer" },
   },
 }
 
@@ -37,15 +37,15 @@ M.bufferline = {
   plugin = true,
   n = {
     -- cycle through buffers
-    ["<tab>"] = { "<Cmd>BufferLineCycleNext<CR>", "Goto next buffer"},
-    ["<S-tab>"] = { "<Cmd>BufferLineCyclePrev<CR>", "Goto prev buffer"},
-     -- cycle through buffers
-    ["<leader>."] = { "<Cmd>BufferLineMoveNext<CR>", "Move buffer forward"},
-    ["<leader>,"] = { "<Cmd>BufferLineMovePrev<CR>", "Move buffer back"},
+    ["<tab>"] = { "<Cmd>BufferLineCycleNext<CR>", "Goto next buffer" },
+    ["<S-tab>"] = { "<Cmd>BufferLineCyclePrev<CR>", "Goto prev buffer" },
+    -- cycle through buffers
+    ["<leader>."] = { "<Cmd>BufferLineMoveNext<CR>", "Move buffer forward" },
+    ["<leader>,"] = { "<Cmd>BufferLineMovePrev<CR>", "Move buffer back" },
     --  Pin/unpin buffer
-    ["<leader>bp"] = { "<Cmd>BufferLineTogglePin<CR>", "Pin/Unpin buffer"},
+    ["<leader>bp"] = { "<Cmd>BufferLineTogglePin<CR>", "Pin/Unpin buffer" },
     -- close buffer + hide terminal buffer
-    ["<leader>x"] = { "<Cmd>bdelete<CR>", "Close buffer"},
+    ["<leader>x"] = { "<Cmd>bdelete<CR>", "Close buffer" },
   },
 }
 
@@ -96,7 +96,12 @@ M.lspconfig = {
       "LSP definition type",
     },
 
-    ["<leader>ra"] = { function() require("nvchad_ui.renamer").open() end, "LSP rename" },
+    ["<leader>ra"] = {
+      function()
+        require("nvchad_ui.renamer").open()
+      end,
+      "LSP rename",
+    },
 
     ["<leader>ca"] = {
       function()
@@ -121,14 +126,14 @@ M.lspconfig = {
 
     ["[d"] = {
       function()
-        vim.diagnostic.goto_prev({ float = { border = "rounded" }})
+        vim.diagnostic.goto_prev { float = { border = "rounded" } }
       end,
       "Goto prev",
     },
 
     ["]d"] = {
       function()
-        vim.diagnostic.goto_next({ float = { border = "rounded" }})
+        vim.diagnostic.goto_next { float = { border = "rounded" } }
       end,
       "Goto next",
     },
@@ -286,6 +291,13 @@ M.gitsigns = {
       "Preview hunk",
     },
 
+    ["<leader>hi"] = {
+      function()
+        require("gitsigns").preview_hunk_inline()
+      end,
+      "Preview hunk inline",
+    },
+
     ["<leader>hb"] = {
       function()
         package.loaded.gitsigns.blame_line()
@@ -298,6 +310,20 @@ M.gitsigns = {
         require("gitsigns").toggle_deleted()
       end,
       "Toggle deleted",
+    },
+
+    ["<leader>hd"] = {
+      function()
+        require("gitsigns").diffthis()
+      end,
+      "Diff this",
+    },
+
+    ["<leader>hD"] = {
+      function()
+        require("gitsigns").diffthis('~')
+      end,
+      "Diff this",
     },
   },
 }

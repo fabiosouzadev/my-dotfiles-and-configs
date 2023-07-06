@@ -10,7 +10,7 @@ M.lsp_to_mason = {
   { lsp = "dockerls", mason = "dockerfile-language-server" },
   { lsp = "emmet_ls", mason = "emmet-ls" },
   { lsp = "eslint", mason = "eslint-lsp" },
-  { lsp = "gopls", mason = "gopls" },
+  -- { lsp = "gopls", mason = "gopls" },
   { lsp = "html", mason = "html-lsp" },
   { lsp = "jsonls", mason = "json-lsp" },
   { lsp = "kotlin_language_server", mason = "kotlin-language-server" },
@@ -70,6 +70,12 @@ M.ensure_installed_treesitter = {
   "vim",
   "vue",
   "yaml",
-  }
+}
 
-return M
+M.ensure_installed_dap = {
+  "python",
+}
+
+
+
+  return M

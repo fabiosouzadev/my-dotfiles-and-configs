@@ -9,7 +9,7 @@ end
 local options = {
   ensure_installed = servers_to_lsp(),
   -- auto-install configured servers (with lspconfig)
-  automatic_installation = true,
+  -- automatic_installation = true,
 } 
 
 return options

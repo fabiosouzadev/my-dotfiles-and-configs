@@ -212,8 +212,10 @@ local plugins = {
     },
     config = true,
   },
+  -- Mason
   {
     "williamboman/mason.nvim",
+    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
     cmd = {
       "Mason",
       "MasonUpdate",
@@ -249,7 +251,7 @@ local plugins = {
       require("mason-lspconfig").setup(opts)
     end,
   },
-
+ -- nvim-lspconfig
   {
     "neovim/nvim-lspconfig",
     init = function()
@@ -293,6 +295,25 @@ local plugins = {
     end,
   },
 
+  -- dap
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      {
+        "jay-babu/mason-nvim-dap.nvim", 
+        cmd = { "DapInstall", "DapUninstall" }
+      },
+      {"rcarriga/nvim-dap-ui"},
+    },
+    init = function()
+      require("core.utils").lazy_load "nvim-dap"
+      require("core.utils").load_mappings "dap"
+    end,
+    config = function()
+      require "plugins.configs.dap".setup()
+    end,
+  },
+
   -- ----------------------------------------------------------------------- }}}
   -- {
   --   "glepnir/lspsaga.nvim",
@@ -308,8 +329,6 @@ local plugins = {
   --   requires = "nvim-web-devicons",
   --   config = true,
   -- },
-
-  -- dap
 
   -- Comments
   {
@@ -349,7 +368,6 @@ local plugins = {
   },
 
   -- Tabline
-
   {
     "akinsho/bufferline.nvim",
     event = "User FileOpen",
@@ -416,6 +434,7 @@ local plugins = {
   {
     "ThePrimeagen/vim-be-good",
     event = "VeryLazy",
+    lazy = true,
   },
   {
     "ThePrimeagen/harpoon",

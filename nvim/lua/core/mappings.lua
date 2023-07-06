@@ -190,6 +190,31 @@ M.lspconfig = {
   },
 }
 
+M.dap = {
+  n = {
+    ["<leader>db"] = { function() require('dap').toggle_breakpoint() end, "Toggle Breakpoint" },
+    ["<leader>dc"] = { function() require('dap').continue() end, "DAP Continue" },
+    ["<leader>dd"] = { function() require('dap').continue() end, "DAP Continue" },
+    ["<leader>di"] = { function() require('dap').step_into() end, "DAP Step Into" },
+    ["<leader>do"] = { function() require('dap').step_out() end, "DAP Step Out" },
+    ["<leader>dO"] = { function() require('dap').step_over() end, "DAP Step Over" },
+    ["<leader>dt"] = { function() require('dap').terminate() end, "DAP Terminate" },
+    
+    
+    ["<leader>du"] = { function() require("dapui").toggle({ }) end, "Dap UI" },
+    ["<leader>de"] = { function() require("dapui").eval() end, "Dap UI Eval" },
+    ["<leader>dh"] = { function() require("dapui").eval() end, "Dap UI Eval" },
+    ["<leader>dC"] = { function() require('dapui').close() end, "Dap UI Close" },
+
+    ["<leader>dw"] = { function() require('dapui').float_element('watches', { enter = true }) end, "Dap UI Whatches" },
+    ["<leader>ds"] = { function() require('dapui').float_element('scopes', { enter = true }) end, "Dap UI Scopes" },
+    ["<leader>dr"] = { function() require('dapui').float_element('repl', { enter = true }) end, "DAP Step REPL" },
+  },
+  v = {
+    ["<leader>de"] = { function() require("dapui").eval() end, "Dap UI Eval" },
+  },  
+}
+
 M.nvimtree = {
   plugin = true,
 

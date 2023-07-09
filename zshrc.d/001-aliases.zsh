@@ -22,6 +22,12 @@ if [ -x /usr/local/bin/nvim ]; then
     export EDITOR="/usr/local/bin/nvim"
 fi
 
+if [ -x $HOME/.local/bin/nvim ]; then
+    alias vim="$HOME/.local/bin/nvim"
+    alias vi="$HOME/.local/bin/nvim"
+    export EDITOR="$HOME/.local/bin/nvim"
+fi
+
 # Clearly, I also really like nvim.
 
 #ALIAS

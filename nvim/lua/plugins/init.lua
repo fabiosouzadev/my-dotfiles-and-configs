@@ -285,7 +285,7 @@ local plugins = {
       require("mason-null-ls").setup {
         ensure_installed = opts.servers.ensure_installed_null_ls,
         -- auto-install configured servers (with lspconfig)
-        automatic_installation = true, -- not the same as ensure_installed
+        -- automatic_installation = true, -- not the same as ensure_installed
       }
       require("null-ls").setup {
         debug = true,
@@ -304,6 +304,9 @@ local plugins = {
         cmd = { "DapInstall", "DapUninstall" }
       },
       {"rcarriga/nvim-dap-ui"},
+      -- {"theHamsta/nvim-dap-virtual-text"},
+      -- {"mfussenegger/nvim-dap-python"},
+      -- { "nvim-telescope/telescope-dap.nvim"},
     },
     init = function()
       require("core.utils").lazy_load "nvim-dap"

@@ -175,6 +175,8 @@ zgenom load srijanshetty/docker-zsh
 # https://github.com/wfxr/forgit
 # try 'glo' to git log
 # try 'gi' for gitignore
+# try 'ga' for git add -> aweasome!!!!
+# try 'gcb' for list branches and checkout
 zgenom load wfxr/forgit
 
 ### https://github.com/lukechilds/zsh-nvm

@@ -172,6 +172,5 @@
   "editor.inlineSuggest.enabled": true,
   "window.zoomLevel": 1,
   "editor.fontSize": 10,
-  "workbench.colorTheme": "Tokyo Night",
-  "workbench.sideBar.location": "right"
+  "workbench.colorTheme": "Tokyo Night"
 }

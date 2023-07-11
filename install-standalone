@@ -28,7 +28,7 @@ git submodule update --init --recursive zsh-quickstart-kit
 
 cd "${BASE_DIR}"
 git submodule update --init --recursive personal
-git submodule update --init --recursive mglu
+git submodule update --init --recursive nvim
 
 for config in ${@}; do
 

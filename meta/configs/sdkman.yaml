@@ -22,7 +22,19 @@
     - description: Source
       command: |
         . "$HOME/.sdkman/bin/sdkman-init.sh"
-        sdk install java
+
+        # Java
+        sdk install java 17.0.7-tem
+        sdk default java 17.0.7-tem
+        sdk home java 17.0.7-tem
+
+        sdk install java 17.0.7-librca
+
+        # Springboot  
         sdk install springboot
+
+        #Maven
         sdk install maven
+
+        #Gradle
         sdk install gradle

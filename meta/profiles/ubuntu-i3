@@ -20,8 +20,9 @@ k8s
 ngrok
 postman
 asdf
+sdkman
 nvm
-neovim
+nvim
 tmux
 wakatime
 alacritty

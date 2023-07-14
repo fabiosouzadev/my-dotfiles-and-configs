@@ -1,0 +1,5 @@
+sdkman_beta_channel=true
+sdkman_auto_answer=true
+sdkman_selfupdate_feature=true
+sdkman_colour_enable=true
+sdkman_auto_complete=true

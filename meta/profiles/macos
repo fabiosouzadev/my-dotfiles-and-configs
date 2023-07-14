@@ -6,13 +6,15 @@ fzf
 pyenv
 rustup
 asdf
+sdkman
+sdkman
 nvm
 docker
 k8s
 wakatime
 ngrok
 postman
-neovim
+nvim
 tmux
 zsh
 starship

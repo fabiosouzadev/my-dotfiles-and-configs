@@ -1,0 +1,28 @@
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+
+    - description: Remove previous sdkman folder
+      command: "[ ! -d $HOME/.sdkman ] || sudo rm -rf $HOME/.sdkman"
+
+    - description: Install sdkman
+      command: |
+        curl -s "https://beta.sdkman.io?rcupdate=false" | sh
+
+    - description: Run sdkman
+      command: |
+        source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+- link:
+    ~/.sdkman/etc/config: sdkman/config
+    ~/.zshrc.d/020-sdkman.zsh: zshrc.d/020-sdkman.zsh
+    ~/.sdkmanrc: sdkman/sdkmanrc
+
+- shell:
+    - description: Source
+      command: |
+        . "$HOME/.sdkman/bin/sdkman-init.sh"
+        sdk install java
+        sdk install springboot
+        sdk install maven
+        sdk install gradle

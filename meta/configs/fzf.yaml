@@ -9,7 +9,7 @@
           fi
           cd $HOME/.fzf
           git pull
-          ~/.fzf/install
+          ~/.fzf/install --no-update-rc
         elif [ `uname` = 'Darwin' ]; then
           brew install fzf
         fi

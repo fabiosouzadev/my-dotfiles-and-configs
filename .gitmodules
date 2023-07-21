@@ -5,18 +5,9 @@
 	path = meta/dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "meta/dotbot-asdf"]
-	path = meta/dotbot-asdf
-	url = https://github.com/sobolevn/dotbot-asdf.git
 [submodule "meta/dotbot-brewfile"]
 	path = meta/dotbot-brewfile
 	url = https://github.com/sobolevn/dotbot-brewfile.git
-[submodule "meta/dotbot-git"]
-	path = meta/dotbot-git
-	url = https://github.com/DrDynamic/dotbot-git.git
-[submodule "meta/dotbot_plugin_aptget"]
-	path = meta/dotbot_plugin_aptget
-	url = https://github.com/dein0s/dotbot_plugin_aptget.git
 [submodule "personal"]
 	path = personal
 	url = git@github.com:fabiosouzadev/personal.git

@@ -1,17 +1,15 @@
 - shell:
     - description: Remove previous asdf folder
       command: "[ ! -d ~/.asdf ] || sudo rm -rf ~/.asdf"
+ 
     - description: Clone asdf
       command: |
-        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
-- link:
-    ~/.asdfrc: asdf/asdfrc
-    ~/.zshrc.d/018-asdf.zsh: zshrc.d/018-asdf.zsh
+        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
 
-- shell:
     - description: Install asdf packages
       command: |
         export PATH="$PATH:$HOME/.asdf/bin"
+        export ASDF_DIR="$HOME/.asdf"
         echo '. "$HOME/.asdf/asdf.sh"' | tee -a ~/.bashrc > /dev/null
         . "$HOME/.asdf/asdf.sh"
         . ~/.bashrc
@@ -27,11 +25,41 @@
           esac
         fi
 
-    # - description: Install Java
-    #   command: |
-    #     asdf plugin add java https://github.com/halcyon/asdf-java.git
-    #     asdf install java latest
+- link:
+    ~/.asdfrc: asdf/asdfrc
+    ~/.zshrc.d/004-java.zsh: zshrc.d/004-java.zsh
+    ~/.zshrc.d/008-flutter.zsh: zshrc.d/008-flutter.zsh
+    ~/.zshrc.d/018-asdf.zsh: zshrc.d/018-asdf.zsh
 
+- shell:  
+    - description: Install Java
+      command: |
+        export ASDF_DIR="$HOME/.asdf"
+        $HOME/.asdf/bin/asdf plugin add java https://github.com/halcyon/asdf-java.git
+        $HOME/.asdf/bin/asdf install java latest:adoptopenjdk-17
+        $HOME/.asdf/bin/asdf install java latest:liberica-17
+        $HOME/.asdf/bin/asdf global  java latest:adoptopenjdk-17
+
+    - description: Install Kotlin
+      command: |
+        export ASDF_DIR="$HOME/.asdf"
+        $HOME/.asdf/bin/asdf plugin add kotlin https://github.com/asdf-community/asdf-kotlin.git
+        $HOME/.asdf/bin/asdf install kotlin latest
+        $HOME/.asdf/bin/asdf global  kotlin latest 
+
+    - description: Install Gradle
+      command: |
+        export ASDF_DIR="$HOME/.asdf"
+        $HOME/.asdf/bin/asdf  plugin add gradle https://github.com/rfrancis/asdf-gradle.git
+        export GRADLE_SIGNATURE_CHECK=no
+        $HOME/.asdf/bin/asdf install gradle latest
+        $HOME/.asdf/bin/asdf global gradle latest
+    - description: Install Maven
+      command: |
+        export ASDF_DIR="$HOME/.asdf"
+        $HOME/.asdf/bin/asdf plugin add maven https://github.com/halcyon/asdf-maven.git
+        $HOME/.asdf/bin/asdf install maven latest
+        $HOME/.asdf/bin/asdf global maven latest
     # - description: Install jq
     #   command: |
     #     $HOME/.asdf/bin/asdf plugin add jq https://github.com/AZMCode/asdf-jq.git
@@ -41,6 +69,7 @@
 
     - description: Install bun
       command: |
+        export ASDF_DIR="$HOME/.asdf"
         $HOME/.asdf/bin/asdf plugin add bun https://github.com/cometkim/asdf-bun.git
         $HOME/.asdf/bin/asdf install bun latest
         $HOME/.asdf/bin/asdf global bun latest
@@ -55,6 +84,7 @@
               sudo apt-get install jq
           esac
         fi
+        export ASDF_DIR="$HOME/.asdf"
         $HOME/.asdf/bin/asdf plugin-add flutter
         $HOME/.asdf/bin/asdf install flutter 3.7.12-stable
         $HOME/.asdf/bin/asdf global flutter 3.7.12-stable
@@ -62,13 +92,21 @@
 
     - description: Install Dart
       command: |
+        export ASDF_DIR="$HOME/.asdf"
         $HOME/.asdf/bin/asdf plugin add dart https://github.com/patoconnor43/asdf-dart.git
         $HOME/.asdf/bin/asdf install dart latest
         $HOME/.asdf/bin/asdf global dart latest
 
     - description: Install dotnet-core
       command: |
+        export ASDF_DIR="$HOME/.asdf"
         $HOME/.asdf/bin/asdf plugin add dotnet-core https://github.com/emersonsoares/asdf-dotnet-core.git
         $HOME/.asdf/bin/asdf install dotnet-core latest
         $HOME/.asdf/bin/asdf global dotnet-core latest
       stdout: true
+
+- link:
+    ~/.asdfrc: asdf/asdfrc
+    ~/.zshrc.d/004-java.zsh: zshrc.d/004-java.zsh
+    ~/.zshrc.d/008-flutter.zsh: zshrc.d/008-flutter.zsh
+    ~/.zshrc.d/018-asdf.zsh: zshrc.d/018-asdf.zsh

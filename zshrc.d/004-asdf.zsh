@@ -1,4 +1,3 @@
-export $ASDF_DIR="$HOME/.asdf"
 . "$ASDF_DIR/asdf.sh"
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)

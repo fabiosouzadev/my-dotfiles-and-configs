@@ -65,3 +65,7 @@ mas "ColorSlurp", id: 1287239339
 mas "Memory Diag", id: 748212890
 mas "Speedtest", id: 1153157709
 mas "Xcode", id: 497799835
+
+
+# Hering
+brew 'openfortivpn'

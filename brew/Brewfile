@@ -57,6 +57,7 @@ cask 'ferdium-nightly'
 cask 'appcleaner'
 cask 'microsoft-teams'
 cask 'notion'
+cask 'dbeaver-community'
 
 # Mac App Store
 mas "Battery Health", id: 490192174

@@ -45,7 +45,7 @@
         fi
       stdout: true
 
-    - description: Build tmux
+    - description: Build prerequisites
       command: |
         if [ `uname` = 'Darwin' ]; then
           brew install autoconf
@@ -74,28 +74,39 @@
             ;;
           esac
         fi
+    - description: Clean older versions
+      command: |
+        if [ -d $HOME/.local/share/tmux/ ]; then 
+          sudo rm -r $HOME/.local/share/tmux
+        fi
+        if [ -f /usr/local/bin/tmux ]; then
+          sudo rm /usr/local/bin/tmux 
+        fi
+        if [ -d $HOME/.local/src/tmux ]; then 
+          sudo rm -r $HOME/.local/src/tmux 
+        fi
+        if [ -d $HOME/.local/state/nvim ]; then 
+          sudo rm -r $HOME/.local/state/nvim 
+        fi
+        if [ -d $HOME/.tmux ]; then
+          sudo rm -r $HOME/.tmux
+        fi
 
-
-        if [ !  -d $HOME/.local/src/tmux ]; then
-          git clone https://github.com/tmux/tmux.git $HOME/.local/src/tmux
-        fi 
+    - description: "Clone TMUX"
+      command: |
+        git clone https://github.com/tmux/tmux.git $HOME/.local/src/tmux
         cd $HOME/.local/src/tmux
         git pull
         sh autogen.sh
         if [ `uname` = 'Darwin' ]; then
-         ./configure --enable-utf8proc
+         ./configure --enable-utf8proc --prefix=$HOME/.local
         elif [ `uname` = 'Linux' ]; then 
           #./configure
           # Test config (https://github.com/tmux/tmux/issues/3218)
-          ./configure --enable-systemd
+          ./configure --enable-systemd --prefix=$HOME/.local
         fi
         make 
         sudo make install
-
-        if [ -d $HOME/.tmux ]; then
-          sudo rm -r $HOME/.tmux
-        fi
-      stdout: true
 
     - description: "Clone TPM"
       command: |
@@ -105,7 +116,7 @@
         cd $HOME/.tmux/plugins/tpm
         git pull
 
-    - description: Installing tmux-256color ( only macOS)
+    - description: Installing tmux-256color (only macOS)
       command: |
         if [ `uname` = 'Darwin' ]; then
           #Method 1

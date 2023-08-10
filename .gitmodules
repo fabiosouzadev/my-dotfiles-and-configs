@@ -11,9 +11,6 @@
 [submodule "personal"]
 	path = personal
 	url = git@github.com:fabiosouzadev/personal.git
-[submodule "mglu"]
-	path = mglu
-	url = git@github.com:fabiosouzadev/mglu.git
 [submodule "nvim"]
 	path = nvim
 	url = git@github.com:fabiosouzadev/nvim.git

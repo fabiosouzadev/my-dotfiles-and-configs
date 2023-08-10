@@ -14,3 +14,6 @@
 [submodule "nvim"]
 	path = nvim
 	url = git@github.com:fabiosouzadev/nvim.git
+[submodule "hering"]
+	path = hering
+	url = git@github.com:fabiosouzadev/hering.git

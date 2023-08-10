@@ -1,0 +1,49 @@
+- shell:
+    - command: '[ -d "$HOME/.ssh" ]  || mkdir $HOME/.ssh'
+    - command: '[ -f "$HOME/.ssh/id_ed25519_hering" ]  || cp hering/ssh/id_ed25519_hering ~/.ssh/id_ed25519_hering'
+    - command: '[ -f "$HOME/.ssh/id_ed25519_hering.pub" ]  || cp hering/ssh/id_ed25519_hering.pub ~/.ssh/id_ed25519_hering.pub'
+    - [chmod 400 ~/.ssh/id_ed25519_hering]
+    - [chmod 400 ~/.ssh/id_ed25519_hering.pub]
+    # - command: '[ -d "$HOME/.kube" ]  || mkdir $HOME/.kube'
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Install remmina
+      command: |
+        case $(lsb_release -is) in 
+          Ubuntu)
+          ;;
+          Arch | EndeavourOS)
+            sudo pacman -Syu --noconfirm \
+              remmina \
+              freerdp
+          ;;
+        esac
+
+    - description: Install forticlient
+      command: |
+        if [ `uname` = 'Linux' ]; then
+          case $(lsb_release -is) in 
+            Ubuntu)
+              # Method 1
+              # sudo apt-get install openfortivpn
+              # sudo cp hering/network/vpns/hub/config /etc/openfortivpn
+              
+              #Method 2
+              sudo apt-get install -y libgdk-pixbuf-xlib-2.0-0 libgdk-pixbuf2.0-0
+              sudo dpkg -i hering/network/vpns/hub/forticlient-sslvpn_4.4.2333-1_amd64.deb
+            ;;
+
+            Arch | EndeavourOS)
+              yay -S forticlientsslvpn --nocleanmenu --noconfirm --nodiffmenu
+            ;; 
+          esac
+          # elif [ `uname` = 'Darwin' ]; then
+          #   #brew install openfortivpn
+          #   # Install hering/network/vpns/macos/FortiClient_OnlineInstaller.dmg
+          # fi
+        fi
+
+    - [mkdir -p $HOME/Projects/Work/hering/]
+- link:
+    ~/.gitconfig_mglu: hering/git/gitconfig_hering
+    ~/.zshrc.d/201-hering.zsh: hering/zsh/201-hering.zsh

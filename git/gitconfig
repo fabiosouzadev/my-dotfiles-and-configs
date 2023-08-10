@@ -61,10 +61,13 @@
 [include]
     path = ~/.gitconfig_local
 
-[includeIf "gitdir:~/Projects/mglu/"]
+[includeIf "gitdir:~/Projects/Work/hering/"]
+	path = ~/.gitconfig_hering
+
+;[includeIf "gitdir:~/Projects/mglu/"]
 	path = ~/.gitconfig_mglu
 
-[includeIf "gitdir:~/Projects/hub/"]
+;[includeIf "gitdir:~/Projects/hub/"]
     path = ~/.gitconfig_mglu
 
 ;[includeIf "gitdir:~/Projects/Work/gitlab/"]

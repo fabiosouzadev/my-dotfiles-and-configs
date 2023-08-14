@@ -58,6 +58,7 @@ cask 'appcleaner'
 cask 'microsoft-teams'
 cask 'notion'
 cask 'dbeaver-community'
+cask 'jetbrains-toolbox'
 
 # Mac App Store
 mas "Battery Health", id: 490192174

@@ -59,7 +59,8 @@ cask 'microsoft-teams'
 cask 'notion'
 cask 'dbeaver-community'
 cask 'jetbrains-toolbox'
-cask 'transmission'
+cask 'transmission-nightly'
+cask 'vlc-nightly'
 
 # Mac App Store
 mas "Battery Health", id: 490192174

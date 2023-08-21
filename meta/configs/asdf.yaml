@@ -43,7 +43,7 @@
 
     - description: Install Groovy
       command: |
-        $HOME/.asdf/bin/asdf plugin add groovy https://github.com/weibemoura/asdf-groovy.git        
+        $HOME/.asdf/bin/asdf plugin add groovy https://github.com/weibemoura/asdf-groovy.git
         $HOME/.asdf/bin/asdf install groovy latest
         $HOME/.asdf/bin/asdf global  groovy latest
 
@@ -61,7 +61,7 @@
 
     - description: Install jq
       command: |
-        $HOME/.asdf/bin/asdf plugin add jq https://github.com/lsanwick/asdf-jq.git    
+        $HOME/.asdf/bin/asdf plugin add jq https://github.com/lsanwick/asdf-jq.git
         $HOME/.asdf/bin/asdf install jq latest
         $HOME/.asdf/bin/asdf global jq latest
 
@@ -73,7 +73,7 @@
 
     - description: Install Flutter
       command: |
-        export PATH="$PATH:$HOME/.asdf/installs/jq/1.6/bin" 
+        export PATH="$PATH:$HOME/.asdf/installs/jq/1.6/bin"
         $HOME/.asdf/bin/asdf plugin-add flutter
         $HOME/.asdf/bin/asdf install flutter 3.10.6-stable
         $HOME/.asdf/bin/asdf global flutter 3.10.6-stable
@@ -89,6 +89,19 @@
         $HOME/.asdf/bin/asdf plugin add dotnet-core https://github.com/emersonsoares/asdf-dotnet-core.git
         $HOME/.asdf/bin/asdf install dotnet-core latest
         $HOME/.asdf/bin/asdf global dotnet-core latest
+
+    - description: Install PHP prerequisites
+      command: |
+        if [ `uname` = 'Darwin' ]; then
+          brew install autoconf automake bison freetype gd gettext icu4c krb5 libedit libiconv libjpeg libpng libxml2 libzip pkg-config re2c zlib
+          brew install gmp libsodium imagemagick
+        fi
+
+    - description: Install PHP
+      command: |
+        $HOME/.asdf/bin/asdf plugin add php https://github.com/asdf-community/asdf-php.git
+        $HOME/.asdf/bin/asdf install php 8.2.9
+        $HOME/.asdf/bin/asdf global php 8.2.9
 
 - link:
     ~/.asdfrc: asdf/asdfrc

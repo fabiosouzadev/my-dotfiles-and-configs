@@ -47,3 +47,4 @@
 - link:
     ~/.gitconfig_mglu: hering/git/gitconfig_hering
     ~/.zshrc.d/201-hering.zsh: hering/zsh/201-hering.zsh
+    ~/.kube/hering: hering/kube

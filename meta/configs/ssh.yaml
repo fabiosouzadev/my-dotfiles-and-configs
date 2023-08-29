@@ -1,3 +1,2 @@
 - link:
     ~/.ssh/config: ssh/config
-    ~/.ssh/known_hosts: ssh/known_hosts

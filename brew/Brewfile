@@ -61,6 +61,11 @@ cask 'dbeaver-community'
 cask 'jetbrains-toolbox'
 cask 'transmission'
 cask 'vlc'
+cask 'stack-stack'
+cask 'keepingyouawake'
+cask 'appcleaner'
+cask 'figma'
+cask 'rectangle'
 
 # Mac App Store
 mas "Battery Health", id: 490192174

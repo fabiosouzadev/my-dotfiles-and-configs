@@ -103,7 +103,7 @@
         elif [ `uname` = 'Linux' ]; then 
           #./configure
           # Test config (https://github.com/tmux/tmux/issues/3218)
-          ./configure --enable-systemd --prefix=$HOME/.local
+          ./configure --prefix=$HOME/.local
         fi
         make 
         sudo make install

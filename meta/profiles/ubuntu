@@ -1,7 +1,7 @@
 dns
 personal
-git
 ssh
+git
 linux.cli
 ubuntu.snaps
 ubuntu.flatpack
@@ -11,9 +11,9 @@ linux.browsers
 linux.fonts
 linux.icons
 fzf
-zsh
-starship
 pyenv
+rustup
+wakatime
 docker
 k8s
 ngrok
@@ -22,10 +22,11 @@ asdf
 nvm
 nvim
 tmux
-wakatime
-alacritty
-kitty
+zsh
+starship
 vscodium
+vscode.extensions
 jetbrains-toolbox
 spotify
-mglu
+alacritty
+kitty

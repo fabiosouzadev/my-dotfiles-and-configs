@@ -103,7 +103,7 @@
         elif [ `uname` = 'Linux' ]; then 
           #./configure
           # Test config (https://github.com/tmux/tmux/issues/3218)
-         ./configure --prefix=$HOME/.local
+         ./configure --enable-debug --prefix=$HOME/.local
         fi
         make 
         make install
@@ -131,6 +131,7 @@
         fi
 
 - link:
+    ~/.zshrc.d/021-tmux.zsh: zshrc.d/021-tmux.zsh
     ~/.tmux.conf:
       relink: true
       path: tmux/tmux.conf

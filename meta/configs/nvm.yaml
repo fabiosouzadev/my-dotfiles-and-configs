@@ -61,3 +61,5 @@
         npm install -g tailwindcss-language-server
         npm install -g diagnostic-languageserver
         npm install -g gopls
+- link:
+    ~/.zshrc.d/002-nvm.zsh: zshrc.d/002-nvm.zsh

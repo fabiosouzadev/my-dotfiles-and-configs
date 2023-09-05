@@ -26,7 +26,6 @@
     ~/.zsh_functions: meta/zsh-quickstart-kit/zsh/.zsh_functions
     ~/.zshrc: meta/zsh-quickstart-kit/zsh/.zshrc
     ~/.zshrc.d/001-aliases.zsh: zshrc.d/001-aliases.zsh
-    ~/.zshrc.d/002-nvm.zsh: zshrc.d/002-nvm.zsh
+    ~/.zshrc.pre-plugins.d/013-local-path.zsh: zshrc.d/013-local-path.zsh
     ~/.p10k.zsh: powerlevel10k/p10k.zsh
-    ~/.zshrc.d/013-local-path.zsh: zshrc.d/013-local-path.zsh
     ~/.zsh-quickstart-local-plugins: zshrc.d/zsh-quickstart-local-plugins

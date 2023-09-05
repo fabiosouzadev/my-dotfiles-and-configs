@@ -12,7 +12,7 @@
 #
 # This example file duplicates the list of plugins that shipped with the
 # kit as of 2020-01-01.
-
+PATH="$PATH:$HOME/.local/bin"
 ZGEN_LOADED=()
 ZGEN_COMPLETIONS=()
 
@@ -191,15 +191,10 @@ zgenom load lukechilds/zsh-nvm
 zgenom load lukechilds/zsh-better-npm-completion
 
 #WAKATIME
-if [[ -z "${WAKATIME_API_KEY}" ]]; then
-  zgenom load sobolevn/wakatime-zsh-plugin
-fi
-
+zgenom load sobolevn/wakatime-zsh-plugin
 
 #Alacritty completions
-if [[ -f "/usr/local/bin/alacritty" ]]; then
-    zgenom load $HOME/.local/share/alacritty
-fi
+zgenom load $HOME/.local/share/alacritty
 
 ### END MY CUSTOM PLUGINS
 

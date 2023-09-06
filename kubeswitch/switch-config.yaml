@@ -11,7 +11,7 @@ kubeconfigStores:
     cache:
       kind: filesystem
       config:
-        path: ~/.kube/cache/gke-hering
+        path: ~/.cache/kube/
       # optionally limit to certain projects in account
       # projectIDs:
       #   - hering-integracoes-b2c-dev

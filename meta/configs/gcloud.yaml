@@ -1,0 +1,17 @@
+- create:
+    - ~/.local/src
+    - ~/.local/bin
+    - ~/.local/share
+    - ~/.kube
+    - ~/.cache/kube
+- shell:
+    - description: Installing gcloud
+      command: |
+        OS=`uname`
+        VERSION=445.0.0
+        curl "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-$VERSION-$OS-x86_64.tar.gz" | tar -xz -C $HOME/.local/src
+        sh $HOME/.local/src/google-cloud-sdk/install.sh --quiet --install-python false
+        gcloud components install gke-gcloud-auth-plugin
+    - [exec /bin/zsh]
+- link:
+    ~/.zshrc.d/014-gcloud.zsh: zshrc.d/014-gcloud.zsh

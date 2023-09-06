@@ -111,3 +111,4 @@
     ~/.zshrc.d/016-k9s-completions.zsh: zshrc.d/016-k9s-completions.zsh
     ~/.zshrc.d/017-switch-completions.zsh: zshrc.d/017-switch-completions.zsh
     ~/.config/k9s: k9s
+    ~/.kube/switch-config.yaml: hering/kubeswitch/switch-config.yaml

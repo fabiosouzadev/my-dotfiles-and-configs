@@ -1,3 +1,9 @@
+- create:
+    - ~/.local/src
+    - ~/.local/bin
+    - ~/.local/share
+    - ~/.kube
+    - ~/.kube/hering
 - shell:
     - command: '[ -d "$HOME/.ssh" ]  || mkdir $HOME/.ssh'
     - command: '[ -f "$HOME/.ssh/id_ed25519_hering" ]  || cp hering/ssh/id_ed25519_hering ~/.ssh/id_ed25519_hering'
@@ -44,6 +50,7 @@
         fi
 
     - [mkdir -p $HOME/Projects/Work/hering/]
+    - [cp -r hering/kube/* ~/.kube/hering ] 
 - link:
     ~/.gitconfig_hering: hering/git/gitconfig_hering
     ~/.zshrc.d/201-hering.zsh: hering/zsh/201-hering.zsh

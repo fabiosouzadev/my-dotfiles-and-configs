@@ -65,10 +65,10 @@
 	path = ~/.gitconfig_hering
 
 ;[includeIf "gitdir:~/Projects/mglu/"]
-	path = ~/.gitconfig_mglu
+;	path = ~/.gitconfig_mglu
 
 ;[includeIf "gitdir:~/Projects/hub/"]
-    path = ~/.gitconfig_mglu
+;    path = ~/.gitconfig_mglu
 
 ;[includeIf "gitdir:~/Projects/Work/gitlab/"]
 ;    path = ~/.gitconfig_gitlab

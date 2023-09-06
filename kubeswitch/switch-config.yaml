@@ -1,0 +1,17 @@
+kind: SwitchConfig
+version: v1alpha1
+kubeconfigStores:
+  - kind: gke
+    refreshIndexAfter: 3h
+    config:
+      # optionally set the account. Otherwise, the currently active gcloud account will be used.
+      gcpAccount: fabio.souza@ciahering.com.br
+      authentication:
+        authenticationType: gcloud
+    cache:
+      kind: filesystem
+      config:
+        path: ~/.kube/cache/gke-hering
+      # optionally limit to certain projects in account
+      # projectIDs:
+      #   - hering-integracoes-b2c-dev

@@ -1,9 +1,6 @@
 - create:
     - ~/.local/src
     - ~/.local/bin
-    - ~/.local/share
-    - ~/.kube
-    - ~/.cache/kube
 - shell:
     - description: Installing gcloud
       command: |

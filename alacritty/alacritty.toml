@@ -1,0 +1,37 @@
+import = ["/Users/fabiosouzadev/.config/alacritty/tokyonight.toml"]
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 14.0
+
+[font.bold]
+family = "Hack Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "Hack Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "Hack Nerd Font"
+style = "Thin Italic"
+
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+[scrolling]
+history = 10000
+
+[selection]
+save_to_clipboard = true
+
+[window.padding]
+x = 0
+y = 0

@@ -1,6 +1,7 @@
 - create:
     - ~/.local/src
     - ~/.local/bin
+    - ~/.local/share/zsh/site-functions 
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
@@ -67,7 +68,7 @@
         elif [ `uname` = 'Darwin' ]; then
           sudo xcodebuild -license accept
           make app
-          cp -r target/release/osx/Alacritty.app /Applications/
+          cp -r target/release/osx/Alacritty.app ~/Applications/
         fi
 
         sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
@@ -91,9 +92,8 @@
         scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | sudo tee $HOME/.local/share/man/man5/alacritty-bindings.5.gz > /dev/null
 
 
-        mkdir -p $HOME/.local/share/alacritty
-        #cp alacritty.yml $HOME/.local/share/alacritty/ #copy config default
-        cp extra/completions/_alacritty $HOME/.local/share/alacritty/ #copy completions
+        #cp extra/completions/_alacritty $HOME/.local/share/alacritty/ #copy completions
+        cp extra/completions/_alacritty $HOME/.local/share/zsh/site-functions #copy completions
 
         # Default terminal
         if [ `uname` = 'Linux' ]; then

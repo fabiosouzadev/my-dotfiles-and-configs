@@ -1,1 +1,1 @@
-export MANPATH=$HOME/local/share/man:$MANPATH
+export MANPATH=$HOME/.local/share/man:$MANPATH

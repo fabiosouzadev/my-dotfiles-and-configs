@@ -194,7 +194,13 @@ zgenom load lukechilds/zsh-better-npm-completion
 zgenom load sobolevn/wakatime-zsh-plugin
 
 #Alacritty completions
-zgenom load $HOME/.local/share/alacritty
+#zgenom load $HOME/.local/share/alacritty
+
+#Asdf
+#zgenom load $HOME/.asdf/completions
+
+# Custom completions
+zgenom load $HOME/.local/share/zsh/site-functions
 
 ### END MY CUSTOM PLUGINS
 

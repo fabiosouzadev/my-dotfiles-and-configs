@@ -15,7 +15,8 @@
                 libfontconfig1-dev \
                 libxcb-xfixes0-dev \
                 libxkbcommon-dev \
-                python3
+                python3 \
+                scdoc 
             ;;
             Arch | EndeavourOS)
               sudo pacman -S --noconfirm \
@@ -26,7 +27,8 @@
                 make \
                 libxcb \
                 libxkbcommon \
-                python
+                python \
+                scdoc 
             ;;
           esac
         fi

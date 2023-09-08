@@ -16,6 +16,7 @@ rustup
 wakatime
 docker
 k8s
+gcloud
 ngrok
 postman
 asdf

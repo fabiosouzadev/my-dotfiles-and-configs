@@ -37,100 +37,100 @@
           esac
         fi
       stdout: true
-#     - description: Clean older versions
-#       command: |
-#         if [ -d $HOME/.local/src/alacritty/ ]; then 
-#           sudo rm -r $HOME/.local/src/alacritty
-#         fi
-#         if [ -f $HOME/.local/bin/alacritty ]; then 
-#           sudo rm $HOME/.local/bin/alacritty
-#         fi
-#         if [ -f /usr/bin/alacritty ]; then 
-#           sudo rm /usr/bin/alacritty
-#         fi
-#         if [ -f /usr/local/bin/alacritty ]; then
-#           sudo rm /usr/local/bin/alacritty
-#         fi
-#         if [ -f $HOME/.local/share/applications/Alacritty.desktop ]; then
-#           sudo rm $HOME/.local/share/applications/Alacritty.desktop        
-#         fi 
-#         if [ -f /usr/share/applications/Alacritty.desktop ]; then
-#           sudo rm /usr/share/applications/Alacritty.desktop        
-#         fi
-#         if [ -f /usr/local/share/applications/Alacritty.desktop ]; then
-#           sudo rm /usr/local/share/applications/Alacritty.desktop        
-#         fi
-#         if [ -f $HOME/.local/share/pixmaps/Alacritty.svg ]; then 
-#            sudo rm $HOME/.local/share/pixmaps/Alacritty.svg 
-#         fi
-#         if [ -f /usr/share/pixmaps/Alacritty.svg ]; then 
-#            sudo rm /usr/share/pixmaps/Alacritty.svg 
-#         fi
-#         if [ -f /usr/local/share/pixmaps/Alacritty.svg ]; then 
-#            sudo rm /usr/local/share/pixmaps/Alacritty.svg 
-#         fi
-#     - description: Installing Alacritty
-#       command: |
-#
-#         #Install alacritty
-#         git clone https://github.com/alacritty/alacritty.git $HOME/.local/src/alacritty
-#
-#         cd $HOME/.local/src/alacritty
-#         $HOME/.cargo/bin/rustup override set stable
-#         $HOME/.cargo/bin/rustup update stable
-#
-#         if [ `uname` = 'Linux' ]; then
-#           $HOME/.cargo/bin/cargo build --release
-#
-#           ### Force support for only Wayland ###
-#           #cargo build --release --no-default-features --features=wayland
-#
-#           ### Force support for only X11 ###
-#           #cargo build --release --no-default-features --features=x11
-#         elif [ `uname` = 'Darwin' ]; then
-#           sudo xcodebuild -license accept
-#           make app
-#           cp -r target/release/osx/Alacritty.app ~/Applications/
-#         fi
-#
-#         sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
-#         infocmp alacritty
-#
-#         if [ `uname` = 'Linux' ]; then
-#           # Desktop Icon
-#           cp target/release/alacritty $HOME/.local/bin # or anywhere else in $PATH
-#           if [ $(lsb_release -is) = 'Ubuntu' ]; then
-#             sudo ln -sf $HOME/.local/bin/alacritty /usr/local/bin/alacritty
-#           fi
-#           sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
-#           sudo desktop-file-install --dir=/usr/local/share/applications/ extra/linux/Alacritty.desktop
-#           sudo update-desktop-database
-#         fi
-#
-#
-#         #Install man page
-#         sudo mkdir -p $HOME/.local/share/man/man1
-#         sudo mkdir -p $HOME/.local/share/man/man5
-#         scdoc < extra/man/alacritty.1.scd | gzip -c | sudo tee $HOME/.local/share/man/man1/alacritty.1.gz > /dev/null
-#         scdoc < extra/man/alacritty-msg.1.scd | gzip -c | sudo tee $HOME/.local/share/man/man1/alacritty-msg.1.gz > /dev/null
-#         scdoc < extra/man/alacritty.5.scd | gzip -c | sudo tee $HOME/.local/share/man/man5/alacritty.5.gz > /dev/null
-#         scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | sudo tee $HOME/.local/share/man/man5/alacritty-bindings.5.gz > /dev/null
-#
-#
-#         #cp extra/completions/_alacritty $HOME/.local/share/alacritty/ #copy completions
-#         cp extra/completions/_alacritty $HOME/.local/share/zsh/site-functions #copy completions
-#
-#         # Default terminal
-#         if [ `uname` = 'Linux' ]; then
-#           if [ $(lsb_release -is) = 'Ubuntu' ]; then
-#             sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $HOME/.local/bin/alacritty 100
-#             sudo update-alternatives --config x-terminal-emulator
-#           fi
-#         fi
-#
-#         #sudo rm -r $HOME/.local/src/alacritty
-#       stdout: true
-#
-# - link:
-#     ~/.config/alacritty: alacritty
-#     ~/.zshrc.d/019-alacritty.zsh: zshrc.d/019-alacritty.zsh
+    - description: Clean older versions
+      command: |
+        if [ -d $HOME/.local/src/alacritty/ ]; then 
+          sudo rm -r $HOME/.local/src/alacritty
+        fi
+        if [ -f $HOME/.local/bin/alacritty ]; then 
+          sudo rm $HOME/.local/bin/alacritty
+        fi
+        if [ -f /usr/bin/alacritty ]; then 
+          sudo rm /usr/bin/alacritty
+        fi
+        if [ -f /usr/local/bin/alacritty ]; then
+          sudo rm /usr/local/bin/alacritty
+        fi
+        if [ -f $HOME/.local/share/applications/Alacritty.desktop ]; then
+          sudo rm $HOME/.local/share/applications/Alacritty.desktop        
+        fi 
+        if [ -f /usr/share/applications/Alacritty.desktop ]; then
+          sudo rm /usr/share/applications/Alacritty.desktop        
+        fi
+        if [ -f /usr/local/share/applications/Alacritty.desktop ]; then
+          sudo rm /usr/local/share/applications/Alacritty.desktop        
+        fi
+        if [ -f $HOME/.local/share/pixmaps/Alacritty.svg ]; then 
+           sudo rm $HOME/.local/share/pixmaps/Alacritty.svg 
+        fi
+        if [ -f /usr/share/pixmaps/Alacritty.svg ]; then 
+           sudo rm /usr/share/pixmaps/Alacritty.svg 
+        fi
+        if [ -f /usr/local/share/pixmaps/Alacritty.svg ]; then 
+           sudo rm /usr/local/share/pixmaps/Alacritty.svg 
+        fi
+    - description: Installing Alacritty
+      command: |
+
+        #Install alacritty
+        git clone https://github.com/alacritty/alacritty.git $HOME/.local/src/alacritty
+
+        cd $HOME/.local/src/alacritty
+        $HOME/.cargo/bin/rustup override set stable
+        $HOME/.cargo/bin/rustup update stable
+
+        if [ `uname` = 'Linux' ]; then
+          $HOME/.cargo/bin/cargo build --release
+
+          ### Force support for only Wayland ###
+          #cargo build --release --no-default-features --features=wayland
+
+          ### Force support for only X11 ###
+          #cargo build --release --no-default-features --features=x11
+        elif [ `uname` = 'Darwin' ]; then
+          sudo xcodebuild -license accept
+          make app
+          cp -r target/release/osx/Alacritty.app ~/Applications/
+        fi
+
+        sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
+        infocmp alacritty
+
+        if [ `uname` = 'Linux' ]; then
+          # Desktop Icon
+          cp target/release/alacritty $HOME/.local/bin # or anywhere else in $PATH
+          if [ $(lsb_release -is) = 'Ubuntu' ]; then
+            sudo ln -sf $HOME/.local/bin/alacritty /usr/local/bin/alacritty
+          fi
+          sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+          sudo desktop-file-install --dir=/usr/local/share/applications/ extra/linux/Alacritty.desktop
+          sudo update-desktop-database
+        fi
+
+
+        #Install man page
+        sudo mkdir -p $HOME/.local/share/man/man1
+        sudo mkdir -p $HOME/.local/share/man/man5
+        scdoc < extra/man/alacritty.1.scd | gzip -c | sudo tee $HOME/.local/share/man/man1/alacritty.1.gz > /dev/null
+        scdoc < extra/man/alacritty-msg.1.scd | gzip -c | sudo tee $HOME/.local/share/man/man1/alacritty-msg.1.gz > /dev/null
+        scdoc < extra/man/alacritty.5.scd | gzip -c | sudo tee $HOME/.local/share/man/man5/alacritty.5.gz > /dev/null
+        scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | sudo tee $HOME/.local/share/man/man5/alacritty-bindings.5.gz > /dev/null
+
+
+        #cp extra/completions/_alacritty $HOME/.local/share/alacritty/ #copy completions
+        cp extra/completions/_alacritty $HOME/.local/share/zsh/site-functions #copy completions
+
+        # Default terminal
+        if [ `uname` = 'Linux' ]; then
+          if [ $(lsb_release -is) = 'Ubuntu' ]; then
+            sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $HOME/.local/bin/alacritty 100
+            sudo update-alternatives --config x-terminal-emulator
+          fi
+        fi
+
+        #sudo rm -r $HOME/.local/src/alacritty
+      stdout: true
+
+- link:
+    ~/.config/alacritty: alacritty
+    ~/.zshrc.d/019-alacritty.zsh: zshrc.d/019-alacritty.zsh

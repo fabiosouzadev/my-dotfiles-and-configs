@@ -1,3 +1,7 @@
+- create:
+    - ~/.local/src
+    - ~/.local/bin
+    - ~/.local/share/zsh/site-functions
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
@@ -7,7 +11,7 @@
 
     - description: Clone asdf
       command: |
-        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.0
 
     - description: Install asdf packages
       command: |

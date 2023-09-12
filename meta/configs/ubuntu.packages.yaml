@@ -18,8 +18,7 @@
         libqt5webkit5 \
         transmission \
         ubuntu-restricted-extras \
-        xfce4-terminal \
-        ttf-mscorefonts-installer
+        xfce4-terminal
 
     - description: Toggle install
       command: |

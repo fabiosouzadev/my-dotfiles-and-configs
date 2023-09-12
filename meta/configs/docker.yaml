@@ -69,5 +69,5 @@
       if [ `uname` = 'Darwin' ]; then
         brew install jesseduffield/lazydocker/lazydocker 
       elif [ `uname` = 'Linux' ]; then
-        curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | zsh
+        curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
       fi

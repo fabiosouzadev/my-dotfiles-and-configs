@@ -12,6 +12,8 @@
         cd $HOME/.local/src/openssl-$version
         if [ `uname` = 'Darwin' ]; then
           ./Configure darwin64-x86_64-cc
+        elif [ `uname` = 'Linux' ]; then
+          ./Configure
         fi
         make test
         sudo make install

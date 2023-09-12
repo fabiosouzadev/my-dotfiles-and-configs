@@ -4,7 +4,7 @@ ssh
 git
 linux.cli
 ubuntu.snaps
-ubuntu.flatpack
+ubuntu.flatpaks
 ubuntu.packages
 linux.bluetooth
 linux.browsers
@@ -17,6 +17,7 @@ rustup
 wakatime
 docker
 k8s
+gcloud
 ngrok
 postman
 asdf

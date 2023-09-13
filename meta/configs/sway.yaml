@@ -7,24 +7,73 @@
 
     - description: Configure keyboard
       command: "[ -d /etc/X11/xorg.conf.d/ ] && sudo cp xorg/00-keyboard.conf /etc/X11/xorg.conf.d/"
-    
 
     - description: Installing apps
       command: |
-        sudo apt update -y
-        sudo apt upgrade -y
+        sudo apt-get update -y
+        sudo apt-get upgrade -y
 
-        sudo apt install -y \
+        sudo apt-get install -y \
           sway \
-          waybar
+          waybar \
+          dmenu \
+          swaybg \
+          swayidle \
+          swaylock
 
-    # - description: Install Build prerequisites
+    # - description: Clean older versions
+    #   command: |
+    #     if [ -d $HOME/.local/src/wayland ]; then 
+    #       sudo rm -r $HOME/.local/src/wayland 
+    #     fi
+    #     if [ -f /usr/local/bin/wayland ]; then
+    #       sudo rm /usr/local/bin/wayland
+    #     fi
+    #     if [ -d $HOME/.local/src/wlroots ]; then 
+    #       sudo rm -r $HOME/.local/src/wlroots 
+    #     fi
+    #     if [ -f /usr/local/bin/wlroots ]; then
+    #       sudo rm /usr/local/bin/wlroots
+    #     fi
+    #     if [ -d $HOME/.local/src/sway ]; then 
+    #       sudo rm -r $HOME/.local/src/sway 
+    #     fi
+    #     if [ -f /usr/local/bin/sway ]; then
+    #       sudo rm /usr/local/bin/sway 
+    #     fi
+    #
+    # - description: Install Wlroots dependencies
     #   command: |
     #     if [ `uname` = 'Linux' ]; then 
     #       case $(lsb_release -is) in 
     #         Ubuntu)
-    #           sudo apt install -y \
-    #             meson
+    #           sudo apt-get install -y \
+    #             wayland-protocols \
+    #             libwayland-dev \
+    #             libegl1-mesa-dev \
+    #             libgles2-mesa-dev \
+    #             libdrm-dev \
+    #             libgbm-dev \
+    #             libinput-dev \
+    #             libxkbcommon-dev \
+    #             libgudev-1.0-dev \
+    #             libpixman-1-dev \
+    #             libsystemd-dev \
+    #             cmake \
+    #             libpng-dev \
+    #             libavutil-dev \
+    #             libavcodec-dev \
+    #             libavformat-dev \
+    #             ninja-build \
+    #             meson \
+    #             libxcb-composite0-dev \
+    #             libxcb-icccm4-dev \
+    #             libxcb-image0-dev \
+    #             libxcb-render0-dev \
+    #             libxcb-xfixes0-dev \
+    #             libxkbcommon-dev \
+    #             libxcb-xinput-dev \
+    #             libx11-xcb-dev
     #         ;;
     #
     #         # Arch | EndeavourOS)
@@ -38,53 +87,66 @@
     #         # ;;
     #       esac
     #     fi
-
-    # - description: Clean older versions
-    #   command: |
-    #     if [ -d $HOME/.local/src/wlroots ]; then 
-    #       sudo rm -r $HOME/.local/src/wlroots 
-    #     fi
-    #     if [ -f /usr/local/bin/wlroots ]; then
-    #       sudo rm /usr/local/bin/wlroots
-    #     fi
-    #     if [ -d $HOME/.local/src/sway ]; then 
-    #       sudo rm -r $HOME/.local/src/sway 
-    #     fi
-    #     if [ -f /usr/local/bin/sway ]; then
-    #       sudo rm /usr/local/bin/sway 
-    #     fi
-    # - description: Clone and build Wlroots
+    #
+    # - description: Clone and build wlroots
     #   command: |
     #     git clone https://gitlab.freedesktop.org/wlroots/wlroots.git $HOME/.local/src/wlroots
     #     cd $HOME/.local/src/wlroots
+    #     git checkout 0.12.0
     #     meson build/
     #     ninja -C build/
     #     sudo ninja -C build/ install
+    #     #sudo chmod a+s /usr/local/bin/sway
     #   stdout: true
 
-    # - description: Clone and build Sway
+    # - description: Install sway dependencies
+    #   command: |
+    #     if [ `uname` = 'Linux' ]; then 
+    #       case $(lsb_release -is) in 
+    #         Ubuntu)
+    #           sudo apt-get install -y \
+    #             libjson-c-dev \
+    #             libpango1.0-dev \
+    #             libcairo2-dev \
+    #             libgdk-pixbuf2.0-dev \
+    #             scdoc
+    #         ;;
+    #
+    #         # Arch | EndeavourOS)
+    #         #   sudo pacman -Sy --noconfirm \
+    #         #     base-devel \
+    #         #     libevent \
+    #         #     ncurses \
+    #         #     make \
+    #         #     bison \
+    #         #     pkg-config
+    #         # ;;
+    #       esac
+    #     fi
+    #
+    # - description: Clone and build sway
     #   command: |
     #     git clone https://github.com/swaywm/sway.git $HOME/.local/src/sway
     #     cd $HOME/.local/src/sway
     #     meson build/
     #     ninja -C build/
     #     sudo ninja -C build/ install
-    #     sudo chmod a+s /usr/local/bin/sway
+    #     #sudo chmod a+s /usr/local/bin/sway
     #   stdout: true
 
 - link:
     ~/.config/sway: sway
     ~/.config/dunst: dunst
-    ~/.config/rofi: rofi
-    ~/.config/picom.conf: picom/picom.conf
+    # ~/.config/rofi: rofi
+    # ~/.config/picom.conf: picom/picom.conf
     ~/.config/wallpapers: wallpapers
     ~/.config/greenclip.toml:
-      if: "[`lsb_release -is` = EndeavourOS]"
+      # if: "[`lsb_release -is` = EndeavourOS]"
       path: greenclip/greenclip.toml
     ~/.screenlayout:
-      if: "[`lsb_release -is` = EndeavourOS]"
+      # if: "[`lsb_release -is` = EndeavourOS]"
       path: monitors/xrand
     ~/.config/monitors.xml: monitors/monitors.xml
     ~/.config/gtk-3.0:
-      if: "[`lsb_release -is` = EndeavourOS]"
+      # if: "[`lsb_release -is` = EndeavourOS]"
       path: gtk-3.0

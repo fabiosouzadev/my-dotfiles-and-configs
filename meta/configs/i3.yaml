@@ -100,8 +100,7 @@
     ~/.config/rofi: rofi
     ~/.config/picom.conf: picom/picom.conf
     ~/.config/wallpapers: wallpapers
-    ~/.config/xfce4/terminal:
-
+    ~/.config/xfce4/terminal: xfce4/terminal
     ~/.config/greenclip.toml:
       if: "[`lsb_release -is` = EndeavourOS]"
       path: greenclip/greenclip.toml

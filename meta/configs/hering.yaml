@@ -4,6 +4,7 @@
     - ~/.local/share
     - ~/.kube
     - ~/.kube/hering
+    - ~/Projects/Work/hering/
 - shell:
     - command: '[ -d "$HOME/.ssh" ]  || mkdir $HOME/.ssh'
     - command: '[ -f "$HOME/.ssh/id_ed25519_hering" ]  || cp hering/ssh/id_ed25519_hering ~/.ssh/id_ed25519_hering'
@@ -31,26 +32,20 @@
           case $(lsb_release -is) in 
             Ubuntu)
               # Method 1
-              # sudo apt-get install openfortivpn
-              # sudo cp hering/network/vpns/hub/config /etc/openfortivpn
-              
-              #Method 2
-              sudo apt-get install -y libgdk-pixbuf-xlib-2.0-0 libgdk-pixbuf2.0-0
-              sudo dpkg -i hering/network/vpns/hub/forticlient-sslvpn_4.4.2333-1_amd64.deb
+              sudo apt-get install -y openfortivpn
             ;;
 
             Arch | EndeavourOS)
               yay -S forticlientsslvpn --nocleanmenu --noconfirm --nodiffmenu
             ;; 
           esac
-          # elif [ `uname` = 'Darwin' ]; then
-          #   #brew install openfortivpn
-          #   # Install hering/network/vpns/macos/FortiClient_OnlineInstaller.dmg
-          # fi
+        elif [ `uname` = 'Darwin' ]; then
+            brew install openfortivpn
+            # Install hering/network/vpns/installers/macos/FortiClient_OnlineInstaller.dmg
         fi
 
-    - [mkdir -p $HOME/Projects/Work/hering/]
     - [cp -r hering/kube/* ~/.kube/hering ] 
+    - [sudo cp -r hering/network/vpn/configs/* /etc/openfortivpn/]
 - link:
     ~/.gitconfig_hering: hering/git/gitconfig_hering
     ~/.zshrc.d/201-hering.zsh: hering/zsh/201-hering.zsh

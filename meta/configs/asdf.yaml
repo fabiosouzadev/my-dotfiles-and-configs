@@ -29,7 +29,7 @@
                 dirmngr \
                 gpg \
                 curl \
-                gawk
+                gawk 
           esac
         fi
 
@@ -100,6 +100,33 @@
         if [ `uname` = 'Darwin' ]; then
           brew install autoconf automake bison freetype gd gettext icu4c krb5 libedit libiconv libjpeg libpng libxml2 libzip pkg-config re2c zlib
           brew install gmp libsodium imagemagick
+        fi
+        if [ `uname` = 'Linux' ]; then 
+          case $(lsb_release -is) in 
+            Ubuntu)
+              sudo apt-get install -y \
+               autoconf \
+               re2c \
+               bison \
+               libsqlite3-dev \
+               libpq-dev \
+               libonig-dev \
+               libfcgi-dev \
+               libfcgi0ldbl \
+               libjpeg-dev \
+               libpng-dev \
+               libssl-dev \
+               libxml2-dev \
+               libcurl4-openssl-dev \
+               libxpm-dev \
+               libgd-dev \
+               libmysqlclient-dev \
+               libfreetype6-dev \
+               libxslt1-dev \
+               libpspell-dev \
+               libzip-dev \
+               libgccjit-10-dev
+          esac
         fi
 
     - description: Install PHP

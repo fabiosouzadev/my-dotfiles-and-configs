@@ -9,13 +9,23 @@
     - description: Configure keyboard
       command: "[ -d /etc/X11/xorg.conf.d/ ] && sudo cp xorg/00-keyboard.conf /etc/X11/xorg.conf.d/"
 
+    - description: Update Ubuntu repositories
+      command: |
+        case $(lsb_release -is) in
+          Ubuntu)
+            curl https://baltocdn.com/i3-window-manager/signing.asc | sudo apt-key add -
+            sudo apt-get install -y apt-transport-https --yes
+            echo "deb https://baltocdn.com/i3-window-manager/i3/i3-autobuild-ubuntu/ all main" | sudo tee /etc/apt/sources.list.d/i3-autobuild.list
+        ;;
+        esac
     - description: Install i3
       command: |
         case $(lsb_release -is) in
           Ubuntu)
-            sudo apt update
-            sudo apt install -y \
+            sudo apt-get update -y
+            sudo apt-get install -y \
               i3 \
+              i3-wm \
               i3lock \
               i3status \
               i3blocks \
@@ -26,13 +36,14 @@
               nitrogen \
               feh \
               brightnessctl \
-              terminator
+              terminator \
+              polybar
           ;;
         esac
 
     - description: Install i3-gaps
       command: |
-        
+
         case $(lsb_release -is) in
           Ubuntu)
             # sudo add-apt-repository -y ppa:regolith-linux/stable
@@ -74,7 +85,7 @@
       command: |
         case $(lsb_release -is) in
           Ubuntu)
-            sudo apt install -y \
+            sudo apt-get install -y \
               libdbus-1-dev \
               libx11-dev \
               libxinerama-dev \
@@ -99,6 +110,7 @@
     ~/.config/dunst: dunst
     ~/.config/rofi: rofi
     ~/.config/picom.conf: picom/picom.conf
+    ~/.config/polybar:
     ~/.config/wallpapers: wallpapers
     ~/.config/xfce4/terminal: xfce4/terminal
     ~/.config/greenclip.toml:
@@ -111,4 +123,3 @@
     ~/.config/gtk-3.0:
       if: "[`lsb_release -is` = EndeavourOS]"
       path: gtk-3.0
-

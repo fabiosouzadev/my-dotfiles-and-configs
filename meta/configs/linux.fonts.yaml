@@ -1,3 +1,6 @@
+- create:
+    - ~/.temp-fonts
+    - ~/.local/share/fonts
 - shell:
   - description: Validating sudo credentials
     command: "sudo --validate"
@@ -5,7 +8,10 @@
     command: | 
       TEMP_DIR_FONTS=$HOME/.temp-fonts
       LOCAL_SHARE_FONTS=$HOME/.local/share/fonts
-      VERSION=v2.3.3
+      cp -rf fonts/* $LOCAL_SHARE_FONTS
+
+
+      VERSION=v3.0.2
 
       FONTS=(
         "CascadiaCode"
@@ -20,6 +26,8 @@
         "NerdFontsSymbolsOnly"
         "UbuntuMono"
         "Inconsolata"
+        "Iosevka"
+        "IosevkaTerm"
       )
 
 

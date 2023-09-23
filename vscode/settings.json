@@ -172,5 +172,6 @@
   "editor.inlineSuggest.enabled": true,
   "window.zoomLevel": 1,
   "editor.fontSize": 10,
-  "workbench.colorTheme": "Tokyo Night"
+  "workbench.colorTheme": "Tokyo Night",
+  "explorer.confirmDelete": false
 }

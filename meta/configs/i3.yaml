@@ -37,7 +37,9 @@
               feh \
               brightnessctl \
               terminator \
-              polybar
+              polybar \
+              flameshot \
+              arandr 
           ;;
         esac
 

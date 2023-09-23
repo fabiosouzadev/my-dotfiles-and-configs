@@ -16,18 +16,21 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: eks-development
-  currentCluster: eks-development
+  currentContext: gke_hering-opine-nps-dev_southamerica-east1_cluster-opine-nps-dev
+  currentCluster: gke_hering-opine-nps-dev_southamerica-east1_cluster-opine-nps-dev
   clusters:
-    eks-development:
+    gke_hering-opine-nps-dev_southamerica-east1_cluster-opine-nps-dev:
       namespace:
-        active: hogwarts-api-argocd
+        active: all
         lockFavorites: false
         favorites:
-        - hogwarts-api-argocd
+        - all
+        - gitlab-agent-k8s-nps-dash-agent-dev
+        - nps-workers
+        - appweb
         - default
       view:
-        active: pod
+        active: pods
       featureGates:
         nodeShell: false
       shellPod:

@@ -1,33 +1,43 @@
 #!/usr/bin/env bash
 
-dir="$HOME/.config/polybar"
-themes=(`ls --hide="launch.sh" $dir`)
+POLYBAR_DIR="$HOME/.config/polybar"
+THEME=""
 
 launch_bar() {
-	# Terminate already running bar instances
+	
+    # Terminate already running bar instances
 	killall -q polybar
 
-	# Wait until the processes have been shut down
+    # Wait until the processes have been shut down
 	while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
-            
-	# Launch the bar
-    if type "xrandr"; then
-        for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-            MONITOR=$m polybar -q main -c "$dir/$style/config.ini" &
-        done
-    else
-	    polybar -q main -c "$dir/$style/config.ini" &
+
+    # Launch new polybar(s)                                                            
+    if type "xrandr"; then                                                             
+        IFS=$'\n'  # must set internal field separator to avoid dumb                   
+        for entry in $(xrandr --query | grep " connected"); do                         
+            mon=$(cut -d" " -f1 <<< "$entry")                                          
+            status=$(cut -d" " -f3 <<< "$entry")                                       
+                                                                                       
+            tray_pos=""                                                                
+            if [ "$status" == "primary" ]; then                                        
+                tray_pos="right"                                                       
+            fi                                                                         
+                                                                                       
+            MONITOR=$mon TRAY_POS=$tray_pos polybar -r -c "$POLYBAR_DIR/$THEME/config.ini" -q main 2>&1 | tee -a /tmp/polybar-monitor-"$mon".log & disown
+            #sleep 1
+        done                                                                          
+        unset IFS  # avoid mega dumb by resetting the IFS                              
+    else                                                                               
+        polybar -r -c "$POLYBAR_DIR/$THEME/config.ini" -q main 2>&1 | tee -a /tmp/polybar.log & disown                      
     fi
-    # polybar -q main -c "$dir/$style/config.ini" &
-    sleep 1
 }
 
 if [[ "$1" == "--one" ]]; then
-	style="one"
+	THEME="one"
 	launch_bar
 
 elif [[ "$1" == "--two" ]]; then
-	style="two"
+	THEME="two"
 	launch_bar
 
 else

@@ -32,7 +32,6 @@
       "editorCodeLens.foreground": "#7982a9" // Preferred hex color
     }
   },
-  "editor.fontFamily": "JetBrains Mono Nerd Font",
   "editor.fontLigatures": true,
   "editor.lineHeight": 24,
   "editor.tabSize": 2,
@@ -92,10 +91,9 @@
 
   //OSX
   "terminal.external.osxExec": "iTerm.app",
-  "terminal.integrated.defaultProfile.osx": "/bin/zsh",
-
+  "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.defaultProfile.windows": "",
-  "terminal.integrated.defaultProfile.linux": "/usr/bin/zsh",
+  "terminal.integrated.defaultProfile.linux": "zsh",
 
   // FILES
   "files.associations": {
@@ -171,7 +169,8 @@
   "peacock.vslsJoinColor": "#1857a4",
   "editor.inlineSuggest.enabled": true,
   "window.zoomLevel": 1,
-  "editor.fontSize": 10,
+  "editor.fontSize": 12,
   "workbench.colorTheme": "Tokyo Night",
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "editor.fontFamily": "'FiraCode Nerd Font Mono'"
 }

@@ -32,6 +32,7 @@
       "editorCodeLens.foreground": "#7982a9" // Preferred hex color
     }
   },
+  "editor.fontFamily": "'JetBrains Mono Nerd Font'",
   "editor.fontLigatures": true,
   "editor.lineHeight": 24,
   "editor.tabSize": 2,
@@ -171,6 +172,5 @@
   "window.zoomLevel": 1,
   "editor.fontSize": 12,
   "workbench.colorTheme": "Tokyo Night",
-  "explorer.confirmDelete": false,
-  "editor.fontFamily": "'FiraCode Nerd Font Mono'"
+  "explorer.confirmDelete": false
 }

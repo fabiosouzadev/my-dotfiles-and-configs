@@ -1,121 +1,126 @@
-// Configuration.
+/*
+ *
+ * Author  : Aditya Shakya
+ * Mail    : adi1090x@gmail.com
+ * Github  : @adi1090x
+ * Twitter : @adi1090x
+ *
+ */
+
 configuration {
-    show-icons:                 false;
-    font:                       "JetBrainsMono Nerd Font 10";
-    monitor: -1;
+	font:							"Fantasque Sans Mono 10";
+    show-icons:                     true;
+	icon-theme: 					"Papirus";
+    drun-display-format:            "{name}";
+    disable-history:                false;
+    fullscreen:                     false;
+	hide-scrollbar: 				true;
+	sidebar-mode: 					false;
 }
 
-// Globals.
-@import "~/.config/rofi/colors/nord.rasi"
+@import "~/.config/rofi/colors/colors.rasi"
 
-// Main window.
 window {
-    transparency:                "real";
-    location:                    center;
-    anchor:                      center;
-    fullscreen:                  false;
-    width:                       800px;
-    x-offset:                    0px;
-    y-offset:                    0px;
-    enabled:                     true;
-    margin:                      0px;
-    padding:                     0px;
-    border:                      0px solid;
-    border-radius:               15px;
-    border-color:                @selected;
-    cursor:                      "default";
-    background-color:            @background;
+    transparency:                   "real";
+    background-color:               @bg;
+    text-color:                     @fg;
+	border:							0px;
+	border-color:					@ac;
+    border-radius:                  0px;
+	width:							300px;
+    location:                       center;
+    x-offset:                       0;
+    y-offset:                       0;
 }
 
-// Main box.
-mainbox {
-    enabled:                     true;
-    spacing:                     15px;
-    margin:                      0px;
-    padding:                     30px;
-    border:                      2px solid;
-    border-radius:               15px;
-    border-color:                @border;
-    background-color:            transparent;
-    children:                    [ "listview" ];
+prompt {
+    enabled: 						true;
+	padding: 						0px 5px 5px 0px;
+	background-color: 				@al;
+	text-color: 					@bar;
 }
 
-// Message.
-message {
-    enabled:                     true;
-    margin:                      0px;
-    padding:                     12px;
-    border:                      0px solid;
-    border-radius:               15px;
-    border-color:                @selected;
-    background-color:            @background-alt;
-    text-color:                  @foreground;
-}
-textbox {
-    enabled:                     false;
-    background-color:            inherit;
-    text-color:                  inherit;
-    vertical-align:              0.5;
-    horizontal-align:            0.5;
-    placeholder-color:           @foreground;
-    blink:                       true;
-    markup:                      true;
-}
-error-message {
-    padding:                     12px;
-    border:                      0px solid;
-    border-radius:               15px;
-    border-color:                @selected;
-    background-color:            @background;
-    text-color:                  @foreground;
+textbox-prompt-colon {
+	padding: 						-2px 5px 5px -10px;
+	font:							"Material\-Design\-Iconic\-Font 12";
+	background-color: 				@al;
+	text-color: 					@bar;
+	expand: false;
+	str: "";
 }
 
-// List of buttons.
+entry {
+    background-color:               @al;
+    text-color:                     @bar;
+    placeholder-color:              @bar;
+    expand:                         true;
+    horizontal-align:               0;
+    placeholder:                    "Search...";
+    padding:                        1px;
+    blink:                          true;
+}
+
+inputbar {
+	children: 						[ textbox-prompt-colon, prompt ];
+    background-color:               @ac;
+    text-color:                     @bar;
+    expand:                         false;
+	border:							0px;
+    border-radius:                  0px;
+	border-color:					@ac;
+    margin:                         0px;
+    padding:                        15px 0px 8px 25px;
+}
+
 listview {
-    enabled:                     true;
-    columns:                     5;
-    lines:                       1;
-    cycle:                       true;
-    dynamic:                     true;
-    scrollbar:                   false;
-    layout:                      vertical;
-    reverse:                     false;
-    fixed-height:                true;
-    fixed-columns:               true;
-    
-    spacing:                     15px;
-    margin:                      0px;
-    padding:                     0px;
-    border:                      0px solid;
-    border-radius:               15px;
-    border-color:                @selected;
-    background-color:            transparent;
-    text-color:                  @foreground;
-    cursor:                      "default";
+    background-color:               @al;
+    padding:                        0px;
+    columns:                        1;
+    lines:                          5;
+    spacing:                        5px;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         vertical;
 }
 
-// Buttons.
+mainbox {
+    background-color:               @al;
+	border:							0px;
+    border-radius:                  0px;
+	border-color:					@ac;
+    children:                       [ inputbar, listview ];
+    spacing:                       	0px;
+    padding:                        0px;
+}
+
 element {
-    enabled:                     true;
-    spacing:                     0px;
-    margin:                      0px;
-    padding:                     35px 0px;
-    border:                      0px;
-    border-radius:               15px;
-    border-color:                @selected;
-    background-color:            @background-alt;
-    text-color:                  @foreground;
-    cursor:                      pointer;
+    background-color:               @al;
+    text-color:                     @fg;
+    orientation:                    horizontal;
+    border-radius:                  0px;
+    padding:                        15px;
 }
+
+element-icon {
+    background-color:               transparent;
+    text-color:               		inherit;
+    size:                           0px;
+    border:                         0px;
+}
+
 element-text {
-    font:                        "JetBrainsMono Nerd Font 28";
-    background-color:            transparent;
-    text-color:                  inherit;
-    cursor:                      inherit;
-    vertical-align:              0.5;
-    horizontal-align:            0.5;
+    background-color:               transparent;
+    text-color:               		inherit;
+    expand:                         true;
+    horizontal-align:               0;
+    vertical-align:                 0.5;
+    margin:                         0px 0px 0px -5px;
 }
-element selected.normal {
-    background-color:            var(selected);
-    text-color:                  var(background);
+
+element selected {
+    background-color:               @bga;
+    text-color:                     @fg;
+	border:							0px;
+    border-radius:                  0px;
+    border-color:                  	@bg;
 }

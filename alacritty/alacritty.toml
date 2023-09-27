@@ -1,4 +1,4 @@
-import = ["/Users/fabiosouzadev/.config/alacritty/tokyonight.toml"]
+import = ["$HOME/.config/alacritty/tokyonight.toml"]
 live_config_reload = true
 
 [colors]
@@ -8,22 +8,22 @@ draw_bold_text_with_bright_colors = true
 TERM = "xterm-256color"
 
 [font]
-size = 9.0
+size = 11.0
 
 [font.bold]
-family = "Hack Nerd Font"
+family = "IosevkaTerm Nerd Font Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "Hack Nerd Font"
+family = "IosevkaTerm Nerd Font Mono"
 style = "Bold Italic"
 
 [font.italic]
-family = "Hack Nerd Font"
+family = "IosevkaTerm Nerd Font Mono"
 style = "Thin Italic"
 
 [font.normal]
-family = "Hack Nerd Font"
+family = "IosevkaTerm Nerd Font Mono"
 style = "Regular"
 
 [scrolling]

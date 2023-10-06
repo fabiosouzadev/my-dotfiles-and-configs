@@ -1,0 +1,30 @@
+- create:
+    - ~/.local/src
+    - ~/.local/bin
+    - ~/.local/share
+    - ~/.kube
+    - ~/.cache/kube
+- shell: 
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    
+    - description: Clean older versions
+      command: |
+        if [ -f $HOME/.local/bin/k9s ]; then 
+          sudo rm $HOME/.local/bin/k9s
+        fi
+        
+        if [ -d $HOME/.local/src/k9s/ ]; then 
+          sudo rm -r $HOME/.local/src/k9s
+        fi
+    
+    - description: Installing k9s
+      command: |
+        git clone https://github.com/derailed/k9s.git $HOME/.local/src/k9s
+        cd $HOME/.local/src/k9s
+        make build 
+        cp $HOME/.local/src/k9s/execs/k9s $HOME/.local/bin
+        chmod + $HOME/.local/bin/k9s
+- link:
+  #  ~/.zshrc.d/016-k9s-completions.zsh: zshrc.d/016-k9s-completions.zsh
+  #  ~/.config/k9s: k9s

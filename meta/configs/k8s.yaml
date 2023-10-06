@@ -9,18 +9,51 @@
       command: "sudo --validate"
     - description: Install kubectl
       command: |
-        OS=`uname`
-        curl -Lo $HOME/.local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/${OS}/amd64/kubectl"
-        if [ -f $HOME/.local/bin/kubectl ];then
-            chmod +x $HOME/.local/bin/kubectl
+        if [ -f $HOME/.local/src/kubectl ]; then
+            sudo rm $HOME/.local/src/kubectl
+            sudo rm $HOME/.local/src/kubectl.sha256
         fi
+
+        if [ -f $HOME/.local/bin/kubectl ]; then
+            sudo rm $HOME/.local/bin/kubectl
+        fi
+
+
+        cd $HOME/.local/src
+        
+        if [ `uname` = 'Darwin' ]; then
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl.sha256"
+          CHECKSUMFILE="$(cat $HOME/.local/src/kubectl.sha256)"
+
+          if echo "$CHECKSUMFILE kubectl" | shasum -a 256 --check -; then
+            chmod +x ./kubectl
+            cp -v kubectl ~/.local/bin/kubectl
+          fi
+
+        elif [ `uname` = 'Linux' ]; then 
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+          CHECKSUMFILE="$(cat $HOME/.local/src/kubectl.sha256)"
+
+          if echo "$CHECKSUMFILE kubectl" | sha256sum --check -; then
+            chmod +x kubectl
+            cp -v kubectl ~/.local/bin/kubectl
+          fi
+        fi
+
     - description: Installing kind
       command: |
         OS=`uname`
-        curl -Lo $HOME/.local/bin/kind https://kind.sigs.k8s.io/dl/v0.15.0/kind-${OS}-amd64
+        VERSION='v0.20.0'
+        
         if [ -f $HOME/.local/bin/kind ];then
-          chmod +x $HOME/.local/bin/kind
+          sudo rm $HOME/.local/bin/kind
         fi
+        
+        curl -Lo $HOME/.local/bin/kind https://kind.sigs.k8s.io/dl/${VERSION}/kind-${OS}-amd64
+        chmod +x $HOME/.local/bin/kind
+
     - description: Installing minikube
       command: |
         if [ `uname` = 'Darwin' ]; then
@@ -37,24 +70,11 @@
         [ -d $HOME/.local/share/kubectx ]   || git clone https://github.com/ahmetb/kubectx  $HOME/.local/share/kubectx
         [ -f $HOME/.local/bin/kubectx ]     || ln -sf $HOME/.local/share/kubectx/kubectx    $HOME/.local/bin/kubectx
         [ -f $HOME/.local/bin/kubens ]      || ln -sf $HOME/.local/share/kubectx/kubens     $HOME/.local/bin/kubens
-    - description: Installing kubeswitch
-      command: |
-        OS=`uname`                        # Pick the right os: linux, darwin (intel only)
-        VERSION=0.8.0                     # Pick the current version.
-
-        curl -Lo $HOME/.local/bin/switcher https://github.com/danielfoehrKn/kubeswitch/releases/download/${VERSION}/switcher_${OS}_amd64
-        chmod +x $HOME/.local/bin/switcher
-
-        curl -Lo $HOME/.local/bin/switch.sh https://github.com/danielfoehrKn/kubeswitch/releases/download/${VERSION}/switch.sh
-        chmod +x $HOME/.local/bin/switch.sh
-    - description: Installing k9s
-      command: |
-        curl -sS https://webinstall.dev/k9s | sh 
     - description: Installing Lens
       command: |
-        if [ `uname` = 'Linux' ]; then 
-          case $(lsb_release -is) in 
-            Ubuntu) 
+        if [ `uname` = 'Linux' ]; then
+          case $(lsb_release -is) in
+            Ubuntu)
               curl -fsSL https://downloads.k8slens.dev/keys/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/lens-archive-keyring.gpg > /dev/null
               echo "deb [arch=amd64 signed-by=/usr/share/keyrings/lens-archive-keyring.gpg] https://downloads.k8slens.dev/apt/debian stable main" | sudo tee /etc/apt/sources.list.d/lens.list > /dev/null
               sudo apt update
@@ -75,7 +95,7 @@
               Comment=Lens - The Kubernetes IDE
               MimeType=x-scheme-handler/lens;
               Categories=Network;"
-              
+
               echo $LENS_SHORTCUT > $HOME/.local/share/applications/lens.desktop
             ;;
           esac
@@ -91,7 +111,3 @@
     - [exec $SHELL]
 - link:
     ~/.zshrc.d/012-kubectl-completions.zsh: zshrc.d/012-kubectl-completions.zsh
-    ~/.zshrc.d/016-k9s-completions.zsh: zshrc.d/016-k9s-completions.zsh
-    ~/.zshrc.d/017-switch-completions.zsh: zshrc.d/017-switch-completions.zsh
-    ~/.config/k9s: k9s
-    ~/.kube/switch-config.yaml: kubeswitch/switch-config.yaml

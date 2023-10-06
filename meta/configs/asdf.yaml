@@ -29,7 +29,8 @@
                 dirmngr \
                 gpg \
                 curl \
-                gawk 
+                gawk \
+                coreutils
           esac
         fi
 
@@ -135,8 +136,15 @@
         $HOME/.asdf/bin/asdf install php 8.2.9
         $HOME/.asdf/bin/asdf global php 8.2.9
 
+    - description: Install go
+      command: |
+        $HOME/.asdf/bin/asdf plugin add go https://github.com/asdf-community/asdf-golang.git
+        $HOME/.asdf/bin/asdf install go latest
+        $HOME/.asdf/bin/asdf global go latest
+
 - link:
     ~/.asdfrc: asdf/asdfrc
     ~/.zshrc.d/004-asdf.zsh: zshrc.d/004-asdf.zsh
     ~/.zshrc.d/007-java.zsh: zshrc.d/007-java.zsh
     ~/.zshrc.d/008-flutter.zsh: zshrc.d/008-flutter.zsh
+    ~/.zshrc.d/022-go.zsh: zshrc.d/022-go.zsh

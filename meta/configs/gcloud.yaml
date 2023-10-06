@@ -5,7 +5,7 @@
     - description: Installing gcloud
       command: |
         OS=`uname`
-        VERSION=445.0.0
+        VERSION=449.0.0
         curl "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-$VERSION-$OS-x86_64.tar.gz" | tar -xz -C $HOME/.local/src
         sh $HOME/.local/src/google-cloud-sdk/install.sh --quiet --install-python false
         $HOME/.local/src/google-cloud-sdk/bin/gcloud components install gke-gcloud-auth-plugin

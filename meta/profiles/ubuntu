@@ -16,6 +16,8 @@ rustup
 wakatime
 docker
 k8s
+k9s
+kubeswitch
 gcloud
 ngrok
 postman

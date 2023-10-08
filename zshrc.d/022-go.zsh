@@ -1,1 +1,1 @@
-. ~/.asdf/plugins/golang/set-env.zsh
+. ~/.asdf/plugins/go/set-env.zsh

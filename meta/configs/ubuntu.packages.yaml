@@ -9,7 +9,6 @@
       command: |
         sudo apt update -y
         sudo apt upgrade -y
-
         sudo apt install -y \
         apt-transport-https \
         gnome-tweaks \
@@ -19,6 +18,7 @@
         transmission \
         ubuntu-restricted-extras \
         xfce4-terminal
+      stdout: true
 
     - description: Toggle install
       command: |

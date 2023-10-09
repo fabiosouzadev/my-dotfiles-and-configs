@@ -109,5 +109,3 @@
         curl -sSL -o $HOME/.local/src/argocd-$OS-amd64 https://github.com/argoproj/argo-cd/releases/download/$VERSION/argocd-$OS-amd64
         sudo install -m 555 $HOME/.local/src/argocd-$OS-amd64 $HOME/.local/bin/argocd
     - [exec $SHELL]
-- link:
-    ~/.zshrc.d/012-kubectl-completions.zsh: zshrc.d/012-kubectl-completions.zsh

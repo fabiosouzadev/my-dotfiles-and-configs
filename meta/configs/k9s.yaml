@@ -26,5 +26,5 @@
         cp $HOME/.local/src/k9s/execs/k9s $HOME/.local/bin
         chmod + $HOME/.local/bin/k9s
 - link:
-    ~/.zshrc.d/016-k9s-completions.zsh: zshrc.d/016-k9s.zsh
+    ~/.zshrc.d/016-k9s.zsh: zshrc.d/016-k9s.zsh
     ~/.config/k9s: k9s

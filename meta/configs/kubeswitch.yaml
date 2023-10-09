@@ -19,5 +19,5 @@
         curl -L -o $HOME/.local/bin/switcher https://github.com/danielfoehrKn/kubeswitch/releases/download/${VERSION}/switcher_${OS}_amd64
         chmod +x $HOME/.local/bin/switcher
 - link:
-     ~/.zshrc.d/017-switch-completions.zsh: zshrc.d/017-switch-completions.zsh
-  #  ~/.kube/switch-config.yaml: kubeswitch/switch-config.yaml
+    ~/.zshrc.d/017-kubeswitch.zsh: zshrc.d/017-kubeswitch.zsh
+    ~/.kube/switch-config.yaml: kubeswitch/switch-config.yaml

@@ -16,21 +16,18 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: gke_hering-opine-nps-dev_southamerica-east1_cluster-opine-nps-dev
-  currentCluster: gke_hering-opine-nps-dev_southamerica-east1_cluster-opine-nps-dev
+  currentContext: gke_hering-opine-nps-prod_southamerica-east1_cluster-opine-nps-prod
+  currentCluster: gke_hering-opine-nps-prod_southamerica-east1_cluster-opine-nps-prod
   clusters:
-    gke_hering-opine-nps-dev_southamerica-east1_cluster-opine-nps-dev:
+    gke_hering-opine-nps-prod_southamerica-east1_cluster-opine-nps-prod:
       namespace:
-        active: all
+        active: opine-nps-dash
         lockFavorites: false
         favorites:
-        - all
-        - gitlab-agent-k8s-nps-dash-agent-dev
-        - nps-workers
-        - appweb
+        - opine-nps-dash
         - default
       view:
-        active: pods
+        active: po
       featureGates:
         nodeShell: false
       shellPod:

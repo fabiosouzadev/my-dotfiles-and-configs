@@ -4,6 +4,7 @@
       <x>2560</x>
       <y>0</y>
       <scale>1</scale>
+      <primary>no</primary>
       <monitor>
         <monitorspec>
           <connector>eDP-1</connector>

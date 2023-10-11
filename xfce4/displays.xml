@@ -74,6 +74,12 @@
       </property>
     </property>
   </property>
+  <property name="Schemes" type="empty">
+    <property name="Apply" type="string" value="618693d4c2afb4e3ef2e619ba31282512d1bc813"/>
+  </property>
+  <property name="Notify" type="bool" value="true"/>
+  <property name="AutoEnableProfiles" type="bool" value="true"/>
+  <property name="IdentityPopups" type="bool" value="false"/>
   <property name="618693d4c2afb4e3ef2e619ba31282512d1bc813" type="string" value="dual">
     <property name="eDP-1" type="string" value="Laptop">
       <property name="Active" type="bool" value="true"/>
@@ -109,8 +115,5 @@
         <property name="Y" type="int" value="0"/>
       </property>
     </property>
-  </property>
-  <property name="Schemes" type="empty">
-    <property name="Apply" type="string" value="618693d4c2afb4e3ef2e619ba31282512d1bc813"/>
   </property>
 </channel>

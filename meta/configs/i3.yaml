@@ -214,13 +214,7 @@
     ~/.config/polybar:
     ~/.config/wallpapers: wallpapers
     ~/.config/xfce4/terminal: xfce4/terminal
-    ~/.config/greenclip.toml:
-      if: "[`lsb_release -is` = EndeavourOS]"
-      path: greenclip/greenclip.toml
-    ~/.screenlayout:
-      if: "[`lsb_release -is` = EndeavourOS]"
-      path: monitors/xrand
+    ~/.config/greenclip.toml: greenclip/greenclip.toml
+    ~/.screenlayout: monitors/xrand
     ~/.config/monitors.xml: monitors/monitors.xml
-    ~/.config/gtk-3.0:
-      if: "[`lsb_release -is` = EndeavourOS]"
-      path: gtk-3.0
+    ~/.config/gtk-3.0: gtk-3.0

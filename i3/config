@@ -317,6 +317,8 @@ assign [class="Spotify"] $ws1
 assign [class="Ferdium"] $ws2
 assign [class="Brave-browser-*"] $ws3
 assign [class="Xfce4-terminal"] $ws4
+assign [class="Alacritty"] $ws4
+assign [class="Kitty"] $ws4
 assign [class="Thunar"] $ws5
 
 # automatic set focus new window if it opens on another workspace than the current:

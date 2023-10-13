@@ -16,14 +16,15 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: gke_hering-opine-nps-prod_southamerica-east1_cluster-opine-nps-prod
-  currentCluster: gke_hering-opine-nps-prod_southamerica-east1_cluster-opine-nps-prod
+  currentContext: gke_hering-opine-nps-dev_southamerica-east1_cluster-opine-nps-dev
+  currentCluster: gke_hering-opine-nps-dev_southamerica-east1_cluster-opine-nps-dev
   clusters:
-    gke_hering-opine-nps-prod_southamerica-east1_cluster-opine-nps-prod:
+    gke_hering-opine-nps-dev_southamerica-east1_cluster-opine-nps-dev:
       namespace:
-        active: opine-nps-dash
+        active: appweb
         lockFavorites: false
         favorites:
+        - appweb
         - opine-nps-dash
         - default
       view:

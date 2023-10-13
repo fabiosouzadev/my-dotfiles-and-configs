@@ -23,12 +23,12 @@ launch_bar() {
                 tray_pos="right"                                                       
             fi                                                                         
                                                                                        
-            MONITOR=$mon TRAY_POS=$tray_pos polybar -r -c "$POLYBAR_DIR/$THEME/config.ini" -q main 2>&1 | tee -a /tmp/polybar-monitor-"$mon".log & disown &
+            MONITOR=$mon TRAY_POS=$tray_pos polybar -r -c "$POLYBAR_DIR/$THEME/config.ini" -q main 2>&1 | tee -a /tmp/polybar-monitor-"$mon".log &
             #sleep 1
         done                                                                          
         unset IFS  # avoid mega dumb by resetting the IFS                              
     else                                                                               
-        polybar -r -c "$POLYBAR_DIR/$THEME/config.ini" -q main 2>&1 | tee -a /tmp/polybar.log & disown                      
+        polybar -r -c "$POLYBAR_DIR/$THEME/config.ini" -q main 2>&1 | tee -a /tmp/polybar.log
     fi
 }
 

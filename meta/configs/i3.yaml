@@ -115,7 +115,8 @@
               libxext-dev \
               meson \
               ninja-build \
-              uthash-dev
+              uthash-dev \
+              libpcre3-dev
           ;;
         esac
         

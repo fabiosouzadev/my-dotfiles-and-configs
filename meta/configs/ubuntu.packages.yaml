@@ -7,6 +7,19 @@
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
+    - description: Install ttf-mscorefonts
+      command: |
+        case $(lsb_release -is) in 
+          Ubuntu)
+            version="3.8.1ubuntu1"
+            wget -O "ttf-mscorefonts-installer-all.deb" "http://archive.ubuntu.com/ubuntu/pool/multiverse/m/msttcorefonts/ttf-mscorefonts-installer_${version}_all.deb"
+            echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+            sudo dpkg -i "ttf-mscorefonts-installer-all.deb"
+            sudo apt-get install -fy
+            sudo rm ttf-mscorefonts-installer-all.deb
+          ;;
+        esac
+      stdout: true
     - description: Installing apps
       command: |
         sudo apt update -y

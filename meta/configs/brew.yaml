@@ -1,4 +1,10 @@
 # This apply to all commands that come after setting the defaults.
+- create:
+    - ~/.local/src
+    - ~/.local/bin
+    - ~/.local/share
+    - ~/.config
+    - ~/.zshrc.d
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"

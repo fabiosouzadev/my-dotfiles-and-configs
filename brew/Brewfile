@@ -30,23 +30,6 @@ cask 'vivaldi-snapshot'
 cask 'firefox-nightly'
 cask 'opera-developer'
 
-
-# Fonts
-cask 'font-cascadia-mono'
-cask 'font-caskaydia-cove-nerd-font'
-cask 'font-fira-code-nerd-font'
-cask 'font-fira-mono-nerd-font'
-cask 'font-hack-nerd-font'
-cask 'font-jetbrains-mono-nerd-font'
-cask 'font-victor-mono-nerd-font'
-cask 'font-ibm-plex-mono'
-cask 'font-source-code-pro'
-cask 'font-space-mono-nerd-font'
-cask 'font-symbols-only-nerd-font'
-cask 'font-ubuntu-mono-nerd-font'
-cask 'font-inconsolata-nerd-font'
-
-
 # Apps
 brew 'mas' # Mac App Store manager
 cask 'authy'

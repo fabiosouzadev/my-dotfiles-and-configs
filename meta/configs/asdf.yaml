@@ -11,7 +11,7 @@
 
     - description: Clone asdf
       command: |
-        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.0
+        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
 
     - description: Install asdf packages
       command: |
@@ -80,6 +80,7 @@
     - description: Install Flutter
       command: |
         export PATH="$PATH:$HOME/.asdf/installs/jq/1.6/bin"
+        alias jq=$HOME/.asdf/installs/jq/1.6/bin/jq
         $HOME/.asdf/bin/asdf plugin-add flutter
         $HOME/.asdf/bin/asdf install flutter 3.10.6-stable
         $HOME/.asdf/bin/asdf global flutter 3.10.6-stable
@@ -96,55 +97,91 @@
         $HOME/.asdf/bin/asdf install dotnet-core latest
         $HOME/.asdf/bin/asdf global dotnet-core latest
 
-    - description: Install PHP prerequisites
-      command: |
-        if [ `uname` = 'Darwin' ]; then
-          brew install autoconf automake bison freetype gd gettext icu4c krb5 libedit libiconv libjpeg libpng libxml2 libzip pkg-config re2c zlib
-          brew install gmp libsodium imagemagick
-        fi
-        if [ `uname` = 'Linux' ]; then 
-          case $(lsb_release -is) in 
-            Ubuntu)
-              sudo apt-get install -y \
-               autoconf \
-               re2c \
-               bison \
-               libsqlite3-dev \
-               libpq-dev \
-               libonig-dev \
-               libfcgi-dev \
-               libfcgi0ldbl \
-               libjpeg-dev \
-               libpng-dev \
-               libssl-dev \
-               libxml2-dev \
-               libcurl4-openssl-dev \
-               libxpm-dev \
-               libgd-dev \
-               libmysqlclient-dev \
-               libfreetype6-dev \
-               libxslt1-dev \
-               libpspell-dev \
-               libzip-dev \
-               libgccjit-10-dev
-          esac
-        fi
+    # - description: Install PHP prerequisites
+    #   command: |
+    #     if [ `uname` = 'Darwin' ]; then
+    #       brew install autoconf \
+    #         automake \
+    #         bison \
+    #         freetype \
+    #         gd \
+    #         gettext \
+    #         icu4c \
+    #         krb5 \
+    #         libedit \
+    #         libiconv \
+    #         libjpeg \
+    #         libpng \
+    #         libxml2 \
+    #         libzip \
+    #         pkg-config \
+    #         re2c \
+    #         zlib \
+    #         gmp \
+    #         libsodium \
+    #         imagemagick \
+    #         apr \
+    #         apr-util \
+    #         argon2 \
+    #         aspell \
+    #         curl \
+    #         freetds \
+    #         libpq \
+    #         libzip \
+    #         oniguruma \
+    #         pcre2 \
+    #         sqlite \
+    #         tidy-html5 \
+    #         unixodbc \
+    #         bzip2 \
+    #         libffi \
+    #         libxml2 \
+    #         libxslt
+    #         mcrypt
+    #     fi
+    #     if [ `uname` = 'Linux' ]; then 
+    #       case $(lsb_release -is) in 
+    #         Ubuntu)
+    #           sudo apt-get install -y \
+    #            autoconf \
+    #            re2c \
+    #            bison \
+    #            libsqlite3-dev \
+    #            libpq-dev \
+    #            libonig-dev \
+    #            libfcgi-dev \
+    #            libfcgi0ldbl \
+    #            libjpeg-dev \
+    #            libpng-dev \
+    #            libssl-dev \
+    #            libxml2-dev \
+    #            libcurl4-openssl-dev \
+    #            libxpm-dev \
+    #            libgd-dev \
+    #            libmysqlclient-dev \
+    #            libfreetype6-dev \
+    #            libxslt1-dev \
+    #            libpspell-dev \
+    #            libzip-dev \
+    #            libgccjit-10-dev
+    #       esac
+    #     fi
 
-    - description: Install PHP
-      command: |
-        $HOME/.asdf/bin/asdf plugin add php https://github.com/asdf-community/asdf-php.git
-        $HOME/.asdf/bin/asdf install php 8.2.9
-        $HOME/.asdf/bin/asdf global php 8.2.9
+    # - description: Install PHP
+    #   command: |
+    #     $HOME/.asdf/bin/asdf plugin add php https://github.com/asdf-community/asdf-php.git
+    #     $HOME/.asdf/bin/asdf install php 8.2.11
+    #     $HOME/.asdf/bin/asdf global php 8.2.11
 
-    - description: Install go
-      command: |
-        $HOME/.asdf/bin/asdf plugin add go https://github.com/asdf-community/asdf-golang.git
-        $HOME/.asdf/bin/asdf install go latest
-        $HOME/.asdf/bin/asdf global go latest
+    # - description: Install go
+    #   command: |
+    #     $HOME/.asdf/bin/asdf plugin add go https://github.com/asdf-community/asdf-golang.git
+    #     $HOME/.asdf/bin/asdf install go latest
+    #     $HOME/.asdf/bin/asdf global go latest
 
 - link:
     ~/.asdfrc: asdf/asdfrc
     ~/.zshrc.d/004-asdf.zsh: zshrc.d/004-asdf.zsh
     ~/.zshrc.d/007-java.zsh: zshrc.d/007-java.zsh
     ~/.zshrc.d/008-flutter.zsh: zshrc.d/008-flutter.zsh
-    ~/.zshrc.d/022-go.zsh: zshrc.d/022-go.zsh
+    # ~/.zshrc.d/022-go.zsh: zshrc.d/022-go.zsh

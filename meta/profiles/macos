@@ -5,9 +5,12 @@ git
 fonts
 fzf
 pyenv
+phpenv
 rustup
-wakatime
+gvm
+nvm
 asdf
+wakatime
 docker
 k8s
 k9s
@@ -15,7 +18,6 @@ kubeswitch
 gcloud
 ngrok
 postman
-nvm
 nvim
 tmux
 zsh

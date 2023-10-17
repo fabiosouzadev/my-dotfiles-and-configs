@@ -1,3 +1,5 @@
+- create:
+    - ~/.local/src
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"

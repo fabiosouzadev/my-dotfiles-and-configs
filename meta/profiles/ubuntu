@@ -8,7 +8,7 @@ ubuntu.flatpaks
 ubuntu.packages
 linux.bluetooth
 linux.browsers
-linux.fonts
+fonts
 linux.icons
 fzf
 pyenv

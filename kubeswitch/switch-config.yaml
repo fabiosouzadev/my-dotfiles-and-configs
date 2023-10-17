@@ -5,7 +5,7 @@ kubeconfigStores:
   id: file-hering
   kubeconfigName: "gke-*"
   paths:
-    - "~/.kube/hering/"
+    - "~/.kube/"
 # - kind: gke
 #   refreshIndexAfter: 3h
 #   config:

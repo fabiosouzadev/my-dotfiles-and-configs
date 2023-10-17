@@ -1,0 +1,104 @@
+- create:
+
+    - ~/.temp-fonts
+    - ~/.local/share/fonts
+- shell:
+  - description: Validating sudo credentials
+    command: "sudo --validate"
+  - description: Installing apps
+    command: | 
+      if [ `uname` = 'Linux' ]; then
+        TEMP_DIR_FONTS=$HOME/.temp-fonts
+        LOCAL_SHARE_FONTS=$HOME/.local/share/fonts
+        cp -rf fonts/* $LOCAL_SHARE_FONTS
+
+
+        VERSION=v3.0.2
+
+        FONTS=(
+          "CascadiaCode"
+          "FiraCode"
+          "FiraMono"
+          "Hack"
+          "JetBrainsMono"
+          "VictorMono"
+          "IBMPlexMono"
+          "SourceCodePro"
+          "SpaceMono"
+          "NerdFontsSymbolsOnly"
+          "Ubuntu"
+          "UbuntuMono"
+          "Inconsolata"
+          "Iosevka"
+          "IosevkaTerm"
+          "FantasqueSansMono"
+          "DroidSansMono"
+          "Noto"
+          "RobotoMono"
+          "Terminus"
+          "DejaVuSansMono"
+        )
+
+
+        if [ ! -d $LOCAL_SHARE_FONTS ]; then
+          mkdir  $LOCAL_SHARE_FONTS
+        fi
+
+
+        if [ ! -d $TEMP_DIR_FONTS ]; then
+          mkdir $TEMP_DIR_FONTS
+        fi
+
+        cd $TEMP_DIR_FONTS
+
+        for i in "${FONTS[@]}"
+          do
+          ### sudo ./install.sh <Font-Name>
+          wget "https://github.com/ryanoasis/nerd-fonts/releases/download/$VERSION/"$i".zip"
+          unzip "$i".zip
+        done
+
+        cp -v *.ttf  $LOCAL_SHARE_FONTS
+        fc-cache -fv
+        sudo rm -r $TEMP_DIR_FONTS
+      elif [ `uname` = 'Darwin' ]; then
+        # Fonts
+        FONTS=(
+          'font-caskaydia-cove-nerd-font'
+          'font-fira-code-nerd-font'
+          'font-fira-mono-nerd-font'
+          'font-hack-nerd-font'
+          'font-jetbrains-mono-nerd-font'
+          'font-victor-mono-nerd-font'
+          'font-blex-mono-nerd-font'
+          'font-sauce-code-pro-nerd-font'
+          'font-space-mono-nerd-font'
+          'font-symbols-only-nerd-font'
+          'font-ubuntu-nerd-font'
+          'font-ubuntu-mono-nerd-font'
+          'font-inconsolata-nerd-font'
+          'font-iosevka-nerd-font'
+          'font-iosevka-term-nerd-font'
+          'font-fantasque-sans-mono-nerd-font'
+          'font-droid-sans-mono-nerd-font'
+          'font-noto-nerd-font'
+          'font-roboto-mono-nerd-font'
+          'font-terminess-ttf-nerd-font'
+          'font-dejavu-sans-mono-nerd-font'
+        )
+        for i in "${FONTS[@]}"; do
+          brew install --cask "$i"
+        done
+
+      fi
+  - description: Install icons symbols 
+    command: |
+      if [ `uname` = 'Linux' ]; then
+        case $(lsb_release -is) in 
+          Arch | EndeavourOS)
+            sudo pacman -Syu --noconfirm \
+              noto-fonts-emoji \
+              ttf-joypixels
+          ;;
+        esac
+      fi

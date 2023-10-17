@@ -10,7 +10,7 @@
     - [chown -R $(whoami) ~/.gnupg]
     - [chmod 700 ~/.gnupg]
     - [chmod 600 ~/.gnupg/*]
-    - [chmod 700 ~/.gnupg/*.d]
+#    - [chmod 700 ~/.gnupg/*.d]
     - description: Configure gnupg
       command: |
         gpg --import $HOME/.gnupg/public.gpg

@@ -1,3 +1,6 @@
+- create:
+    - ~/.local/src
+    - ~/Projects/fabiosouzadev/
 - shell:
     - command: '[ -f "$HOME/.ssh/id_ed25519" ]  || cp personal/ssh/id_ed25519 ~/.ssh/id_ed25519'
     - command: '[ -f "$HOME/.ssh/id_ed25519.pub" ]  || cp personal/ssh/id_ed25519.pub ~/.ssh/id_ed25519.pub'

@@ -77,12 +77,14 @@
           esac
         fi
     
-    - description: Install phpenv
-      command: '[ -d "$HOME/.phpenv" ] ||  $ git clone git@github.com:phpenv/phpenv.git ~/.phpenv'
+    - description: Remove previous phpenv folder
+      command: "[ ! -d ~/.phpenv ] || rm -rf ~/.phpenv"
 
+    - [git clone https://github.com/phpenv/phpenv.git           $HOME/.phpenv,                          "Install php-build"]
     - [git clone https://github.com/php-build/php-build.git     $HOME/.phpenv/plugins/php-build,        "Install php-build"]
     - [git clone https://github.com/ngyuki/phpenv-composer.git  $HOME/.phpenv/plugins/phpenv-composer,  "Install phpenv-composer"]
     - [git clone https://github.com/madumlao/phpenv-aliases.git $HOME/.phpenv/plugins/phpenv-aliases,   "Install phpenv-aliases"]
+  
 
     # - description: Install php 5.6.40
     #   command: | 
@@ -145,8 +147,11 @@
     #     phpenv rehash
 
     - description: Install php 8.2.11 (global)
-      command: | 
-        alias phpenv="$HOME/.phpenv/bin/phpenv"
+      command: |
+        export PATH="$HOME/.phpenv/bin:$PATH"
+        eval "$(phpenv init -)"
+        phpenv versions
+        
         if [ `uname` = 'Darwin' ]; then
           PHP_BUILD_XDEBUG_ENABLE=on \
           PHP_BUILD_ZTS_ENABLE=off \
@@ -156,20 +161,30 @@
             --with-curl=$(brew --prefix curl) \\
             --with-iconv=$(brew --prefix libiconv) \\
             --with-icu-dir=$(brew --prefix icu4c)" \
-          phpenv install 8.2.11
+              phpenv install 8.2.11
         fi
+
         if [ `uname` = 'Linux' ]; then 
           case $(lsb_release -is) in 
             Ubuntu)
               PHP_BUILD_XDEBUG_ENABLE=off \
               PHP_BUILD_ZTS_ENABLE=off \
               PHP_BUILD_CONFIGURE_OPTS="" \
-              phpenv install 8.2.11
+              	phpenv  install 8.2.11
           esac
         fi
+
         phpenv rehash
         phpenv global 8.2.11
         composer --version
+    
+    - description: Install composer
+      command: |
+        export PATH="$HOME/.phpenv/bin:$PATH"
+        
+        if [ -x php ]; then
+          composer --version
+        fi
 
 - link:
     ~/.zshrc.d/023-phpenv.zsh: zshrc.d/023-phpenv.zsh

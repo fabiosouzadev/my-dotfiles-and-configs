@@ -31,7 +31,7 @@
     #     fi
 
     - description: Remove previous gmv folder
-      command: "[ ! -d ~/.gvm ] || sudo rm -rf ~/.gvm"
+      command: "[ ! -d ~/.gvm ] || rm -rf ~/.gvm"
 
     - description: Install gvm
       command: |

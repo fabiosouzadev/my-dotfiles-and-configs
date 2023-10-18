@@ -35,6 +35,8 @@
                 scdoc 
             ;;
           esac
+        elif [ `uname` = 'Darwin' ]; then
+          brew install scdoc
         fi
       stdout: true
     - description: Clean older versions

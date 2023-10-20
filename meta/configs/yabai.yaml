@@ -1,0 +1,35 @@
+- create:
+    - ~/.local/src
+    - ~/.local/bin
+
+- shell:
+    # - description: Disable System Integrity Protection
+    #   command: "csrutil enable --without debug --without fs"
+
+    - description: Install yabai
+      command: |
+        brew install koekeishiya/formulae/yabai
+        yabai --start-service
+        echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai
+
+    - description: Install skhd
+      command: |
+        brew install koekeishiya/formulae/skhd
+        skhd --start-service
+    
+    # - description: Install sketchybar
+    #   command: |
+    #     brew tap FelixKratz/formulae
+    #     brew install sketchybar
+    #     brew services start sketchybar
+
+    - description: Install spacebar
+      command: |
+        brew install cmacrae/formulae/spacebar
+        brew services start spacebar
+
+- link:
+    ~/.config/yabai: 
+    ~/.config/skhd:
+    # ~/.config/sketchybar:
+    ~/.config/spacebar:

@@ -1,0 +1,49 @@
+- shell:
+
+  - description: Validating sudo credentials
+    command: "sudo --validate"
+
+  - description: Installing podman
+    command: |
+      if [ `uname` = 'Darwin' ]; then
+        brew install podman
+        podman machine init
+        podman machine start
+        podman info
+      elif [ `uname` = 'Linux' ]; then
+        case $(lsb_release -is) in 
+          Ubuntu)
+            # Ubuntu 20.10 and newer
+            sudo apt-get -y install podman
+          ;;
+          Arch | EndeavourOS)
+            sudo pacman -S podman
+          ;;
+        esac
+      fi
+  - description: Installing podman-compose
+    command: |
+      pip3 install --upgrade pip
+      pip3 install podman-compose
+      [ -f $HOME/.pyenv/shims/podman-compose ] && $HOME/.pyenv/shims/podman-compose version
+      sleep 5
+
+  - description: Installing podman-desktop
+    command: | 
+      if [ `uname` = 'Darwin' ]; then
+        brew install podman-desktop 
+      # elif [ `uname` = 'Linux' ]; then
+      #   case $(lsb_release -is) in 
+      #     Ubuntu)
+      #       sudo curl -L "https://github.com/docker/compose/releases/download/2.15.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+      #       sudo chmod +x /usr/local/bin/docker-compose
+      #     ;;
+      #     Arch | EndeavourOS)
+      #       sudo pacman -Syu --noconfirm docker-compose
+      #     ;;
+      #   esac
+      fi
+
+
+- link:
+    ~/.zshrc.d/024-podman.zsh: zshrc.d/024-podman.zsh

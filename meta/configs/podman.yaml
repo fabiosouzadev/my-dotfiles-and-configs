@@ -32,16 +32,9 @@
     command: | 
       if [ `uname` = 'Darwin' ]; then
         brew install podman-desktop 
-      # elif [ `uname` = 'Linux' ]; then
-      #   case $(lsb_release -is) in 
-      #     Ubuntu)
-      #       sudo curl -L "https://github.com/docker/compose/releases/download/2.15.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-      #       sudo chmod +x /usr/local/bin/docker-compose
-      #     ;;
-      #     Arch | EndeavourOS)
-      #       sudo pacman -Syu --noconfirm docker-compose
-      #     ;;
-      #   esac
+      elif [ `uname` = 'Linux' ]; then
+        version=v1.4.0
+        flatpak install --user $HOME/Downloads/podman-desktop-$version.flatpak 
       fi
 
 

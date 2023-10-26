@@ -13,6 +13,7 @@
 # This example file duplicates the list of plugins that shipped with the
 # kit as of 2020-01-01.
 PATH="$PATH:$HOME/.local/bin"
+XDG_CONFIG_HOME="$HOME/.config"
 ZGEN_LOADED=()
 ZGEN_COMPLETIONS=()
 

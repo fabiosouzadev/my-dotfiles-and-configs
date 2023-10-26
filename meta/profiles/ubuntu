@@ -6,6 +6,7 @@ linux.cli
 ubuntu.snaps
 ubuntu.flatpaks
 ubuntu.packages
+yt
 linux.bluetooth
 linux.browsers
 fonts

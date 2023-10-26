@@ -10,6 +10,7 @@ rustup
 gvm
 nvm
 asdf
+yt
 wakatime
 docker
 k8s

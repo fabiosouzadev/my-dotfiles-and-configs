@@ -1,0 +1,10 @@
+- create:
+    - ~/.local/bin
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+
+    - description: Youtube Downloader install
+      command: |
+        sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o $HOME/.local/bin/yt-dlp
+        sudo chmod a+rx $HOME/.local/bin/yt-dlp

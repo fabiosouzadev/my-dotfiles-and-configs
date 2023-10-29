@@ -7,7 +7,10 @@
     command: |
       if [ `uname` = 'Darwin' ]; then
         brew install podman
-        podman machine init
+        podman --version
+        podman machine init --cpus 2 --memory 2048 --disk-size 20
+        podman machine set --rootful
+        podman system connection default podman-machine-default-root
         podman machine start
         podman info
       elif [ `uname` = 'Linux' ]; then
@@ -21,12 +24,12 @@
           ;;
         esac
       fi
+    stdout: true
   - description: Installing podman-compose
     command: |
       pip3 install --upgrade pip
       pip3 install podman-compose
       [ -f $HOME/.pyenv/shims/podman-compose ] && $HOME/.pyenv/shims/podman-compose version
-      sleep 5
 
   - description: Installing podman-desktop
     command: | 

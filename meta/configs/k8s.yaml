@@ -7,6 +7,7 @@
 - shell:
     - description: Validating sudo credentials
       command: "sudo --validate"
+
     - description: Install kubectl
       command: |
         if [ -f $HOME/.local/src/kubectl ]; then
@@ -20,7 +21,7 @@
 
 
         cd $HOME/.local/src
-        
+
         if [ `uname` = 'Darwin' ]; then
           curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
           curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl.sha256"
@@ -46,13 +47,19 @@
       command: |
         OS=`uname`
         VERSION='v0.20.0'
-        
+
         if [ -f $HOME/.local/bin/kind ];then
           sudo rm $HOME/.local/bin/kind
         fi
-        
+
         curl -Lo $HOME/.local/bin/kind https://kind.sigs.k8s.io/dl/${VERSION}/kind-${OS}-amd64
         chmod +x $HOME/.local/bin/kind
+
+        if [ -f /usr/local/bin/podman ]; then
+          # Set podman default driver
+          KIND_EXPERIMENTAL_PROVIDER=podman kind create cluster
+        fi
+
 
     - description: Installing minikube
       command: |
@@ -64,6 +71,13 @@
           r=https://api.github.com/repos/kubernetes/minikube/releases
           curl -Lo $HOME/.local/src/minikube-linux-amd64 $(curl -s $r | grep -o 'http.*download/v.*beta.*/minikube-linux-amd64' | head -n1)
           sudo install $HOME/.local/src/minikube-linux-amd64 $HOME/.local/bin/minikube
+         
+          if [ -f /usr/local/bin/podman ]; then
+            # Set podman default driver
+            $HOME/.local/bin/minikube config set driver podman
+            $HOME/.local/bin/minikube start --driver=podman --container-runtime=cri-o 
+          fi
+
         fi
     - description: Installing kubectx
       command: |

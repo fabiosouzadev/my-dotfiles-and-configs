@@ -2,17 +2,25 @@
 
   - description: Validating sudo credentials
     command: "sudo --validate"
+  
+  - description: Remove old files
+    command: |
+      # [ -d ~/.config/containers/ ] && rm -rf ~/.config/containers/
+      # [ -d ~/.local/share/containers/ ] && rm -rf ~/.local/share/containers 
+      # [ ls ~/.ssh/podman* >/dev/null 2>&1 ] && rm -rf ~/.ssh/podman*
+    stdout: true 
 
   - description: Installing podman
     command: |
       if [ `uname` = 'Darwin' ]; then
         brew install podman
-        podman --version
-        podman machine init --cpus 2 --memory 2048 --disk-size 20
-        podman machine set --rootful
-        podman system connection default podman-machine-default-root
-        podman machine start
-        podman info
+        podman --versio
+        podman machine init podman-rootful --cpus 2 --memory 2048 --disk-size 20
+        podman machine init podman-rootless
+        podman machine set --rootful podman-rootful
+        podman system connection default podman-rootful-root
+        podman machine start podman-rootful
+        sudo podman info
       elif [ `uname` = 'Linux' ]; then
         case $(lsb_release -is) in 
           Ubuntu)

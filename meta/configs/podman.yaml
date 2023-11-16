@@ -14,9 +14,9 @@
     command: |
       if [ `uname` = 'Darwin' ]; then
         brew install podman
-        podman --versio
-        podman machine init podman-rootful --cpus 2 --memory 2048 --disk-size 20
+        podman --version
         podman machine init podman-rootless
+        podman machine init podman-rootful --cpus 2 --memory 2048 --disk-size 20
         podman machine set --rootful podman-rootful
         podman system connection default podman-rootful-root
         podman machine start podman-rootful
@@ -39,14 +39,14 @@
       pip3 install podman-compose
       [ -f $HOME/.pyenv/shims/podman-compose ] && $HOME/.pyenv/shims/podman-compose version
 
-  - description: Installing podman-desktop
-    command: | 
-      if [ `uname` = 'Darwin' ]; then
-        brew install podman-desktop 
-      elif [ `uname` = 'Linux' ]; then
-        version=v1.4.0
-        flatpak install --user $HOME/Downloads/podman-desktop-$version.flatpak 
-      fi
+  # - description: Installing podman-desktop
+  #   command: | 
+  #     if [ `uname` = 'Darwin' ]; then
+  #       brew install podman-desktop 
+  #     elif [ `uname` = 'Linux' ]; then
+  #       version=v1.4.0
+  #       flatpak install --user $HOME/Downloads/podman-desktop-$version.flatpak 
+  #     fi
 
 
 - link:

@@ -5,8 +5,7 @@
     defaultBranch = main
 
 [credential]
-	helper = libsecret
-#	helper = osxkeychain
+	helper = cache --timeout=28800
 
 [core]
     pager = delta

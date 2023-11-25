@@ -61,8 +61,8 @@
 [include]
     path = ~/.gitconfig_local
 
-[includeIf "gitdir:~/Projects/Work/hering/"]
-	path = ~/.gitconfig_hering
+;[includeIf "gitdir:~/Projects/Work/hering/"]
+;	path = ~/.gitconfig_hering
 
 ;[includeIf "gitdir:~/Projects/mglu/"]
 ;	path = ~/.gitconfig_mglu

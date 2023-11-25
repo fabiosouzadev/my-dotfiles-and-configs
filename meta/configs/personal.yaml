@@ -1,5 +1,5 @@
 - create:
-    - ~/.local/src
+    - ~/.ssh/
     - ~/Projects/fabiosouzadev/
 - shell:
     - command: '[ -f "$HOME/.ssh/id_ed25519" ]  || cp personal/ssh/id_ed25519 ~/.ssh/id_ed25519'
@@ -16,6 +16,7 @@
 #    - [chmod 700 ~/.gnupg/*.d]
     - description: Configure gnupg
       command: |
+        export GPG_TTY=$(tty)
         gpg --import $HOME/.gnupg/public.gpg
         gpg --import $HOME/.gnupg/private.gpg
         gpg --import-options restore --import $HOME/.gnupg/private.gpg

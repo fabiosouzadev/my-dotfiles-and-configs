@@ -49,7 +49,7 @@ cask 'keepingyouawake'
 cask 'appcleaner'
 #cask 'figma'
 #cask 'rectangle'
-#cask 'slack-beta'
+cask 'slack-beta'
 cask 'zoom'
 #cask 'miro'
 

@@ -13,6 +13,7 @@ asdf
 yt
 wakatime
 docker
+podman
 k8s
 k9s
 kubeswitch
@@ -28,3 +29,4 @@ vscode.extensions
 jetbrains-toolbox
 alacritty
 kitty
+yabai

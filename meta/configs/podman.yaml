@@ -35,8 +35,8 @@
     stdout: true
   - description: Installing podman-compose
     command: |
-      pip3 install --upgrade pip
-      pip3 install podman-compose
+      $HOME/.pyenv/shims/pip3 install --upgrade pip
+      $HOME/.pyenv/shims/pip3 install podman-compose
       [ -f $HOME/.pyenv/shims/podman-compose ] && $HOME/.pyenv/shims/podman-compose version
 
   # - description: Installing podman-desktop

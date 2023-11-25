@@ -57,8 +57,9 @@
 
         if [ -f /usr/local/bin/podman ]; then
           # Set podman default driver
-          KIND_EXPERIMENTAL_PROVIDER=podman kind create cluster
+          KIND_EXPERIMENTAL_PROVIDER=podman $HOME/.local/bin/kind create cluster
         fi
+      stdout: true
 
 
     - description: Installing minikube

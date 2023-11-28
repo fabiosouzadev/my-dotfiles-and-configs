@@ -1,0 +1,20 @@
+- create:
+    - ~/Projects/zapay
+- shell:
+    - description: Clonning Projects
+      command: |
+        REPOS=(
+          'api'
+          'fleet-manager'
+          'zpy-ticketlog'
+          'slowking'
+          'Unico'
+          'zpy-payment-mercadopago-api'
+          'zpy-payment-koin-api'
+          'zents'
+        )
+
+
+        for i in "${REPOS[@]}"; do
+          git clone git@github.com:zapay-pagamentos/$i $HOME/Projects/zapay/$i
+        done

@@ -1,0 +1,4 @@
+#!/bin/sh
+xrandr --newmode "2560x1080x49.94"  150.25  2560 2608 2640 2720  1080 1083 1087 1106  +HSync -VSync  
+xrandr --addmode HDMI-1 2560x1080x49.94
+

@@ -1,0 +1,11 @@
+- shell:
+    - description: Config monitor with Intel Iris Xe
+      command: |
+        xrandr --newmode "2560x1080x49.94"  150.25  2560 2608 2640 2720  1080 1083 1087 1106  +HSync -VSync  
+        xrandr --addmode HDMI-1 2560x1080x49.94
+        xrandr --output HDMI-1 --mode 2560x1080x49.94
+        
+        [ ! -d /etc/X11/xorg.conf.d ] && sudo mkdir -p /etc/X11/xorg.conf.d/
+        sudo cp monitors/xorg-monitor-hdmi-lg-intel-iris-xe.conf /etc/X11/xorg.conf.d/30-monitor-hdmi-lg-intel-iris-xe.conf
+- link:
+    ~/.xprofile: monitors/xprofile_intel_iris_xe

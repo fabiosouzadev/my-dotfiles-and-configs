@@ -388,7 +388,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # start a script to setup displays
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
-exec --no-startup-id sleep 1 && sh $HOME/.screenlayout/dual.sh
+exec --no-startup-id sleep 1 && sh $HOME/.screenlayout/dual_intel_iris_xe.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore

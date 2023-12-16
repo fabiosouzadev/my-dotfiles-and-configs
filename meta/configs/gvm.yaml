@@ -31,14 +31,13 @@
     #     fi
 
     - description: Remove previous gmv folder
-      command: "[ ! -d ~/.gvm ] || rm -rf ~/.gvm"
+      command: "[ ! -d ~/.gvm ] || sudo rm -rf ~/.gvm"
 
     - description: Install gvm
       command: |
         curl -sSL -o $HOME/.local/src/gvm-installer https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer
         chmod +x $HOME/.local/src/gvm-installer 
-        GVM_NO_UPDATE_PROFILE=yes \
-          sh $HOME/.local/src/gvm-installer
+        GVM_NO_UPDATE_PROFILE=yes $HOME/.local/src/gvm-installer
         source $HOME/.gvm/scripts/gvm
         alias gvm="$HOME/.gvm/bin/gvm"
         gvm install go1.17 -B

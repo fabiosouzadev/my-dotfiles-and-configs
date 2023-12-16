@@ -131,6 +131,8 @@
           #Method 3
           infocmp -x tmux-256color > $HOME/.local/src/tmux-256color.src
           sudo tic -xe alacritty-direct,tmux-256color $HOME/.local/src/tmux-256color.src
+        elif
+          return true
         fi
 
 - link:

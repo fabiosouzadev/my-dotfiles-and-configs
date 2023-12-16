@@ -22,7 +22,8 @@
       command: |
         git clone https://github.com/derailed/k9s.git $HOME/.local/src/k9s
         cd $HOME/.local/src/k9s
-        make build 
+        source $HOME/.gvm/scripts/gvm 
+        make build
         cp $HOME/.local/src/k9s/execs/k9s $HOME/.local/bin
         chmod + $HOME/.local/bin/k9s
 - link:

@@ -10,13 +10,13 @@
     - command: '[ -f "$HOME/.gnupg/private.gpg" ] || cp personal/gnupg/private.gpg ~/.gnupg/private.gpg'
     - command: '[ -f "$HOME/.gnupg/public.gpg" ]  || cp personal/gnupg/public.gpg ~/.gnupg/public.gpg'
     - command: '[ -f "$HOME/.gnupg/trust.gpg" ]   || cp personal/gnupg/trust.gpg ~/.gnupg/trust.gpg'
-    - [chown -R $(whoami) ~/.gnupg]
+    - [echo $USER]
+    - [chown -R $USER ~/.gnupg]
     - [chmod 700 ~/.gnupg]
     - [chmod 600 ~/.gnupg/*]
 #    - [chmod 700 ~/.gnupg/*.d]
     - description: Configure gnupg
       command: |
-        export GPG_TTY=$(tty)
         gpg --import $HOME/.gnupg/public.gpg
         gpg --import $HOME/.gnupg/private.gpg
         gpg --import-options restore --import $HOME/.gnupg/private.gpg

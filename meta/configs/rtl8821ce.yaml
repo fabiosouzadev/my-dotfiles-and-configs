@@ -1,0 +1,18 @@
+- create:
+    - ~/.local/src
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Install rtl8821ce Driver (Wifi and Bluetooth)
+      command: |
+        sudo apt install bc module-assistant build-essential dkms
+        sudo m-a prepare
+
+        if [ -d $HOME/.local/src/rtl8821ce ]; then 
+          sudo rm -r $HOME/.local/src/rtl8821ce 
+        fi
+
+        git clone https://github.com/tomaspinho/rtl8821ce ~/.local/src/rtl8821ce
+        cd ~/.local/src/rtl8821ce
+
+        sudo ./dkms-install.sh    

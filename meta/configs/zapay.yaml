@@ -16,5 +16,10 @@
 
 
         for i in "${REPOS[@]}"; do
-          git clone git@github.com:zapay-pagamentos/$i $HOME/Projects/zapay/$i
+          if [ ! -d $HOME/Projects/zapay/$i ]; then
+            git clone git@github.com:zapay-pagamentos/$i $HOME/Projects/zapay/$i
+          else
+            cd $HOME/Projects/zapay/$i
+            git pull origin
+          fi
         done

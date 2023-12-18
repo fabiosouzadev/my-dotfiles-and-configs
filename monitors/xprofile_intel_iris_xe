@@ -1,4 +1,8 @@
 #!/bin/sh
-xrandr --newmode "2560x1080x49.94"  150.25  2560 2608 2640 2720  1080 1083 1087 1106  +HSync -VSync  
-xrandr --addmode HDMI-1 2560x1080x49.94
+xrandr --newmode "2560x1080x49.94"  150.25  2560 2608 2640 2720  1080 1083 1087 1106  +HSync -VSync
 
+if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
+    xrandr --addmode XWAYLAND-1 2560x1080x49.94
+elif 
+    xrandr --addmode HDMI-1 2560x1080x49.94
+fi

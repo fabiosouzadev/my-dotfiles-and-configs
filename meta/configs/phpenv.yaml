@@ -6,7 +6,7 @@
 
     - description: Remove previous phpenv folder
       command: "[ ! -d ~/.phpenv ] || sudo rm -rf ~/.phpenv"
-    
+
     - description: Install PHP prerequisites
       command: |
         if [ `uname` = 'Darwin' ]; then
@@ -73,21 +73,33 @@
                libxslt1-dev \
                libpspell-dev \
                libzip-dev \
-               libgccjit-10-dev
+               libgccjit-10-dev \
+               libtidy-dev
           esac
         fi
-    
+
     - description: Remove previous phpenv folder
       command: "[ ! -d ~/.phpenv ] || rm -rf ~/.phpenv"
 
-    - [git clone https://github.com/phpenv/phpenv.git           $HOME/.phpenv,                          "Install php-build"]
-    - [git clone https://github.com/php-build/php-build.git     $HOME/.phpenv/plugins/php-build,        "Install php-build"]
-    - [git clone https://github.com/ngyuki/phpenv-composer.git  $HOME/.phpenv/plugins/phpenv-composer,  "Install phpenv-composer"]
-    - [git clone https://github.com/madumlao/phpenv-aliases.git $HOME/.phpenv/plugins/phpenv-aliases,   "Install phpenv-aliases"]
-  
+    - [
+        git clone https://github.com/phpenv/phpenv.git           $HOME/.phpenv,
+        "Install php-build",
+      ]
+    - [
+        git clone https://github.com/php-build/php-build.git     $HOME/.phpenv/plugins/php-build,
+        "Install php-build",
+      ]
+    - [
+        git clone https://github.com/ngyuki/phpenv-composer.git  $HOME/.phpenv/plugins/phpenv-composer,
+        "Install phpenv-composer",
+      ]
+    - [
+        git clone https://github.com/madumlao/phpenv-aliases.git $HOME/.phpenv/plugins/phpenv-aliases,
+        "Install phpenv-aliases",
+      ]
 
     # - description: Install php 5.6.40
-    #   command: | 
+    #   command: |
     #     alias phpenv="$HOME/.phpenv/bin/phpenv"
     #     if [ `uname` = 'Darwin' ]; then
     #       PHP_BUILD_ZTS_ENABLE=off \
@@ -100,8 +112,8 @@
     #           --with-zlib=$(brew --prefix zlib)" \
     #       phpenv install 5.6.40
     #     fi
-    #     if [ `uname` = 'Linux' ]; then 
-    #       case $(lsb_release -is) in 
+    #     if [ `uname` = 'Linux' ]; then
+    #       case $(lsb_release -is) in
     #         Ubuntu)
     #           PHP_BUILD_XDEBUG_ENABLE=off \
     #           PHP_BUILD_ZTS_ENABLE=off \
@@ -112,7 +124,7 @@
     #     phpenv rehash
 
     # - description: Install php 7.4.30
-    #   command: | 
+    #   command: |
     #     alias phpenv="$HOME/.phpenv/bin/phpenv"
     #     if [ `uname` = 'Darwin' ]; then
     #       PKG_CONFIG_PATH=""
@@ -133,10 +145,10 @@
     #           --with-iconv=$(brew --prefix libiconv) \\
     #           --with-openssl-dir=$(brew --prefix openssl) \\
     #           --with-zlib=$(brew --prefix zlib)" \
-    #       phpenv install 7.4.30 
+    #       phpenv install 7.4.30
     #     fi
-    #     if [ `uname` = 'Linux' ]; then 
-    #       case $(lsb_release -is) in 
+    #     if [ `uname` = 'Linux' ]; then
+    #       case $(lsb_release -is) in
     #         Ubuntu)
     #           PHP_BUILD_XDEBUG_ENABLE=off \
     #           PHP_BUILD_ZTS_ENABLE=off \
@@ -151,7 +163,7 @@
         export PATH="$HOME/.phpenv/bin:$PATH"
         eval "$(phpenv init -)"
         phpenv versions
-        
+
         if [ `uname` = 'Darwin' ]; then
           PHP_BUILD_XDEBUG_ENABLE=on \
           PHP_BUILD_ZTS_ENABLE=off \
@@ -177,11 +189,11 @@
         phpenv rehash
         phpenv global 8.2.11
         composer --version
-    
+
     - description: Install composer
       command: |
         export PATH="$HOME/.phpenv/bin:$PATH"
-        
+
         if [ -x php ]; then
           composer --version
         fi

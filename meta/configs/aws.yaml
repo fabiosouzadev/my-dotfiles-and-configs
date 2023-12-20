@@ -1,0 +1,25 @@
+- create:
+    - ~/.local/src
+    - ~/.local/bin
+    - ~/.local/share
+- shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
+    - description: Removing older install and Installing AWS CLI
+      command: |
+        [ -f $HOME/.local/bin/aws ]     && sudo rm $HOME/.local/bin/aws
+        [ -d $HOME/.local/src/aws ]     && sudo rm -rf $HOME/.local/src/aws
+        [ -d $HOME/.local/src/aws-cli ] && sudo rm -rf $HOME/.local/src/aws-cli
+        if [ `uname` = 'Linux' ]; then
+          curl -Lo $HOME/.local/src/awscliv2.zip "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
+          unzip $HOME/.local/src/awscliv2.zip -d $HOME/.local/src 
+          $HOME/.local/src/aws/install --bin-dir $HOME/.local/bin --install-dir $HOME/.local/src/aws-cli --update 
+              
+        elif [ `uname` = 'Darwin' ]; then
+          curl -Lo $HOME/.local/src/AWSCLIV2.pkg "https://awscli.amazonaws.com/AWSCLIV2.pkg"
+          installer -pkg $HOME/.local/src/aws/AWSCLIV2.pkg \
+            -target $HOME/.local/src \
+            -applyChoiceChangesXML choices.xml
+          sudo ln -s $HOME/.local/src/aws-cli/aws $HOME/.local/bin/aws 
+          sudo ln -s $HOME/.local/src/aws_completer $HOME/.local/bin/aws_complete
+        fi

@@ -18,8 +18,10 @@
         for i in "${REPOS[@]}"; do
           if [ ! -d $HOME/Projects/zapay/$i ]; then
             git clone git@github.com:zapay-pagamentos/$i $HOME/Projects/zapay/$i
-          else
-            cd $HOME/Projects/zapay/$i
-            git pull origin
           fi
         done
+
+- link:
+    ~/.aws/credentials: zapay/aws/credentials
+    ~/.kube/zapay/zapay-production.yaml: zapay/kube/zapay-production.yaml
+    ~/.kube/zapay/zapay-staging.yaml: zapay/kube/zapay-staging.yaml

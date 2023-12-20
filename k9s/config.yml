@@ -1,13 +1,21 @@
 k9s:
+  liveViewAutoRefresh: false
   refreshRate: 2
   maxConnRetry: 5
   enableMouse: false
+  enableImageScan: false
   headless: false
   logoless: false
   crumbsless: false
   readOnly: false
   noExitOnCtrlC: false
   noIcons: false
+  shellPod:
+    image: busybox:1.35.0
+    namespace: default
+    limits:
+      cpu: 100m
+      memory: 100Mi
   skipLatestRevCheck: false
   logger:
     tail: 100
@@ -16,30 +24,21 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: gke_hering-opine-nps-dev_southamerica-east1_cluster-opine-nps-dev
-  currentCluster: gke_hering-opine-nps-dev_southamerica-east1_cluster-opine-nps-dev
+  currentContext: arn:aws:eks:us-east-2:901943060028:cluster/zpy-k8s-cluster-staging
+  currentCluster: arn:aws:eks:us-east-2:901943060028:cluster/zpy-k8s-cluster-staging
+  keepMissingClusters: false
   clusters:
-    gke_hering-opine-nps-dev_southamerica-east1_cluster-opine-nps-dev:
+    arn:aws:eks:us-east-2:901943060028:cluster/zpy-k8s-cluster-staging:
       namespace:
-        active: appweb
+        active: all
         lockFavorites: false
         favorites:
-        - appweb
-        - opine-nps-dash
+        - all
         - default
       view:
-        active: po
+        active: pods
       featureGates:
         nodeShell: false
-      shellPod:
-        image: busybox:1.35.0
-        command: []
-        args: []
-        namespace: default
-        limits:
-          cpu: 100m
-          memory: 100Mi
-        labels: {}
       portForwardAddress: localhost
   thresholds:
     cpu:
@@ -49,3 +48,4 @@ k9s:
       critical: 90
       warn: 70
   screenDumpDir: /tmp/k9s-screens-fabio
+  disablePodCounting: false

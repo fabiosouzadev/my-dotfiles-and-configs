@@ -2,10 +2,10 @@ kind: SwitchConfig
 version: v1alpha1
 kubeconfigStores:
 - kind: filesystem
-  id: file-hering
-  kubeconfigName: "gke-*"
+  id: zapay
+  kubeconfigName: "zapay-*"
   paths:
-    - "~/.kube/"
+    - "~/.kube/zapay/"
 # - kind: gke
 #   refreshIndexAfter: 3h
 #   config:

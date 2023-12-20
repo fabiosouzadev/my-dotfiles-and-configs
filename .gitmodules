@@ -14,3 +14,6 @@
 [submodule "nvim"]
 	path = nvim
 	url = git@github.com:fabiosouzadev/nvim.git
+[submodule "zapay"]
+	path = zapay
+	url = git@github.com:fabiosouzadev/zapay.git

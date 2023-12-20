@@ -64,12 +64,11 @@
 
     - description: Installing minikube
       command: |
+        r=https://api.github.com/repos/kubernetes/minikube/releases
         if [ `uname` = 'Darwin' ]; then
-          r=https://api.github.com/repos/kubernetes/minikube/releases
           curl -Lo $HOME/.local/src/minikube-darwin-amd64 $(curl -s $r | grep -o 'http.*download/v.*beta.*/minikube-darwin-amd64' | head -n1)
           sudo install $HOME/.local/src/minikube-darwin-amd64 $HOME/.local/bin/minikube
         elif [ `uname` = 'Linux' ]; then
-          r=https://api.github.com/repos/kubernetes/minikube/releases
           curl -Lo $HOME/.local/src/minikube-linux-amd64 $(curl -s $r | grep -o 'http.*download/v.*beta.*/minikube-linux-amd64' | head -n1)
           sudo install $HOME/.local/src/minikube-linux-amd64 $HOME/.local/bin/minikube
          

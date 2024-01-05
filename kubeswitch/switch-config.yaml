@@ -2,6 +2,10 @@ kind: SwitchConfig
 version: v1alpha1
 kubeconfigStores:
 - kind: filesystem
+  id: config
+  paths:
+    - "~/.kube/"
+- kind: filesystem
   id: zapay
   kubeconfigName: "zapay-*"
   paths:

@@ -24,15 +24,16 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: arn:aws:eks:us-east-2:901943060028:cluster/zpy-k8s-cluster-staging
-  currentCluster: arn:aws:eks:us-east-2:901943060028:cluster/zpy-k8s-cluster-staging
+  currentContext: arn:aws:eks:sa-east-1:071032557399:cluster/zapay-one
+  currentCluster: arn:aws:eks:sa-east-1:071032557399:cluster/zapay-one
   keepMissingClusters: false
   clusters:
-    arn:aws:eks:us-east-2:901943060028:cluster/zpy-k8s-cluster-staging:
+    arn:aws:eks:sa-east-1:071032557399:cluster/zapay-one:
       namespace:
-        active: all
+        active: production
         lockFavorites: false
         favorites:
+        - production
         - all
         - default
       view:

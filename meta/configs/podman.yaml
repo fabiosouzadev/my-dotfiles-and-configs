@@ -111,14 +111,14 @@
         $HOME/.pyenv/shims/pip3 install podman-compose
         [ -f $HOME/.pyenv/shims/podman-compose ] && $HOME/.pyenv/shims/podman-compose version
 
-  # - description: Installing podman-desktop
-  #   command: |
-  #     if [ `uname` = 'Darwin' ]; then
-  #       brew install podman-desktop
-  #     elif [ `uname` = 'Linux' ]; then
-  #       version=v1.4.0
-  #       flatpak install --user $HOME/Downloads/podman-desktop-$version.flatpak
-  #     fi
+    - description: Installing podman-desktop
+      command: |
+        if [ `uname` = 'Darwin' ]; then
+          brew install podman-desktop
+        elif [ `uname` = 'Linux' ]; then
+          version=v1.4.0
+          flatpak install --user $HOME/Downloads/podman-desktop-$version.flatpak
+        fi
 
 - link:
     ~/.zshrc.d/024-podman.zsh: zshrc.d/024-podman.zsh

@@ -1,62 +1,124 @@
 - shell:
+    - description: Validating sudo credentials
+      command: "sudo --validate"
 
-  - description: Validating sudo credentials
-    command: "sudo --validate"
-  
-  - description: Remove old files
-    command: |
-      # [ -d ~/.config/containers/ ] && rm -rf ~/.config/containers/
-      # [ -d ~/.local/share/containers/ ] && rm -rf ~/.local/share/containers 
-      # [ ls ~/.ssh/podman* >/dev/null 2>&1 ] && rm -rf ~/.ssh/podman*
-    stdout: true 
+    - description: Remove old files
+      command: |
+        [ -d ~/.config/containers/ ] && rm -rf ~/.config/containers/
+        [ -d ~/.cache/containers/ ] && rm -rf ~/.cache/containers/
+        [ -d ~/.config/cni/net.d/ ] && rm -rf ~/.config/cni/net.d/ 
+        [ -d ~/.local/share/containers/ ] && rm -rf ~/.local/share/containers 
+        if [ ls ~/.ssh/podman* >/dev/null 2>&1 ]; then
+          rm -rf ~/.ssh/podman*
+        fi
+      stdout: true
 
-  - description: Installing podman
-    command: |
-      if [ `uname` = 'Darwin' ]; then
-        brew install podman
-        podman --version
-        podman machine init podman-rootless
-        podman machine init podman-rootful --cpus 2 --memory 2048 --disk-size 20
-        podman machine set --rootful podman-rootful
-        podman system connection default podman-rootful-root
-        podman machine start podman-rootful
-        sudo podman info
-      elif [ `uname` = 'Linux' ]; then
-        case $(lsb_release -is) in 
-          Ubuntu)
-            sudo mkdir -p /etc/apt/keyrings
-            curl -fsSL "https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/xUbuntu_$(lsb_release -rs)/Release.key" \
-              | gpg --dearmor \
-              | sudo tee /etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg > /dev/null
-            echo \
-              "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg]\
-                https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/xUbuntu_$(lsb_release -rs)/ /" \
-              | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list > /dev/null
-            sudo apt-get update -qq
-            sudo apt-get -qq -y install podman
-          ;;
-          Arch | EndeavourOS)
-            sudo pacman -S podman
-          ;;
-        esac
-      fi
-    stdout: true
-  - description: Installing podman-compose
-    command: |
-      $HOME/.pyenv/shims/pip3 install --upgrade pip
-      # $HOME/.pyenv/shims/pip3 install podman-compose
-      $HOME/.pyenv/shims/pip3 install https://github.com/containers/podman-compose/archive/devel.tar.gz --user
-      [ -f $HOME/.pyenv/shims/podman-compose ] && $HOME/.pyenv/shims/podman-compose version
+    - description: Installing podman (MacOs)
+      command: |
+        if [ `uname` = 'Darwin' ]; then
+          brew install podman
+          podman --version
+          podman machine init podman-rootless
+          podman machine init podman-rootful --cpus 2 --memory 2048 --disk-size 20
+          podman machine set --rootful podman-rootful
+          podman system connection default podman-rootful-root
+          podman machine start podman-rootful
+          sudo podman info
+        else
+          echo "Not MacOS"
+        fi
+      stdout: true
+
+    # - description: Installing podman (Linux) (Stable)
+    #   command: |
+    #     if [ `uname` = 'Linux' ]; then
+    #       case $(lsb_release -is) in
+    #         Ubuntu)
+    #           sudo mkdir -p /etc/apt/keyrings
+    #           curl -fsSL "https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_$(lsb_release -rs)/Release.key" \
+    #             | gpg --dearmor \
+    #             | sudo tee /etc/apt/keyrings/devel_kubic_libcontainers_stable.gpg > /dev/null
+    #           echo \
+    #             "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/devel_kubic_libcontainers_stable.gpg]\
+    #               https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_$(lsb_release -rs)/ /" \
+    #             | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list > /dev/null
+    #           sudo apt-get update -qq
+    #           sudo apt-get -qq -y install podman
+    #           sudo apt-get -y upgrade
+    #
+    #         ;;
+    #         Arch | EndeavourOS)
+    #           sudo pacman -S podman
+    #         ;;
+    #       esac
+    #     else
+    #       echo "Not Linux"
+    #     fi
+    #     podman info
+    #   stdout: true
+
+    - description: Installing podman (Linux) (Unstable)
+      command: |
+        if [ `uname` = 'Linux' ]; then
+          case $(lsb_release -is) in
+            Ubuntu)
+              sudo mkdir -p /etc/apt/keyrings
+              curl -fsSL "https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/xUbuntu_$(lsb_release -rs)/Release.key" \
+                | gpg --dearmor \
+                | sudo tee /etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg > /dev/null
+              echo \
+                "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg]\
+                  https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/xUbuntu_$(lsb_release -rs)/ /" \
+                | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list > /dev/null
+              sudo apt-get update -qq
+              sudo apt-get -qq -y install podman
+              sudo apt-get -y upgrade
+            ;;
+            Arch | EndeavourOS)
+              sudo pacman -S podman
+            ;;
+          esac
+        else
+          echo "Not Linux"
+        fi
+        podman info
+
+    - description: Install correct conmon (Unstable)
+      command: |
+        sudo apt-get install \
+          gcc \
+          git \
+          libc6-dev \
+          libglib2.0-dev \
+          libseccomp-dev \
+          pkg-config \
+          make \
+          runc
+
+        [ -d $HOME/.local/src/conmon ] || git clone https://github.com/containers/conmon.git $HOME/.local/src/conmon
+        cd $HOME/.local/src/conmon
+        git checkout v2.1.10
+        sudo make podman
+        /usr/local/libexec/podman/conmon --version
+
+        if [ -f /usr/libexec/podman/conmon ]; then 
+          sudo rm /usr/libexec/podman/conmon -v
+        fi
+
+    - description: Installing podman-compose
+      command: |
+        $HOME/.pyenv/shims/pip3 install --upgrade pip
+        $HOME/.pyenv/shims/pip3 install podman-compose
+        [ -f $HOME/.pyenv/shims/podman-compose ] && $HOME/.pyenv/shims/podman-compose version
 
   # - description: Installing podman-desktop
-  #   command: | 
+  #   command: |
   #     if [ `uname` = 'Darwin' ]; then
-  #       brew install podman-desktop 
+  #       brew install podman-desktop
   #     elif [ `uname` = 'Linux' ]; then
   #       version=v1.4.0
-  #       flatpak install --user $HOME/Downloads/podman-desktop-$version.flatpak 
+  #       flatpak install --user $HOME/Downloads/podman-desktop-$version.flatpak
   #     fi
-
 
 - link:
     ~/.zshrc.d/024-podman.zsh: zshrc.d/024-podman.zsh

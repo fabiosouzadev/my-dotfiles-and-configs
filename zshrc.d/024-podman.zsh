@@ -9,4 +9,6 @@
 
 
 export KIND_EXPERIMENTAL_PROVIDER=podman
-export DOCKER_HOST=unix:///run/podman/podman.sock
+#export DOCKER_HOST=unix:///run/podman/podman.sock
+export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
+

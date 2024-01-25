@@ -1,6 +1,7 @@
 - create:
     - ~/.local/src
     - ~/.local/bin
+    - ~/.local/share
 
 - shell:
     - description: Validating sudo credentials

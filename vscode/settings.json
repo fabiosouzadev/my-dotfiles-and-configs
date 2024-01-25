@@ -175,6 +175,5 @@
   "peacock.vslsJoinColor": "#1857a4",
   "window.zoomLevel": 1,
   "explorer.confirmDelete": false,
-  "git.confirmSync": false,
-  "workbench.sideBar.location": "right"
+  "git.confirmSync": false
 }

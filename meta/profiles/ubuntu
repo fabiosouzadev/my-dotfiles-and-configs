@@ -7,7 +7,6 @@ linux.cli
 ubuntu.snaps
 ubuntu.flatpaks
 ubuntu.packages
-spotify
 linux.bluetooth
 linux.browsers
 linux.icons
@@ -28,7 +27,6 @@ kubeswitch
 gcloud
 ngrok
 postman
-nvm
 nvim
 tmux
 zsh
